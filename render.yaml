@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: hns-tips
-    env: python
-    buildCommand: ""
-    startCommand: python3 app.py
-    plan: free

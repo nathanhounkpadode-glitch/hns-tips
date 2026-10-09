@@ -1,1 +1,0 @@
-# HNS Tips utilise la bibliothèque standard de Python (0 dépendance externe requise !)
