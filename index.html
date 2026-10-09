@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
-    <meta name="theme-color" content="#0d111a">
+    <meta name="theme-color" content="#070b14">
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="manifest" href="static/manifest.json">
 </head>
@@ -17,114 +17,192 @@
                 <img src="static/icons/logo.jpg" alt="HNS Tips" class="brand-logo-img">
                 <div class="brand-info">
                     <h1>HNS TIPS</h1>
-                    <span class="brand-tag"><span class="pulse-dot"></span> Matchs Réels & IA</span>
+                    <span class="brand-tag"><span class="pulse-dot"></span> 7 Championnats Élite</span>
                 </div>
             </div>
             <div class="header-actions">
-                <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match réel">➕</button>
+                <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match de ton choix">➕</button>
                 <button class="icon-btn" id="refreshBtn" title="Actualiser les pronostics">🔄</button>
             </div>
         </header>
 
-        <!-- SÉLECTEUR DE JOUR (AUJOURD'HUI / DEMAIN / CE WEEK-END) -->
+        <!-- SÉLECTEUR DE JOUR (AUJOURD'HUI / DEMAIN / DIMANCHE) -->
         <div class="day-selector-bar">
             <button class="day-btn active" data-day="today">
                 <span class="day-title">Aujourd'hui</span>
-                <span class="day-sub">Jeudi 8 Oct</span>
+                <span class="day-sub" id="todaySub">Ven 9 Oct</span>
             </button>
             <button class="day-btn" data-day="tomorrow">
                 <span class="day-title">Demain</span>
-                <span class="day-sub">Vendredi 9 Oct</span>
+                <span class="day-sub" id="tomorrowSub">Sam 10 Oct</span>
             </button>
             <button class="day-btn" data-day="weekend">
-                <span class="day-title">Week-end</span>
-                <span class="day-sub">Sam - Dim</span>
+                <span class="day-title">Dimanche</span>
+                <span class="day-sub" id="weekendSub">Dim 11 Oct</span>
             </button>
         </div>
 
-        <!-- BARRE D'AJOUT RAPIDE -->
-        <div class="quick-add-bar">
-            <button class="quick-add-btn" id="openAddModalBtn2">
-                <span>➕</span> Pronostiquer un match réel de ton choix
-            </button>
+        <!-- BANDEAU ANNONCE CHAMPIONNATS -->
+        <div class="championship-announcement">
+            <span class="badge-tag">🇪🇸 🇬🇧 🇫🇷 🇮🇹 🇵🇹 🇹🇷 🇳🇱</span>
+            <span class="announcement-text" id="dayNoticeText">Reprise des 7 championnats européens : toutes les affiches analysées par l'IA !</span>
         </div>
 
         <!-- MAIN SCROLLABLE CONTENT -->
         <main class="app-main">
 
-            <!-- TAB 1: ACCUEIL & PRONOSTICS QUOTIDIENS -->
+            <!-- TAB 1: PRONOSTICS & ANALYSES -->
             <section id="tab-home" class="tab-view active">
 
-                <!-- SWITCH CATEGORIE : PARIS SIMPLES vs COMBINÉS DU JOUR -->
-                <div class="category-toggle">
-                    <button class="cat-toggle-btn active" id="toggleSingles">🎯 Paris Simples</button>
-                    <button class="cat-toggle-btn" id="toggleCombos">⚡ Combinés Prêts</button>
+                <!-- SÉLECTEUR DES 3 VUES PRINCIPALES -->
+                <div class="view-mode-bar">
+                    <button class="view-mode-btn active" id="viewModeSafe" data-view="safe">
+                        <span class="vm-icon">🛡️</span>
+                        <span class="vm-label">Matchs les Plus Sûrs</span>
+                    </button>
+                    <button class="view-mode-btn" id="viewModeAll" data-view="all">
+                        <span class="vm-icon">🏆</span>
+                        <span class="vm-label">Tous les Matchs</span>
+                    </button>
+                    <button class="view-mode-btn" id="viewModeCombos" data-view="combos">
+                        <span class="vm-icon">⚡</span>
+                        <span class="vm-label">Combinés Prêts</span>
+                    </button>
                 </div>
 
-                <!-- VUE 1 : PARIS SIMPLES DU JOUR -->
-                <div id="viewSingles" class="category-view active">
+                <!-- VUE 1 : SECTION MATCHS LES PLUS SÛRS (BANKER + SAFES) -->
+                <div id="sectionSafePicks" class="sub-view active">
                     
-                    <!-- BANKER DU JOUR EN TÊTE -->
+                    <!-- EN-TÊTE DU BANKER -->
                     <div class="section-header">
                         <h2>⭐ LE BANKER DU JOUR</h2>
-                        <span class="badge-gold">Top Confiance</span>
+                        <span class="badge-gold">Sélection N°1</span>
                     </div>
 
+                    <!-- CARTE DU BANKER DU JOUR -->
                     <div class="banker-card" id="bankerCard">
                         <div class="banker-header">
                             <span class="banker-league" id="bankerLeague">Compétition</span>
-                            <span class="banker-time" id="bankerTime">20:45</span>
+                            <span class="banker-time" id="bankerTime">Horaire</span>
                         </div>
                         <div class="banker-match" id="bankerMatch">Match</div>
                         
                         <div class="banker-bet-box">
-                            <div class="bet-label">Sélection Prioritaire :</div>
+                            <div class="bet-label">Conseil Prioritaire HNS :</div>
                             <div class="bet-pick" id="bankerPick">Pronostic</div>
                             <div class="bet-meta">
-                                <span class="odds-pill" id="bankerOdds">Cote : 1.70</span>
-                                <span class="confidence-badge" id="bankerConfidence">90% Confiance</span>
+                                <span class="odds-pill-gold" id="bankerOdds">Cote : 1.58</span>
+                                <span class="confidence-badge-gold" id="bankerConfidence">93% Confiance</span>
                             </div>
                         </div>
 
                         <div class="banker-analysis" id="bankerAnalysis">
-                            Chargement...
+                            Chargement de l'analyse tactique...
                         </div>
                     </div>
 
-                    <!-- LISTE DE TOUS LES PARIS SIMPLES DU JOUR -->
+                    <!-- LISTE DES SÉLECTIONS LES PLUS SÛRES -->
                     <div class="section-header">
-                        <h2>📋 SÉLECTIONS SIMPLES DU JOUR</h2>
-                        <span class="badge-neon" id="singlesCountBadge">Sélections</span>
+                        <h2>🛡️ SÉLECTIONS LES PLUS SÛRES</h2>
+                        <span class="badge-safe" id="safeCountBadge">Safe Picks</span>
                     </div>
 
-                    <div class="singles-list" id="singlesList">
+                    <div class="safe-info-banner">
+                        <span>🛡️</span>
+                        <p>Ces pronostics ciblent la sécurité maximale (favoris intouchables, double chance & sécurité buts) pour minimiser le risque.</p>
+                    </div>
+
+                    <div class="matches-list" id="safePicksList">
                         <!-- Populated by JS -->
                     </div>
+
+                    <div class="explore-switch-banner">
+                        <button class="btn-explore-all" onclick="setViewMode('all')">
+                            🏆 Voir aussi l'analyse complète de tous les championnats &rarr;
+                        </button>
+                    </div>
+
                 </div>
 
-                <!-- VUE 2 : COMBINÉS PRÊTS DU JOUR -->
-                <div id="viewCombos" class="category-view">
+                <!-- VUE 2 : TOUS LES MATCHS PAR CHAMPIONNAT (ANALYSE COMPLÈTE) -->
+                <div id="sectionAllMatches" class="sub-view">
+                    
+                    <div class="section-header">
+                        <h2>🏆 ANALYSE COMPLÈTE DES 7 CHAMPIONNATS</h2>
+                        <span class="badge-neon" id="allCountBadge">Tous les Matchs</span>
+                    </div>
+
+                    <!-- BARRE DE FILTRAGE HORIZONTALE PAR CHAMPIONNAT -->
+                    <div class="leagues-filter-container">
+                        <div class="leagues-filter-scroll" id="leaguesFilterScroll">
+                            <button class="league-filter-btn active" data-league="all">
+                                <span>⚡ Tous</span>
+                                <span class="pill-count" id="countAll">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="LaLiga (Espagne)">
+                                <span>🇪🇸 LaLiga</span>
+                                <span class="pill-count" id="countLaLiga">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Premier League (Angleterre)">
+                                <span>🇬🇧 Premier League</span>
+                                <span class="pill-count" id="countPremier">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Ligue 1 (France)">
+                                <span>🇫🇷 Ligue 1</span>
+                                <span class="pill-count" id="countLigue1">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Serie A (Italie)">
+                                <span>🇮🇹 Serie A</span>
+                                <span class="pill-count" id="countSerieA">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Primeira Liga (Portugal)">
+                                <span>🇵🇹 Primeira Liga</span>
+                                <span class="pill-count" id="countPrimeira">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Süper Lig (Turquie)">
+                                <span>🇹🇷 Süper Lig</span>
+                                <span class="pill-count" id="countSuperLig">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Eredivisie (Pays-Bas)">
+                                <span>🇳🇱 Eredivisie</span>
+                                <span class="pill-count" id="countEredivisie">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- LISTE DE TOUS LES MATCHS DU JOUR -->
+                    <div class="matches-list" id="allMatchesList">
+                        <!-- Populated by JS -->
+                    </div>
+
+                </div>
+
+                <!-- VUE 3 : COMBINÉS PRÊTS DU JOUR -->
+                <div id="sectionCombos" class="sub-view">
+                    
                     <div class="section-header">
                         <h2>⚡ LES COMBINÉS DU JOUR</h2>
                         <span class="badge-gold">Prêts à Jouer</span>
                     </div>
+
                     <div class="combos-list" id="combosList">
                         <!-- Populated by JS -->
                     </div>
+
                 </div>
 
                 <!-- QUICK STATS BAR -->
                 <div class="quick-stats-row">
                     <div class="stat-box">
-                        <div class="stat-val" id="winRateVal">83.1%</div>
-                        <div class="stat-lbl">Taux de Réussite</div>
+                        <div class="stat-val" id="winRateVal">87.4%</div>
+                        <div class="stat-lbl">Taux Réussite</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-val" id="streakVal">5 🔥</div>
+                        <div class="stat-val" id="streakVal">8 🔥</div>
                         <div class="stat-lbl">Série Gagnante</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-val" id="avgOddsVal">1.88</div>
+                        <div class="stat-val" id="avgOddsVal">1.84</div>
                         <div class="stat-lbl">Cote Moyenne</div>
                     </div>
                 </div>
@@ -139,7 +217,7 @@
                 </div>
 
                 <div class="generator-banner">
-                    <p>Personnalise ton combiné pour le jour sélectionné. L'IA assemble les meilleures cotes statistiques selon ton objectif.</p>
+                    <p>L'IA assemble automatiquement le meilleur combiné selon tes critères parmi les matchs du jour sélectionné.</p>
                 </div>
 
                 <div class="generator-controls">
@@ -206,7 +284,7 @@
                 </div>
 
                 <div class="bankroll-card">
-                    <p class="bankroll-desc">Calcule mathématiquement la mise prudente pour protéger ton argent et éviter tout risque excessif.</p>
+                    <p class="bankroll-desc">Calcule mathématiquement la mise prudente pour protéger ton argent avec le Critère de Kelly fractionné.</p>
                     
                     <div class="bankroll-inputs">
                         <div class="input-item">
@@ -250,19 +328,28 @@
                 </div>
                 <div class="modal-body">
                     <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
-                        Entre les deux équipes qui jouent aujourd'hui. L'IA de HNS Tips va calculer le pronostic optimal et l'ajouter à ta liste.
+                        Entre les deux équipes qui jouent aujourd'hui. L'IA de HNS Tips va calculer le pronostic optimal et l'intégrer à tes analyses.
                     </p>
                     <div class="input-item">
                         <label>Équipe Domicile :</label>
-                        <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Argentine...">
+                        <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Sporting...">
                     </div>
                     <div class="input-item">
                         <label>Équipe Extérieur :</label>
-                        <input type="text" id="customAway" placeholder="Ex: Bayern, PSG, Danemark...">
+                        <input type="text" id="customAway" placeholder="Ex: Bayern, PSG, Benfica...">
                     </div>
                     <div class="input-item">
                         <label>Compétition :</label>
-                        <input type="text" id="customLeague" placeholder="Ex: Ligue des Champions, LaLiga, etc.">
+                        <select id="customLeagueSelect" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
+                            <option value="LaLiga (Espagne)">🇪🇸 LaLiga (Espagne)</option>
+                            <option value="Premier League (Angleterre)">🇬🇧 Premier League (Angleterre)</option>
+                            <option value="Ligue 1 (France)">🇫🇷 Ligue 1 (France)</option>
+                            <option value="Serie A (Italie)">🇮🇹 Serie A (Italie)</option>
+                            <option value="Primeira Liga (Portugal)">🇵🇹 Primeira Liga (Portugal)</option>
+                            <option value="Süper Lig (Turquie)">🇹🇷 Süper Lig (Turquie)</option>
+                            <option value="Eredivisie (Pays-Bas)">🇳🇱 Eredivisie (Pays-Bas)</option>
+                            <option value="Autre">🌍 Autre Championnat</option>
+                        </select>
                     </div>
                     <div class="input-item">
                         <label>Heure du coup d'envoi :</label>
@@ -270,10 +357,10 @@
                     </div>
                     <div class="input-item">
                         <label>Jour du match :</label>
-                        <select id="customDay" style="width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
-                            <option value="today">Aujourd'hui</option>
-                            <option value="tomorrow">Demain</option>
-                            <option value="weekend">Ce Week-end</option>
+                        <select id="customDay" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
+                            <option value="today">Aujourd'hui (Ven 9 Oct)</option>
+                            <option value="tomorrow">Demain (Sam 10 Oct)</option>
+                            <option value="weekend">Dimanche (Dim 11 Oct)</option>
                         </select>
                     </div>
                     <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
@@ -287,7 +374,7 @@
         <nav class="app-bottom-nav">
             <button class="nav-item active" onclick="switchTab('home')">
                 <span class="nav-icon">📅</span>
-                <span class="nav-label">Pronos du Jour</span>
+                <span class="nav-label">Pronos & Matchs</span>
             </button>
             <button class="nav-item" onclick="switchTab('generator')">
                 <span class="nav-icon">⚡</span>

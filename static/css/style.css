@@ -1,11 +1,14 @@
 :root {
-    --bg-dark: #090c15;
+    --bg-dark: #070b14;
     --card-bg: #121826;
-    --card-border: #1f293d;
-    --accent-blue: #0062cc;
-    --accent-red: #c9184a;
+    --card-border: #1e283d;
+    --accent-blue: #0066e0;
+    --accent-blue-glow: rgba(0, 102, 224, 0.35);
+    --accent-red: #e63946;
     --gold: #ffb703;
-    --green-won: #06d6a0;
+    --gold-glow: rgba(255, 183, 3, 0.3);
+    --green-won: #10b981;
+    --green-glow: rgba(16, 185, 129, 0.25);
     --red-lost: #ef476f;
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
@@ -22,7 +25,7 @@
 }
 
 body {
-    background-color: #030712;
+    background-color: #02050b;
     color: var(--text-primary);
     display: flex;
     justify-content: center;
@@ -35,14 +38,14 @@ body {
     width: 100%;
     max-width: 480px;
     height: 100vh;
-    max-height: 920px;
+    max-height: 940px;
     background-color: var(--bg-dark);
     display: flex;
     flex-direction: column;
     position: relative;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.85);
     overflow: hidden;
-    border-radius: 24px;
+    border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -56,13 +59,14 @@ body {
 
 /* HEADER */
 .app-header {
-    padding: 14px 18px;
-    background: rgba(18, 24, 38, 0.95);
-    backdrop-filter: blur(12px);
+    padding: 12px 18px;
+    background: rgba(18, 24, 38, 0.98);
+    backdrop-filter: blur(14px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--card-border);
+    z-index: 50;
 }
 
 .brand {
@@ -71,25 +75,23 @@ body {
     gap: 12px;
 }
 
-.brand-logo {
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
-    color: white;
-    font-weight: 900;
-    font-size: 1rem;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 12px rgba(201, 24, 74, 0.3);
+.brand-logo-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 16px var(--accent-blue-glow);
+    border: 1.5px solid rgba(255, 183, 3, 0.45);
 }
 
 .brand-info h1 {
     font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
+    font-weight: 900;
+    letter-spacing: 0.6px;
     color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 40%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .brand-tag {
@@ -98,6 +100,7 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
+    font-weight: 600;
 }
 
 .pulse-dot {
@@ -107,26 +110,44 @@ body {
     border-radius: 50%;
     display: inline-block;
     box-shadow: 0 0 8px var(--green-won);
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
 }
 
 .icon-btn {
-    background: var(--card-bg);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--card-border);
     color: var(--text-primary);
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.2s;
+    font-size: 1rem;
+    transition: all 0.2s;
 }
 
-/* SÉLECTEUR DE JOUR (AUJOURD'HUI / DEMAIN / WEEK-END) */
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+/* SÉLECTEUR DE JOUR */
 .day-selector-bar {
     display: flex;
-    background: #0f1523;
+    background: #0b111e;
     padding: 8px 12px;
     gap: 8px;
     border-bottom: 1px solid var(--card-border);
@@ -134,15 +155,15 @@ body {
 
 .day-btn {
     flex: 1;
-    background: transparent;
-    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     padding: 8px 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .day-btn .day-title {
@@ -152,14 +173,16 @@ body {
 }
 
 .day-btn .day-sub {
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     color: var(--text-muted);
     margin-top: 2px;
+    font-weight: 600;
 }
 
 .day-btn.active {
-    background: rgba(0, 98, 204, 0.2);
+    background: linear-gradient(135deg, rgba(0, 102, 224, 0.3), rgba(0, 102, 224, 0.15));
     border-color: #3b82f6;
+    box-shadow: 0 4px 14px var(--accent-blue-glow);
 }
 
 .day-btn.active .day-title {
@@ -167,51 +190,40 @@ body {
 }
 
 .day-btn.active .day-sub {
-    color: #60a5fa;
+    color: #93c5fd;
 }
 
-/* TOGGLE CATEGORIE (PARIS SIMPLES vs COMBINES) */
-.category-toggle {
+/* BANDEAU ANNONCE CHAMPIONNATS */
+.championship-announcement {
+    padding: 7px 14px;
+    background: linear-gradient(90deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 4px;
-    margin: 12px 0 16px;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    color: #cbd5e1;
 }
 
-.cat-toggle-btn {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
+.badge-tag {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    flex-shrink: 0;
 }
 
-.cat-toggle-btn.active {
-    background: var(--card-bg);
-    color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.category-view {
-    display: none;
-}
-.category-view.active {
-    display: block;
-    animation: fadeIn 0.2s ease;
+.announcement-text {
+    font-size: 0.72rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #94a3b8;
 }
 
 /* MAIN SCROLLABLE */
 .app-main {
     flex: 1;
     overflow-y: auto;
-    padding: 16px;
+    padding: 14px;
     padding-bottom: calc(var(--bottom-nav-h) + 20px);
 }
 
@@ -220,56 +232,126 @@ body {
 }
 .tab-view.active {
     display: block;
-    animation: fadeIn 0.25s ease-in-out;
+    animation: fadeIn 0.2s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
+    from { opacity: 0; transform: translateY(4px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* SÉLECTEUR DES 3 VUES PRINCIPALES (BARRE DE NAVIGATION CATÉGORIES) */
+.view-mode-bar {
+    display: flex;
+    background: #0d1424;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 14px;
+    gap: 4px;
+}
+
+.view-mode-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 8px 4px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    transition: all 0.2s;
+}
+
+.view-mode-btn .vm-icon {
+    font-size: 1rem;
+}
+
+.view-mode-btn .vm-label {
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
+.view-mode-btn.active {
+    background: #1a233a;
+    border-color: rgba(59, 130, 246, 0.4);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.view-mode-btn.active .vm-label {
+    color: #60a5fa;
+    font-weight: 800;
+}
+
+/* SUB VIEWS */
+.sub-view {
+    display: none;
+}
+.sub-view.active {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* SECTION HEADERS */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 16px 0 10px;
+    margin: 14px 0 10px;
 }
 
 .section-header h2 {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 800;
     color: var(--text-secondary);
-    letter-spacing: 0.8px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
 }
 
 .badge-gold {
     background: rgba(255, 183, 3, 0.15);
     color: var(--gold);
-    border: 1px solid rgba(255, 183, 3, 0.3);
-    font-size: 0.7rem;
-    font-weight: 700;
+    border: 1px solid rgba(255, 183, 3, 0.35);
+    font-size: 0.68rem;
+    font-weight: 800;
     padding: 3px 8px;
-    border-radius: 12px;
+    border-radius: 10px;
+}
+
+.badge-safe {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--green-won);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 10px;
 }
 
 .badge-neon {
-    background: rgba(0, 98, 204, 0.15);
+    background: rgba(0, 102, 224, 0.15);
     color: #60a5fa;
-    border: 1px solid rgba(0, 98, 204, 0.3);
-    font-size: 0.7rem;
-    font-weight: 700;
+    border: 1px solid rgba(0, 102, 224, 0.35);
+    font-size: 0.68rem;
+    font-weight: 800;
     padding: 3px 8px;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 /* BANKER CARD */
 .banker-card {
-    background: linear-gradient(145deg, #161e31, #121826);
-    border: 1px solid rgba(255, 183, 3, 0.35);
+    background: linear-gradient(145deg, #182238 0%, #101626 100%);
+    border: 1.5px solid rgba(255, 183, 3, 0.45);
     border-radius: 18px;
     padding: 16px;
     margin-bottom: 16px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px -5px rgba(255, 183, 3, 0.12), 0 6px 15px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -277,44 +359,56 @@ body {
 .banker-card::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--accent-red));
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, var(--gold), #ff8800, #ff4d00);
 }
 
 .banker-header {
     display: flex;
     justify-content: space-between;
-    font-size: 0.75rem;
+    align-items: center;
+    font-size: 0.74rem;
     color: var(--text-secondary);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+}
+
+.banker-league {
+    font-weight: 700;
+    color: #93c5fd;
+}
+
+.banker-time {
+    color: var(--text-muted);
 }
 
 .banker-match {
-    font-size: 1.15rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 900;
     color: #ffffff;
     margin-bottom: 12px;
+    letter-spacing: 0.2px;
 }
 
 .banker-bet-box {
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 183, 3, 0.2);
     border-radius: 12px;
     padding: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .bet-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 4px;
+    letter-spacing: 0.5px;
 }
 
 .bet-pick {
     font-size: 1.05rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--gold);
     margin-bottom: 8px;
 }
@@ -325,95 +419,275 @@ body {
     align-items: center;
 }
 
-.odds-pill {
-    background: var(--accent-blue);
-    color: white;
-    padding: 3px 10px;
+.odds-pill-gold {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+    padding: 4px 12px;
     border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
 }
 
-.confidence-badge {
-    background: rgba(6, 214, 160, 0.15);
-    color: var(--green-won);
-    padding: 3px 10px;
+.confidence-badge-gold {
+    background: rgba(255, 183, 3, 0.18);
+    color: var(--gold);
+    border: 1px solid rgba(255, 183, 3, 0.35);
+    padding: 4px 10px;
     border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.78rem;
+    font-weight: 800;
 }
 
 .banker-analysis {
     font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
+    color: #cbd5e1;
+    line-height: 1.45;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    border-radius: 10px;
+    border-left: 3px solid var(--gold);
 }
 
-/* SINGLE CARDS */
-.single-card {
+/* BANNIÈRE INFO SAFE PICKS */
+.safe-info-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 0.76rem;
+    color: #a7f3d0;
+    line-height: 1.35;
+}
+
+.safe-info-banner span {
+    font-size: 1.1rem;
+}
+
+/* BARRE DE FILTRAGE DES CHAMPIONNATS (HORIZONTALE) */
+.leagues-filter-container {
+    margin-bottom: 14px;
+}
+
+.leagues-filter-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.leagues-filter-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.league-filter-btn {
+    flex-shrink: 0;
+    background: #111726;
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.league-filter-btn .pill-count {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+.league-filter-btn.active {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    border-color: #60a5fa;
+    color: #ffffff;
+    box-shadow: 0 2px 10px var(--accent-blue-glow);
+}
+
+.league-filter-btn.active .pill-count {
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
+/* MATCHS LIST & CARDS */
+.matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.match-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 16px;
     padding: 14px;
-    margin-bottom: 12px;
     transition: transform 0.2s, border-color 0.2s;
+    position: relative;
 }
 
-.single-card:hover {
-    border-color: rgba(255, 255, 255, 0.15);
+.match-card:hover {
+    border-color: rgba(96, 165, 250, 0.3);
 }
 
-.single-top {
+.match-card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.72rem;
     color: var(--text-muted);
-    margin-bottom: 6px;
-}
-
-.single-match {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #ffffff;
     margin-bottom: 8px;
 }
 
-.single-box {
-    background: rgba(0, 0, 0, 0.25);
+.league-pill {
+    color: #93c5fd;
+    font-weight: 700;
+}
+
+.match-type-tag {
+    font-size: 0.66rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+}
+
+.tag-banker {
+    background: rgba(255, 183, 3, 0.15);
+    color: var(--gold);
+    border: 1px solid rgba(255, 183, 3, 0.35);
+}
+
+.tag-safe {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--green-won);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.tag-value {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.match-title {
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.match-bet-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     padding: 10px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-.single-market {
-    font-size: 0.7rem;
+.match-market-name {
+    font-size: 0.68rem;
     color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
-.single-pick {
-    font-size: 0.9rem;
-    font-weight: 700;
+.match-pick-text {
+    font-size: 0.92rem;
+    font-weight: 800;
     color: var(--gold);
     margin-top: 2px;
 }
 
-.single-reason {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    line-height: 1.35;
+.match-meta-right {
+    display: flex;
+    gap: 6px;
+    align-items: center;
 }
 
-/* COMBOS CARDS */
+.odds-chip {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.confidence-chip {
+    background: rgba(16, 185, 129, 0.16);
+    color: var(--green-won);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.match-reason-box {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    line-height: 1.4;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+/* EXPLORE SWITCH BANNER */
+.explore-switch-banner {
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.btn-explore-all {
+    width: 100%;
+    background: rgba(0, 102, 224, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    color: #93c5fd;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-explore-all:hover {
+    background: rgba(0, 102, 224, 0.22);
+    color: #ffffff;
+}
+
+/* COMBOS LIST & CARDS */
+.combos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
 .combo-card {
-    background: linear-gradient(145deg, #151d2f, #101624);
+    background: linear-gradient(145deg, #161e31, #101625);
     border: 1px solid var(--card-border);
     border-radius: 18px;
     padding: 16px;
-    margin-bottom: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .combo-card-header {
@@ -424,17 +698,17 @@ body {
 }
 
 .combo-card-title {
-    font-size: 0.95rem;
+    font-size: 0.96rem;
     font-weight: 800;
     color: white;
 }
 
 .combo-card-odds {
-    background: var(--gold);
-    color: #0b0f19;
+    background: linear-gradient(135deg, var(--gold), #f59e0b);
+    color: #070b14;
     font-size: 0.85rem;
     font-weight: 900;
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-radius: 8px;
 }
 
@@ -457,20 +731,21 @@ body {
 }
 
 .combo-pick-name {
-    font-weight: 600;
+    font-weight: 700;
     color: #ffffff;
 }
 
 .combo-pick-odds {
     color: var(--gold);
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .combo-advice {
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     color: var(--text-muted);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding-top: 8px;
+    line-height: 1.35;
 }
 
 /* QUICK STATS */
@@ -478,7 +753,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    margin: 16px 0;
+    margin: 18px 0 10px;
 }
 
 .stat-box {
@@ -490,8 +765,8 @@ body {
 }
 
 .stat-val {
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1.15rem;
+    font-weight: 900;
     color: #ffffff;
 }
 
@@ -499,15 +774,16 @@ body {
     font-size: 0.65rem;
     color: var(--text-muted);
     margin-top: 2px;
+    font-weight: 600;
 }
 
-/* GENERATOR */
+/* TAB 2: GENERATOR */
 .generator-banner {
-    background: rgba(0, 98, 204, 0.1);
-    border: 1px solid rgba(0, 98, 204, 0.25);
+    background: rgba(0, 102, 224, 0.1);
+    border: 1px solid rgba(0, 102, 224, 0.25);
     border-radius: 14px;
     padding: 12px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: #93c5fd;
     line-height: 1.4;
     margin-bottom: 14px;
@@ -527,9 +803,9 @@ body {
 
 .control-group label {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-secondary);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 8px;
 }
 
@@ -554,13 +830,13 @@ body {
 }
 
 .risk-btn.active {
-    background: rgba(0, 98, 204, 0.25);
+    background: rgba(0, 102, 224, 0.25);
     border-color: #60a5fa;
-    box-shadow: 0 0 12px rgba(96, 165, 250, 0.2);
+    box-shadow: 0 0 12px var(--accent-blue-glow);
 }
 
 .risk-icon { font-size: 1.1rem; }
-.risk-name { font-size: 0.75rem; font-weight: 700; }
+.risk-name { font-size: 0.75rem; font-weight: 800; }
 .risk-odds { font-size: 0.65rem; color: var(--text-muted); }
 
 .count-selector { display: flex; gap: 8px; }
@@ -572,14 +848,14 @@ body {
     padding: 8px;
     color: var(--text-primary);
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
 }
 .count-btn.active { background: var(--accent-blue); border-color: var(--accent-blue); }
 
 .btn-generate {
     width: 100%;
-    background: linear-gradient(135deg, #2563eb, #db2777);
+    background: linear-gradient(135deg, #1d4ed8, #e11d48);
     border: none;
     border-radius: 12px;
     padding: 12px;
@@ -591,7 +867,12 @@ body {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 6px 16px -2px rgba(219, 39, 119, 0.35);
+    box-shadow: 0 6px 16px -2px rgba(225, 29, 72, 0.35);
+    transition: transform 0.15s;
+}
+
+.btn-generate:active {
+    transform: scale(0.98);
 }
 
 .combo-result-card {
@@ -599,6 +880,7 @@ body {
     border: 1px solid #3b82f6;
     border-radius: 16px;
     padding: 16px;
+    animation: fadeIn 0.2s ease;
 }
 
 .combo-header {
@@ -633,76 +915,19 @@ body {
 .ai-note { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; }
 .btn-save-ticket { width: 100%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
 
-/* BANKROLL */
+/* TAB 3: BANKROLL */
 .bankroll-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px; padding: 16px; }
 .bankroll-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; margin-bottom: 14px; }
 .bankroll-inputs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
 .input-item label { display: block; font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 4px; }
 .input-item input { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--card-border); color: white; padding: 10px 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; outline: none; }
+.btn-action { width: 100%; background: var(--accent-blue); border: none; border-radius: 10px; padding: 12px; color: white; font-weight: 800; cursor: pointer; }
 .stake-result-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px; margin-top: 14px; }
 .stake-val-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; }
 .stake-val-row strong { color: var(--green-won); font-size: 0.95rem; }
 .stake-warning { font-size: 0.7rem; color: var(--gold); margin-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 6px; }
 
-/* BOTTOM NAVIGATION */
-.app-bottom-nav {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: var(--bottom-nav-h);
-    background: rgba(18, 24, 38, 0.95);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid var(--card-border);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 100;
-}
-
-.nav-item {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    padding: 6px 12px;
-    transition: color 0.2s;
-}
-
-.nav-item.active { color: #60a5fa; }
-.nav-icon { font-size: 1.35rem; }
-.nav-label { font-size: 0.7rem; font-weight: 700; }
-/* QUICK ADD BAR */
-.quick-add-bar {
-    padding: 8px 16px;
-    background: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid var(--card-border);
-}
-
-.quick-add-btn {
-    width: 100%;
-    background: rgba(0, 98, 204, 0.15);
-    border: 1px dashed #3b82f6;
-    color: #93c5fd;
-    padding: 8px 12px;
-    border-radius: 10px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.2s;
-}
-
-.quick-add-btn:hover {
-    background: rgba(0, 98, 204, 0.25);
-}
-
-/* MODAL POPUP */
+/* MODAL */
 .modal-backdrop {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -748,12 +973,34 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
 }
-/* BRAND LOGO IMAGE */
-.brand-logo-img {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: 0 0 14px rgba(0, 98, 204, 0.4);
-    border: 1px solid rgba(255, 183, 3, 0.4);
+
+/* BOTTOM NAVIGATION */
+.app-bottom-nav {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: var(--bottom-nav-h);
+    background: rgba(18, 24, 38, 0.96);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
 }
+
+.nav-item {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 6px 12px;
+    transition: color 0.2s;
+}
+
+.nav-item.active { color: #60a5fa; }
+.nav-icon { font-size: 1.35rem; }
+.nav-label { font-size: 0.7rem; font-weight: 700; }
