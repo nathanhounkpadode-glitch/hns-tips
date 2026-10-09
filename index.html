@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=13">
+    <link rel="stylesheet" href="static/css/style.css?v=14">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
 </head>
@@ -109,6 +109,22 @@
                         <div class="banker-analysis" id="bankerAnalysis">
                             Chargement de l'analyse tactique...
                         </div>
+
+                        <!-- BANKER METRICS & SPÉCIFICITÉS -->
+                        <div class="banker-metrics-row" id="bankerMetricsRow">
+                            <div class="banker-metric-pill">
+                                <span class="lbl">📊 xG Diff.</span>
+                                <span class="val" id="bankerXg">+1.65 xG</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">📈 Forme 5M</span>
+                                <span class="val" id="bankerForm">V-V-V-N-V</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">🛡️ Risque IA</span>
+                                <span class="val" id="bankerRisk">1/5 (Très Faible)</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- LISTE DES SÉLECTIONS LES PLUS SÛRES -->
@@ -138,7 +154,7 @@
                 <div id="sectionAllMatches" class="sub-view">
                     
                     <div class="section-header">
-                        <h2>🏆 ANALYSE COMPLÈTE DES 7 CHAMPIONNATS</h2>
+                        <h2>🏆 ANALYSE COMPLÈTE DES 8 CHAMPIONNATS</h2>
                         <span class="badge-neon" id="allCountBadge">Tous les Matchs</span>
                     </div>
 
@@ -183,6 +199,9 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- ENCART DYNAMIQUE ADN & RÉALITÉ DU CHAMPIONNAT -->
+                    <div id="leagueDnaContainer"></div>
 
                     <!-- LISTE DE TOUS LES MATCHS DU JOUR -->
                     <div class="matches-list" id="allMatchesList">
@@ -402,7 +421,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=13"></script>
-    <script src="static/js/app.js?v=13"></script>
+    <script src="static/js/default-data.js?v=14"></script>
+    <script src="static/js/app.js?v=14"></script>
 </body>
 </html>

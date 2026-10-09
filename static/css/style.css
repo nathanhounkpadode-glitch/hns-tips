@@ -1120,3 +1120,237 @@ body {
 .nav-item.active { color: #60a5fa; }
 .nav-icon { font-size: 1.35rem; }
 .nav-label { font-size: 0.7rem; font-weight: 700; }
+
+/* ========================================================
+   SPÉCIFICITÉS TACTIQUES & ADN DES CHAMPIONNATS (HNS V2)
+   ======================================================== */
+
+/* Tag ADN Championnat sur la carte */
+.match-dna-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-top: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Bouton Dépliable Décryptage Tactique */
+.btn-tactical-toggle {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    color: #38bdf8;
+    border-radius: 10px;
+    padding: 7px 12px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-tactical-toggle:hover {
+    background: rgba(56, 189, 248, 0.12);
+    border-color: #38bdf8;
+}
+
+.btn-tactical-toggle.active {
+    background: rgba(56, 189, 248, 0.16);
+    border-color: #38bdf8;
+    color: #ffffff;
+}
+
+.toggle-arrow {
+    transition: transform 0.25s ease;
+}
+
+.btn-tactical-toggle.active .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+/* Panneau Dépliable des Spécificités */
+.tactical-panel {
+    display: none;
+    background: rgba(10, 15, 29, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+.tactical-panel.open {
+    display: block;
+}
+
+/* Grille des 4 Métriques Clés */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.metric-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.metric-val {
+    font-size: 0.82rem;
+    color: #f8fafc;
+    font-weight: 900;
+}
+
+.metric-val.highlight-xg {
+    color: #10b981;
+}
+
+.metric-val.highlight-stake {
+    color: #f59e0b;
+}
+
+/* Items d'analyse experte */
+.tactical-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid #38bdf8;
+    border-radius: 0 8px 8px 0;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    font-size: 0.73rem;
+    line-height: 1.45;
+    color: #cbd5e1;
+}
+
+.tactical-item:last-child {
+    margin-bottom: 0;
+}
+
+.tactical-item-title {
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 3px;
+    font-size: 0.74rem;
+}
+
+.tactical-item.dna-item {
+    border-left-color: #818cf8;
+}
+
+.tactical-item.key-item {
+    border-left-color: #10b981;
+}
+
+.tactical-item.risk-item {
+    border-left-color: #f59e0b;
+}
+
+/* BANNIÈRE RÉALITÉS DES CHAMPIONNATS (VUE 2) */
+.league-dna-banner {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+    border: 1.5px solid rgba(99, 102, 241, 0.35);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s ease;
+}
+
+.league-dna-banner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.league-dna-banner-title {
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.league-dna-stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dna-stat-chip {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.dna-stat-chip strong {
+    color: #38bdf8;
+}
+
+.league-dna-banner-desc {
+    font-size: 0.74rem;
+    color: #cbd5e1;
+    line-height: 1.45;
+}
+
+/* BANKER METRICS ROW */
+.banker-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin: 10px 0;
+}
+
+.banker-metric-pill {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 8px;
+    padding: 6px;
+    text-align: center;
+}
+
+.banker-metric-pill .lbl {
+    font-size: 0.6rem;
+    color: #e2e8f0;
+    font-weight: 700;
+    display: block;
+}
+
+.banker-metric-pill .val {
+    font-size: 0.78rem;
+    color: #ffd700;
+    font-weight: 900;
+    display: block;
+}
+
