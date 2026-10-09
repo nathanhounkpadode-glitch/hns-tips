@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (7 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v8";
+const DATA_VERSION = "2026-10-09-v9";
 let appData = null;
 let currentDay = "today";
 let currentViewMode = "safe"; // 'safe', 'all', or 'combos'
@@ -393,7 +393,8 @@ async function submitCustomMatch() {
     const home = document.getElementById("customHome").value.trim();
     const away = document.getElementById("customAway").value.trim();
     const league = document.getElementById("customLeagueSelect").value;
-    const time = document.getElementById("customTime").value.trim() || "20:45";
+    const rawTime = document.getElementById("customTime").value.trim() || "19:45";
+    const time = (rawTime.includes("•") || rawTime.includes("(")) ? rawTime : `${rawTime} (Bénin / GMT+1)`;
     const day = document.getElementById("customDay").value;
 
     if (!home || !away) {
