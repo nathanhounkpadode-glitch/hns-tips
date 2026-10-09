@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (7 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v11";
+const DATA_VERSION = "2026-10-09-v12";
 let appData = null;
 let currentDay = "today";
 let currentViewMode = "safe"; // 'safe', 'all', or 'combos'
@@ -522,6 +522,8 @@ async function calculateStake() {
     document.getElementById("potentialGain").textContent = `${data.potential_gain} € (Bénéfice : +${data.potential_profit} €)`;
     document.getElementById("stakeAdvice").textContent = `💡 ${data.advice}`;
     document.getElementById("stakeResultBox").style.display = "block";
+}
+
 // =========================================================================
 // MOTEUR D'AUTO-SYNCHRONISATION 100% AUTONOME (ESPN LIVE API - ZERO CLÉ REQUISE)
 // =========================================================================

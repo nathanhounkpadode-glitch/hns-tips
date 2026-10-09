@@ -260,7 +260,7 @@ def run_sync():
     output_data = {
         "active_date": "today",
         "last_auto_sync": now_utc_str,
-        "leagues_order": list(LEAGUES.values()),
+        "leagues_order": [info["name"] for info in LEAGUES.values()],
         "stats_summary": {
             "win_rate": 88.5,
             "current_streak": 10,

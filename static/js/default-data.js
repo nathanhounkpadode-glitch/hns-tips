@@ -2,42 +2,14 @@ window.DEFAULT_HNS_DATA = {
   "active_date": "today",
   "last_auto_sync": "2026-10-09 19:26 UTC",
   "leagues_order": [
-    {
-      "name": "Premier League (Angleterre)",
-      "flag": "🇬🇧"
-    },
-    {
-      "name": "LaLiga (Espagne)",
-      "flag": "🇪🇸"
-    },
-    {
-      "name": "Ligue 1 (France)",
-      "flag": "🇫🇷"
-    },
-    {
-      "name": "Serie A (Italie)",
-      "flag": "🇮🇹"
-    },
-    {
-      "name": "Bundesliga (Allemagne)",
-      "flag": "🇩🇪"
-    },
-    {
-      "name": "Primeira Liga (Portugal)",
-      "flag": "🇵🇹"
-    },
-    {
-      "name": "Süper Lig (Turquie)",
-      "flag": "🇹🇷"
-    },
-    {
-      "name": "Eredivisie (Pays-Bas)",
-      "flag": "🇳🇱"
-    },
-    {
-      "name": "Ligue des Champions (Europe)",
-      "flag": "⭐"
-    }
+    "LaLiga (Espagne)",
+    "Premier League (Angleterre)",
+    "Ligue 1 (France)",
+    "Serie A (Italie)",
+    "Bundesliga (Allemagne)",
+    "Primeira Liga (Portugal)",
+    "Süper Lig (Turquie)",
+    "Eredivisie (Pays-Bas)"
   ],
   "stats_summary": {
     "win_rate": 88.5,
