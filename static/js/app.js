@@ -1,14 +1,58 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v18";
+const DATA_VERSION = "2026-10-09-v19";
 
 // ========================================================
-// SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N.
+// SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
 // ========================================================
-const OWNER_PASSCODES = ["schalom", "1409", "nathan", "schalom h.n.", "hns"];
+const OWNER_SECURITY_HASHES = new Set([
+    "0011ea074726c37d7d958f5448c63252a0a07fcd07a602924478032f916c875e",
+    "04013da6009c96f31572b7e9445054f2749ae6e9e898a4d22cbf60cc829efe33",
+    "0691b2de43c6e2c4c9f2444983c21fe65496af8818a17d39c441629580f5fa1d",
+    "24a70de8547a65b201504b7be197d563d25517aa8079dc719c8d42c2f6acd13b",
+    "34ca1702808d47b445f36dc8e7d11e9c1b00f2aa193f7eb435552549655099b1",
+    "3a7bef3f056ed2c03a02e200cd9b1c755b71c6e6d7b2fd4f8404a670e4337a1e",
+    "3c63a29515e005873bcf1a44fc5d7fa83cbaf275c2ddd68eff4d6e24d67ee23e",
+    "3e3609c5e30939952bb02c76485e419a866d8387989f97feb03e9c0abf6011ee",
+    "49c8745a9b5168bbe0536cadd2fd224fb824797cb5aaa80c2c9c632e6e22da10",
+    "53b91a45cabc748fc418612be8e36ebad6bc9a60adb3039d67bb647369738ed0",
+    "576f75be11e2f1119cb787778272b4720aee6d6bc8a911ac72e559992db5a5f1",
+    "5d7540f1ed2d72a6032459a00a3393446a2380efa559fb25a7af5b2f54a72508",
+    "7da9d84cabdff233d6f9ea7e51d61c7aaa9ab28e0e86bfc1be6bf06eaaaf93f4",
+    "7dc8834dc50e219f32702281a235095ad36e9e8e9bbe618ac580148d5ea3afde",
+    "914d8f8f74129b9e728c4b905200be038523fd5ff95036eb95ac2dcbebfc69d0",
+    "92239c059269c490bf7a5e6c3b50e74c0f8a7543b4501dd67f061512365c43cb",
+    "972e319c8a7cda4ae92cf0f9e676b9e810be84334d0f432834096cfabacadba2",
+    "9abc42d40366122fe6462241bf98403b1d70475b2163df28884ec38f844fce17",
+    "9c069635716d6afce2344e858f06f6bf43342f21c6ba8b78a6a0d899fce6197b",
+    "a316e7c0006b7a681a79a105dd7ae698854a207e18f91bc152b4f7021cf19812",
+    "ab23386d46bb65e5c72139439ce87983b14297844e111ea89eeb29801bdbbb29",
+    "c311ec399bdb2cac5901619760f7783746da9ffbf913494170ccc51bea24e634",
+    "c6939f315f1fe285b10158fd58bf9032668139786391ddea9399b4e2c2c902fb",
+    "d0fc2e86d3c4b343f9cbed0517381fd70b561f56ac22d7cebafe2e9e81165cf4",
+    "d4addb99c479e4c4ebb48937f7730253c37e95d8533220e9924adb92c2f387f7",
+    "e311c5f7d7a1ea5f939db8dd02e827035cec1f3100c1559384b11fc1399dd8a8",
+    "f871d8a4635666031546410ad109a34a5a19d027d6a4fb38a68bf0f383324147",
+    "fbf03cf55c25682ae378d0d7be680d71473a4539287fdc870d0213142c01e90f",
+    "fc65f3e29ec487a28aed154201969fb5ca86f83a51990f820cac7db40d29b657",
+    "fd3b6f12e80aa0a4dd83f9975c5724de3af18cb8d9d906a24e94098456447804"
+]);
 
 function isOwnerAdmin() {
     return localStorage.getItem("hns_owner_auth") === "granted_schalom";
+}
+
+async function computeSha256(raw) {
+    if (!raw) return "";
+    const clean = raw.trim().toLowerCase();
+    try {
+        if (window.crypto && crypto.subtle) {
+            const enc = new TextEncoder();
+            const buf = await crypto.subtle.digest("SHA-256", enc.encode(clean));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+    } catch(e) {}
+    return "";
 }
 
 function updateAdminLockUI() {
@@ -25,7 +69,7 @@ function updateAdminLockUI() {
     }
 }
 
-function toggleOwnerLock() {
+async function toggleOwnerLock() {
     if (isOwnerAdmin()) {
         if (confirm("👑 Voulez-vous verrouiller l'application en mode Lecture Seule ?")) {
             localStorage.removeItem("hns_owner_auth");
@@ -35,8 +79,8 @@ function toggleOwnerLock() {
     } else {
         const pin = prompt("🔐 ACCÈS PROPRIÉTAIRE SCHALOM H.N.\nVeuillez saisir votre code d'accès administrateur :");
         if (!pin) return;
-        const normalized = pin.trim().toLowerCase();
-        if (OWNER_PASSCODES.includes(normalized)) {
+        const hashed = await computeSha256(pin);
+        if (OWNER_SECURITY_HASHES.has(hashed)) {
             localStorage.setItem("hns_owner_auth", "granted_schalom");
             updateAdminLockUI();
             alert("👑 Bienvenue Schalom H.N. ! Vous avez les pleins droits d'administration sur HNS TIPS.");
@@ -46,13 +90,13 @@ function toggleOwnerLock() {
     }
 }
 
-function requireOwnerAuth(actionDesc = "modifier cette application") {
+async function requireOwnerAuth(actionDesc = "modifier cette application") {
     if (isOwnerAdmin()) return true;
     
     const pin = prompt(`🔐 SÉCURITÉ SCHALOM H.N. :\nSeul le propriétaire Schalom H.N. a le droit de ${actionDesc}.\n\nEntrez votre code d'accès propriétaire pour continuer :`);
     if (!pin) return false;
-    const normalized = pin.trim().toLowerCase();
-    if (OWNER_PASSCODES.includes(normalized)) {
+    const hashed = await computeSha256(pin);
+    if (OWNER_SECURITY_HASHES.has(hashed)) {
         localStorage.setItem("hns_owner_auth", "granted_schalom");
         updateAdminLockUI();
         alert("👑 Accès propriétaire validé !");
@@ -581,8 +625,9 @@ function toggleTactical(matchId) {
 }
 
 // Toggle match status (Won / Upcoming)
-function toggleMatchWon(matchId) {
-    if (!requireOwnerAuth("marquer ce match comme Validé / Gagné")) return;
+async function toggleMatchWon(matchId) {
+    const isAuth = await requireOwnerAuth("marquer ce match comme Validé / Gagné");
+    if (!isAuth) return;
     if (!appData || !appData.days) return;
     const day = appData.days[currentDay];
     if (!day || !day.singles) return;
@@ -778,7 +823,8 @@ async function generateAccumulator() {
 
 // Custom Match Analyzer & Adder
 async function submitCustomMatch() {
-    if (!requireOwnerAuth("enregistrer et ajouter un match")) return;
+    const isAuth = await requireOwnerAuth("enregistrer et ajouter un match");
+    if (!isAuth) return;
     const home = document.getElementById("customHome").value.trim();
     const away = document.getElementById("customAway").value.trim();
     const league = document.getElementById("customLeagueSelect").value;
@@ -1074,8 +1120,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("addMatchModal");
     const openBtn = document.getElementById("openAddModalBtn");
     if (openBtn) {
-        openBtn.addEventListener("click", () => {
-            if (!requireOwnerAuth("ajouter ou analyser un nouveau match")) return;
+        openBtn.addEventListener("click", async () => {
+            const isAuth = await requireOwnerAuth("ajouter ou analyser un nouveau match");
+            if (!isAuth) return;
             modal.style.display = "flex";
         });
     }
