@@ -1,0 +1,16 @@
+{
+  "name": "HNS Tips — Pronostics Football & IA",
+  "short_name": "HNS Tips",
+  "description": "Application de pronostics football intelligents et générateur de combinés IA inspiré de TejTips.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090c15",
+  "theme_color": "#090c15",
+  "icons": [
+    {
+      "src": "/static/icons/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

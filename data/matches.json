@@ -1,0 +1,349 @@
+{
+  "active_date": "today",
+  "leagues_order": [
+    "LaLiga (Espagne)",
+    "Premier League (Angleterre)",
+    "Ligue 1 (France)",
+    "Serie A (Italie)",
+    "Primeira Liga (Portugal)",
+    "Süper Lig (Turquie)",
+    "Eredivisie (Pays-Bas)",
+    "Coupes d'Europe"
+  ],
+  "days": {
+    "today": {
+      "label": "Aujourd'hui (Jeudi 8 Octobre)",
+      "badge": "Coupes & Matchs Européens",
+      "notice": "Les 7 premières divisions européennes débutent demain vendredi. Voici les meilleures sélections du jeudi :",
+      "banker": {
+        "match": "Venezuela vs Argentine",
+        "competition": "Éliminatoires Coupe du Monde",
+        "time": "23:00",
+        "pick": "Victoire Argentine ou Nul & Lionel Messi décisif",
+        "odds": 1.70,
+        "confidence": 91,
+        "analysis": "Le retour de Lionel Messi avec l'Albiceleste. L'Argentine est leader incontesté des éliminatoires et affiche 82% de victoires face au Venezuela."
+      },
+      "singles": [
+        {
+          "id": "s1",
+          "match": "Venezuela vs Argentine",
+          "league": "Éliminatoires AmSud",
+          "time": "23:00",
+          "market": "Buteur / Star",
+          "pick": "Lionel Messi buteur ou passeur",
+          "odds": 1.65,
+          "confidence": 92,
+          "type": "Banker",
+          "reason": "Messi mène l'attaque argentine et tire tous les coups de pied arrêtés."
+        },
+        {
+          "id": "s2",
+          "match": "Italie vs Belgique",
+          "league": "Ligue des Nations",
+          "time": "20:45",
+          "market": "Les Deux Équipes Marquent",
+          "pick": "Oui (BTTS)",
+          "odds": 1.75,
+          "confidence": 85,
+          "type": "Safe",
+          "reason": "Deux équipes très offensives mais des défenses qui concèdent au moins un but par match."
+        },
+        {
+          "id": "s3",
+          "match": "Israël vs France",
+          "league": "Ligue des Nations",
+          "time": "20:45",
+          "market": "1X2 & Buts",
+          "pick": "Victoire France & Plus de 2.5 buts",
+          "odds": 1.62,
+          "confidence": 88,
+          "type": "Safe",
+          "reason": "Supériorité technique nette des Bleus face à une défense adverse friable."
+        },
+        {
+          "id": "s4",
+          "match": "Angleterre vs Grèce",
+          "league": "Ligue des Nations",
+          "time": "20:45",
+          "market": "1X2 & Clean Sheet",
+          "pick": "Victoire Angleterre sans encaisser",
+          "odds": 1.85,
+          "confidence": 82,
+          "type": "Value",
+          "reason": "L'Angleterre à Wembley domine outrageusement la possession."
+        }
+      ],
+      "combos": [
+        {
+          "id": "c_safe",
+          "title": "🛡️ Combiné Safe du Jeudi",
+          "profile": "Safe",
+          "odds": 2.18,
+          "confidence": 88,
+          "picks": [
+            { "match": "Israël vs France", "pick": "Victoire France", "odds": 1.25 },
+            { "match": "Angleterre vs Grèce", "pick": "Angleterre ou Nul & +1.5 buts", "odds": 1.30 },
+            { "match": "Venezuela vs Argentine", "pick": "Argentine ou Nul", "odds": 1.34 }
+          ],
+          "advice": "Le combiné le plus fiable de la soirée internationale."
+        },
+        {
+          "id": "c_medium",
+          "title": "⚖️ Combiné Équilibré (Cote x3.40)",
+          "profile": "Équilibré",
+          "odds": 3.45,
+          "confidence": 80,
+          "picks": [
+            { "match": "Italie vs Belgique", "pick": "BTTS (Les deux marquent)", "odds": 1.75 },
+            { "match": "Israël vs France", "pick": "France gagne avec +1.5 buts", "odds": 1.42 },
+            { "match": "Venezuela vs Argentine", "pick": "Messi décisif", "odds": 1.39 }
+          ],
+          "advice": "Excellent compromis pour la soirée."
+        }
+      ]
+    },
+    "tomorrow": {
+      "label": "Demain (Vendredi 9 Octobre)",
+      "badge": "Reprise des 7 Grands Championnats",
+      "notice": "Ouverture des journées de championnat en France, Allemagne, Turquie et Portugal :",
+      "banker": {
+        "match": "Paris Saint-Germain vs Strasbourg",
+        "competition": "Ligue 1 (France)",
+        "time": "21:00",
+        "pick": "Victoire PSG & Plus de 2.5 buts",
+        "odds": 1.68,
+        "confidence": 89,
+        "analysis": "Le PSG au Parc des Princes tourne à 3 buts marqués par match avec une attaque en pleine confiance."
+      },
+      "singles": [
+        {
+          "id": "s_t1",
+          "match": "Paris Saint-Germain vs Strasbourg",
+          "league": "Ligue 1 (France)",
+          "time": "21:00",
+          "market": "1X2 & Buts",
+          "pick": "Victoire PSG & +2.5 buts",
+          "odds": 1.68,
+          "confidence": 89,
+          "type": "Banker",
+          "reason": "Le PSG a remporté 8 de ses 9 derniers matchs à domicile par plus de 2 buts."
+        },
+        {
+          "id": "s_t2",
+          "match": "Sporting CP vs Casa Pia",
+          "league": "Primeira Liga (Portugal)",
+          "time": "21:15",
+          "market": "1X2 & Handicap",
+          "pick": "Victoire Sporting par 2 buts d'écart +",
+          "odds": 1.72,
+          "confidence": 87,
+          "type": "Safe",
+          "reason": "Le Sporting est intouchable au Portugal avec une attaque à plus de 3.2 buts/match."
+        },
+        {
+          "id": "s_t3",
+          "match": "Galatasaray vs Alanyaspor",
+          "league": "Süper Lig (Turquie)",
+          "time": "19:00",
+          "market": "1X2 & Total Buts",
+          "pick": "Victoire Galatasaray & +2.5 buts",
+          "odds": 1.75,
+          "confidence": 86,
+          "type": "Safe",
+          "reason": "Galatasaray enchaîne les victoires prolifiques à domicile devant son public."
+        },
+        {
+          "id": "s_t4",
+          "match": "Sevilla FC vs Celta Vigo",
+          "league": "LaLiga (Espagne)",
+          "time": "21:00",
+          "market": "Les Deux Marquent",
+          "pick": "Oui (BTTS)",
+          "odds": 1.82,
+          "confidence": 82,
+          "type": "Value",
+          "reason": "Défenses friables des deux côtés, 85% de BTTS sur les 5 derniers duels."
+        }
+      ],
+      "combos": [
+        {
+          "id": "c_t_safe",
+          "title": "🛡️ Combiné Safe Vendredi (France / Portugal)",
+          "profile": "Safe",
+          "odds": 2.24,
+          "confidence": 88,
+          "picks": [
+            { "match": "PSG vs Strasbourg", "pick": "Victoire PSG", "odds": 1.30 },
+            { "match": "Sporting CP vs Casa Pia", "pick": "Victoire Sporting", "odds": 1.25 },
+            { "match": "Galatasaray vs Alanyaspor", "pick": "Galatasaray ou Nul & +1.5 buts", "odds": 1.38 }
+          ],
+          "advice": "Le combo propreté pour lancer le week-end des championnats."
+        },
+        {
+          "id": "c_t_fun",
+          "title": "🚀 Combiné Attaque Vendredi (x5.40)",
+          "profile": "Fun",
+          "odds": 5.42,
+          "confidence": 74,
+          "picks": [
+            { "match": "PSG vs Strasbourg", "pick": "PSG gagne & BTTS", "odds": 2.70 },
+            { "match": "Sporting CP vs Casa Pia", "pick": "Sporting gagne par 2 buts d'écart +", "odds": 1.72 },
+            { "match": "Sevilla vs Celta Vigo", "pick": "Plus de 2.5 buts", "odds": 1.85 }
+          ],
+          "advice": "Gros multiplicateur offensif."
+        }
+      ]
+    },
+    "weekend": {
+      "label": "Ce Week-end (Samedi & Dimanche)",
+      "badge": "Le Multiplex des 7 Grands Championnats",
+      "notice": "Toutes les grandes affiches de Liga, Premier League, Serie A, Eredivisie, Portugal et Turquie :",
+      "banker": {
+        "match": "Deportivo Alavés vs FC Barcelone",
+        "competition": "LaLiga (Espagne)",
+        "time": "Dimanche 16:15",
+        "pick": "Victoire FC Barcelone & Lamine Yamal décisif",
+        "odds": 1.78,
+        "confidence": 91,
+        "analysis": "Le Barça de Flick est irrésistible en Liga avec un Lamine Yamal dans la forme de sa vie (buteur ou passeur lors de 7 des 8 dernières journées)."
+      },
+      "singles": [
+        {
+          "id": "s_w1",
+          "match": "Alavés vs FC Barcelone",
+          "league": "LaLiga (Espagne)",
+          "time": "Dimanche 16:15",
+          "market": "Buteur / Prodige",
+          "pick": "Lamine Yamal passeur ou buteur",
+          "odds": 1.95,
+          "confidence": 89,
+          "type": "Banker",
+          "reason": "Lamine Yamal est au cœur de toutes les transitions offensives du Barça."
+        },
+        {
+          "id": "s_w2",
+          "match": "Real Madrid vs Villarreal",
+          "league": "LaLiga (Espagne)",
+          "time": "Samedi 21:00",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Real Madrid & +2.5 buts",
+          "odds": 1.65,
+          "confidence": 88,
+          "type": "Safe",
+          "reason": "Le Real au Bernabéu face à un Villarreal joueur promet un match très ouvert."
+        },
+        {
+          "id": "s_w3",
+          "match": "Manchester City vs Fulham",
+          "league": "Premier League (Angleterre)",
+          "time": "Samedi 16:00",
+          "market": "Buteur & Victoire",
+          "pick": "Victoire Man City & Erling Haaland buteur",
+          "odds": 1.72,
+          "confidence": 90,
+          "type": "Safe",
+          "reason": "City à l'Etihad Stadium tourne à plus de 2.5 buts de moyenne, Haaland inarrêtable."
+        },
+        {
+          "id": "s_w4",
+          "match": "Inter Milan vs Torino",
+          "league": "Serie A (Italie)",
+          "time": "Samedi 20:45",
+          "market": "1X2",
+          "pick": "Victoire Inter Milan",
+          "odds": 1.60,
+          "confidence": 87,
+          "type": "Safe",
+          "reason": "L'Inter à San Siro reste sur 5 victoires consécutives face au Torino."
+        },
+        {
+          "id": "s_w5",
+          "match": "Ajax Amsterdam vs Groningen",
+          "league": "Eredivisie (Pays-Bas)",
+          "time": "Dimanche 14:30",
+          "market": "Total Buts",
+          "pick": "Plus de 2.5 buts",
+          "odds": 1.55,
+          "confidence": 89,
+          "type": "Safe",
+          "reason": "L'Ajax à la Johan Cruyff Arena joue à un rythme très élevé."
+        },
+        {
+          "id": "s_w6",
+          "match": "Porto vs Sporting Braga",
+          "league": "Primeira Liga (Portugal)",
+          "time": "Dimanche 21:30",
+          "market": "Les Deux Marquent",
+          "pick": "Oui (BTTS)",
+          "odds": 1.78,
+          "confidence": 83,
+          "type": "Value",
+          "reason": "Choc au sommet entre deux attaques de calibre européen."
+        },
+        {
+          "id": "s_w7",
+          "match": "Fenerbahçe vs Samsunspor",
+          "league": "Süper Lig (Turquie)",
+          "time": "Dimanche 18:00",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Fenerbahçe & +1.5 buts",
+          "odds": 1.58,
+          "confidence": 88,
+          "type": "Safe",
+          "reason": "Fenerbahçe de José Mourinho intraitable dans son stade."
+        }
+      ],
+      "combos": [
+        {
+          "id": "c_w_safe",
+          "title": "🛡️ Le Grand Combiné Safe Européen (x2.65)",
+          "profile": "Safe",
+          "odds": 2.68,
+          "confidence": 88,
+          "picks": [
+            { "match": "Man City vs Fulham", "pick": "Victoire Man City", "odds": 1.25 },
+            { "match": "Alavés vs Barça", "pick": "Barça ou Nul & +1.5 buts", "odds": 1.34 },
+            { "match": "Real vs Villarreal", "pick": "Victoire Real Madrid", "odds": 1.30 },
+            { "match": "Inter vs Torino", "pick": "Inter ou Nul", "odds": 1.22 }
+          ],
+          "advice": "Le combiné 100% sécurité basé sur les leaders des 4 grands championnats."
+        },
+        {
+          "id": "c_w_stars",
+          "title": "🌟 Combiné Prodiges & Buteurs (x4.80)",
+          "profile": "Équilibré",
+          "odds": 4.82,
+          "confidence": 79,
+          "picks": [
+            { "match": "Alavés vs Barça", "pick": "Lamine Yamal décisif", "odds": 1.70 },
+            { "match": "Man City vs Fulham", "pick": "Haaland buteur", "odds": 1.55 },
+            { "match": "Ajax vs Groningen", "pick": "Plus de 2.5 buts", "odds": 1.55 },
+            { "match": "Fenerbahçe vs Samsun", "pick": "Victoire Fenerbahçe", "odds": 1.20 }
+          ],
+          "advice": "Ticket très fort axé sur les stars et les attaques prolifiques."
+        },
+        {
+          "id": "c_w_jackpot",
+          "title": "🚀 Le Multiplex 7 Ligues (Cote x14.50)",
+          "profile": "Fun",
+          "odds": 14.85,
+          "confidence": 62,
+          "picks": [
+            { "match": "Alavés vs Barça (ESP)", "pick": "Barça gagne & Yamal décisif", "odds": 2.20 },
+            { "match": "Man City vs Fulham (ENG)", "pick": "City gagne & +2.5 buts", "odds": 1.65 },
+            { "match": "Real vs Villarreal (ESP)", "pick": "Real gagne & BTTS", "odds": 2.80 },
+            { "match": "Porto vs Braga (POR)", "pick": "Les deux marquent", "odds": 1.78 }
+          ],
+          "advice": "Petite pièce pour tenter le gros coup du week-end !"
+        }
+      ]
+    }
+  },
+  "stats_summary": {
+    "win_rate": 84.2,
+    "total_tips": 156,
+    "average_odds": 1.90,
+    "current_streak": 6
+  }
+}

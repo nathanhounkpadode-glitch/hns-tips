@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HNS Tips — Pronostics Football & IA</title>
+    <meta name="theme-color" content="#0d111a">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="manifest" href="/static/manifest.json">
+</head>
+<body>
+    <div class="app-shell">
+
+        <!-- APP HEADER -->
+        <header class="app-header">
+            <div class="brand">
+                <img src="/static/icons/logo.jpg" alt="HNS Tips" class="brand-logo-img">
+                <div class="brand-info">
+                    <h1>HNS TIPS</h1>
+                    <span class="brand-tag"><span class="pulse-dot"></span> Matchs Réels & IA</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match réel">➕</button>
+                <button class="icon-btn" id="refreshBtn" title="Actualiser les pronostics">🔄</button>
+            </div>
+        </header>
+
+        <!-- SÉLECTEUR DE JOUR (AUJOURD'HUI / DEMAIN / CE WEEK-END) -->
+        <div class="day-selector-bar">
+            <button class="day-btn active" data-day="today">
+                <span class="day-title">Aujourd'hui</span>
+                <span class="day-sub">Jeudi 8 Oct</span>
+            </button>
+            <button class="day-btn" data-day="tomorrow">
+                <span class="day-title">Demain</span>
+                <span class="day-sub">Vendredi 9 Oct</span>
+            </button>
+            <button class="day-btn" data-day="weekend">
+                <span class="day-title">Week-end</span>
+                <span class="day-sub">Sam - Dim</span>
+            </button>
+        </div>
+
+        <!-- BARRE D'AJOUT RAPIDE -->
+        <div class="quick-add-bar">
+            <button class="quick-add-btn" id="openAddModalBtn2">
+                <span>➕</span> Pronostiquer un match réel de ton choix
+            </button>
+        </div>
+
+        <!-- MAIN SCROLLABLE CONTENT -->
+        <main class="app-main">
+
+            <!-- TAB 1: ACCUEIL & PRONOSTICS QUOTIDIENS -->
+            <section id="tab-home" class="tab-view active">
+
+                <!-- SWITCH CATEGORIE : PARIS SIMPLES vs COMBINÉS DU JOUR -->
+                <div class="category-toggle">
+                    <button class="cat-toggle-btn active" id="toggleSingles">🎯 Paris Simples</button>
+                    <button class="cat-toggle-btn" id="toggleCombos">⚡ Combinés Prêts</button>
+                </div>
+
+                <!-- VUE 1 : PARIS SIMPLES DU JOUR -->
+                <div id="viewSingles" class="category-view active">
+                    
+                    <!-- BANKER DU JOUR EN TÊTE -->
+                    <div class="section-header">
+                        <h2>⭐ LE BANKER DU JOUR</h2>
+                        <span class="badge-gold">Top Confiance</span>
+                    </div>
+
+                    <div class="banker-card" id="bankerCard">
+                        <div class="banker-header">
+                            <span class="banker-league" id="bankerLeague">Compétition</span>
+                            <span class="banker-time" id="bankerTime">20:45</span>
+                        </div>
+                        <div class="banker-match" id="bankerMatch">Match</div>
+                        
+                        <div class="banker-bet-box">
+                            <div class="bet-label">Sélection Prioritaire :</div>
+                            <div class="bet-pick" id="bankerPick">Pronostic</div>
+                            <div class="bet-meta">
+                                <span class="odds-pill" id="bankerOdds">Cote : 1.70</span>
+                                <span class="confidence-badge" id="bankerConfidence">90% Confiance</span>
+                            </div>
+                        </div>
+
+                        <div class="banker-analysis" id="bankerAnalysis">
+                            Chargement...
+                        </div>
+                    </div>
+
+                    <!-- LISTE DE TOUS LES PARIS SIMPLES DU JOUR -->
+                    <div class="section-header">
+                        <h2>📋 SÉLECTIONS SIMPLES DU JOUR</h2>
+                        <span class="badge-neon" id="singlesCountBadge">Sélections</span>
+                    </div>
+
+                    <div class="singles-list" id="singlesList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- VUE 2 : COMBINÉS PRÊTS DU JOUR -->
+                <div id="viewCombos" class="category-view">
+                    <div class="section-header">
+                        <h2>⚡ LES COMBINÉS DU JOUR</h2>
+                        <span class="badge-gold">Prêts à Jouer</span>
+                    </div>
+                    <div class="combos-list" id="combosList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- QUICK STATS BAR -->
+                <div class="quick-stats-row">
+                    <div class="stat-box">
+                        <div class="stat-val" id="winRateVal">83.1%</div>
+                        <div class="stat-lbl">Taux de Réussite</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="streakVal">5 🔥</div>
+                        <div class="stat-lbl">Série Gagnante</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-val" id="avgOddsVal">1.88</div>
+                        <div class="stat-lbl">Cote Moyenne</div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- TAB 2: HNS AI GENERATOR (SUR MESURE) -->
+            <section id="tab-generator" class="tab-view">
+                <div class="section-header">
+                    <h2>⚡ GÉNÉRATEUR IA SUR MESURE</h2>
+                    <span class="badge-neon">Style TejMentor</span>
+                </div>
+
+                <div class="generator-banner">
+                    <p>Personnalise ton combiné pour le jour sélectionné. L'IA assemble les meilleures cotes statistiques selon ton objectif.</p>
+                </div>
+
+                <div class="generator-controls">
+                    <div class="control-group">
+                        <label>Profil de Risque :</label>
+                        <div class="risk-selector">
+                            <button class="risk-btn active" data-risk="safe">
+                                <span class="risk-icon">🛡️</span>
+                                <span class="risk-name">Safe</span>
+                                <span class="risk-odds">Cote ~2.00</span>
+                            </button>
+                            <button class="risk-btn" data-risk="medium">
+                                <span class="risk-icon">⚖️</span>
+                                <span class="risk-name">Équilibré</span>
+                                <span class="risk-odds">Cote ~3.50</span>
+                            </button>
+                            <button class="risk-btn" data-risk="fun">
+                                <span class="risk-icon">🚀</span>
+                                <span class="risk-name">Fun / Grosse</span>
+                                <span class="risk-odds">Cote ~8.00+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Nombre de matchs :</label>
+                        <div class="count-selector">
+                            <button class="count-btn" data-count="2">2 Matchs</button>
+                            <button class="count-btn active" data-count="3">3 Matchs</button>
+                            <button class="count-btn" data-count="4">4 Matchs</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-generate" id="generateComboBtn">
+                        <span class="btn-icon">⚡</span> Créer mon Combiné IA
+                    </button>
+                </div>
+
+                <!-- RESULTAT COMBINE -->
+                <div class="combo-result-card" id="comboResultCard" style="display: none;">
+                    <div class="combo-header">
+                        <div class="combo-title">🎯 Combiné Sur Mesure Généré</div>
+                        <div class="combo-odds" id="comboTotalOdds">Cote : 2.75</div>
+                    </div>
+                    
+                    <div class="combo-confidence-bar">
+                        <div class="bar-fill" id="comboConfidenceBar" style="width: 85%;"></div>
+                        <span class="bar-text" id="comboConfidenceText">Indice IA : 85%</span>
+                    </div>
+
+                    <div class="combo-picks-list" id="comboPicksList"></div>
+
+                    <div class="combo-footer">
+                        <div class="ai-note" id="comboAiRationale">Analyse basée sur les statistiques du jour.</div>
+                        <button class="btn-save-ticket" onclick="alert('Ticket sauvegardé dans tes favoris !')">💾 Sauvegarder ce ticket</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: BANKROLL & CONSEILS -->
+            <section id="tab-bankroll" class="tab-view">
+                <div class="section-header">
+                    <h2>💰 GESTIONNAIRE DE CAPITAL</h2>
+                </div>
+
+                <div class="bankroll-card">
+                    <p class="bankroll-desc">Calcule mathématiquement la mise prudente pour protéger ton argent et éviter tout risque excessif.</p>
+                    
+                    <div class="bankroll-inputs">
+                        <div class="input-item">
+                            <label>Ton Capital Total (€) :</label>
+                            <input type="number" id="bankrollInput" value="100" min="10" step="5">
+                        </div>
+                        <div class="input-item">
+                            <label>Cote du pari :</label>
+                            <input type="number" id="oddsInput" value="1.85" min="1.10" step="0.05">
+                        </div>
+                        <div class="input-item">
+                            <label>Confiance (%) :</label>
+                            <input type="number" id="confidenceInput" value="80" min="50" max="99">
+                        </div>
+                    </div>
+
+                    <button class="btn-action" id="calculateStakeBtn">Calculer la mise conseillée</button>
+
+                    <div class="stake-result-box" id="stakeResultBox" style="display: none;">
+                        <div class="stake-val-row">
+                            <span>Mise conseillée :</span>
+                            <strong id="recommendedStake">4.50 € (4.5%)</strong>
+                        </div>
+                        <div class="stake-val-row">
+                            <span>Gain potentiel :</span>
+                            <span id="potentialGain">8.33 €</span>
+                        </div>
+                        <p class="stake-warning" id="stakeAdvice">Ne dépasse jamais 5% de ton capital sur un seul pari.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- MODAL AJOUT / ANALYSE MATCH RÉEL -->
+        <div class="modal-backdrop" id="addMatchModal" style="display: none;">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3>⚡ Pronostiquer un Match Réel</h3>
+                    <button class="modal-close" id="closeAddModalBtn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
+                        Entre les deux équipes qui jouent aujourd'hui. L'IA de HNS Tips va calculer le pronostic optimal et l'ajouter à ta liste.
+                    </p>
+                    <div class="input-item">
+                        <label>Équipe Domicile :</label>
+                        <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Argentine...">
+                    </div>
+                    <div class="input-item">
+                        <label>Équipe Extérieur :</label>
+                        <input type="text" id="customAway" placeholder="Ex: Bayern, PSG, Danemark...">
+                    </div>
+                    <div class="input-item">
+                        <label>Compétition :</label>
+                        <input type="text" id="customLeague" placeholder="Ex: Ligue des Champions, LaLiga, etc.">
+                    </div>
+                    <div class="input-item">
+                        <label>Heure du coup d'envoi :</label>
+                        <input type="text" id="customTime" value="20:45" placeholder="Ex: 21:00">
+                    </div>
+                    <div class="input-item">
+                        <label>Jour du match :</label>
+                        <select id="customDay" style="width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
+                            <option value="today">Aujourd'hui</option>
+                            <option value="tomorrow">Demain</option>
+                            <option value="weekend">Ce Week-end</option>
+                        </select>
+                    </div>
+                    <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
+                        🤖 Analyser & Ajouter le Pronostic
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- APP BOTTOM NAVIGATION BAR -->
+        <nav class="app-bottom-nav">
+            <button class="nav-item active" onclick="switchTab('home')">
+                <span class="nav-icon">📅</span>
+                <span class="nav-label">Pronos du Jour</span>
+            </button>
+            <button class="nav-item" onclick="switchTab('generator')">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-label">Générateur IA</span>
+            </button>
+            <button class="nav-item" onclick="switchTab('bankroll')">
+                <span class="nav-icon">💰</span>
+                <span class="nav-label">Bankroll</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <script src="/static/js/default-data.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
