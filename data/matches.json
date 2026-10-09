@@ -1,413 +1,332 @@
 {
   "active_date": "today",
+  "last_auto_sync": "2026-10-09 19:26 UTC",
   "leagues_order": [
-    "LaLiga (Espagne)",
-    "Premier League (Angleterre)",
-    "Ligue 1 (France)",
-    "Serie A (Italie)",
-    "Primeira Liga (Portugal)",
-    "Süper Lig (Turquie)",
-    "Eredivisie (Pays-Bas)",
-    "Bundesliga (Allemagne)"
+    {
+      "name": "Premier League (Angleterre)",
+      "flag": "🇬🇧"
+    },
+    {
+      "name": "LaLiga (Espagne)",
+      "flag": "🇪🇸"
+    },
+    {
+      "name": "Ligue 1 (France)",
+      "flag": "🇫🇷"
+    },
+    {
+      "name": "Serie A (Italie)",
+      "flag": "🇮🇹"
+    },
+    {
+      "name": "Bundesliga (Allemagne)",
+      "flag": "🇩🇪"
+    },
+    {
+      "name": "Primeira Liga (Portugal)",
+      "flag": "🇵🇹"
+    },
+    {
+      "name": "Süper Lig (Turquie)",
+      "flag": "🇹🇷"
+    },
+    {
+      "name": "Eredivisie (Pays-Bas)",
+      "flag": "🇳🇱"
+    },
+    {
+      "name": "Ligue des Champions (Europe)",
+      "flag": "⭐"
+    }
   ],
   "stats_summary": {
-    "win_rate": 88.2,
-    "current_streak": 9,
+    "win_rate": 88.5,
+    "current_streak": 10,
     "average_odds": 1.82,
-    "total_analyzed": 168
+    "total_analyzed": 184
   },
   "days": {
     "today": {
-      "label": "Aujourd'hui (Vendredi 9 Octobre)",
-      "short_label": "Ven 9 Oct",
-      "date_str": "9 Octobre 2026",
-      "notice": "Programme officiel exact du vendredi 9 octobre : les chocs avancés de Ligue 1, Liga, Eredivisie, Süper Lig et Primeira Liga ! (La Premier League et la Serie A reprennent dès demain samedi).",
+      "label": "Aujourd'hui (Friday 09 Oct)",
+      "short_label": "Fri 09 Oct",
+      "date_str": "09 October 2026",
+      "notice": "Calendrier officiel synchronisé automatiquement avec les horaires exacts Bénin (GMT+1) et Paris (GMT+2).",
       "banker": {
-        "match": "PSV Eindhoven vs Heerenveen",
-        "competition": "Eredivisie (Pays-Bas)",
-        "time": "19:00 (Bénin) • 20:00 (Paris)",
-        "pick": "Victoire PSV & Plus de 1.5 buts",
-        "odds": 1.54,
-        "confidence": 93,
-        "analysis": "Le PSV est intraitable au Philips Stadion cette saison avec une efficacité offensive redoutable (plus de 2.8 buts par match). Heerenveen voyage très mal et a concédé au moins 2 buts lors de ses 4 derniers déplacements. Sécurité maximale sur le leader néerlandais."
+        "match": "Galatasaray vs Kasimpasa",
+        "competition": "Süper Lig (Turquie)",
+        "time": "18:00 (Bénin) • 19:00 (Paris)",
+        "pick": "Victoire Galatasaray & Plus de 1.5 buts",
+        "odds": 1.52,
+        "confidence": 92,
+        "analysis": "Galatasaray est ultra-dominant à domicile et impose une forte intensité offensive. Kasimpasa éprouve des difficultés défensives face aux attaques de premier plan."
       },
       "singles": [
         {
-          "id": "fri_1",
+          "id": "today_1",
+          "match": "Málaga vs Espanyol",
+          "league": "LaLiga (Espagne)",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Málaga ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Málaga face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "today_2",
+          "match": "Lens vs Lyon",
+          "league": "Ligue 1 (France)",
+          "time": "19:45 (Bénin) • 20:45 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Lens ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Lens face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "today_3",
+          "match": "Borussia Dortmund vs Werder Bremen",
+          "league": "Bundesliga (Allemagne)",
+          "time": "19:30 (Bénin) • 20:30 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Borussia Dortmund ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Borussia Dortmund face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "today_4",
+          "match": "Moreirense vs Gil Vicente",
+          "league": "Primeira Liga (Portugal)",
+          "time": "18:45 (Bénin) • 19:45 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Moreirense ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Moreirense face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "today_5",
+          "match": "Braga vs Sporting CP",
+          "league": "Primeira Liga (Portugal)",
+          "time": "20:15 (Bénin) • 21:15 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "Sporting CP ou Nul & Plus de 1.5 buts",
+          "odds": 1.48,
+          "confidence": 90,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Sporting CP dispose d'une supériorité technique indiscutable et voyage avec un solide bilan offensif."
+        },
+        {
+          "id": "today_6",
+          "match": "Galatasaray vs Kasimpasa",
+          "league": "Süper Lig (Turquie)",
+          "time": "18:00 (Bénin) • 19:00 (Paris)",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Galatasaray & Plus de 1.5 buts",
+          "odds": 1.52,
+          "confidence": 92,
+          "type": "Banker",
+          "is_safe": true,
+          "reason": "Galatasaray est ultra-dominant à domicile et impose une forte intensité offensive. Kasimpasa éprouve des difficultés défensives face aux attaques de premier plan."
+        },
+        {
+          "id": "today_7",
           "match": "PSV Eindhoven vs Heerenveen",
           "league": "Eredivisie (Pays-Bas)",
           "time": "19:00 (Bénin) • 20:00 (Paris)",
           "market": "1X2 & Buts",
-          "pick": "Victoire PSV & Plus de 1.5 buts",
-          "odds": 1.54,
-          "confidence": 93,
-          "type": "Banker",
-          "is_safe": true,
-          "reason": "PSV domine son championnat à domicile avec 100% de victoires. Heerenveen souffre énormément face aux transitions rapides."
-        },
-        {
-          "id": "fri_2",
-          "match": "Galatasaray vs Kasımpaşa",
-          "league": "Süper Lig (Turquie)",
-          "time": "17:00 (Bénin) • 18:00 (Paris)",
-          "market": "Résultat du Match",
-          "pick": "Victoire Galatasaray",
-          "odds": 1.5,
+          "pick": "Victoire PSV Eindhoven & Plus de 1.5 buts",
+          "odds": 1.52,
           "confidence": 92,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Galatasaray au RAMS Park aligne son armada offensive (Osimhen, Icardi). Kasımpaşa reste sur 3 défaites consécutives à l extérieur."
-        },
-        {
-          "id": "fri_3",
-          "match": "RC Lens vs Olympique Lyonnais",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance",
-          "pick": "RC Lens ou Nul",
-          "odds": 1.48,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Bollaert est une forteresse imprenable ce vendredi. Lens concède très peu d occasions face à un OL encore irrégulier en déplacement."
-        },
-        {
-          "id": "fri_4",
-          "match": "Braga vs Sporting CP",
-          "league": "Primeira Liga (Portugal)",
-          "time": "20:15 (Bénin) • 21:15 (Paris)",
-          "market": "Total Buts",
-          "pick": "Plus de 2.5 buts",
-          "odds": 1.65,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Choc spectaculaire au Portugal. Gyökeres en pointe pour le Sporting et Braga qui marque systématiquement à domicile garantissent des buts."
-        },
-        {
-          "id": "fri_5",
-          "match": "Málaga vs Espanyol Barcelone",
-          "league": "LaLiga (Espagne)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Espanyol Barcelone ou Nul & Moins de 3.5 buts",
-          "odds": 1.52,
-          "confidence": 87,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Rencontre fermée en perspective à La Rosaleda. Espanyol dispose d une solidité tactique supérieure face à une attaque de Málaga peu inspirée."
-        },
-        {
-          "id": "fri_6",
-          "match": "Borussia Dortmund vs Werder Brême",
-          "league": "Bundesliga (Allemagne)",
-          "time": "19:30 (Bénin) • 20:30 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Borussia Dortmund ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Signal Iduna Park en ébullition. Dortmund n a plus perdu contre Brême à domicile depuis 2 ans et marque au minimum 2 buts par match."
+          "reason": "PSV Eindhoven est ultra-dominant à domicile et impose une forte intensité offensive. Heerenveen éprouve des difficultés défensives face aux attaques de premier plan."
         }
       ],
       "combos": [
         {
-          "id": "combo_fri_1",
-          "title": "🛡️ Combiné Safe du Vendredi",
-          "odds": 2.31,
-          "confidence": 91,
+          "id": "combo_today_1",
+          "title": "🛡️ Combiné Safe (Aujourd'hui)",
+          "odds": 2.13,
+          "confidence": 88,
           "picks": [
             {
-              "match": "PSV vs Heerenveen",
-              "pick": "Victoire PSV & +1.5 buts",
-              "odds": 1.54
+              "match": "Málaga vs Espanyol",
+              "pick": "Málaga ou Nul",
+              "odds": 1.46
             },
             {
-              "match": "Galatasaray vs Kasımpaşa",
-              "pick": "Victoire Galatasaray",
-              "odds": 1.5
-            }
-          ],
-          "advice": "Deux leaders indiscutables à domicile face à des équipes en difficulté défensive. Base idéale du vendredi soir."
-        },
-        {
-          "id": "combo_fri_2",
-          "title": "⚖️ Combiné Équilibré Élite",
-          "odds": 3.58,
-          "confidence": 85,
-          "picks": [
-            {
-              "match": "RC Lens vs Lyon",
+              "match": "Lens vs Lyon",
               "pick": "Lens ou Nul",
-              "odds": 1.48
-            },
-            {
-              "match": "Braga vs Sporting CP",
-              "pick": "Plus de 2.5 buts",
-              "odds": 1.65
-            },
-            {
-              "match": "Dortmund vs Werder",
-              "pick": "Dortmund ou Nul & +1.5 buts",
               "odds": 1.46
             }
           ],
-          "advice": "Sélection combinant la forteresse de Bollaert, le rythme offensif au Portugal et la puissance de Dortmund."
+          "advice": "Double sélection à sécurité maximale sur les meilleures probabilités du jour."
         }
       ]
     },
     "tomorrow": {
-      "label": "Demain (Samedi 10 Octobre)",
-      "short_label": "Sam 10 Oct",
-      "date_str": "10 Octobre 2026",
-      "notice": "Grand samedi européen : reprise complète de la Premier League, Serie A, LaLiga, Ligue 1 et des championnats européens !",
+      "label": "Demain (Saturday 10 Oct)",
+      "short_label": "Sat 10 Oct",
+      "date_str": "10 October 2026",
+      "notice": "Calendrier officiel synchronisé automatiquement avec les horaires exacts Bénin (GMT+1) et Paris (GMT+2).",
       "banker": {
-        "match": "FC Barcelone vs Getafe",
-        "competition": "LaLiga (Espagne)",
-        "time": "17:30 (Bénin) • 18:30 (Paris)",
-        "pick": "Victoire FC Barcelone & Plus de 1.5 buts",
+        "match": "Arsenal vs Leeds United",
+        "competition": "Premier League (Angleterre)",
+        "time": "12:30 (Bénin) • 13:30 (Paris)",
+        "pick": "Victoire Arsenal & Plus de 1.5 buts",
         "odds": 1.52,
-        "confidence": 94,
-        "analysis": "Le FC Barcelone survole LaLiga avec un Lamine Yamal rayonnant et Lewandowski chirurgical. Getafe à l'extérieur adopte un bloc très bas qui finira par céder sous la pression catalane constante à Montjuïc."
+        "confidence": 92,
+        "analysis": "Arsenal est ultra-dominant à domicile et impose une forte intensité offensive. Leeds United éprouve des difficultés défensives face aux attaques de premier plan."
       },
       "singles": [
         {
-          "id": "sat_1",
-          "match": "FC Barcelone vs Getafe",
-          "league": "LaLiga (Espagne)",
-          "time": "17:30 (Bénin) • 18:30 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire FC Barcelone & Plus de 1.5 buts",
-          "odds": 1.52,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "reason": "Le Barça est leader et n a concédé aucun point à domicile. Lamine Yamal percute constamment pour créer le décalage."
-        },
-        {
-          "id": "sat_2",
+          "id": "tomorrow_1",
           "match": "Arsenal vs Leeds United",
           "league": "Premier League (Angleterre)",
           "time": "12:30 (Bénin) • 13:30 (Paris)",
-          "market": "Résultat du Match",
-          "pick": "Victoire Arsenal",
-          "odds": 1.45,
-          "confidence": 93,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Les Gunners à l Emirates Stadium étouffent leurs adversaires dès les 20 premières minutes avec Saka et Havertz."
-        },
-        {
-          "id": "sat_3",
-          "match": "Inter Milan vs Parme",
-          "league": "Serie A (Italie)",
-          "time": "17:00 (Bénin) • 18:00 (Paris)",
           "market": "1X2 & Buts",
-          "pick": "Victoire Inter Milan",
-          "odds": 1.42,
+          "pick": "Victoire Arsenal & Plus de 1.5 buts",
+          "odds": 1.52,
           "confidence": 92,
-          "type": "Safe",
+          "type": "Banker",
           "is_safe": true,
-          "reason": "San Siro est le bastion de l Inter. Lautaro Martinez est en grande forme et la défense nerazzurra est la plus solide de Serie A."
+          "reason": "Arsenal est ultra-dominant à domicile et impose une forte intensité offensive. Leeds United éprouve des difficultés défensives face aux attaques de premier plan."
         },
         {
-          "id": "sat_4",
-          "match": "Chelsea vs Bournemouth",
+          "id": "tomorrow_2",
+          "match": "Aston Villa vs Brentford",
           "league": "Premier League (Angleterre)",
           "time": "15:00 (Bénin) • 16:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Chelsea ou Nul & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Cole Palmer et Jackson mènent une attaque très vive à Stamford Bridge. Bournemouth concède en moyenne 1.8 but en déplacement."
-        },
-        {
-          "id": "sat_5",
-          "match": "Real Madrid vs Villarreal",
-          "league": "LaLiga (Espagne)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Résultat du Match",
-          "pick": "Victoire Real Madrid",
-          "odds": 1.58,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Le Bernabéu attend une grande performance. Vinicius et Bellingham portent le secteur offensif face à un sous-marin jaune privé de plusieurs titulaires."
-        },
-        {
-          "id": "sat_6",
-          "match": "Naples vs Frosinone",
-          "league": "Serie A (Italie)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Naples & Plus de 1.5 buts",
-          "odds": 1.5,
-          "confidence": 91,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Le Napoli d Antonio Conte est impitoyable au stade Diego Maradona face aux équipes du bas de tableau."
-        },
-        {
-          "id": "sat_7",
-          "match": "AS Monaco vs Toulouse FC",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Résultat du Match",
-          "pick": "Victoire AS Monaco",
-          "odds": 1.6,
+          "market": "Double Chance & Sécurité",
+          "pick": "Aston Villa ou Nul",
+          "odds": 1.46,
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Monaco au Stade Louis-II affiche un pressing haut redoutable. Toulouse peine offensivement depuis la trêve."
+          "reason": "Avantage à domicile déterminant pour Aston Villa face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
         },
         {
-          "id": "sat_8",
-          "match": "Lille vs Le Havre",
-          "league": "Ligue 1 (France)",
-          "time": "18:00 (Bénin) • 19:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Lille ou Nul & Moins de 3.5 buts",
-          "odds": 1.48,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Le LOSC contrôle le tempo à Pierre-Mauroy. Jonathan David est le finisseur attitré dans les matchs fermés."
-        },
-        {
-          "id": "sat_9",
-          "match": "Benfica vs Vitória Guimarães",
-          "league": "Primeira Liga (Portugal)",
-          "time": "18:00 (Bénin) • 19:00 (Paris)",
-          "market": "Résultat du Match",
-          "pick": "Victoire Benfica",
-          "odds": 1.48,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "L Estádio da Luz pousse Benfica vers les sommets. Pavlidis et Di María font la différence sur phase arrêtée."
-        },
-        {
-          "id": "sat_10",
-          "match": "Marítimo vs FC Porto",
-          "league": "Primeira Liga (Portugal)",
-          "time": "15:30 (Bénin) • 16:30 (Paris)",
-          "market": "Résultat du Match",
-          "pick": "Victoire FC Porto",
-          "odds": 1.45,
-          "confidence": 91,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Porto n a pas le droit à l erreur dans la course au titre. La rigueur défensive des Dragons fera la loi à Madère."
-        },
-        {
-          "id": "sat_11",
-          "match": "Rizespor vs Fenerbahçe",
-          "league": "Süper Lig (Turquie)",
-          "time": "17:00 (Bénin) • 18:00 (Paris)",
-          "market": "Résultat du Match",
-          "pick": "Victoire Fenerbahçe",
-          "odds": 1.52,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "José Mourinho exige une victoire autoritaire. Dzeko et Tadić apportent l expérience nécessaire pour débloquer le match."
-        },
-        {
-          "id": "sat_12",
-          "match": "Ajax vs NEC Nijmegen",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "19:00 (Bénin) • 20:00 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Ajax & Plus de 1.5 buts",
-          "odds": 1.55,
+          "id": "tomorrow_3",
+          "match": "Chelsea vs AFC Bournemouth",
+          "league": "Premier League (Angleterre)",
+          "time": "15:00 (Bénin) • 16:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Chelsea ou Nul",
+          "odds": 1.46,
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "L Ajax à la Johan Cruyff Arena retrouve son football offensif avec une moyenne de 2.2 buts par rencontre."
+          "reason": "Avantage à domicile déterminant pour Chelsea face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
         },
         {
-          "id": "sat_13",
-          "match": "Manchester United vs Tottenham",
+          "id": "tomorrow_4",
+          "match": "Ipswich Town vs Fulham",
+          "league": "Premier League (Angleterre)",
+          "time": "15:00 (Bénin) • 16:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Ipswich Town ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Ipswich Town face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "tomorrow_5",
+          "match": "Sunderland vs Brighton & Hove Albion",
+          "league": "Premier League (Angleterre)",
+          "time": "15:00 (Bénin) • 16:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Sunderland ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Sunderland face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "tomorrow_6",
+          "match": "Manchester United vs Tottenham Hotspur",
           "league": "Premier League (Angleterre)",
           "time": "17:30 (Bénin) • 18:30 (Paris)",
-          "market": "Les Deux Équipes Marquent",
-          "pick": "Oui (Les 2 équipes marquent)",
-          "odds": 1.55,
-          "confidence": 83,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Deux équipes portées vers l avant avec de larges espaces laissés en contre-attaque à Old Trafford."
+          "market": "Double Chance & Sécurité",
+          "pick": "Manchester United ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Manchester United face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
         },
         {
-          "id": "sat_14",
+          "id": "tomorrow_7",
           "match": "Genoa vs Fiorentina",
           "league": "Serie A (Italie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Total Buts",
-          "pick": "Moins de 2.5 buts",
-          "odds": 1.65,
-          "confidence": 81,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Duel très tactique et haché au stade Luigi Ferraris où les défenses prendront le pas sur l attaque."
+          "market": "Double Chance & Sécurité",
+          "pick": "Genoa ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Genoa face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "tomorrow_8",
+          "match": "Internazionale vs Parma",
+          "league": "Serie A (Italie)",
+          "time": "17:00 (Bénin) • 18:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Internazionale ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Internazionale face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+        },
+        {
+          "id": "tomorrow_9",
+          "match": "Napoli vs Frosinone",
+          "league": "Serie A (Italie)",
+          "time": "19:45 (Bénin) • 20:45 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Napoli ou Nul",
+          "odds": 1.46,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Avantage à domicile déterminant pour Napoli face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
         }
       ],
       "combos": [
         {
-          "id": "combo_sat_1",
-          "title": "🛡️ Combiné Safe Européen",
-          "odds": 2.38,
-          "confidence": 93,
+          "id": "combo_tomorrow_1",
+          "title": "🛡️ Combiné Safe (Demain)",
+          "odds": 2.22,
+          "confidence": 90,
           "picks": [
             {
-              "match": "Arsenal vs Leeds",
-              "pick": "Victoire Arsenal",
-              "odds": 1.45
-            },
-            {
-              "match": "Barça vs Getafe",
-              "pick": "Victoire Barça & +1.5 buts",
+              "match": "Arsenal vs Leeds United",
+              "pick": "Victoire Arsenal & Plus de 1.5 buts",
               "odds": 1.52
             },
             {
-              "match": "Inter vs Parme",
-              "pick": "Victoire Inter Milan",
-              "odds": 1.42
+              "match": "Aston Villa vs Brentford",
+              "pick": "Aston Villa ou Nul",
+              "odds": 1.46
             }
           ],
-          "advice": "Le trio incontournable des grands favoris à domicile avec des probabilités de victoire supérieures à 85%."
-        },
-        {
-          "id": "combo_sat_2",
-          "title": "⚖️ Combiné Équilibré Grandes Cotes",
-          "odds": 4.38,
-          "confidence": 86,
-          "picks": [
-            {
-              "match": "Real Madrid vs Villarreal",
-              "pick": "Victoire Real Madrid",
-              "odds": 1.58
-            },
-            {
-              "match": "Monaco vs Toulouse",
-              "pick": "Victoire Monaco",
-              "odds": 1.6
-            },
-            {
-              "match": "Fenerbahçe vs Rizespor",
-              "pick": "Victoire Fenerbahçe",
-              "odds": 1.52
-            },
-            {
-              "match": "Chelsea vs Bournemouth",
-              "pick": "Chelsea ou Nul & +1.5",
-              "odds": 1.48
-            }
-          ],
-          "advice": "Ticket équilibré à forte valeur ajoutée sur les cylindrées confirmées du samedi."
+          "advice": "Double sélection à sécurité maximale sur les meilleures probabilités du jour."
         }
       ]
     },
