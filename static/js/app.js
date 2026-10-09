@@ -1,6 +1,68 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v17";
+const DATA_VERSION = "2026-10-09-v18";
+
+// ========================================================
+// SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N.
+// ========================================================
+const OWNER_PASSCODES = ["schalom", "1409", "nathan", "schalom h.n.", "hns"];
+
+function isOwnerAdmin() {
+    return localStorage.getItem("hns_owner_auth") === "granted_schalom";
+}
+
+function updateAdminLockUI() {
+    const lockBtn = document.getElementById("ownerLockBtn");
+    if (!lockBtn) return;
+    if (isOwnerAdmin()) {
+        lockBtn.classList.add("is-admin");
+        lockBtn.innerHTML = "👑";
+        lockBtn.title = "Mode Propriétaire Actif (Schalom H.N.) • Cliquez pour verrouiller";
+    } else {
+        lockBtn.classList.remove("is-admin");
+        lockBtn.innerHTML = "🔒";
+        lockBtn.title = "Mode Lecture Seule • Cliquez pour déverrouiller (Réservé Schalom H.N.)";
+    }
+}
+
+function toggleOwnerLock() {
+    if (isOwnerAdmin()) {
+        if (confirm("👑 Voulez-vous verrouiller l'application en mode Lecture Seule ?")) {
+            localStorage.removeItem("hns_owner_auth");
+            updateAdminLockUI();
+            alert("🔒 Application verrouillée en mode Lecture Seule pour tous les visiteurs.");
+        }
+    } else {
+        const pin = prompt("🔐 ACCÈS PROPRIÉTAIRE SCHALOM H.N.\nVeuillez saisir votre code d'accès administrateur :");
+        if (!pin) return;
+        const normalized = pin.trim().toLowerCase();
+        if (OWNER_PASSCODES.includes(normalized)) {
+            localStorage.setItem("hns_owner_auth", "granted_schalom");
+            updateAdminLockUI();
+            alert("👑 Bienvenue Schalom H.N. ! Vous avez les pleins droits d'administration sur HNS TIPS.");
+        } else {
+            alert("⛔ ACCÈS REFUSÉ :\nCette application et ses pronostics sont la propriété exclusive de Schalom H.N.\nSeul le propriétaire est autorisé à effectuer des modifications.");
+        }
+    }
+}
+
+function requireOwnerAuth(actionDesc = "modifier cette application") {
+    if (isOwnerAdmin()) return true;
+    
+    const pin = prompt(`🔐 SÉCURITÉ SCHALOM H.N. :\nSeul le propriétaire Schalom H.N. a le droit de ${actionDesc}.\n\nEntrez votre code d'accès propriétaire pour continuer :`);
+    if (!pin) return false;
+    const normalized = pin.trim().toLowerCase();
+    if (OWNER_PASSCODES.includes(normalized)) {
+        localStorage.setItem("hns_owner_auth", "granted_schalom");
+        updateAdminLockUI();
+        alert("👑 Accès propriétaire validé !");
+        return true;
+    } else {
+        alert("⛔ ACCÈS REFUSÉ :\nCode incorrect. Seul le propriétaire Schalom H.N. peut modifier cette application.");
+        return false;
+    }
+}
+
 
 const LEAGUES_DNA = {
     "eng.1": {
@@ -520,6 +582,7 @@ function toggleTactical(matchId) {
 
 // Toggle match status (Won / Upcoming)
 function toggleMatchWon(matchId) {
+    if (!requireOwnerAuth("marquer ce match comme Validé / Gagné")) return;
     if (!appData || !appData.days) return;
     const day = appData.days[currentDay];
     if (!day || !day.singles) return;
@@ -715,6 +778,7 @@ async function generateAccumulator() {
 
 // Custom Match Analyzer & Adder
 async function submitCustomMatch() {
+    if (!requireOwnerAuth("enregistrer et ajouter un match")) return;
     const home = document.getElementById("customHome").value.trim();
     const away = document.getElementById("customAway").value.trim();
     const league = document.getElementById("customLeagueSelect").value;
@@ -1009,9 +1073,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Modal open/close
     const modal = document.getElementById("addMatchModal");
     const openBtn = document.getElementById("openAddModalBtn");
-    if (openBtn) openBtn.addEventListener("click", () => modal.style.display = "flex");
+    if (openBtn) {
+        openBtn.addEventListener("click", () => {
+            if (!requireOwnerAuth("ajouter ou analyser un nouveau match")) return;
+            modal.style.display = "flex";
+        });
+    }
     document.getElementById("closeAddModalBtn").addEventListener("click", () => modal.style.display = "none");
     document.getElementById("submitCustomMatchBtn").addEventListener("click", submitCustomMatch);
+
+    // Verrouillage Propriétaire Schalom H.N.
+    const ownerLockBtn = document.getElementById("ownerLockBtn");
+    if (ownerLockBtn) {
+        ownerLockBtn.addEventListener("click", toggleOwnerLock);
+    }
+    updateAdminLockUI();
 
     // Generator buttons
     document.querySelectorAll(".risk-btn").forEach(btn => {

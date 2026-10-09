@@ -144,6 +144,12 @@ body {
     transform: translateY(-1px);
 }
 
+.icon-btn.is-admin {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
 /* SÉLECTEUR DE JOUR */
 .day-selector-bar {
     display: flex;
