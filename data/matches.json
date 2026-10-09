@@ -30,7 +30,10 @@
         "pick": "Victoire Galatasaray & Plus de 1.5 buts",
         "odds": 1.52,
         "confidence": 92,
-        "analysis": "Galatasaray est ultra-dominant à domicile et impose une forte intensité offensive. Kasimpasa éprouve des difficultés défensives face aux attaques de premier plan."
+        "analysis": "Galatasaray est ultra-dominant à domicile et impose une forte intensité offensive. Kasimpasa éprouve des difficultés défensives face aux attaques de premier plan.",
+        "status": "won",
+        "score": "3-1",
+        "status_text": "🏆 BANKER GAGNÉ (3-1)"
       },
       "singles": [
         {
@@ -44,7 +47,10 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Málaga face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Málaga face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "live",
+          "score": "0-1",
+          "status_text": "🔴 EN DIRECT (0-1)"
         },
         {
           "id": "today_2",
@@ -57,7 +63,10 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Lens face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Lens face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "live",
+          "score": "1-0",
+          "status_text": "🔴 EN DIRECT (1-0)"
         },
         {
           "id": "today_3",
@@ -70,7 +79,10 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Borussia Dortmund face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Borussia Dortmund face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "won",
+          "score": "2-0",
+          "status_text": "✅ VALIDÉ (2-0)"
         },
         {
           "id": "today_4",
@@ -83,7 +95,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Moreirense face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Moreirense face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "won",
+          "status_text": "✅ VALIDÉ"
         },
         {
           "id": "today_5",
@@ -96,7 +110,10 @@
           "confidence": 90,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Sporting CP dispose d'une supériorité technique indiscutable et voyage avec un solide bilan offensif."
+          "reason": "Sporting CP dispose d'une supériorité technique indiscutable et voyage avec un solide bilan offensif.",
+          "status": "live",
+          "score": "1-2",
+          "status_text": "🔴 EN DIRECT (1-2)"
         },
         {
           "id": "today_6",
@@ -109,7 +126,10 @@
           "confidence": 92,
           "type": "Banker",
           "is_safe": true,
-          "reason": "Galatasaray est ultra-dominant à domicile et impose une forte intensité offensive. Kasimpasa éprouve des difficultés défensives face aux attaques de premier plan."
+          "reason": "Galatasaray est ultra-dominant à domicile et impose une forte intensité offensive. Kasimpasa éprouve des difficultés défensives face aux attaques de premier plan.",
+          "status": "won",
+          "score": "2-0",
+          "status_text": "✅ VALIDÉ (2-0)"
         },
         {
           "id": "today_7",
@@ -122,7 +142,10 @@
           "confidence": 92,
           "type": "Safe",
           "is_safe": true,
-          "reason": "PSV Eindhoven est ultra-dominant à domicile et impose une forte intensité offensive. Heerenveen éprouve des difficultés défensives face aux attaques de premier plan."
+          "reason": "PSV Eindhoven est ultra-dominant à domicile et impose une forte intensité offensive. Heerenveen éprouve des difficultés défensives face aux attaques de premier plan.",
+          "status": "won",
+          "score": "3-1",
+          "status_text": "✅ VALIDÉ (3-1)"
         }
       ],
       "combos": [
@@ -159,7 +182,9 @@
         "pick": "Victoire Arsenal & Plus de 1.5 buts",
         "odds": 1.52,
         "confidence": 92,
-        "analysis": "Arsenal est ultra-dominant à domicile et impose une forte intensité offensive. Leeds United éprouve des difficultés défensives face aux attaques de premier plan."
+        "analysis": "Arsenal est ultra-dominant à domicile et impose une forte intensité offensive. Leeds United éprouve des difficultés défensives face aux attaques de premier plan.",
+        "status": "upcoming",
+        "status_text": "⏳ À VENIR"
       },
       "singles": [
         {
@@ -173,7 +198,9 @@
           "confidence": 92,
           "type": "Banker",
           "is_safe": true,
-          "reason": "Arsenal est ultra-dominant à domicile et impose une forte intensité offensive. Leeds United éprouve des difficultés défensives face aux attaques de premier plan."
+          "reason": "Arsenal est ultra-dominant à domicile et impose une forte intensité offensive. Leeds United éprouve des difficultés défensives face aux attaques de premier plan.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_2",
@@ -186,7 +213,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Aston Villa face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Aston Villa face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_3",
@@ -199,7 +228,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Chelsea face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Chelsea face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_4",
@@ -212,7 +243,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Ipswich Town face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Ipswich Town face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_5",
@@ -225,7 +258,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Sunderland face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Sunderland face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_6",
@@ -238,7 +273,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Manchester United face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Manchester United face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_7",
@@ -251,7 +288,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Genoa face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Genoa face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_8",
@@ -264,7 +303,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Internazionale face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Internazionale face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "tomorrow_9",
@@ -277,7 +318,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Avantage à domicile déterminant pour Napoli face à un adversaire direct. Configuration idéale pour sécuriser un ticket."
+          "reason": "Avantage à domicile déterminant pour Napoli face à un adversaire direct. Configuration idéale pour sécuriser un ticket.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         }
       ],
       "combos": [
@@ -314,7 +357,9 @@
         "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
         "odds": 1.55,
         "confidence": 92,
-        "analysis": "Le choc planétaire du week-end à Anfield ! Salah vs Haaland, deux machines offensives qui ne ferment jamais le jeu. Historiquement, 9 des 10 dernières confrontations entre Liverpool et Man City ont produit des buts des deux côtés."
+        "analysis": "Le choc planétaire du week-end à Anfield ! Salah vs Haaland, deux machines offensives qui ne ferment jamais le jeu. Historiquement, 9 des 10 dernières confrontations entre Liverpool et Man City ont produit des buts des deux côtés.",
+        "status": "upcoming",
+        "status_text": "⏳ À VENIR"
       },
       "singles": [
         {
@@ -328,7 +373,9 @@
           "confidence": 92,
           "type": "Banker",
           "is_safe": true,
-          "reason": "Le sommet d Anfield garantit du spectacle et de l intensité avec Salah et Haaland en têtes d affiche."
+          "reason": "Le sommet d Anfield garantit du spectacle et de l intensité avec Salah et Haaland en têtes d affiche.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_2",
@@ -341,7 +388,9 @@
           "confidence": 92,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Beşiktaş au Tüpraş Stadyumu est impérial face aux promus avec Immobile et Rafa Silva en animateurs."
+          "reason": "Beşiktaş au Tüpraş Stadyumu est impérial face aux promus avec Immobile et Rafa Silva en animateurs.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_3",
@@ -354,7 +403,9 @@
           "confidence": 90,
           "type": "Safe",
           "is_safe": true,
-          "reason": "L OM de De Zerbi pratique un jeu offensif étouffant à l extérieur face à un bloc troyen souvent désorganisé."
+          "reason": "L OM de De Zerbi pratique un jeu offensif étouffant à l extérieur face à un bloc troyen souvent désorganisé.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_4",
@@ -367,7 +418,9 @@
           "confidence": 91,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Le Stadio Olimpico est impitoyable pour Monza qui peine à exister hors de ses bases cette saison."
+          "reason": "Le Stadio Olimpico est impitoyable pour Monza qui peine à exister hors de ses bases cette saison.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_5",
@@ -380,7 +433,9 @@
           "confidence": 90,
           "type": "Safe",
           "is_safe": true,
-          "reason": "La Roma de Dybala gère avec métier ce genre de déplacement chez le promu lombard."
+          "reason": "La Roma de Dybala gère avec métier ce genre de déplacement chez le promu lombard.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_6",
@@ -393,7 +448,9 @@
           "confidence": 89,
           "type": "Safe",
           "is_safe": true,
-          "reason": "L Allianz Riviera reste imprenable pour Nice qui s appuie sur une rigueur tactique éprouvée."
+          "reason": "L Allianz Riviera reste imprenable pour Nice qui s appuie sur une rigueur tactique éprouvée.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_7",
@@ -406,7 +463,9 @@
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Le Roazhon Park pousse Rennes vers l avant. Auxerre concède de nombreuses occasions sur les côtés."
+          "reason": "Le Roazhon Park pousse Rennes vers l avant. Auxerre concède de nombreuses occasions sur les côtés.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_8",
@@ -419,7 +478,9 @@
           "confidence": 91,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Le Benito Villamarín est une citadelle pour le Betis d Isco qui ne perd quasiment jamais contre Osasuna chez lui."
+          "reason": "Le Benito Villamarín est une citadelle pour le Betis d Isco qui ne perd quasiment jamais contre Osasuna chez lui.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_9",
@@ -432,7 +493,9 @@
           "confidence": 89,
           "type": "Safe",
           "is_safe": true,
-          "reason": "La Real Sociedad à la Reale Arena domine la possession et le tempo face à un adversaire en rodage."
+          "reason": "La Real Sociedad à la Reale Arena domine la possession et le tempo face à un adversaire en rodage.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_10",
@@ -445,7 +508,9 @@
           "confidence": 89,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Utrecht au Stadion Galgenwaard capitalise sur ses temps forts face à un Willem II friable."
+          "reason": "Utrecht au Stadion Galgenwaard capitalise sur ses temps forts face à un Willem II friable.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_11",
@@ -458,7 +523,9 @@
           "confidence": 84,
           "type": "Value",
           "is_safe": false,
-          "reason": "Selhurst Park sera le théâtre d un affrontement âpre entre deux blocs médians très resserrés."
+          "reason": "Selhurst Park sera le théâtre d un affrontement âpre entre deux blocs médians très resserrés.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         },
         {
           "id": "sun_12",
@@ -471,7 +538,9 @@
           "confidence": 82,
           "type": "Value",
           "is_safe": false,
-          "reason": "Valence a l avantage de l effectif mais Santander vend chèrement sa peau à El Sardinero."
+          "reason": "Valence a l avantage de l effectif mais Santander vend chèrement sa peau à El Sardinero.",
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR"
         }
       ],
       "combos": [

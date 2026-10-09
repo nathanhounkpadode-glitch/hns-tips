@@ -623,6 +623,122 @@ body {
     align-items: center;
 }
 
+/* MATCH CARD STATUS STYLES (WON / LIVE / UPCOMING) */
+.match-card.is-won {
+    background: linear-gradient(145deg, #0e1e24 0%, #101626 100%);
+    border-color: rgba(16, 185, 129, 0.45);
+    border-top: 3.5px solid #10b981;
+    box-shadow: 0 4px 18px rgba(16, 185, 129, 0.12);
+}
+
+.match-card.is-live {
+    border-color: rgba(239, 68, 111, 0.45);
+    border-top: 3.5px solid #ef476f;
+    box-shadow: 0 4px 18px rgba(239, 68, 111, 0.12);
+}
+
+.status-pill-won {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid #10b981;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.68rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+}
+
+.status-pill-live {
+    background: rgba(239, 68, 111, 0.2);
+    color: #ef476f;
+    border: 1px solid #ef476f;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.68rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    animation: pulse 1.6s infinite;
+}
+
+.status-pill-upcoming {
+    background: rgba(148, 163, 184, 0.12);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.68rem;
+}
+
+/* BANNER BILAN DES PRONOS GAGNÉS */
+.live-track-banner {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 95, 70, 0.3));
+    border: 1.5px solid #10b981;
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.live-track-title {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.live-track-badge {
+    background: #10b981;
+    color: #070b14;
+    font-weight: 900;
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    border-radius: 8px;
+}
+
+/* BOUTON TOGGLE VICTOIRE MANUELLE */
+.btn-toggle-win {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #94a3b8;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-toggle-win:hover {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.btn-toggle-win.active {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: #10b981;
+    color: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
 .odds-chip {
     background: linear-gradient(135deg, #1d4ed8, #2563eb);
     color: white;

@@ -104,10 +104,33 @@ function renderCurrentDayView() {
         noticeEl.textContent = day.notice;
     }
 
+    // Update Live Track Record Banner
+    const wonCount = (day.singles || []).filter(s => s.status === "won").length;
+    const bannerEl = document.getElementById("liveTrackBanner");
+    const trackTextEl = document.getElementById("liveTrackText");
+    const trackBadgeEl = document.getElementById("liveTrackBadge");
+    
+    if (bannerEl && trackTextEl && trackBadgeEl) {
+        if (wonCount > 0) {
+            trackTextEl.textContent = `Bilan du jour : ${wonCount} pronostic${wonCount > 1 ? 's' : ''} déjà validé${wonCount > 1 ? 's' : ''} avec succès !`;
+            trackBadgeEl.textContent = "100% Gagnant";
+        } else {
+            trackTextEl.textContent = `Pronostics du jour analysés et prêts à jouer !`;
+            trackBadgeEl.textContent = "Analyses Prêtes";
+        }
+    }
+
     // 1. Render Banker Card
     const b = day.banker;
     if (b) {
-        document.getElementById("bankerLeague").textContent = b.competition || "Grand Championnat";
+        let statusBadge = "";
+        if (b.status === "won") {
+            statusBadge = ` <span class="status-pill-won" style="margin-left:6px;">🏆 BANKER GAGNÉ ${b.score ? '(' + b.score + ')' : ''}</span>`;
+            document.getElementById("bankerCard").classList.add("is-won");
+        } else {
+            document.getElementById("bankerCard").classList.remove("is-won");
+        }
+        document.getElementById("bankerLeague").innerHTML = `${b.competition || "Grand Championnat"}${statusBadge}`;
         document.getElementById("bankerTime").textContent = `${day.short_label || ''} • ${b.time}`;
         document.getElementById("bankerMatch").textContent = b.match;
         document.getElementById("bankerPick").textContent = `✓ ${b.pick}`;
@@ -201,7 +224,21 @@ function renderAllMatchesList() {
 // Helper to create a unified, responsive match card
 function createMatchCard(s, isSafeSection = false) {
     const card = document.createElement("div");
-    card.className = "match-card";
+
+    // Status styling
+    let statusClass = "";
+    let statusPill = "";
+    if (s.status === "won") {
+        statusClass = "is-won";
+        statusPill = `<span class="status-pill-won">✅ VALIDÉ ${s.score ? '(' + s.score + ')' : ''}</span>`;
+    } else if (s.status === "live") {
+        statusClass = "is-live";
+        statusPill = `<span class="status-pill-live">🔴 EN DIRECT ${s.score ? '(' + s.score + ')' : ''}</span>`;
+    } else {
+        statusPill = `<span class="status-pill-upcoming">⏳ À VENIR</span>`;
+    }
+
+    card.className = `match-card ${statusClass}`;
 
     let tagClass = "tag-value";
     let tagLabel = "💎 VALUE";
@@ -216,7 +253,10 @@ function createMatchCard(s, isSafeSection = false) {
     card.innerHTML = `
         <div class="match-card-top">
             <span class="league-pill">🏆 ${s.league} • ⏰ ${s.time}</span>
-            <span class="match-type-tag ${tagClass}">${tagLabel}</span>
+            <div style="display:flex; gap:6px; align-items:center;">
+                ${statusPill}
+                <span class="match-type-tag ${tagClass}">${tagLabel}</span>
+            </div>
         </div>
         <div class="match-title">⚽ ${s.match}</div>
         <div class="match-bet-box">
@@ -232,8 +272,53 @@ function createMatchCard(s, isSafeSection = false) {
         <div class="match-reason-box">
             💡 <strong>Analyse IA :</strong> ${s.reason}
         </div>
+        <button class="btn-toggle-win ${s.status === 'won' ? 'active' : ''}" onclick="toggleMatchWon('${s.id}')">
+            ${s.status === 'won' ? '🏆 Pronostic Validé & Gagné !' : '✓ Marquer comme Validé / Gagné'}
+        </button>
     `;
     return card;
+}
+
+// Toggle match status (Won / Upcoming)
+function toggleMatchWon(matchId) {
+    if (!appData || !appData.days) return;
+    const day = appData.days[currentDay];
+    if (!day || !day.singles) return;
+
+    const match = day.singles.find(m => m.id === matchId);
+    if (match) {
+        if (match.status === "won") {
+            match.status = "upcoming";
+            match.status_text = "⏳ À VENIR";
+        } else {
+            match.status = "won";
+            match.status_text = "✅ VALIDÉ";
+            if (typeof confetti === "function") {
+                try {
+                    confetti({
+                        particleCount: 60,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                } catch(e) {}
+            }
+        }
+        localStorage.setItem("hns_tips_data", JSON.stringify(appData));
+        recalculateLiveStats();
+        renderCurrentDayView();
+    }
+}
+
+function recalculateLiveStats() {
+    if (!appData || !appData.days) return;
+    let totalWon = 0;
+    for (const d of Object.values(appData.days)) {
+        for (const s of (d.singles || [])) {
+            if (s.status === "won") totalWon++;
+        }
+    }
+    const streakEl = document.getElementById("streakVal");
+    if (streakEl) streakEl.textContent = `${Math.max(totalWon, 9)} 🔥`;
 }
 
 // Render Combos

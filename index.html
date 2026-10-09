@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css?v=13">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
 </head>
 <body>
@@ -53,6 +54,15 @@
 
             <!-- TAB 1: PRONOSTICS & ANALYSES -->
             <section id="tab-home" class="tab-view active">
+
+                <!-- BANNIÈRE DE SIGNALEMENT DES PRONOSTICS GAGNÉS -->
+                <div class="live-track-banner" id="liveTrackBanner">
+                    <div class="live-track-title">
+                        <span>🔥</span>
+                        <span id="liveTrackText">Bilan du jour : 3 pronostics déjà validés ce soir !</span>
+                    </div>
+                    <span class="live-track-badge" id="liveTrackBadge">100% Gagnant</span>
+                </div>
 
                 <!-- SÉLECTEUR DES 3 VUES PRINCIPALES -->
                 <div class="view-mode-bar">
@@ -392,7 +402,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=12"></script>
-    <script src="static/js/app.js?v=12"></script>
+    <script src="static/js/default-data.js?v=13"></script>
+    <script src="static/js/app.js?v=13"></script>
 </body>
 </html>
