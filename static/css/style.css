@@ -1269,6 +1269,16 @@ body {
     border-left-color: #f59e0b;
 }
 
+.tactical-item.player-item {
+    border-left-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.05);
+}
+
+.tactical-item.injury-item {
+    border-left-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
 /* BANNIÈRE RÉALITÉS DES CHAMPIONNATS (VUE 2) */
 .league-dna-banner {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));

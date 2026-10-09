@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v14";
+const DATA_VERSION = "2026-10-09-v15";
 
 const LEAGUES_DNA = {
     "eng.1": {
@@ -237,6 +237,13 @@ function renderCurrentDayView() {
             if (formEl) formEl.textContent = b.metrics.home_form || "V-V-V-N-V";
             if (riskEl) riskEl.textContent = b.metrics.risk_level || "1/5 (Très Faible)";
         }
+
+        if (b.key_players) {
+            const starEl = document.getElementById("bankerStarPlayer");
+            const absEl = document.getElementById("bankerAbsentees");
+            if (starEl) starEl.innerHTML = `<strong>Joueurs Clés :</strong> ${b.key_players.star_player || "Titulaires phares"}`;
+            if (absEl) absEl.innerHTML = `<strong>Absences & Forfaits :</strong> ${b.key_players.absentees_away || b.key_players.absentees_home || "Aucun forfait majeur"}`;
+        }
     }
 
     // 2. Render Safe Picks List (Section 1)
@@ -415,6 +422,7 @@ function createMatchCard(s, isSafeSection = false) {
     let tacticalPanelHtml = '';
     const m = s.metrics || {};
     const tb = s.tactical_breakdown || {};
+    const kp = s.key_players || {};
 
     tacticalPanelHtml = `
         <button class="btn-tactical-toggle" id="btnTac_${s.id}" onclick="toggleTactical('${s.id}')">
@@ -440,6 +448,18 @@ function createMatchCard(s, isSafeSection = false) {
                     <span class="metric-val highlight-stake">${m.stake || 'Points vitaux'}</span>
                 </div>
             </div>
+            ${kp.star_player ? `
+            <div class="tactical-item player-item">
+                <div class="tactical-item-title">🌟 Facteur X & Joueurs Clés</div>
+                ${kp.star_player}
+            </div>` : ''}
+            ${(kp.absentees_home || kp.absentees_away) ? `
+            <div class="tactical-item injury-item">
+                <div class="tactical-item-title">🚑 Forfaits & Absences Majeures</div>
+                <div style="margin-bottom:3px;"><strong>Domicile :</strong> ${kp.absentees_home || 'Effectif au complet'}</div>
+                <div style="margin-bottom:3px;"><strong>Extérieur :</strong> ${kp.absentees_away || 'Effectif au complet'}</div>
+                <div style="margin-top:4px; color:#38bdf8;"><strong>Impact Tactique :</strong> ${kp.tactical_impact || 'Impact équilibré sur la composition.'}</div>
+            </div>` : ''}
             ${tb.league_reality ? `
             <div class="tactical-item dna-item">
                 <div class="tactical-item-title">🧬 Réalité du Championnat</div>
