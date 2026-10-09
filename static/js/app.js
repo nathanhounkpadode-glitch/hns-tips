@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (7 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v7";
+const DATA_VERSION = "2026-10-09-v8";
 let appData = null;
 let currentDay = "today";
 let currentViewMode = "safe"; // 'safe', 'all', or 'combos'
