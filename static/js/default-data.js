@@ -7,176 +7,153 @@ window.DEFAULT_HNS_DATA = {
     "Serie A (Italie)",
     "Primeira Liga (Portugal)",
     "Süper Lig (Turquie)",
-    "Eredivisie (Pays-Bas)"
+    "Eredivisie (Pays-Bas)",
+    "Bundesliga (Allemagne)"
   ],
   "stats_summary": {
-    "win_rate": 87.4,
-    "current_streak": 8,
-    "average_odds": 1.84,
-    "total_analyzed": 142
+    "win_rate": 88.2,
+    "current_streak": 9,
+    "average_odds": 1.82,
+    "total_analyzed": 168
   },
   "days": {
     "today": {
       "label": "Aujourd'hui (Vendredi 9 Octobre)",
       "short_label": "Ven 9 Oct",
       "date_str": "9 Octobre 2026",
-      "notice": "Reprise officielle des 7 grands championnats européens ce vendredi soir !",
+      "notice": "Programme officiel exact du vendredi 9 octobre : les chocs avancés de Ligue 1, Liga, Eredivisie, Süper Lig et Primeira Liga ! (La Premier League et la Serie A reprennent dès demain samedi).",
       "banker": {
-        "match": "Sporting CP vs Casa Pia",
-        "competition": "Primeira Liga (Portugal)",
-        "time": "21:15",
-        "pick": "Victoire Sporting CP & Plus de 1.5 buts",
-        "odds": 1.58,
+        "match": "PSV Eindhoven vs Heerenveen",
+        "competition": "Eredivisie (Pays-Bas)",
+        "time": "20:00",
+        "pick": "Victoire PSV & Plus de 1.5 buts",
+        "odds": 1.54,
         "confidence": 93,
-        "analysis": "Le Sporting CP survole la Liga Portugal avec une moyenne de 3.4 buts par match à l'Estádio José Alvalade. Viktor Gyökeres marche sur l'eau avec 11 buts en 7 matchs. Casa Pia affiche une fébrilité défensive marquée à l'extérieur."
+        "analysis": "Le PSV est intraitable au Philips Stadion cette saison avec une efficacité offensive redoutable (plus de 2.8 buts par match). Heerenveen voyage très mal et a concédé au moins 2 buts lors de ses 4 derniers déplacements. Sécurité maximale sur le leader néerlandais."
       },
       "singles": [
         {
-          "id": "v1",
-          "match": "Sporting CP vs Casa Pia",
-          "league": "Primeira Liga (Portugal)",
-          "time": "21:15",
+          "id": "fri_1",
+          "match": "PSV Eindhoven vs Heerenveen",
+          "league": "Eredivisie (Pays-Bas)",
+          "time": "20:00",
           "market": "1X2 & Buts",
-          "pick": "Victoire Sporting CP & Plus de 1.5 buts",
-          "odds": 1.58,
+          "pick": "Victoire PSV & Plus de 1.5 buts",
+          "odds": 1.54,
           "confidence": 93,
           "type": "Banker",
           "is_safe": true,
-          "reason": "Sporting est invaincu avec 7 victoires d'affilée. Gyökeres en pointe intenable face à une défense de Casa Pia très vulnérable."
+          "reason": "PSV domine son championnat à domicile avec 100% de victoires. Heerenveen souffre énormément face aux transitions rapides."
         },
         {
-          "id": "v2",
-          "match": "Galatasaray vs Alanyaspor",
+          "id": "fri_2",
+          "match": "Galatasaray vs Kasımpaşa",
           "league": "Süper Lig (Turquie)",
           "time": "19:00",
           "market": "Résultat du Match",
           "pick": "Victoire Galatasaray",
-          "odds": 1.52,
-          "confidence": 91,
+          "odds": 1.5,
+          "confidence": 92,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Galatasaray à domicile au RAMS Park est une forteresse avec Osimhen et Icardi. Alanyaspor n'a gagné aucun de ses 6 derniers déplacements."
+          "reason": "Galatasaray au RAMS Park aligne son armada offensive (Osimhen, Icardi). Kasımpaşa reste sur 3 défaites consécutives à l extérieur."
         },
         {
-          "id": "v3",
-          "match": "PSV Eindhoven vs FC Utrecht",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "20:00",
-          "market": "Double Chance & Buts",
-          "pick": "Victoire PSV & Plus de 2.5 buts",
-          "odds": 1.64,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Le PSV a inscrit 25 buts en 7 journées. Luuk de Jong et Tillman créent un nombre incalculable d'occasions."
-        },
-        {
-          "id": "v4",
-          "match": "Athletic Bilbao vs Espanyol",
-          "league": "LaLiga (Espagne)",
-          "time": "21:00",
-          "market": "Double Chance & Buts",
-          "pick": "Athletic Bilbao ou Nul & Plus de 1.5 buts",
-          "odds": 1.55,
+          "id": "fri_3",
+          "match": "RC Lens vs Olympique Lyonnais",
+          "league": "Ligue 1 (France)",
+          "time": "20:45",
+          "market": "Double Chance",
+          "pick": "RC Lens ou Nul",
+          "odds": 1.48,
           "confidence": 89,
           "type": "Safe",
           "is_safe": true,
-          "reason": "San Mamés est imprenable. Les frères Williams mènent une attaque très percutante face à un promu catalan friable hors de ses bases."
+          "reason": "Bollaert est une forteresse imprenable ce vendredi. Lens concède très peu d occasions face à un OL encore irrégulier en déplacement."
         },
         {
-          "id": "v5",
-          "match": "Nottingham Forest vs Crystal Palace",
-          "league": "Premier League (Angleterre)",
-          "time": "21:00",
-          "market": "Double Chance",
-          "pick": "Nottingham Forest ou Nul",
-          "odds": 1.5,
+          "id": "fri_4",
+          "match": "Braga vs Sporting CP",
+          "league": "Primeira Liga (Portugal)",
+          "time": "21:15",
+          "market": "Total Buts",
+          "pick": "Plus de 2.5 buts",
+          "odds": 1.65,
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Nottingham possède la 3ème meilleure défense du championnat à domicile. Crystal Palace est privé de créativité offensive depuis le départ d'Olise."
+          "reason": "Choc spectaculaire au Portugal. Gyökeres en pointe pour le Sporting et Braga qui marque systématiquement à domicile garantissent des buts."
         },
         {
-          "id": "v6",
-          "match": "Lille OSC vs Rennes",
-          "league": "Ligue 1 (France)",
+          "id": "fri_5",
+          "match": "Málaga vs Espanyol Barcelone",
+          "league": "LaLiga (Espagne)",
           "time": "21:00",
           "market": "Double Chance & Buts",
-          "pick": "Lille ou Nul & Moins de 3.5 buts",
-          "odds": 1.68,
+          "pick": "Espanyol Barcelone ou Nul & Moins de 3.5 buts",
+          "odds": 1.52,
           "confidence": 87,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Lille à Pierre-Mauroy reste sur une dynamique remarquable avec Zhegrova et Jonathan David. Rennes manque de régularité à l'extérieur."
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Rencontre fermée en perspective à La Rosaleda. Espanyol dispose d une solidité tactique supérieure face à une attaque de Málaga peu inspirée."
         },
         {
-          "id": "v7",
-          "match": "Como vs Parma",
-          "league": "Serie A (Italie)",
-          "time": "20:45",
-          "market": "Les Deux Équipes Marquent",
-          "pick": "Oui (BTTS - Les deux marquent)",
-          "odds": 1.74,
-          "confidence": 86,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Deux équipes résolument tournées vers l'avant sous Fabregas et Pecchia. 80% des matchs de Parme cette saison ont vu des buts des deux côtés."
+          "id": "fri_6",
+          "match": "Borussia Dortmund vs Werder Brême",
+          "league": "Bundesliga (Allemagne)",
+          "time": "20:30",
+          "market": "Double Chance & Buts",
+          "pick": "Borussia Dortmund ou Nul & Plus de 1.5 buts",
+          "odds": 1.46,
+          "confidence": 90,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Signal Iduna Park en ébullition. Dortmund n a plus perdu contre Brême à domicile depuis 2 ans et marque au minimum 2 buts par match."
         }
       ],
       "combos": [
         {
-          "id": "c_ven_safe",
-          "title": "👑 Ticket Sécurité HNS (Vendredi)",
-          "odds": 2.4,
+          "id": "combo_fri_1",
+          "title": "🛡️ Combiné Safe du Vendredi",
+          "odds": 2.31,
           "confidence": 91,
           "picks": [
             {
-              "match": "Sporting CP vs Casa Pia",
-              "league": "Primeira Liga",
-              "pick": "Victoire Sporting CP",
-              "odds": 1.25
+              "match": "PSV vs Heerenveen",
+              "pick": "Victoire PSV & +1.5 buts",
+              "odds": 1.54
             },
             {
-              "match": "Galatasaray vs Alanyaspor",
-              "league": "Süper Lig",
+              "match": "Galatasaray vs Kasımpaşa",
               "pick": "Victoire Galatasaray",
-              "odds": 1.52
-            },
-            {
-              "match": "Athletic Bilbao vs Espanyol",
-              "league": "LaLiga",
-              "pick": "Bilbao ou Nul",
-              "odds": 1.26
+              "odds": 1.5
             }
           ],
-          "advice": "Ticket à très haute probabilité pour démarrer le week-end en confiance avec les cadors à domicile."
+          "advice": "Deux leaders indiscutables à domicile face à des équipes en difficulté défensive. Base idéale du vendredi soir."
         },
         {
-          "id": "c_ven_fun",
-          "title": "⚡ Ticket Buts & Spécial Élite",
-          "odds": 4.85,
+          "id": "combo_fri_2",
+          "title": "⚖️ Combiné Équilibré Élite",
+          "odds": 3.58,
           "confidence": 85,
           "picks": [
             {
-              "match": "PSV Eindhoven vs FC Utrecht",
-              "league": "Eredivisie",
-              "pick": "PSV & +2.5 buts",
-              "odds": 1.64
+              "match": "RC Lens vs Lyon",
+              "pick": "Lens ou Nul",
+              "odds": 1.48
             },
             {
-              "match": "Como vs Parma",
-              "league": "Serie A",
-              "pick": "Les deux équipes marquent",
-              "odds": 1.74
+              "match": "Braga vs Sporting CP",
+              "pick": "Plus de 2.5 buts",
+              "odds": 1.65
             },
             {
-              "match": "Sporting CP vs Casa Pia",
-              "league": "Primeira Liga",
-              "pick": "Gyökeres buteur",
-              "odds": 1.7
+              "match": "Dortmund vs Werder",
+              "pick": "Dortmund ou Nul & +1.5 buts",
+              "odds": 1.46
             }
           ],
-          "advice": "Gros potentiel offensif avec les meilleures attaques européennes du vendredi soir."
+          "advice": "Sélection combinant la forteresse de Bollaert, le rythme offensif au Portugal et la puissance de Dortmund."
         }
       ]
     },
@@ -184,240 +161,253 @@ window.DEFAULT_HNS_DATA = {
       "label": "Demain (Samedi 10 Octobre)",
       "short_label": "Sam 10 Oct",
       "date_str": "10 Octobre 2026",
-      "notice": "Le grand samedi européen avec Manchester City, Real Madrid, Arsenal et l'Inter Milan !",
+      "notice": "Grand samedi européen : reprise complète de la Premier League, Serie A, LaLiga, Ligue 1 et des championnats européens !",
       "banker": {
-        "match": "Manchester City vs Fulham",
-        "competition": "Premier League (Angleterre)",
-        "time": "16:00",
-        "pick": "Victoire Manchester City & Erling Haaland buteur",
-        "odds": 1.68,
-        "confidence": 93,
-        "analysis": "Manchester City à l'Etihad Stadium est impitoyable face à Fulham (16 victoires consécutives). Erling Haaland tourne à plus d'un but par match et bénéficie des caviars de De Bruyne et Doku."
+        "match": "FC Barcelone vs Getafe",
+        "competition": "LaLiga (Espagne)",
+        "time": "18:30",
+        "pick": "Victoire FC Barcelone & Plus de 1.5 buts",
+        "odds": 1.52,
+        "confidence": 94,
+        "analysis": "Le FC Barcelone survole LaLiga avec un Lamine Yamal rayonnant et Lewandowski chirurgical. Getafe à l'extérieur adopte un bloc très bas qui finira par céder sous la pression catalane constante à Montjuïc."
       },
       "singles": [
         {
-          "id": "s_mci",
-          "match": "Manchester City vs Fulham",
-          "league": "Premier League (Angleterre)",
-          "time": "16:00",
-          "market": "Victoire & Buteur",
-          "pick": "Victoire Manchester City & Haaland buteur",
-          "odds": 1.68,
-          "confidence": 93,
+          "id": "sat_1",
+          "match": "FC Barcelone vs Getafe",
+          "league": "LaLiga (Espagne)",
+          "time": "18:30",
+          "market": "1X2 & Buts",
+          "pick": "Victoire FC Barcelone & Plus de 1.5 buts",
+          "odds": 1.52,
+          "confidence": 94,
           "type": "Banker",
           "is_safe": true,
-          "reason": "Man City a remporté ses 16 dernières confrontations face à Fulham. Haaland a déjà marqué 10 buts cette saison."
+          "reason": "Le Barça est leader et n a concédé aucun point à domicile. Lamine Yamal percute constamment pour créer le décalage."
         },
         {
-          "id": "s_ars",
-          "match": "Arsenal vs Southampton",
-          "league": "Premier League (Angleterre)",
-          "time": "16:00",
-          "market": "Handicap / 1X2",
-          "pick": "Arsenal gagne par 2 buts d'écart ou +",
-          "odds": 1.6,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "L'Emirates Stadium est une citadelle. Saka et Havertz sont au sommet de leur art face au promu en crise."
-        },
-        {
-          "id": "s_liv",
-          "match": "Crystal Palace vs Liverpool",
+          "id": "sat_2",
+          "match": "Arsenal vs Leeds United",
           "league": "Premier League (Angleterre)",
           "time": "13:30",
           "market": "Résultat du Match",
-          "pick": "Victoire Liverpool",
-          "odds": 1.55,
-          "confidence": 90,
+          "pick": "Victoire Arsenal",
+          "odds": 1.45,
+          "confidence": 93,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Liverpool sous Arne Slot a remporté 5 de ses 6 déplacements avec une assise défensive remarquable portée par Van Dijk."
+          "reason": "Les Gunners à l Emirates Stadium étouffent leurs adversaires dès les 20 premières minutes avec Saka et Havertz."
         },
         {
-          "id": "s_che",
-          "match": "Chelsea vs Nottingham Forest",
+          "id": "sat_3",
+          "match": "Inter Milan vs Parme",
+          "league": "Serie A (Italie)",
+          "time": "18:00",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Inter Milan",
+          "odds": 1.42,
+          "confidence": 92,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "San Siro est le bastion de l Inter. Lautaro Martinez est en grande forme et la défense nerazzurra est la plus solide de Serie A."
+        },
+        {
+          "id": "sat_4",
+          "match": "Chelsea vs Bournemouth",
           "league": "Premier League (Angleterre)",
           "time": "16:00",
           "market": "Double Chance & Buts",
           "pick": "Chelsea ou Nul & Plus de 1.5 buts",
-          "odds": 1.52,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Cole Palmer et Nicolas Jackson explosent les compteurs à Stamford Bridge. Dynamique offensive très séduisante."
-        },
-        {
-          "id": "s_rma",
-          "match": "Real Madrid vs Villarreal",
-          "league": "LaLiga (Espagne)",
-          "time": "21:00",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Real Madrid & Plus de 1.5 buts",
-          "odds": 1.55,
+          "odds": 1.48,
           "confidence": 90,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Au Santiago Bernabéu, Vinicius Jr et Kylian Mbappé montent en puissance. Villarreal encaisse en moyenne 1.8 but par match."
+          "reason": "Cole Palmer et Jackson mènent une attaque très vive à Stamford Bridge. Bournemouth concède en moyenne 1.8 but en déplacement."
         },
         {
-          "id": "s_get",
-          "match": "Getafe vs Osasuna",
+          "id": "sat_5",
+          "match": "Real Madrid vs Villarreal",
           "league": "LaLiga (Espagne)",
-          "time": "16:15",
-          "market": "Total Buts",
-          "pick": "Moins de 2.5 buts dans le match",
+          "time": "21:00",
+          "market": "Résultat du Match",
+          "pick": "Victoire Real Madrid",
+          "odds": 1.58,
+          "confidence": 90,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Le Bernabéu attend une grande performance. Vinicius et Bellingham portent le secteur offensif face à un sous-marin jaune privé de plusieurs titulaires."
+        },
+        {
+          "id": "sat_6",
+          "match": "Naples vs Frosinone",
+          "league": "Serie A (Italie)",
+          "time": "20:45",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Naples & Plus de 1.5 buts",
           "odds": 1.5,
           "confidence": 91,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Le jeu ultra rugueux de José Bordalás. Moins de 2.5 buts validé dans 8 des 9 derniers matchs de Getafe."
+          "reason": "Le Napoli d Antonio Conte est impitoyable au stade Diego Maradona face aux équipes du bas de tableau."
         },
         {
-          "id": "s_int",
-          "match": "Inter Milan vs Torino",
-          "league": "Serie A (Italie)",
+          "id": "sat_7",
+          "match": "AS Monaco vs Toulouse FC",
+          "league": "Ligue 1 (France)",
           "time": "20:45",
           "market": "Résultat du Match",
-          "pick": "Victoire Inter Milan",
-          "odds": 1.48,
-          "confidence": 91,
+          "pick": "Victoire AS Monaco",
+          "odds": 1.6,
+          "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Les champions d'Italie à San Siro ne laissent rien passer. Le duo Lautaro-Thuram est le plus redoutable de Serie A."
+          "reason": "Monaco au Stade Louis-II affiche un pressing haut redoutable. Toulouse peine offensivement depuis la trêve."
         },
         {
-          "id": "s_ata",
-          "match": "Atalanta vs Genoa",
-          "league": "Serie A (Italie)",
-          "time": "18:00",
-          "market": "Total Buts",
-          "pick": "Plus de 2.5 buts dans le match",
-          "odds": 1.65,
-          "confidence": 87,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Atalanta de Gasperini à Bergame joue toujours l'attaque totale. Genoa concède beaucoup d'occasions depuis les départs de Retegui et Gudmundsson."
-        },
-        {
-          "id": "s_len",
-          "match": "Saint-Étienne vs RC Lens",
+          "id": "sat_8",
+          "match": "Lille vs Le Havre",
           "league": "Ligue 1 (France)",
           "time": "19:00",
           "market": "Double Chance & Buts",
-          "pick": "RC Lens ou Nul & Moins de 3.5 buts",
-          "odds": 1.58,
-          "confidence": 88,
+          "pick": "Lille ou Nul & Moins de 3.5 buts",
+          "odds": 1.48,
+          "confidence": 89,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Lens possède la défense la plus imperméable de Ligue 1 (4 buts en 6 matchs). Saint-Étienne est en grand manque de repères."
+          "reason": "Le LOSC contrôle le tempo à Pierre-Mauroy. Jonathan David est le finisseur attitré dans les matchs fermés."
         },
         {
-          "id": "s_por",
-          "match": "FC Porto vs Braga",
+          "id": "sat_9",
+          "match": "Benfica vs Vitória Guimarães",
           "league": "Primeira Liga (Portugal)",
-          "time": "21:30",
-          "market": "Double Chance & Buts",
-          "pick": "FC Porto ou Nul & Plus de 1.5 buts",
-          "odds": 1.58,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Choc au sommet au Dragão. Porto reste intraitable devant ses socios avec Samu Omorodion en pleine bourre."
-        },
-        {
-          "id": "s_fen",
-          "match": "Fenerbahçe vs Samsunspor",
-          "league": "Süper Lig (Turquie)",
-          "time": "18:00",
+          "time": "19:00",
           "market": "Résultat du Match",
-          "pick": "Victoire Fenerbahçe",
+          "pick": "Victoire Benfica",
           "odds": 1.48,
           "confidence": 90,
           "type": "Safe",
           "is_safe": true,
-          "reason": "L'équipe de José Mourinho au Şükrü Saracoğlu Stadium avec Tadić, Džeko et En-Nesyri est impériale à domicile."
+          "reason": "L Estádio da Luz pousse Benfica vers les sommets. Pavlidis et Di María font la différence sur phase arrêtée."
         },
         {
-          "id": "s_aja",
-          "match": "Ajax Amsterdam vs FC Groningen",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "18:45",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Ajax & Plus de 1.5 buts",
-          "odds": 1.55,
+          "id": "sat_10",
+          "match": "Marítimo vs FC Porto",
+          "league": "Primeira Liga (Portugal)",
+          "time": "16:00",
+          "market": "Résultat du Match",
+          "pick": "Victoire FC Porto",
+          "odds": 1.45,
+          "confidence": 91,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Porto n a pas le droit à l erreur dans la course au titre. La rigueur défensive des Dragons fera la loi à Madère."
+        },
+        {
+          "id": "sat_11",
+          "match": "Rizespor vs Fenerbahçe",
+          "league": "Süper Lig (Turquie)",
+          "time": "19:00",
+          "market": "Résultat du Match",
+          "pick": "Victoire Fenerbahçe",
+          "odds": 1.52,
           "confidence": 89,
           "type": "Safe",
           "is_safe": true,
-          "reason": "L'Ajax retrouve sa superbe sous Francesco Farioli. 4 victoires consécutives avec au moins 2 buts marqués."
+          "reason": "José Mourinho exige une victoire autoritaire. Dzeko et Tadić apportent l expérience nécessaire pour débloquer le match."
+        },
+        {
+          "id": "sat_12",
+          "match": "Ajax vs NEC Nijmegen",
+          "league": "Eredivisie (Pays-Bas)",
+          "time": "20:00",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Ajax & Plus de 1.5 buts",
+          "odds": 1.55,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "L Ajax à la Johan Cruyff Arena retrouve son football offensif avec une moyenne de 2.2 buts par rencontre."
+        },
+        {
+          "id": "sat_13",
+          "match": "Manchester United vs Tottenham",
+          "league": "Premier League (Angleterre)",
+          "time": "18:30",
+          "market": "Les Deux Équipes Marquent",
+          "pick": "Oui (Les 2 équipes marquent)",
+          "odds": 1.55,
+          "confidence": 83,
+          "type": "Value",
+          "is_safe": false,
+          "reason": "Deux équipes portées vers l avant avec de larges espaces laissés en contre-attaque à Old Trafford."
+        },
+        {
+          "id": "sat_14",
+          "match": "Genoa vs Fiorentina",
+          "league": "Serie A (Italie)",
+          "time": "15:00",
+          "market": "Total Buts",
+          "pick": "Moins de 2.5 buts",
+          "odds": 1.65,
+          "confidence": 81,
+          "type": "Value",
+          "is_safe": false,
+          "reason": "Duel très tactique et haché au stade Luigi Ferraris où les défenses prendront le pas sur l attaque."
         }
       ],
       "combos": [
         {
-          "id": "c_sam_banker",
-          "title": "💎 Combiné Royal (Samedi)",
-          "odds": 2.65,
-          "confidence": 92,
+          "id": "combo_sat_1",
+          "title": "🛡️ Combiné Safe Européen",
+          "odds": 2.38,
+          "confidence": 93,
           "picks": [
             {
-              "match": "Manchester City vs Fulham",
-              "league": "Premier League",
-              "pick": "Victoire Manchester City",
-              "odds": 1.25
-            },
-            {
-              "match": "Arsenal vs Southampton",
-              "league": "Premier League",
+              "match": "Arsenal vs Leeds",
               "pick": "Victoire Arsenal",
-              "odds": 1.2
+              "odds": 1.45
             },
             {
-              "match": "Real Madrid vs Villarreal",
-              "league": "LaLiga",
-              "pick": "Real Madrid gagne",
-              "odds": 1.3
+              "match": "Barça vs Getafe",
+              "pick": "Victoire Barça & +1.5 buts",
+              "odds": 1.52
             },
             {
-              "match": "Inter Milan vs Torino",
-              "league": "Serie A",
+              "match": "Inter vs Parme",
               "pick": "Victoire Inter Milan",
-              "odds": 1.35
+              "odds": 1.42
             }
           ],
-          "advice": "Le carré magique des favoris du samedi. Indice de fiabilité maximal de l'IA."
+          "advice": "Le trio incontournable des grands favoris à domicile avec des probabilités de victoire supérieures à 85%."
         },
         {
-          "id": "c_sam_fun",
-          "title": "🚀 Ticket Grosses Cotes Premier League",
-          "odds": 5.2,
-          "confidence": 84,
+          "id": "combo_sat_2",
+          "title": "⚖️ Combiné Équilibré Grandes Cotes",
+          "odds": 4.38,
+          "confidence": 86,
           "picks": [
             {
-              "match": "Crystal Palace vs Liverpool",
-              "league": "Premier League",
-              "pick": "Liverpool gagne",
-              "odds": 1.55
+              "match": "Real Madrid vs Villarreal",
+              "pick": "Victoire Real Madrid",
+              "odds": 1.58
             },
             {
-              "match": "Manchester City vs Fulham",
-              "league": "Premier League",
-              "pick": "Haaland buteur",
-              "odds": 1.55
-            },
-            {
-              "match": "Arsenal vs Southampton",
-              "league": "Premier League",
-              "pick": "Arsenal gagne par 2 buts d'écart",
+              "match": "Monaco vs Toulouse",
+              "pick": "Victoire Monaco",
               "odds": 1.6
             },
             {
-              "match": "Chelsea vs Forest",
-              "league": "Premier League",
-              "pick": "Cole Palmer décisif",
-              "odds": 1.45
+              "match": "Fenerbahçe vs Rizespor",
+              "pick": "Victoire Fenerbahçe",
+              "odds": 1.52
+            },
+            {
+              "match": "Chelsea vs Bournemouth",
+              "pick": "Chelsea ou Nul & +1.5",
+              "odds": 1.48
             }
           ],
-          "advice": "Idéal pour multiplier vos gains sur les stars du championnat anglais."
+          "advice": "Ticket équilibré à forte valeur ajoutée sur les cylindrées confirmées du samedi."
         }
       ]
     },
@@ -425,221 +415,222 @@ window.DEFAULT_HNS_DATA = {
       "label": "Dimanche (Dimanche 11 Octobre)",
       "short_label": "Dim 11 Oct",
       "date_str": "11 Octobre 2026",
-      "notice": "Super Dimanche avec Lamine Yamal (Barça), Nice-PSG, le Derby de Séville et Fiorentina-Milan !",
+      "notice": "Super Dimanche européen : le sommet Liverpool vs Man City en Premier League et la suite des 7 grands championnats !",
       "banker": {
-        "match": "Deportivo Alavés vs FC Barcelone",
-        "competition": "LaLiga (Espagne)",
-        "time": "16:15",
-        "pick": "Victoire FC Barcelone & Lamine Yamal décisif (but ou passe)",
-        "odds": 1.75,
+        "match": "Liverpool vs Manchester City",
+        "competition": "Premier League (Angleterre)",
+        "time": "17:30",
+        "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
+        "odds": 1.55,
         "confidence": 92,
-        "analysis": "Le FC Barcelone d'Hansi Flick est la meilleure attaque d'Europe avec 25 buts en Liga. Le prodige Lamine Yamal est dans la forme de sa vie (impliqué dans 9 buts). Alavés a perdu ses 3 derniers matchs face aux équipes du top 4."
+        "analysis": "Le choc planétaire du week-end à Anfield ! Salah vs Haaland, deux machines offensives qui ne ferment jamais le jeu. Historiquement, 9 des 10 dernières confrontations entre Liverpool et Man City ont produit des buts des deux côtés."
       },
       "singles": [
         {
-          "id": "d_bar",
-          "match": "Deportivo Alavés vs FC Barcelone",
-          "league": "LaLiga (Espagne)",
-          "time": "16:15",
-          "market": "Victoire & Prodige",
-          "pick": "Victoire Barça & Lamine Yamal décisif",
-          "odds": 1.75,
+          "id": "sun_1",
+          "match": "Liverpool vs Manchester City",
+          "league": "Premier League (Angleterre)",
+          "time": "17:30",
+          "market": "Buts & Spectacle",
+          "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
+          "odds": 1.55,
           "confidence": 92,
           "type": "Banker",
           "is_safe": true,
-          "reason": "Hansi Flick aligne son trident d'attaque au complet. Lamine Yamal et Lewandowski créent un danger permanent."
+          "reason": "Le sommet d Anfield garantit du spectacle et de l intensité avec Salah et Haaland en têtes d affiche."
         },
         {
-          "id": "d_psg",
-          "match": "OGC Nice vs Paris Saint-Germain",
-          "league": "Ligue 1 (France)",
-          "time": "20:45",
-          "market": "Double Chance & Buts",
-          "pick": "PSG ou Nul & Plus de 1.5 buts",
-          "odds": 1.55,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Le choc du dimanche soir en France. Le PSG de Luis Enrique possède la meilleure attaque avec Barcola et Dembélé intraitables."
-        },
-        {
-          "id": "d_juv",
-          "match": "Juventus vs Cagliari",
-          "league": "Serie A (Italie)",
-          "time": "12:30",
-          "market": "Victoire & Clean Sheet",
-          "pick": "Victoire Juventus sans encaisser de but",
-          "odds": 1.75,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "La Juventus de Thiago Motta a réussi l'exploit de n'encaisser ZÉRO but en Serie A après 6 journées ! Défense de fer."
-        },
-        {
-          "id": "d_ben",
-          "match": "Nacional vs Benfica",
-          "league": "Primeira Liga (Portugal)",
-          "time": "19:00",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Benfica & Plus de 1.5 buts",
-          "odds": 1.5,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "reason": "Benfica a retrouvé toute sa puissance avec Bruno Lage. Di María et Pavlidis sont largement au-dessus du promu."
-        },
-        {
-          "id": "d_bes",
-          "match": "Beşiktaş vs Gaziantep",
+          "id": "sun_2",
+          "match": "Beşiktaş vs Kocaelispor",
           "league": "Süper Lig (Turquie)",
-          "time": "19:00",
+          "time": "18:00",
           "market": "Résultat du Match",
           "pick": "Victoire Beşiktaş",
           "odds": 1.48,
+          "confidence": 92,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Beşiktaş au Tüpraş Stadyumu est impérial face aux promus avec Immobile et Rafa Silva en animateurs."
+        },
+        {
+          "id": "sun_3",
+          "match": "ESTAC Troyes vs Olympique de Marseille",
+          "league": "Ligue 1 (France)",
+          "time": "20:45",
+          "market": "Résultat du Match",
+          "pick": "Victoire Olympique de Marseille",
+          "odds": 1.58,
+          "confidence": 90,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "L OM de De Zerbi pratique un jeu offensif étouffant à l extérieur face à un bloc troyen souvent désorganisé."
+        },
+        {
+          "id": "sun_4",
+          "match": "Lazio vs Monza",
+          "league": "Serie A (Italie)",
+          "time": "15:00",
+          "market": "Résultat du Match",
+          "pick": "Victoire Lazio",
+          "odds": 1.52,
           "confidence": 91,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Beşiktaş reste sur 5 victoires d'affilée à domicile. Ciro Immobile et Rafa Silva sont insaisissables pour les défenses adverses."
+          "reason": "Le Stadio Olimpico est impitoyable pour Monza qui peine à exister hors de ses bases cette saison."
         },
         {
-          "id": "d_fey",
-          "match": "Feyenoord vs FC Twente",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "14:30",
+          "id": "sun_5",
+          "match": "Côme vs AS Rome",
+          "league": "Serie A (Italie)",
+          "time": "12:30",
           "market": "Double Chance & Buts",
-          "pick": "Feyenoord ou Nul & Plus de 1.5 buts",
-          "odds": 1.55,
-          "confidence": 88,
+          "pick": "AS Rome ou Nul & Moins de 3.5 buts",
+          "odds": 1.46,
+          "confidence": 90,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Le chaudron de De Kuip porte Feyenoord qui reste invaincu à domicile face à Twente sur les 5 dernières saisons."
+          "reason": "La Roma de Dybala gère avec métier ce genre de déplacement chez le promu lombard."
         },
         {
-          "id": "d_bri",
-          "match": "Brighton vs Tottenham",
-          "league": "Premier League (Angleterre)",
-          "time": "17:30",
-          "market": "Les Deux Marquent & Buts",
-          "pick": "BTTS & Plus de 2.5 buts",
-          "odds": 1.7,
-          "confidence": 89,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Deux des équipes les plus spectaculaires au monde avec Postecoglou et Hurzeler. 100% de chances de voir des buts des deux côtés."
-        },
-        {
-          "id": "d_avl",
-          "match": "Aston Villa vs Manchester United",
-          "league": "Premier League (Angleterre)",
+          "id": "sun_6",
+          "match": "OGC Nice vs RC Strasbourg Alsace",
+          "league": "Ligue 1 (France)",
           "time": "15:00",
           "market": "Double Chance",
-          "pick": "Aston Villa ou Nul",
-          "odds": 1.52,
+          "pick": "OGC Nice ou Nul",
+          "odds": 1.45,
+          "confidence": 89,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "L Allianz Riviera reste imprenable pour Nice qui s appuie sur une rigueur tactique éprouvée."
+        },
+        {
+          "id": "sun_7",
+          "match": "Stade Rennais FC vs AJ Auxerre",
+          "league": "Ligue 1 (France)",
+          "time": "17:15",
+          "market": "Double Chance & Buts",
+          "pick": "Rennes ou Nul & Plus de 1.5 buts",
+          "odds": 1.5,
           "confidence": 88,
           "type": "Safe",
           "is_safe": true,
-          "reason": "Aston Villa d'Unai Emery vient de battre le Bayern Munich à Villa Park. Man United est en plein doute tactique."
+          "reason": "Le Roazhon Park pousse Rennes vers l avant. Auxerre concède de nombreuses occasions sur les côtés."
         },
         {
-          "id": "d_fio",
-          "match": "Fiorentina vs AC Milan",
-          "league": "Serie A (Italie)",
-          "time": "20:45",
-          "market": "Double Chance & Buts",
-          "pick": "AC Milan ou Nul & Plus de 1.5 buts",
-          "odds": 1.62,
-          "confidence": 87,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Le Milan AC de Fonseca est libéré après sa victoire dans le derby. Christian Pulisic est le joueur le plus décisif d'Italie."
-        },
-        {
-          "id": "d_sev",
-          "match": "Séville FC vs Real Betis",
+          "id": "sun_8",
+          "match": "Real Betis vs Osasuna",
           "league": "LaLiga (Espagne)",
           "time": "18:30",
           "market": "Double Chance",
           "pick": "Real Betis ou Nul",
-          "odds": 1.6,
-          "confidence": 86,
-          "type": "Value",
-          "is_safe": false,
-          "reason": "Le Grand Derby de Séville. Le Betis de Pellegrini avec Lo Celso affiche un niveau de jeu et une sérénité bien supérieurs."
+          "odds": 1.42,
+          "confidence": 91,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Le Benito Villamarín est une citadelle pour le Betis d Isco qui ne perd quasiment jamais contre Osasuna chez lui."
         },
         {
-          "id": "d_lyo",
-          "match": "Olympique Lyonnais vs FC Nantes",
-          "league": "Ligue 1 (France)",
-          "time": "15:00",
+          "id": "sun_9",
+          "match": "Real Sociedad vs Deportivo La Corogne",
+          "league": "LaLiga (Espagne)",
+          "time": "16:15",
           "market": "Résultat du Match",
-          "pick": "Victoire Olympique Lyonnais",
+          "pick": "Victoire Real Sociedad",
+          "odds": 1.55,
+          "confidence": 89,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "La Real Sociedad à la Reale Arena domine la possession et le tempo face à un adversaire en rodage."
+        },
+        {
+          "id": "sun_10",
+          "match": "FC Utrecht vs Willem II",
+          "league": "Eredivisie (Pays-Bas)",
+          "time": "12:15",
+          "market": "Résultat du Match",
+          "pick": "Victoire FC Utrecht",
+          "odds": 1.52,
+          "confidence": 89,
+          "type": "Safe",
+          "is_safe": true,
+          "reason": "Utrecht au Stadion Galgenwaard capitalise sur ses temps forts face à un Willem II friable."
+        },
+        {
+          "id": "sun_11",
+          "match": "Crystal Palace vs Nottingham Forest",
+          "league": "Premier League (Angleterre)",
+          "time": "15:00",
+          "market": "Total Buts",
+          "pick": "Moins de 2.5 buts",
           "odds": 1.65,
-          "confidence": 87,
+          "confidence": 84,
           "type": "Value",
           "is_safe": false,
-          "reason": "Lyon enchaîne les victoires avec un Rayan Cherki étincelant et Alexandre Lacazette en renard des surfaces."
+          "reason": "Selhurst Park sera le théâtre d un affrontement âpre entre deux blocs médians très resserrés."
+        },
+        {
+          "id": "sun_12",
+          "match": "Racing Santander vs Valence",
+          "league": "LaLiga (Espagne)",
+          "time": "21:00",
+          "market": "Double Chance",
+          "pick": "Valence ou Nul",
+          "odds": 1.52,
+          "confidence": 82,
+          "type": "Value",
+          "is_safe": false,
+          "reason": "Valence a l avantage de l effectif mais Santander vend chèrement sa peau à El Sardinero."
         }
       ],
       "combos": [
         {
-          "id": "c_dim_elite",
-          "title": "🌟 Combiné Chocs du Dimanche",
-          "odds": 3.15,
+          "id": "combo_sun_1",
+          "title": "🛡️ Combiné Safe Dominical",
+          "odds": 2.34,
           "confidence": 91,
           "picks": [
             {
-              "match": "Deportivo Alavés vs FC Barcelone",
-              "league": "LaLiga",
-              "pick": "Victoire FC Barcelone",
-              "odds": 1.4
+              "match": "Troyes vs Marseille",
+              "pick": "Victoire OM",
+              "odds": 1.58
             },
             {
-              "match": "Nice vs Paris Saint-Germain",
-              "league": "Ligue 1",
-              "pick": "PSG ou Nul",
-              "odds": 1.25
-            },
-            {
-              "match": "Nacional vs Benfica",
-              "league": "Primeira Liga",
-              "pick": "Victoire Benfica",
-              "odds": 1.3
-            },
-            {
-              "match": "Beşiktaş vs Gaziantep",
-              "league": "Süper Lig",
+              "match": "Beşiktaş vs Kocaelispor",
               "pick": "Victoire Beşiktaş",
-              "odds": 1.35
+              "odds": 1.48
             }
           ],
-          "advice": "Quatre géants européens en quête de leadership pour conclure le week-end en beauté."
+          "advice": "Sélection des deux favoris les plus fiables du dimanche sur des confrontations très déséquilibrées."
         },
         {
-          "id": "c_dim_buts",
-          "title": "🔥 Spécial Festival de Buts (Cote 5.80)",
-          "odds": 5.8,
+          "id": "combo_sun_2",
+          "title": "⚡ Combiné Choc & Élite",
+          "odds": 4.22,
           "confidence": 86,
           "picks": [
             {
-              "match": "Brighton vs Tottenham",
-              "league": "Premier League",
-              "pick": "Les 2 équipes marquent & +2.5",
-              "odds": 1.7
+              "match": "Liverpool vs Man City",
+              "pick": "Les 2 équipes marquent ou +2.5",
+              "odds": 1.55
             },
             {
-              "match": "Alavés vs FC Barcelone",
-              "league": "LaLiga",
-              "pick": "Lamine Yamal décisif",
-              "odds": 1.75
+              "match": "Lazio vs Monza",
+              "pick": "Victoire Lazio",
+              "odds": 1.52
             },
             {
-              "match": "Fiorentina vs AC Milan",
-              "league": "Serie A",
-              "pick": "Plus de 2.5 buts",
-              "odds": 1.78
+              "match": "Real Betis vs Osasuna",
+              "pick": "Betis ou Nul",
+              "odds": 1.42
+            },
+            {
+              "match": "FC Utrecht vs Willem II",
+              "pick": "Victoire Utrecht",
+              "odds": 1.52
             }
           ],
-          "advice": "Cote élevée basée sur les équipes affichant les meilleurs xG (Expected Goals) d'Europe."
+          "advice": "Ticket combiné premium mêlant le choc d Anfield et trois bases solides en Italie, Espagne et Pays-Bas."
         }
       ]
     }

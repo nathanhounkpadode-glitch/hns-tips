@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (7 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v5";
+const DATA_VERSION = "2026-10-09-v7";
 let appData = null;
 let currentDay = "today";
 let currentViewMode = "safe"; // 'safe', 'all', or 'combos'
@@ -159,7 +159,8 @@ function updateLeagueCounts(day) {
         "countSerieA": "Serie A (Italie)",
         "countPrimeira": "Primeira Liga (Portugal)",
         "countSuperLig": "Süper Lig (Turquie)",
-        "countEredivisie": "Eredivisie (Pays-Bas)"
+        "countEredivisie": "Eredivisie (Pays-Bas)",
+        "countBundesliga": "Bundesliga (Allemagne)"
     };
 
     for (const [elemId, leagueName] of Object.entries(leaguesMap)) {
