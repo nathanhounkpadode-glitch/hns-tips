@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v28";
+const DATA_VERSION = "2026-10-10-v29";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -1615,127 +1615,601 @@ async function autoSyncLiveFixtures(userTriggered = false) {
 // ========================================================
 // SCANNER IA DE CAPTURES D'ÉCRAN (OCR & RECONNAISSANCE CLUB)
 // ========================================================
-const KNOWN_CLUBS = [
+const STATIC_KNOWN_CLUBS = [
     // Premier League
-    { names: ["arsenal"], league: "Premier League (Angleterre)", display: "Arsenal" },
-    { names: ["chelsea"], league: "Premier League (Angleterre)", display: "Chelsea" },
-    { names: ["liverpool"], league: "Premier League (Angleterre)", display: "Liverpool" },
-    { names: ["manchester city", "man city", "mancity"], league: "Premier League (Angleterre)", display: "Manchester City" },
-    { names: ["manchester united", "man utd", "man united"], league: "Premier League (Angleterre)", display: "Manchester United" },
-    { names: ["tottenham", "spurs"], league: "Premier League (Angleterre)", display: "Tottenham" },
-    { names: ["newcastle"], league: "Premier League (Angleterre)", display: "Newcastle United" },
-    { names: ["aston villa"], league: "Premier League (Angleterre)", display: "Aston Villa" },
-    { names: ["brighton"], league: "Premier League (Angleterre)", display: "Brighton" },
-    { names: ["west ham"], league: "Premier League (Angleterre)", display: "West Ham" },
-    { names: ["everton"], league: "Premier League (Angleterre)", display: "Everton" },
-    { names: ["fulham"], league: "Premier League (Angleterre)", display: "Fulham" },
-    { names: ["wolves", "wolverhampton"], league: "Premier League (Angleterre)", display: "Wolves" },
-    { names: ["bournemouth"], league: "Premier League (Angleterre)", display: "AFC Bournemouth" },
-    { names: ["brentford"], league: "Premier League (Angleterre)", display: "Brentford" },
-    { names: ["crystal palace"], league: "Premier League (Angleterre)", display: "Crystal Palace" },
-    { names: ["nottingham", "nottingham forest"], league: "Premier League (Angleterre)", display: "Nottingham Forest" },
-    { names: ["leeds", "leeds united"], league: "Premier League (Angleterre)", display: "Leeds United" },
-    { names: ["leicester", "leicester city"], league: "Premier League (Angleterre)", display: "Leicester City" },
-    { names: ["ipswich", "ipswich town"], league: "Premier League (Angleterre)", display: "Ipswich Town" },
-    { names: ["southampton"], league: "Premier League (Angleterre)", display: "Southampton" },
+    { names: ["arsenal", "ars", "gunners"], league: "Premier League (Angleterre)", display: "Arsenal" },
+    { names: ["chelsea", "che", "blues"], league: "Premier League (Angleterre)", display: "Chelsea" },
+    { names: ["liverpool", "liv", "reds"], league: "Premier League (Angleterre)", display: "Liverpool" },
+    { names: ["manchester city", "man city", "mancity", "mci"], league: "Premier League (Angleterre)", display: "Manchester City" },
+    { names: ["manchester united", "man utd", "man united", "mun"], league: "Premier League (Angleterre)", display: "Manchester United" },
+    { names: ["tottenham", "tottenham hotspur", "spurs", "tot"], league: "Premier League (Angleterre)", display: "Tottenham" },
+    { names: ["newcastle", "newcastle united", "new"], league: "Premier League (Angleterre)", display: "Newcastle United" },
+    { names: ["aston villa", "villa", "avl"], league: "Premier League (Angleterre)", display: "Aston Villa" },
+    { names: ["brighton", "brighton & hove", "brighton and hove albion", "brighton & hove albion", "bha"], league: "Premier League (Angleterre)", display: "Brighton & Hove Albion" },
+    { names: ["west ham", "west ham united", "whu"], league: "Premier League (Angleterre)", display: "West Ham" },
+    { names: ["everton", "eve"], league: "Premier League (Angleterre)", display: "Everton" },
+    { names: ["fulham", "ful"], league: "Premier League (Angleterre)", display: "Fulham" },
+    { names: ["wolves", "wolverhampton", "wolverhampton wanderers", "wol"], league: "Premier League (Angleterre)", display: "Wolves" },
+    { names: ["bournemouth", "afc bournemouth", "bou"], league: "Premier League (Angleterre)", display: "AFC Bournemouth" },
+    { names: ["brentford", "bre"], league: "Premier League (Angleterre)", display: "Brentford" },
+    { names: ["crystal palace", "palace", "cry"], league: "Premier League (Angleterre)", display: "Crystal Palace" },
+    { names: ["nottingham", "nottingham forest", "nfo"], league: "Premier League (Angleterre)", display: "Nottingham Forest" },
+    { names: ["leeds", "leeds united", "lee"], league: "Premier League (Angleterre)", display: "Leeds United" },
+    { names: ["leicester", "leicester city", "lei"], league: "Premier League (Angleterre)", display: "Leicester City" },
+    { names: ["ipswich", "ipswich town", "ips"], league: "Premier League (Angleterre)", display: "Ipswich Town" },
+    { names: ["southampton", "sou"], league: "Premier League (Angleterre)", display: "Southampton" },
+    { names: ["sunderland", "sunderland afc", "sun"], league: "Premier League (Angleterre)", display: "Sunderland" },
+    { names: ["hull city", "hull"], league: "Premier League (Angleterre)", display: "Hull City" },
+    { names: ["coventry", "coventry city"], league: "Premier League (Angleterre)", display: "Coventry City" },
+
     // LaLiga
-    { names: ["real madrid", "madrid"], league: "LaLiga (Espagne)", display: "Real Madrid" },
-    { names: ["barcelona", "barcelone", "barça", "barca"], league: "LaLiga (Espagne)", display: "FC Barcelone" },
-    { names: ["atletico", "atlético", "atletico madrid"], league: "LaLiga (Espagne)", display: "Atlético Madrid" },
-    { names: ["sevilla", "seville"], league: "LaLiga (Espagne)", display: "Sevilla" },
-    { names: ["real sociedad", "sociedad"], league: "LaLiga (Espagne)", display: "Real Sociedad" },
-    { names: ["athletic", "bilbao", "athletic bilbao"], league: "LaLiga (Espagne)", display: "Athletic Club" },
-    { names: ["villarreal"], league: "LaLiga (Espagne)", display: "Villarreal" },
-    { names: ["betis", "real betis"], league: "LaLiga (Espagne)", display: "Real Betis" },
-    { names: ["girona", "girone"], league: "LaLiga (Espagne)", display: "Girona" },
-    { names: ["valencia", "valence"], league: "LaLiga (Espagne)", display: "Valencia" },
+    { names: ["real madrid", "madrid", "rma"], league: "LaLiga (Espagne)", display: "Real Madrid" },
+    { names: ["barcelona", "barcelone", "barça", "barca", "fcb"], league: "LaLiga (Espagne)", display: "FC Barcelone" },
+    { names: ["atletico", "atlético", "atletico madrid", "atlético madrid", "atm"], league: "LaLiga (Espagne)", display: "Atlético Madrid" },
+    { names: ["sevilla", "seville", "sev"], league: "LaLiga (Espagne)", display: "Sevilla" },
+    { names: ["real sociedad", "sociedad", "rso"], league: "LaLiga (Espagne)", display: "Real Sociedad" },
+    { names: ["athletic", "bilbao", "athletic bilbao", "athletic club", "ath"], league: "LaLiga (Espagne)", display: "Athletic Club" },
+    { names: ["villarreal", "vil"], league: "LaLiga (Espagne)", display: "Villarreal" },
+    { names: ["betis", "real betis", "bet"], league: "LaLiga (Espagne)", display: "Real Betis" },
+    { names: ["girona", "girone", "gir"], league: "LaLiga (Espagne)", display: "Girona" },
+    { names: ["valencia", "valence", "val"], league: "LaLiga (Espagne)", display: "Valencia" },
     { names: ["mallorca", "majorque"], league: "LaLiga (Espagne)", display: "Mallorca" },
-    { names: ["osasuna"], league: "LaLiga (Espagne)", display: "Osasuna" },
-    { names: ["celta", "celta vigo"], league: "LaLiga (Espagne)", display: "Celta Vigo" },
-    { names: ["espanyol"], league: "LaLiga (Espagne)", display: "Espanyol" },
-    { names: ["rayo", "rayo vallecano"], league: "LaLiga (Espagne)", display: "Rayo Vallecano" },
-    { names: ["getafe"], league: "LaLiga (Espagne)", display: "Getafe" },
-    { names: ["alaves", "alavés"], league: "LaLiga (Espagne)", display: "Deportivo Alavés" },
-    { names: ["las palmas"], league: "LaLiga (Espagne)", display: "UD Las Palmas" },
-    { names: ["leganes", "leganés"], league: "LaLiga (Espagne)", display: "CD Leganés" },
-    { names: ["valladolid"], league: "LaLiga (Espagne)", display: "Real Valladolid" },
-    { names: ["malaga", "málaga"], league: "LaLiga (Espagne)", display: "Málaga CF" },
+    { names: ["osasuna", "osa"], league: "LaLiga (Espagne)", display: "Osasuna" },
+    { names: ["celta", "celta vigo", "celta de vigo", "cel"], league: "LaLiga (Espagne)", display: "Celta Vigo" },
+    { names: ["espanyol", "esp"], league: "LaLiga (Espagne)", display: "Espanyol" },
+    { names: ["rayo", "rayo vallecano", "ray"], league: "LaLiga (Espagne)", display: "Rayo Vallecano" },
+    { names: ["getafe", "get"], league: "LaLiga (Espagne)", display: "Getafe" },
+    { names: ["alaves", "alavés", "deportivo alaves", "deportivo alavés", "ala"], league: "LaLiga (Espagne)", display: "Deportivo Alavés" },
+    { names: ["las palmas", "ud las palmas", "lpa"], league: "LaLiga (Espagne)", display: "UD Las Palmas" },
+    { names: ["leganes", "leganés", "cd leganes"], league: "LaLiga (Espagne)", display: "CD Leganés" },
+    { names: ["valladolid", "real valladolid"], league: "LaLiga (Espagne)", display: "Real Valladolid" },
+    { names: ["malaga", "málaga", "málaga cf"], league: "LaLiga (Espagne)", display: "Málaga CF" },
+    { names: ["elche", "elche cf"], league: "LaLiga (Espagne)", display: "Elche" },
+    { names: ["deportivo", "deportivo la coruna", "depor"], league: "LaLiga (Espagne)", display: "Deportivo" },
+    { names: ["racing santander", "santander"], league: "LaLiga (Espagne)", display: "Racing Santander" },
+    { names: ["levante", "levante ud"], league: "LaLiga (Espagne)", display: "Levante" },
+
     // Ligue 1
-    { names: ["psg", "paris saint-germain", "paris sg"], league: "Ligue 1 (France)", display: "Paris Saint-Germain" },
-    { names: ["marseille", "om"], league: "Ligue 1 (France)", display: "Marseille" },
-    { names: ["lyon", "ol"], league: "Ligue 1 (France)", display: "Lyon" },
-    { names: ["monaco"], league: "Ligue 1 (France)", display: "Monaco" },
+    { names: ["psg", "paris saint-germain", "paris saint germain", "paris sg"], league: "Ligue 1 (France)", display: "Paris Saint-Germain" },
+    { names: ["marseille", "om", "olympique de marseille"], league: "Ligue 1 (France)", display: "Marseille" },
+    { names: ["lyon", "ol", "olympique lyonnais"], league: "Ligue 1 (France)", display: "Lyon" },
+    { names: ["monaco", "as monaco", "asm"], league: "Ligue 1 (France)", display: "Monaco" },
     { names: ["lille", "losc"], league: "Ligue 1 (France)", display: "Lille" },
-    { names: ["lens"], league: "Ligue 1 (France)", display: "Lens" },
-    { names: ["rennes"], league: "Ligue 1 (France)", display: "Rennes" },
-    { names: ["nice"], league: "Ligue 1 (France)", display: "Nice" },
-    { names: ["strasbourg"], league: "Ligue 1 (France)", display: "Strasbourg" },
-    { names: ["brest"], league: "Ligue 1 (France)", display: "Stade Brestois" },
-    { names: ["reims"], league: "Ligue 1 (France)", display: "Stade de Reims" },
-    { names: ["toulouse"], league: "Ligue 1 (France)", display: "Toulouse FC" },
-    { names: ["nantes"], league: "Ligue 1 (France)", display: "FC Nantes" },
+    { names: ["lens", "rc lens"], league: "Ligue 1 (France)", display: "Lens" },
+    { names: ["rennes", "stade rennais"], league: "Ligue 1 (France)", display: "Rennes" },
+    { names: ["nice", "ogc nice"], league: "Ligue 1 (France)", display: "Nice" },
+    { names: ["strasbourg", "rc strasbourg"], league: "Ligue 1 (France)", display: "Strasbourg" },
+    { names: ["brest", "stade brestois"], league: "Ligue 1 (France)", display: "Stade Brestois" },
+    { names: ["reims", "stade de reims"], league: "Ligue 1 (France)", display: "Stade de Reims" },
+    { names: ["toulouse", "toulouse fc"], league: "Ligue 1 (France)", display: "Toulouse FC" },
+    { names: ["nantes", "fc nantes"], league: "Ligue 1 (France)", display: "FC Nantes" },
     { names: ["montpellier"], league: "Ligue 1 (France)", display: "Montpellier" },
     { names: ["saint-etienne", "saint etienne", "asse"], league: "Ligue 1 (France)", display: "Saint-Étienne" },
-    { names: ["angers"], league: "Ligue 1 (France)", display: "Angers SCO" },
-    { names: ["auxerre"], league: "Ligue 1 (France)", display: "AJ Auxerre" },
-    { names: ["le havre"], league: "Ligue 1 (France)", display: "Le Havre" },
+    { names: ["angers", "angers sco"], league: "Ligue 1 (France)", display: "Angers SCO" },
+    { names: ["auxerre", "aj auxerre"], league: "Ligue 1 (France)", display: "AJ Auxerre" },
+    { names: ["le havre", "le havre ac", "hac"], league: "Ligue 1 (France)", display: "Le Havre" },
+    { names: ["paris fc", "pfc"], league: "Ligue 1 (France)", display: "Paris FC" },
+    { names: ["troyes", "estac"], league: "Ligue 1 (France)", display: "Troyes" },
+    { names: ["lorient", "fcl"], league: "Ligue 1 (France)", display: "Lorient" },
+
     // Serie A
-    { names: ["inter", "inter milan"], league: "Serie A (Italie)", display: "Inter Milan" },
-    { names: ["milan", "ac milan"], league: "Serie A (Italie)", display: "AC Milan" },
-    { names: ["juventus", "juve"], league: "Serie A (Italie)", display: "Juventus" },
-    { names: ["napoli", "naples"], league: "Serie A (Italie)", display: "Napoli" },
-    { names: ["roma", "as roma"], league: "Serie A (Italie)", display: "AS Roma" },
-    { names: ["lazio"], league: "Serie A (Italie)", display: "Lazio" },
-    { names: ["atalanta"], league: "Serie A (Italie)", display: "Atalanta" },
-    { names: ["fiorentina"], league: "Serie A (Italie)", display: "Fiorentina" },
-    { names: ["torino"], league: "Serie A (Italie)", display: "Torino" },
-    { names: ["bologna", "bologne"], league: "Serie A (Italie)", display: "Bologna" },
+    { names: ["inter", "inter milan", "internazionale", "int"], league: "Serie A (Italie)", display: "Inter Milan" },
+    { names: ["milan", "ac milan", "mil"], league: "Serie A (Italie)", display: "AC Milan" },
+    { names: ["juventus", "juve", "juv"], league: "Serie A (Italie)", display: "Juventus" },
+    { names: ["napoli", "naples", "nap"], league: "Serie A (Italie)", display: "Napoli" },
+    { names: ["roma", "as roma", "asr"], league: "Serie A (Italie)", display: "AS Roma" },
+    { names: ["lazio", "ss lazio", "laz"], league: "Serie A (Italie)", display: "Lazio" },
+    { names: ["atalanta", "ata"], league: "Serie A (Italie)", display: "Atalanta" },
+    { names: ["fiorentina", "fio"], league: "Serie A (Italie)", display: "Fiorentina" },
+    { names: ["torino", "tor"], league: "Serie A (Italie)", display: "Torino" },
+    { names: ["bologna", "bologne", "bol"], league: "Serie A (Italie)", display: "Bologna" },
     { names: ["monza"], league: "Serie A (Italie)", display: "Monza" },
-    { names: ["cagliari"], league: "Serie A (Italie)", display: "Cagliari" },
+    { names: ["cagliari", "cag"], league: "Serie A (Italie)", display: "Cagliari" },
     { names: ["verona", "hellas verona"], league: "Serie A (Italie)", display: "Hellas Verona" },
-    { names: ["genoa"], league: "Serie A (Italie)", display: "Genoa" },
+    { names: ["genoa", "gen"], league: "Serie A (Italie)", display: "Genoa" },
     { names: ["como"], league: "Serie A (Italie)", display: "Como" },
-    { names: ["parma", "parme"], league: "Serie A (Italie)", display: "Parma" },
-    { names: ["udinese"], league: "Serie A (Italie)", display: "Udinese" },
-    { names: ["empoli"], league: "Serie A (Italie)", display: "Empoli" },
+    { names: ["parma", "parme", "par"], league: "Serie A (Italie)", display: "Parma" },
+    { names: ["udinese", "udi"], league: "Serie A (Italie)", display: "Udinese" },
+    { names: ["empoli", "emp"], league: "Serie A (Italie)", display: "Empoli" },
+    { names: ["venezia", "venise"], league: "Serie A (Italie)", display: "Venezia" },
+    { names: ["lecce"], league: "Serie A (Italie)", display: "Lecce" },
+    { names: ["sassuolo"], league: "Serie A (Italie)", display: "Sassuolo" },
+
     // Bundesliga
-    { names: ["bayern", "bayern munich", "bayern münchen"], league: "Bundesliga (Allemagne)", display: "Bayern Munich" },
+    { names: ["bayern", "bayern munich", "bayern münchen", "fcb"], league: "Bundesliga (Allemagne)", display: "Bayern Munich" },
     { names: ["dortmund", "borussia dortmund", "bvb"], league: "Bundesliga (Allemagne)", display: "Borussia Dortmund" },
-    { names: ["leverkusen", "bayer leverkusen"], league: "Bundesliga (Allemagne)", display: "Bayer Leverkusen" },
-    { names: ["leipzig", "rb leipzig"], league: "Bundesliga (Allemagne)", display: "RB Leipzig" },
-    { names: ["frankfurt", "eintracht frankfurt"], league: "Bundesliga (Allemagne)", display: "Eintracht Frankfurt" },
-    { names: ["stuttgart"], league: "Bundesliga (Allemagne)", display: "VfB Stuttgart" },
-    { names: ["bremen", "werder bremen", "werder"], league: "Bundesliga (Allemagne)", display: "Werder Bremen" },
-    { names: ["wolfsburg"], league: "Bundesliga (Allemagne)", display: "VfL Wolfsburg" },
-    { names: ["mainz"], league: "Bundesliga (Allemagne)", display: "FSV Mainz 05" },
-    { names: ["freiburg", "fribourg"], league: "Bundesliga (Allemagne)", display: "SC Freiburg" },
-    { names: ["augsburg"], league: "Bundesliga (Allemagne)", display: "FC Augsburg" },
-    { names: ["heidenheim"], league: "Bundesliga (Allemagne)", display: "FC Heidenheim" },
-    { names: ["hoffenheim"], league: "Bundesliga (Allemagne)", display: "TSG Hoffenheim" },
-    { names: ["union berlin"], league: "Bundesliga (Allemagne)", display: "Union Berlin" },
-    { names: ["st. pauli", "st pauli"], league: "Bundesliga (Allemagne)", display: "FC St. Pauli" },
-    { names: ["bochum"], league: "Bundesliga (Allemagne)", display: "VfL Bochum" },
-    { names: ["gladbach", "borussia mönchengladbach"], league: "Bundesliga (Allemagne)", display: "Borussia Mönchengladbach" },
-    // Portugal, Turquie, Pays-Bas
-    { names: ["sporting", "sporting cp", "sporting portugal"], league: "Primeira Liga (Portugal)", display: "Sporting CP" },
-    { names: ["benfica"], league: "Primeira Liga (Portugal)", display: "Benfica" },
-    { names: ["porto", "fc porto"], league: "Primeira Liga (Portugal)", display: "FC Porto" },
-    { names: ["braga"], league: "Primeira Liga (Portugal)", display: "Braga" },
-    { names: ["vitoria", "guimaraes", "vitória sc"], league: "Primeira Liga (Portugal)", display: "Vitória SC" },
-    { names: ["famalicao", "famalicão"], league: "Primeira Liga (Portugal)", display: "FC Famalicão" },
+    { names: ["leverkusen", "bayer leverkusen", "b04"], league: "Bundesliga (Allemagne)", display: "Bayer Leverkusen" },
+    { names: ["leipzig", "rb leipzig", "rbl"], league: "Bundesliga (Allemagne)", display: "RB Leipzig" },
+    { names: ["frankfurt", "eintracht frankfurt", "sge"], league: "Bundesliga (Allemagne)", display: "Eintracht Frankfurt" },
+    { names: ["stuttgart", "vfb stuttgart", "vfb"], league: "Bundesliga (Allemagne)", display: "VfB Stuttgart" },
+    { names: ["bremen", "werder bremen", "werder", "svw"], league: "Bundesliga (Allemagne)", display: "Werder Bremen" },
+    { names: ["wolfsburg", "vfl wolfsburg", "wob"], league: "Bundesliga (Allemagne)", display: "VfL Wolfsburg" },
+    { names: ["mainz", "fsv mainz", "m05"], league: "Bundesliga (Allemagne)", display: "FSV Mainz 05" },
+    { names: ["freiburg", "fribourg", "sc freiburg", "scf"], league: "Bundesliga (Allemagne)", display: "SC Freiburg" },
+    { names: ["augsburg", "fc augsburg", "fca"], league: "Bundesliga (Allemagne)", display: "FC Augsburg" },
+    { names: ["heidenheim", "fc heidenheim"], league: "Bundesliga (Allemagne)", display: "FC Heidenheim" },
+    { names: ["hoffenheim", "tsg hoffenheim"], league: "Bundesliga (Allemagne)", display: "TSG Hoffenheim" },
+    { names: ["union berlin", "1. fc union berlin", "1 fc union berlin"], league: "Bundesliga (Allemagne)", display: "Union Berlin" },
+    { names: ["st. pauli", "st pauli", "fc st. pauli"], league: "Bundesliga (Allemagne)", display: "FC St. Pauli" },
+    { names: ["bochum", "vfl bochum"], league: "Bundesliga (Allemagne)", display: "VfL Bochum" },
+    { names: ["gladbach", "borussia mönchengladbach", "borussia monchengladbach", "bmg"], league: "Bundesliga (Allemagne)", display: "Borussia Mönchengladbach" },
+    { names: ["cologne", "koln", "köln", "fc cologne"], league: "Bundesliga (Allemagne)", display: "FC Cologne" },
+    { names: ["hamburg", "hsv", "hamburger sv"], league: "Bundesliga (Allemagne)", display: "Hamburg SV" },
+    { names: ["schalke", "schalke 04", "s04"], league: "Bundesliga (Allemagne)", display: "Schalke 04" },
+
+    // Portugal
+    { names: ["sporting", "sporting cp", "sporting portugal", "scp"], league: "Primeira Liga (Portugal)", display: "Sporting CP" },
+    { names: ["benfica", "sl benfica", "slb"], league: "Primeira Liga (Portugal)", display: "Benfica" },
+    { names: ["porto", "fc porto", "fcp"], league: "Primeira Liga (Portugal)", display: "FC Porto" },
+    { names: ["braga", "sc braga"], league: "Primeira Liga (Portugal)", display: "Braga" },
+    { names: ["vitoria", "guimaraes", "vitória sc", "vitoria guimaraes", "vitória de guimaraes"], league: "Primeira Liga (Portugal)", display: "Vitória SC" },
+    { names: ["famalicao", "famalicão", "fc famalicao", "fc famalicão"], league: "Primeira Liga (Portugal)", display: "FC Famalicão" },
     { names: ["rio ave"], league: "Primeira Liga (Portugal)", display: "Rio Ave" },
-    { names: ["galatasaray"], league: "Süper Lig (Turquie)", display: "Galatasaray" },
-    { names: ["fenerbahce", "fenerbahçe"], league: "Süper Lig (Turquie)", display: "Fenerbahçe" },
-    { names: ["besiktas", "beşiktaş"], league: "Süper Lig (Turquie)", display: "Besiktas" },
-    { names: ["trabzonspor"], league: "Süper Lig (Turquie)", display: "Trabzonspor" },
-    { names: ["basaksehir", "başakşehir"], league: "Süper Lig (Turquie)", display: "Istanbul Başakşehir" },
+    { names: ["casa pia", "casa pia ac"], league: "Primeira Liga (Portugal)", display: "Casa Pia" },
+    { names: ["santa clara", "cd santa clara"], league: "Primeira Liga (Portugal)", display: "Santa Clara" },
+    { names: ["moreirense"], league: "Primeira Liga (Portugal)", display: "Moreirense" },
+    { names: ["gil vicente"], league: "Primeira Liga (Portugal)", display: "Gil Vicente" },
+    { names: ["estoril", "estoril praia"], league: "Primeira Liga (Portugal)", display: "Estoril" },
+    { names: ["estrela", "estrela amadora"], league: "Primeira Liga (Portugal)", display: "Estrela" },
+    { names: ["arouca", "fc arouca"], league: "Primeira Liga (Portugal)", display: "Arouca" },
+    { names: ["nacional", "cd nacional", "c.d. nacional"], league: "Primeira Liga (Portugal)", display: "C.D. Nacional" },
+    { names: ["academico de viseu", "académico de viseu", "viseu"], league: "Primeira Liga (Portugal)", display: "Académico de Viseu" },
+    { names: ["alverca"], league: "Primeira Liga (Portugal)", display: "Alverca" },
+    { names: ["maritimo"], league: "Primeira Liga (Portugal)", display: "Maritimo" },
+
+    // Turquie
+    { names: ["galatasaray", "gs"], league: "Süper Lig (Turquie)", display: "Galatasaray" },
+    { names: ["fenerbahce", "fenerbahçe", "fb"], league: "Süper Lig (Turquie)", display: "Fenerbahçe" },
+    { names: ["besiktas", "beşiktaş", "bjk"], league: "Süper Lig (Turquie)", display: "Besiktas" },
+    { names: ["trabzonspor", "ts"], league: "Süper Lig (Turquie)", display: "Trabzonspor" },
+    { names: ["basaksehir", "başakşehir", "istanbul basaksehir", "istanbul başakşehir"], league: "Süper Lig (Turquie)", display: "Istanbul Başakşehir" },
+    { names: ["samsunspor"], league: "Süper Lig (Turquie)", display: "Samsunspor" },
+    { names: ["alanyaspor"], league: "Süper Lig (Turquie)", display: "Alanyaspor" },
+    { names: ["gaziantep", "gaziantep fk"], league: "Süper Lig (Turquie)", display: "Gaziantep FK" },
+    { names: ["kasimpasa", "kasımpaşa"], league: "Süper Lig (Turquie)", display: "Kasimpasa" },
+    { names: ["caykur rizespor", "rizespor"], league: "Süper Lig (Turquie)", display: "Caykur Rizespor" },
+    { names: ["konyaspor"], league: "Süper Lig (Turquie)", display: "Konyaspor" },
+    { names: ["eyupspor", "eyüpspor"], league: "Süper Lig (Turquie)", display: "Eyupspor" },
+    { names: ["goztepe", "göztepe"], league: "Süper Lig (Turquie)", display: "Goztepe" },
+
+    // Pays-Bas
     { names: ["psv", "psv eindhoven"], league: "Eredivisie (Pays-Bas)", display: "PSV Eindhoven" },
-    { names: ["ajax", "ajax amsterdam"], league: "Eredivisie (Pays-Bas)", display: "Ajax" },
-    { names: ["feyenoord"], league: "Eredivisie (Pays-Bas)", display: "Feyenoord" },
+    { names: ["ajax", "ajax amsterdam", "aja"], league: "Eredivisie (Pays-Bas)", display: "Ajax" },
+    { names: ["feyenoord", "feyenoord rotterdam", "fey"], league: "Eredivisie (Pays-Bas)", display: "Feyenoord" },
     { names: ["twente", "fc twente"], league: "Eredivisie (Pays-Bas)", display: "FC Twente" },
-    { names: ["az alkmaar", "alkmaar"], league: "Eredivisie (Pays-Bas)", display: "AZ Alkmaar" },
-    { names: ["utrecht", "fc utrecht"], league: "Eredivisie (Pays-Bas)", display: "FC Utrecht" }
+    { names: ["az alkmaar", "alkmaar", "az"], league: "Eredivisie (Pays-Bas)", display: "AZ Alkmaar" },
+    { names: ["utrecht", "fc utrecht"], league: "Eredivisie (Pays-Bas)", display: "FC Utrecht" },
+    { names: ["heerenveen"], league: "Eredivisie (Pays-Bas)", display: "Heerenveen" },
+    { names: ["groningen", "fc groningen"], league: "Eredivisie (Pays-Bas)", display: "FC Groningen" },
+    { names: ["go ahead eagles", "go ahead"], league: "Eredivisie (Pays-Bas)", display: "Go Ahead Eagles" },
+    { names: ["fortuna sittard", "sittard"], league: "Eredivisie (Pays-Bas)", display: "Fortuna Sittard" },
+    { names: ["nec nijmegen", "nijmegen"], league: "Eredivisie (Pays-Bas)", display: "NEC Nijmegen" },
+    { names: ["pec zwolle", "zwolle"], league: "Eredivisie (Pays-Bas)", display: "PEC Zwolle" },
+    { names: ["sparta rotterdam"], league: "Eredivisie (Pays-Bas)", display: "Sparta Rotterdam" },
+    { names: ["willem ii"], league: "Eredivisie (Pays-Bas)", display: "Willem II" },
+    { names: ["excelsior"], league: "Eredivisie (Pays-Bas)", display: "Excelsior" },
+    { names: ["ado den haag", "den haag"], league: "Eredivisie (Pays-Bas)", display: "ADO Den Haag" }
 ];
+
+const KNOWN_CLUBS = STATIC_KNOWN_CLUBS;
+
+// Helper: Normalize string for OCR matching (case-insensitive & accent-free)
+function normalizeForSearch(str) {
+    return (str || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+}
+
+// Helper: Generate smart search variations for any team name
+function generateSmartAliases(name) {
+    if (!name) return [];
+    const aliases = new Set();
+    const clean = normalizeForSearch(name);
+    aliases.add(clean);
+
+    const prefixes = [
+        "1. fc ", "1 fc ", "fc ", "ac ", "as ", "cf ", "sc ", "cd ", "c.d. ", "ud ",
+        "afc ", "vfb ", "vfl ", "tsg ", "sv ", "aj ", "rc ", "ogc ", "sl "
+    ];
+    for (const p of prefixes) {
+        if (clean.startsWith(p)) {
+            const stripped = clean.slice(p.length).trim();
+            if (stripped.length >= 3) aliases.add(stripped);
+        }
+    }
+
+    const suffixes = [
+        " fc", " cf", " united", " city", " albion", " hotspur", " rotterdam",
+        " amsterdam", " sv", " sc", " sco", " ac", " bb", " fk", " sc"
+    ];
+    for (const s of suffixes) {
+        if (clean.endsWith(s)) {
+            const stripped = clean.slice(0, -s.length).trim();
+            if (stripped.length >= 3) aliases.add(stripped);
+        }
+    }
+
+    const tokens = clean.split(/\s+/).filter(t => t.length >= 3 && !prefixes.map(p => p.trim()).includes(t));
+    if (tokens.length >= 2) {
+        aliases.add(`${tokens[0]} ${tokens[1]}`);
+    }
+    if (tokens.length >= 1 && tokens[0].length >= 4) {
+        const stopWords = ["sporting", "racing", "athletic", "atletico", "real", "inter", "union", "saint", "stade", "deportivo", "borussia"];
+        if (!stopWords.includes(tokens[0])) {
+            aliases.add(tokens[0]);
+        }
+    }
+
+    return Array.from(aliases);
+}
+
+// Dynamically build a comprehensive club dictionary merging static database & all appData fixtures
+function buildComprehensiveClubDictionary(data) {
+    const clubMap = new Map();
+
+    function registerClub(display, league, names) {
+        const key = normalizeForSearch(display);
+        if (!key) return;
+        if (!clubMap.has(key)) {
+            clubMap.set(key, { display, league: league || "Championnat Européen", names: new Set() });
+        }
+        const entry = clubMap.get(key);
+        if (league && (!entry.league || entry.league === "Championnat Européen")) {
+            entry.league = league;
+        }
+        (names || []).forEach(n => {
+            if (n && n.length >= 2) {
+                entry.names.add(normalizeForSearch(n));
+            }
+        });
+    }
+
+    // 1. Static base
+    for (const club of STATIC_KNOWN_CLUBS) {
+        registerClub(club.display, club.league, club.names);
+    }
+
+    // 2. Ingest all scheduled matches from appData
+    if (data && data.days) {
+        for (const dayKey of Object.keys(data.days)) {
+            const dayObj = data.days[dayKey];
+            if (dayObj && Array.isArray(dayObj.singles)) {
+                for (const s of dayObj.singles) {
+                    if (s.match && s.match.includes(" vs ")) {
+                        const parts = s.match.split(" vs ");
+                        const home = parts[0].trim();
+                        const away = parts[1].trim();
+                        registerClub(home, s.league, generateSmartAliases(home));
+                        registerClub(away, s.league, generateSmartAliases(away));
+                    }
+                }
+            }
+        }
+    }
+
+    const list = [];
+    for (const [key, val] of clubMap.entries()) {
+        const sortedNames = Array.from(val.names)
+            .filter(n => n && n.length >= 2)
+            .sort((a, b) => b.length - a.length);
+        list.push({
+            display: val.display,
+            league: val.league,
+            names: sortedNames
+        });
+    }
+    return list;
+}
+
+// Retrieve all matches from all days in appData
+function getAllKnownMatches(data) {
+    const list = [];
+    if (data && data.days) {
+        for (const dayKey of ["today", "tomorrow", "after_tomorrow", "yesterday"]) {
+            const dayObj = data.days[dayKey];
+            if (dayObj && Array.isArray(dayObj.singles)) {
+                dayObj.singles.forEach(s => {
+                    list.push({ ...s, dayKey });
+                });
+            }
+        }
+    }
+    return list;
+}
+
+// Scan a single text line for recognized clubs with strict token boundaries
+function findClubOccurrencesInLine(line, lineIdx, clubDict) {
+    const lineNorm = normalizeForSearch(line);
+    const occurrences = [];
+    const matchedSpans = [];
+
+    for (const club of clubDict) {
+        for (const name of club.names) {
+            const nameNorm = normalizeForSearch(name);
+            if (nameNorm.length < 2) continue;
+
+            const escaped = nameNorm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(^|[^a-z0-9])(${escaped})([^a-z0-9]|$)`, 'g');
+            let match;
+            while ((match = regex.exec(lineNorm)) !== null) {
+                const start = match.index + match[1].length;
+                const end = start + match[2].length;
+                const isCovered = matchedSpans.some(s => s.start <= start && end <= s.end);
+                if (!isCovered) {
+                    matchedSpans.push({ start, end });
+                    occurrences.push({
+                        club,
+                        lineIdx,
+                        start,
+                        end,
+                        matchedName: match[2],
+                        lineText: line
+                    });
+                }
+            }
+        }
+    }
+    return occurrences;
+}
+
+// Extract betting market/selection from text snippet around match
+function extractBetPickFromSnippet(snippet, homeName, awayName) {
+    if (!snippet) return "Non spécifié";
+    const sNorm = normalizeForSearch(snippet);
+
+    // Double Chance
+    if (/(?:^|[^a-z0-9])(?:double\s*chance\s*1x|dc\s*1x|1x|1\s*ou\s*n|v1\s*ou\s*nul)(?:[^a-z0-9]|$)/.test(sNorm)) {
+        return "Double Chance 1X";
+    }
+    if (/(?:^|[^a-z0-9])(?:double\s*chance\s*x2|dc\s*x2|x2|2x|n\s*ou\s*2|v2\s*ou\s*nul)(?:[^a-z0-9]|$)/.test(sNorm)) {
+        return "Double Chance X2";
+    }
+    if (/(?:^|[^a-z0-9])(?:double\s*chance\s*12|dc\s*12|12|1\s*ou\s*2)(?:[^a-z0-9]|$)/.test(sNorm)) {
+        return "Double Chance 12";
+    }
+
+    // Totaux Buts (Over / Under)
+    if (/(?:\+|\bplus\s*de|\bover)\s*0[.,]5/.test(sNorm)) return "+0.5 Buts";
+    if (/(?:\+|\bplus\s*de|\bover)\s*1[.,]5/.test(sNorm)) return "+1.5 Buts";
+    if (/(?:\+|\bplus\s*de|\bover)\s*2[.,]5/.test(sNorm)) return "+2.5 Buts";
+    if (/(?:\+|\bplus\s*de|\bover)\s*3[.,]5/.test(sNorm)) return "+3.5 Buts";
+    if (/(?:\-|\bmoins\s*de|\bunder)\s*1[.,]5/.test(sNorm)) return "-1.5 Buts";
+    if (/(?:\-|\bmoins\s*de|\bunder)\s*2[.,]5/.test(sNorm)) return "-2.5 Buts";
+    if (/(?:\-|\bmoins\s*de|\bunder)\s*3[.,]5/.test(sNorm)) return "-3.5 Buts";
+    if (/(?:\-|\bmoins\s*de|\bunder)\s*4[.,]5/.test(sNorm)) return "-4.5 Buts";
+
+    // Les deux marquent (BTTS)
+    if (/(?:les\s*deux\s*marquent|deux\s*equipes\s*marquent|btts|gg|both\s*teams\s*to\s*score)/.test(sNorm)) {
+        if (/\b(?:non|no)\b/.test(sNorm)) return "Les deux marquent : Non";
+        return "Les deux équipes marquent";
+    }
+
+    // Remboursé si nul / DNB
+    if (/(?:dnb\s*1|rembourse\s*si\s*nul\s*1|draw\s*no\s*bet\s*1)/.test(sNorm)) return `DNB ${homeName}`;
+    if (/(?:dnb\s*2|rembourse\s*si\s*nul\s*2|draw\s*no\s*bet\s*2)/.test(sNorm)) return `DNB ${awayName}`;
+
+    // 1X2 / Vainqueur
+    if (/(?:^|[^a-z0-9])(?:victoire\s*1|v1|vainqueur\s*1|equipe\s*1\s*gagne)(?:[^a-z0-9]|$)/.test(sNorm)) {
+        return `Victoire ${homeName}`;
+    }
+    if (/(?:^|[^a-z0-9])(?:victoire\s*2|v2|vainqueur\s*2|equipe\s*2\s*gagne)(?:[^a-z0-9]|$)/.test(sNorm)) {
+        return awayName && awayName !== "Adversaire" ? `Victoire ${awayName}` : "Victoire Extérieur";
+    }
+    if (/(?:^|[^a-z0-9])(?:match\s*nul|nul|draw)(?:[^a-z0-9]|$)/.test(sNorm)) {
+        return "Match Nul (X)";
+    }
+
+    return "Non spécifié";
+}
+
+// Parse all matches in a photo text block with contextual pairing and zero shift
+function parsePhotoSlipMatches(photoText, allKnownMatches, clubDict) {
+    const lines = (photoText || "")
+        .split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(l => l.length > 0);
+
+    const allOccurrences = [];
+    for (let lineIdx = 0; lineIdx < lines.length; lineIdx++) {
+        const occs = findClubOccurrencesInLine(lines[lineIdx], lineIdx, clubDict);
+        allOccurrences.push(...occs);
+    }
+
+    allOccurrences.sort((a, b) => {
+        if (a.lineIdx !== b.lineIdx) return a.lineIdx - b.lineIdx;
+        return a.start - b.start;
+    });
+
+    // Deduplicate same club on adjacent lines
+    const uniqueOccurrences = [];
+    for (const occ of allOccurrences) {
+        const prev = uniqueOccurrences[uniqueOccurrences.length - 1];
+        if (prev && prev.club.display === occ.club.display && (occ.lineIdx - prev.lineIdx) <= 1) {
+            continue;
+        }
+        uniqueOccurrences.push(occ);
+    }
+
+    const consumed = new Set();
+    const detectedMatches = [];
+
+    // PASS 1: Delimiter on same line ("Team A vs Team B", "Team A - Team B", etc.)
+    for (let i = 0; i < uniqueOccurrences.length; i++) {
+        if (consumed.has(i)) continue;
+        const occA = uniqueOccurrences[i];
+        for (let j = i + 1; j < uniqueOccurrences.length; j++) {
+            if (consumed.has(j)) continue;
+            const occB = uniqueOccurrences[j];
+            if (occB.lineIdx === occA.lineIdx) {
+                const separator = occA.lineText.slice(occA.end, occB.start);
+                if (/\b(?:vs|v|contre)\b|[-–—\/:|]/.test(separator) || separator.trim().length <= 4) {
+                    detectedMatches.push({
+                        home: occA.club.display,
+                        away: occB.club.display,
+                        league: occA.club.league || occB.club.league,
+                        lineIdx: occA.lineIdx
+                    });
+                    consumed.add(i);
+                    consumed.add(j);
+                    break;
+                }
+            }
+        }
+    }
+
+    // PASS 2: Known official fixtures within 3 lines in database
+    for (let i = 0; i < uniqueOccurrences.length; i++) {
+        if (consumed.has(i)) continue;
+        const occA = uniqueOccurrences[i];
+        const nameA = occA.club.display.toLowerCase();
+
+        for (let j = i + 1; j < uniqueOccurrences.length; j++) {
+            if (consumed.has(j)) continue;
+            const occB = uniqueOccurrences[j];
+            if (occB.lineIdx - occA.lineIdx > 3) break;
+
+            const nameB = occB.club.display.toLowerCase();
+            const known = allKnownMatches.find(m => {
+                const mLow = m.match.toLowerCase();
+                return (mLow.includes(nameA) && mLow.includes(nameB)) ||
+                       (m.home && m.away && (
+                           (m.home.toLowerCase().includes(nameA) && m.away.toLowerCase().includes(nameB)) ||
+                           (m.home.toLowerCase().includes(nameB) && m.away.toLowerCase().includes(nameA))
+                       ));
+            });
+
+            if (known) {
+                detectedMatches.push({
+                    home: occA.club.display,
+                    away: occB.club.display,
+                    league: known.league || occA.club.league,
+                    lineIdx: occA.lineIdx,
+                    knownFixture: known
+                });
+                consumed.add(i);
+                consumed.add(j);
+                break;
+            }
+        }
+    }
+
+    // PASS 3: Adjacent lines pairing (<= 2 lines distance)
+    for (let i = 0; i < uniqueOccurrences.length; i++) {
+        if (consumed.has(i)) continue;
+        const occA = uniqueOccurrences[i];
+
+        let nextIdx = -1;
+        for (let k = i + 1; k < uniqueOccurrences.length; k++) {
+            if (!consumed.has(k)) {
+                nextIdx = k;
+                break;
+            }
+        }
+
+        if (nextIdx !== -1) {
+            const occB = uniqueOccurrences[nextIdx];
+            const lineDiff = occB.lineIdx - occA.lineIdx;
+            if (lineDiff <= 2) {
+                let hasHeader = false;
+                for (let l = occA.lineIdx + 1; l < occB.lineIdx; l++) {
+                    const lineContent = lines[l] || "";
+                    if (/\b\d{1,2}[\/\.]\d{1,2}\b|\bparis?\s+n°|\bticket\b/i.test(lineContent)) {
+                        hasHeader = true;
+                        break;
+                    }
+                }
+                if (!hasHeader) {
+                    detectedMatches.push({
+                        home: occA.club.display,
+                        away: occB.club.display,
+                        league: occA.club.league || occB.club.league,
+                        lineIdx: occA.lineIdx
+                    });
+                    consumed.add(i);
+                    consumed.add(nextIdx);
+                    continue;
+                }
+            }
+        }
+    }
+
+    // PASS 4: Orphan team fallback (resolve with database fixture or single)
+    for (let i = 0; i < uniqueOccurrences.length; i++) {
+        if (consumed.has(i)) continue;
+        const occA = uniqueOccurrences[i];
+        const nameA = occA.club.display.toLowerCase();
+
+        const known = allKnownMatches.find(m => {
+            const mLow = m.match.toLowerCase();
+            return mLow.includes(nameA) || (m.home && m.home.toLowerCase().includes(nameA)) || (m.away && m.away.toLowerCase().includes(nameA));
+        });
+
+        if (known) {
+            let homeName = occA.club.display;
+            let awayName = "Adversaire";
+            if (known.match && known.match.includes(" vs ")) {
+                const parts = known.match.split(" vs ");
+                homeName = parts[0].trim();
+                awayName = parts[1].trim();
+            }
+            detectedMatches.push({
+                home: homeName,
+                away: awayName,
+                league: known.league || occA.club.league,
+                lineIdx: occA.lineIdx,
+                knownFixture: known
+            });
+        } else {
+            detectedMatches.push({
+                home: occA.club.display,
+                away: "Adversaire",
+                league: occA.club.league || "Championnat Européen",
+                lineIdx: occA.lineIdx
+            });
+        }
+        consumed.add(i);
+    }
+
+    detectedMatches.sort((a, b) => a.lineIdx - b.lineIdx);
+
+    // Detect Bet Pick per match
+    for (let idx = 0; idx < detectedMatches.length; idx++) {
+        const dm = detectedMatches[idx];
+        const nextLineIdx = (idx + 1 < detectedMatches.length) ? detectedMatches[idx + 1].lineIdx : dm.lineIdx + 4;
+        const startLine = Math.max(0, dm.lineIdx);
+        const endLine = Math.min(lines.length, Math.max(dm.lineIdx + 3, nextLineIdx));
+        const snippetLines = lines.slice(startLine, endLine);
+        dm.ticketPick = extractBetPickFromSnippet(snippetLines.join("\n"), dm.home, dm.away);
+    }
+
+    return detectedMatches;
+}
+
+// Deduplicate and merge matches collected across multiple photos
+function mergeMultiPhotoMatches(matchesFromAllPhotos) {
+    const merged = [];
+    const seenMap = new Map();
+
+    for (const m of matchesFromAllPhotos) {
+        const keyHome = normalizeForSearch(m.home);
+        const keyAway = normalizeForSearch(m.away);
+        const canonicalKey = [keyHome, keyAway].sort().join("___");
+
+        if (seenMap.has(canonicalKey)) {
+            const existing = seenMap.get(canonicalKey);
+            if (existing.ticketPick === "Non spécifié" && m.ticketPick !== "Non spécifié") {
+                existing.ticketPick = m.ticketPick;
+            }
+        } else {
+            seenMap.set(canonicalKey, m);
+            merged.push(m);
+        }
+    }
+    return merged;
+}
+
 
 // ========================================================
 // GESTION DU MODAL (ONGLETS AUDIT TICKET / MATCH UNIQUE)
@@ -1900,104 +2374,45 @@ async function runTicketAudit() {
             }
         }
 
-        const fullRawText = recognizedBlocks.join("\n");
-        const lowerText = fullRawText.toLowerCase();
+        const fullRawText = recognizedBlocks.join("\n\n");
+        const allKnownMatches = getAllKnownMatches(appData);
+        const clubDict = buildComprehensiveClubDictionary(appData);
 
-        // 1. Identify Clubs from full text
-        const detectedClubs = [];
-        for (const club of KNOWN_CLUBS) {
-            for (const alias of club.names) {
-                let pos = lowerText.indexOf(alias);
-                while (pos !== -1) {
-                    detectedClubs.push({
-                        pos: pos,
-                        alias: alias,
-                        club: club
-                    });
-                    pos = lowerText.indexOf(alias, pos + alias.length);
-                }
-            }
+        // 1. Process matches photo by photo to preserve local slip geometry
+        const rawPhotoMatches = [];
+        for (const block of recognizedBlocks) {
+            const matchesInBlock = parsePhotoSlipMatches(block, allKnownMatches, clubDict);
+            rawPhotoMatches.push(...matchesInBlock);
         }
 
-        // Sort clubs chronologically by their visual position in text
-        detectedClubs.sort((a, b) => a.pos - b.pos);
-
-        // Deduplicate nearby occurrences of the same club name
-        const filteredClubs = [];
-        for (const item of detectedClubs) {
-            const last = filteredClubs[filteredClubs.length - 1];
-            if (!last || Math.abs(item.pos - last.pos) > 12 || last.club.display !== item.club.display) {
-                filteredClubs.push(item);
-            }
+        // Fallback: If individual blocks didn't yield matches, parse full joined text
+        if (rawPhotoMatches.length === 0 && fullRawText) {
+            const fallbackMatches = parsePhotoSlipMatches(fullRawText, allKnownMatches, clubDict);
+            rawPhotoMatches.push(...fallbackMatches);
         }
 
-        // 2. Cross-reference with HNS matches across days
-        const allKnownMatches = [];
-        if (appData && appData.days) {
-            for (const dayKey of ["today", "tomorrow", "after_tomorrow", "yesterday"]) {
-                const dayObj = appData.days[dayKey];
-                if (dayObj && dayObj.singles) {
-                    dayObj.singles.forEach(s => {
-                        allKnownMatches.push({ ...s, dayKey });
-                    });
-                }
-            }
-        }
+        // 2. Intelligently merge and deduplicate across multi-photos (without losing picks)
+        const mergedMatches = mergeMultiPhotoMatches(rawPhotoMatches);
 
+        // 3. Complete HNS Audit evaluation for each detected fixture
         const auditedMatches = [];
+        for (const m of mergedMatches) {
+            let homeName = m.home;
+            let awayName = m.away;
+            let league = m.league || "Championnat Européen";
+            let hnsMatch = m.knownFixture || null;
 
-        // Pair detected clubs or find matches in database
-        for (let i = 0; i < filteredClubs.length; i += 2) {
-            const homeClub = filteredClubs[i];
-            const awayClub = filteredClubs[i + 1];
-
-            let homeName = homeClub.club.display;
-            let awayName = awayClub ? awayClub.club.display : "";
-            let league = homeClub.club.league || (awayClub ? awayClub.club.league : "Championnat Européen");
-
-            const startPos = homeClub.pos;
-            const endPos = (i + 2 < filteredClubs.length) ? filteredClubs[i + 2].pos : Math.min(lowerText.length, startPos + 350);
-            const snippet = lowerText.slice(Math.max(0, startPos - 40), endPos);
-
-            // Detect bet selection
-            let ticketPick = "Non spécifié";
-            if (snippet.includes("1x") || snippet.includes("1 ou n") || snippet.includes("v1 ou nul") || snippet.includes("double chance 1x")) {
-                ticketPick = "Double Chance 1X";
-            } else if (snippet.includes("x2") || snippet.includes("n ou 2") || snippet.includes("v2 ou nul") || snippet.includes("double chance x2")) {
-                ticketPick = "Double Chance X2";
-            } else if (snippet.includes("12") || snippet.includes("double chance 12")) {
-                ticketPick = "Double Chance 12";
-            } else if (snippet.includes("+1.5") || snippet.includes("plus de 1.5") || snippet.includes("over 1.5")) {
-                ticketPick = "+1.5 Buts";
-            } else if (snippet.includes("+2.5") || snippet.includes("plus de 2.5") || snippet.includes("over 2.5")) {
-                ticketPick = "+2.5 Buts";
-            } else if (snippet.includes("-3.5") || snippet.includes("moins de 3.5") || snippet.includes("under 3.5")) {
-                ticketPick = "-3.5 Buts";
-            } else if (snippet.includes("les deux marquent") || snippet.includes("btts")) {
-                ticketPick = "Les deux équipes marquent";
-            } else if (snippet.includes("victoire 1") || snippet.includes("v1")) {
-                ticketPick = `Victoire ${homeName}`;
-            } else if (snippet.includes("victoire 2") || snippet.includes("v2")) {
-                ticketPick = awayName ? `Victoire ${awayName}` : "Victoire Extérieur";
-            }
-
-            // Cross-reference with database
-            let hnsMatch = null;
-            if (awayName) {
-                hnsMatch = allKnownMatches.find(m => 
-                    (m.match.toLowerCase().includes(homeName.toLowerCase()) && m.match.toLowerCase().includes(awayName.toLowerCase())) ||
-                    (m.match.toLowerCase().includes(homeClub.alias) && m.match.toLowerCase().includes(awayClub.alias))
-                );
-            } else {
-                hnsMatch = allKnownMatches.find(m => m.match.toLowerCase().includes(homeName.toLowerCase()));
-                if (hnsMatch) {
-                    const parts = hnsMatch.match.split(" vs ");
-                    if (parts.length === 2) {
-                        homeName = parts[0];
-                        awayName = parts[1];
-                        league = hnsMatch.league;
-                    }
-                }
+            if (!hnsMatch) {
+                const hLow = homeName.toLowerCase();
+                const aLow = awayName.toLowerCase();
+                hnsMatch = allKnownMatches.find(k => {
+                    const kLow = k.match.toLowerCase();
+                    return (kLow.includes(hLow) && kLow.includes(aLow)) ||
+                           (k.home && k.away && (
+                               (k.home.toLowerCase().includes(hLow) && k.away.toLowerCase().includes(aLow)) ||
+                               (k.home.toLowerCase().includes(aLow) && k.away.toLowerCase().includes(hLow))
+                           ));
+                });
             }
 
             let analysis = null;
@@ -2005,14 +2420,14 @@ async function runTicketAudit() {
                 analysis = {
                     home: homeName,
                     away: awayName || "Adversaire",
-                    league: hnsMatch.league,
-                    time: hnsMatch.time,
+                    league: hnsMatch.league || league,
+                    time: hnsMatch.time || "Horaire officiel",
                     hnsPick: hnsMatch.pick,
                     hnsMarket: hnsMatch.market,
                     confidence: hnsMatch.confidence,
                     is_safe: hnsMatch.is_safe,
                     reason: hnsMatch.reason,
-                    ticketPick: ticketPick !== "Non spécifié" ? ticketPick : hnsMatch.pick
+                    ticketPick: m.ticketPick !== "Non spécifié" ? m.ticketPick : hnsMatch.pick
                 };
             } else {
                 const auto = generateCustomPrediction(homeName, awayName || "Adversaire", league);
@@ -2026,11 +2441,11 @@ async function runTicketAudit() {
                     confidence: auto.confidence,
                     is_safe: auto.is_safe,
                     reason: auto.reason,
-                    ticketPick: ticketPick !== "Non spécifié" ? ticketPick : auto.pick
+                    ticketPick: m.ticketPick !== "Non spécifié" ? m.ticketPick : auto.pick
                 };
             }
 
-            // Evaluate Safety Level for this match on ticket
+            // Safety evaluation
             let safetyStatus = "safe";
             let verdictLabel = "🟢 SÛR • Validation HNS";
             let auditNote = "";
