@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v20";
+const DATA_VERSION = "2026-10-10-v21";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -1160,6 +1160,166 @@ async function autoSyncLiveFixtures(userTriggered = false) {
     }
 }
 
+// ========================================================
+// SCANNER IA DE CAPTURES D'ÉCRAN (OCR & RECONNAISSANCE CLUB)
+// ========================================================
+const KNOWN_CLUBS = [
+    // Premier League
+    { names: ["arsenal"], league: "Premier League (Angleterre)", display: "Arsenal" },
+    { names: ["chelsea"], league: "Premier League (Angleterre)", display: "Chelsea" },
+    { names: ["liverpool"], league: "Premier League (Angleterre)", display: "Liverpool" },
+    { names: ["manchester city", "man city", "mancity"], league: "Premier League (Angleterre)", display: "Manchester City" },
+    { names: ["manchester united", "man utd", "man united"], league: "Premier League (Angleterre)", display: "Manchester United" },
+    { names: ["tottenham", "spurs"], league: "Premier League (Angleterre)", display: "Tottenham" },
+    { names: ["newcastle"], league: "Premier League (Angleterre)", display: "Newcastle United" },
+    { names: ["aston villa"], league: "Premier League (Angleterre)", display: "Aston Villa" },
+    { names: ["brighton"], league: "Premier League (Angleterre)", display: "Brighton" },
+    { names: ["west ham"], league: "Premier League (Angleterre)", display: "West Ham" },
+    { names: ["everton"], league: "Premier League (Angleterre)", display: "Everton" },
+    { names: ["fulham"], league: "Premier League (Angleterre)", display: "Fulham" },
+    { names: ["wolves", "wolverhampton"], league: "Premier League (Angleterre)", display: "Wolves" },
+    { names: ["bournemouth"], league: "Premier League (Angleterre)", display: "AFC Bournemouth" },
+    { names: ["brentford"], league: "Premier League (Angleterre)", display: "Brentford" },
+    { names: ["crystal palace"], league: "Premier League (Angleterre)", display: "Crystal Palace" },
+    { names: ["nottingham", "nottingham forest"], league: "Premier League (Angleterre)", display: "Nottingham Forest" },
+    { names: ["leeds", "leeds united"], league: "Premier League (Angleterre)", display: "Leeds United" },
+    // LaLiga
+    { names: ["real madrid", "madrid"], league: "LaLiga (Espagne)", display: "Real Madrid" },
+    { names: ["barcelona", "barcelone", "barça", "barca"], league: "LaLiga (Espagne)", display: "FC Barcelone" },
+    { names: ["atletico", "atlético", "atletico madrid"], league: "LaLiga (Espagne)", display: "Atlético Madrid" },
+    { names: ["sevilla", "seville"], league: "LaLiga (Espagne)", display: "Sevilla" },
+    { names: ["real sociedad", "sociedad"], league: "LaLiga (Espagne)", display: "Real Sociedad" },
+    { names: ["athletic", "bilbao", "athletic bilbao"], league: "LaLiga (Espagne)", display: "Athletic Club" },
+    { names: ["villarreal"], league: "LaLiga (Espagne)", display: "Villarreal" },
+    { names: ["betis", "real betis"], league: "LaLiga (Espagne)", display: "Real Betis" },
+    { names: ["girona", "girone"], league: "LaLiga (Espagne)", display: "Girona" },
+    { names: ["valencia", "valence"], league: "LaLiga (Espagne)", display: "Valencia" },
+    { names: ["mallorca", "majorque"], league: "LaLiga (Espagne)", display: "Mallorca" },
+    { names: ["osasuna"], league: "LaLiga (Espagne)", display: "Osasuna" },
+    { names: ["celta", "celta vigo"], league: "LaLiga (Espagne)", display: "Celta Vigo" },
+    { names: ["espanyol"], league: "LaLiga (Espagne)", display: "Espanyol" },
+    // Ligue 1
+    { names: ["psg", "paris saint-germain", "paris sg"], league: "Ligue 1 (France)", display: "Paris Saint-Germain" },
+    { names: ["marseille", "om"], league: "Ligue 1 (France)", display: "Marseille" },
+    { names: ["lyon", "ol"], league: "Ligue 1 (France)", display: "Lyon" },
+    { names: ["monaco"], league: "Ligue 1 (France)", display: "Monaco" },
+    { names: ["lille", "losc"], league: "Ligue 1 (France)", display: "Lille" },
+    { names: ["lens"], league: "Ligue 1 (France)", display: "Lens" },
+    { names: ["rennes"], league: "Ligue 1 (France)", display: "Rennes" },
+    { names: ["nice"], league: "Ligue 1 (France)", display: "Nice" },
+    { names: ["strasbourg"], league: "Ligue 1 (France)", display: "Strasbourg" },
+    // Serie A
+    { names: ["inter", "inter milan"], league: "Serie A (Italie)", display: "Inter Milan" },
+    { names: ["milan", "ac milan"], league: "Serie A (Italie)", display: "AC Milan" },
+    { names: ["juventus", "juve"], league: "Serie A (Italie)", display: "Juventus" },
+    { names: ["napoli", "naples"], league: "Serie A (Italie)", display: "Napoli" },
+    { names: ["roma", "as roma"], league: "Serie A (Italie)", display: "AS Roma" },
+    { names: ["lazio"], league: "Serie A (Italie)", display: "Lazio" },
+    { names: ["atalanta"], league: "Serie A (Italie)", display: "Atalanta" },
+    { names: ["fiorentina"], league: "Serie A (Italie)", display: "Fiorentina" },
+    { names: ["torino"], league: "Serie A (Italie)", display: "Torino" },
+    // Bundesliga
+    { names: ["bayern", "bayern munich", "bayern münchen"], league: "Bundesliga (Allemagne)", display: "Bayern Munich" },
+    { names: ["dortmund", "borussia dortmund", "bvb"], league: "Bundesliga (Allemagne)", display: "Borussia Dortmund" },
+    { names: ["leverkusen", "bayer leverkusen"], league: "Bundesliga (Allemagne)", display: "Bayer Leverkusen" },
+    { names: ["leipzig", "rb leipzig"], league: "Bundesliga (Allemagne)", display: "RB Leipzig" },
+    { names: ["frankfurt", "eintracht frankfurt"], league: "Bundesliga (Allemagne)", display: "Eintracht Frankfurt" },
+    { names: ["stuttgart"], league: "Bundesliga (Allemagne)", display: "VfB Stuttgart" },
+    { names: ["bremen", "werder bremen", "werder"], league: "Bundesliga (Allemagne)", display: "Werder Bremen" },
+    // Portugal, Turquie, Pays-Bas
+    { names: ["sporting", "sporting cp", "sporting portugal"], league: "Primeira Liga (Portugal)", display: "Sporting CP" },
+    { names: ["benfica"], league: "Primeira Liga (Portugal)", display: "Benfica" },
+    { names: ["porto", "fc porto"], league: "Primeira Liga (Portugal)", display: "FC Porto" },
+    { names: ["braga"], league: "Primeira Liga (Portugal)", display: "Braga" },
+    { names: ["galatasaray"], league: "Süper Lig (Turquie)", display: "Galatasaray" },
+    { names: ["fenerbahce", "fenerbahçe"], league: "Süper Lig (Turquie)", display: "Fenerbahçe" },
+    { names: ["besiktas", "beşiktaş"], league: "Süper Lig (Turquie)", display: "Besiktas" },
+    { names: ["psv", "psv eindhoven"], league: "Eredivisie (Pays-Bas)", display: "PSV Eindhoven" },
+    { names: ["ajax", "ajax amsterdam"], league: "Eredivisie (Pays-Bas)", display: "Ajax" },
+    { names: ["feyenoord"], league: "Eredivisie (Pays-Bas)", display: "Feyenoord" }
+];
+
+async function handleScreenshotFile(file) {
+    if (!file || !file.type.startsWith("image/")) return;
+
+    const modal = document.getElementById("addMatchModal");
+    if (modal) modal.style.display = "flex";
+
+    const emptyView = document.getElementById("dropzoneEmptyView");
+    const previewView = document.getElementById("dropzonePreviewView");
+    const previewImg = document.getElementById("screenshotPreviewImg");
+    const statusText = document.getElementById("ocrStatusText");
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+        if (previewImg) previewImg.src = e.target.result;
+        if (emptyView) emptyView.style.display = "none";
+        if (previewView) previewView.style.display = "block";
+        if (statusText) statusText.innerHTML = "🔍 Analyse IA de la capture en cours...";
+
+        // OCR Recognition
+        try {
+            if (window.Tesseract) {
+                const result = await Tesseract.recognize(e.target.result, 'fra+eng', {
+                    logger: m => {
+                        if (m.status === 'recognizing text' && statusText) {
+                            statusText.innerHTML = `🔍 Détection des équipes (${Math.round((m.progress || 0) * 100)}%)...`;
+                        }
+                    }
+                });
+                const recognized = (result.data.text || "").toLowerCase();
+                console.log("OCR Extracted Text:", recognized);
+
+                // Detect clubs
+                const found = [];
+                for (const club of KNOWN_CLUBS) {
+                    for (const alias of club.names) {
+                        if (recognized.includes(alias)) {
+                            if (!found.find(f => f.display === club.display)) {
+                                found.push(club);
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                if (found.length >= 2) {
+                    document.getElementById("customHome").value = found[0].display;
+                    document.getElementById("customAway").value = found[1].display;
+                    const leagueSelect = document.getElementById("customLeagueSelect");
+                    if (leagueSelect) leagueSelect.value = found[0].league || found[1].league;
+                    if (statusText) statusText.innerHTML = `✅ Détecté : <strong>${found[0].display} vs ${found[1].display}</strong>`;
+                } else if (found.length === 1) {
+                    document.getElementById("customHome").value = found[0].display;
+                    const leagueSelect = document.getElementById("customLeagueSelect");
+                    if (leagueSelect) leagueSelect.value = found[0].league;
+                    if (statusText) statusText.innerHTML = `✅ Équipe détectée : <strong>${found[0].display}</strong> (Complétez l'adversaire)`;
+                } else {
+                    if (statusText) statusText.innerHTML = "💡 Capture chargée ! Vérifiez ou complétez les deux équipes ci-dessous.";
+                }
+            } else {
+                if (statusText) statusText.innerHTML = "💡 Capture chargée ! Complétez les deux équipes ci-dessous pour lancer l'IA.";
+            }
+        } catch(err) {
+            console.warn("OCR non disponible :", err);
+            if (statusText) statusText.innerHTML = "💡 Capture chargée ! Complétez les deux équipes ci-dessous.";
+        }
+    };
+    reader.readAsDataURL(file);
+}
+
+function resetScreenshotDropzone() {
+    const emptyView = document.getElementById("dropzoneEmptyView");
+    const previewView = document.getElementById("dropzonePreviewView");
+    const previewImg = document.getElementById("screenshotPreviewImg");
+    const fileInput = document.getElementById("screenshotFileInput");
+
+    if (previewImg) previewImg.src = "";
+    if (fileInput) fileInput.value = "";
+    if (emptyView) emptyView.style.display = "block";
+    if (previewView) previewView.style.display = "none";
+}
+
 // Setup Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
     loadAppData();
@@ -1191,6 +1351,61 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     document.getElementById("closeAddModalBtn").addEventListener("click", () => modal.style.display = "none");
     document.getElementById("submitCustomMatchBtn").addEventListener("click", submitCustomMatch);
+
+    // Scanner Capture d'Écran Events
+    const dropzone = document.getElementById("screenshotDropzone");
+    const fileInput = document.getElementById("screenshotFileInput");
+    const clearBtn = document.getElementById("clearScreenshotBtn");
+    const openScannerBtn = document.getElementById("openScannerBtn");
+
+    if (dropzone && fileInput) {
+        dropzone.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", (e) => {
+            if (e.target.files && e.target.files[0]) {
+                handleScreenshotFile(e.target.files[0]);
+            }
+        });
+
+        dropzone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropzone.classList.add("drag-over");
+        });
+        dropzone.addEventListener("dragleave", () => dropzone.classList.remove("drag-over"));
+        dropzone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropzone.classList.remove("drag-over");
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                handleScreenshotFile(e.dataTransfer.files[0]);
+            }
+        });
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            resetScreenshotDropzone();
+        });
+    }
+
+    if (openScannerBtn) {
+        openScannerBtn.addEventListener("click", () => {
+            modal.style.display = "flex";
+            if (fileInput) fileInput.click();
+        });
+    }
+
+    // Global Paste Listener (Ctrl+V ou mobile paste pour capturer directement)
+    window.addEventListener("paste", (e) => {
+        const items = (e.clipboardData || window.clipboardData)?.items;
+        if (!items) return;
+        for (const item of items) {
+            if (item.type.indexOf("image") === 0) {
+                const file = item.getAsFile();
+                if (file) handleScreenshotFile(file);
+                break;
+            }
+        }
+    });
 
     // Verrouillage Propriétaire Schalom H.N.
     const ownerLockBtn = document.getElementById("ownerLockBtn");

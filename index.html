@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=20">
+    <link rel="stylesheet" href="static/css/style.css?v=21">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
 </head>
 <body>
@@ -38,6 +39,7 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button class="icon-btn" id="openScannerBtn" title="Scanner une Capture d'Écran (Match / Coupon)">📷</button>
                 <button class="icon-btn" id="ownerLockBtn" title="Mode Propriétaire Schalom H.N.">🔒</button>
                 <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match (Réservé Propriétaire)">➕</button>
                 <button class="icon-btn" id="refreshBtn" title="Actualiser les pronostics">🔄</button>
@@ -390,13 +392,36 @@
         <div class="modal-backdrop" id="addMatchModal" style="display: none;">
             <div class="modal-card">
                 <div class="modal-header">
-                    <h3>⚡ Pronostiquer un Match Réel</h3>
+                    <h3 id="modalTitle">⚡ Pronostiquer & Scanner un Match</h3>
                     <button class="modal-close" id="closeAddModalBtn">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
-                        Entre les deux équipes qui jouent aujourd'hui. L'IA de HNS Tips va calculer le pronostic optimal et l'intégrer à tes analyses.
-                    </p>
+                    <!-- ZONE IMPORT / SCANNER CAPTURE D'ÉCRAN -->
+                    <div class="scanner-upload-card">
+                        <div class="scanner-upload-header">
+                            <span class="scanner-badge">📷 SCANNER IA HNS</span>
+                            <span style="font-size:0.75rem; color:var(--text-muted);">Reconnaissance automatique de match</span>
+                        </div>
+                        <div class="screenshot-dropzone" id="screenshotDropzone">
+                            <input type="file" id="screenshotFileInput" accept="image/*" style="display:none;">
+                            <div id="dropzoneEmptyView">
+                                <div style="font-size:2rem; margin-bottom:4px;">📸</div>
+                                <div style="font-weight:700; font-size:0.85rem; color:#60a5fa;">Importer ou Coller une Capture d'Écran</div>
+                                <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Ticket, coupon bookmaker, compo ou affiche (Ctrl+V ou Clic)</div>
+                            </div>
+                            <div id="dropzonePreviewView" style="display:none;">
+                                <img id="screenshotPreviewImg" src="" alt="Aperçu capture">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+                                    <span id="ocrStatusText" style="font-size:0.75rem; color:#38bdf8; font-weight:600;">🔍 Analyse IA de la capture...</span>
+                                    <button type="button" class="btn-clear-img" id="clearScreenshotBtn">✕ Changer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align:center; margin:8px 0; font-size:0.75rem; color:var(--text-muted); font-weight:700;">
+                        ── OU VÉRIFICATION DES ÉQUIPES DÉTECTÉES ──
+                    </div>
                     <div class="input-item">
                         <label>Équipe Domicile :</label>
                         <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Sporting...">
@@ -456,7 +481,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=20"></script>
-    <script src="static/js/app.js?v=20"></script>
+    <script src="static/js/default-data.js?v=21"></script>
+    <script src="static/js/app.js?v=21"></script>
 </body>
 </html>
