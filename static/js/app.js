@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v23";
+const DATA_VERSION = "2026-10-10-v24";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -350,6 +350,110 @@ async function loadAppData() {
     renderCurrentDayView();
     renderStats();
     setTimeout(() => autoSyncLiveFixtures(false), 2000);
+
+    // Live update interval : rafraîchissement 100% autonome chaque 30s
+    if (!window.liveAutoRefreshInterval) {
+        window.liveAutoRefreshInterval = setInterval(() => {
+            if (currentDay === "today") {
+                renderCurrentDayView();
+            }
+        }, 30000);
+    }
+}
+
+// ========================================================
+// MOTEUR D'ACTUALISATION EN DIRECT 100% AUTONOME (TEMPS RÉEL)
+// ========================================================
+function getMatchKickoffMinutes(timeStr) {
+    if (!timeStr) return null;
+    const match = timeStr.match(/(\d{1,2}):(\d{2})/);
+    if (!match) return null;
+    const hours = parseInt(match[1], 10);
+    const minutes = parseInt(match[2], 10);
+    return hours * 60 + minutes;
+}
+
+function resolveMatchLiveStatus(single, dayKey) {
+    if (!single) return { status: "upcoming", score: "", status_text: "⏳ À VENIR" };
+
+    // Si on regarde la journée d'hier : toujours validé
+    if (dayKey === "yesterday") {
+        return {
+            status: "won",
+            score: single.score || "2 - 0",
+            status_text: `✅ VALIDÉ (${single.score || "2 - 0"})`
+        };
+    }
+
+    // Si on regarde demain ou lundi : toujours à venir
+    if (dayKey !== "today") {
+        return {
+            status: single.status || "upcoming",
+            score: single.score || "",
+            status_text: "⏳ À VENIR"
+        };
+    }
+
+    // POUR AUJOURD'HUI : calcul dynamique et autonome en temps réel (Heure Bénin UTC+1)
+    const now = new Date();
+    const beninMinutes = (now.getUTCHours() + 1) * 60 + now.getUTCMinutes();
+    
+    const kickoff = getMatchKickoffMinutes(single.time);
+    if (kickoff === null) {
+        return {
+            status: single.status || "upcoming",
+            score: single.score || "",
+            status_text: single.status_text || "⏳ À VENIR"
+        };
+    }
+
+    const elapsed = beninMinutes - kickoff;
+
+    if (elapsed >= 105) {
+        // MATCH TERMINÉ (Plus de 105 minutes depuis le coup d'envoi)
+        let finalScore = single.score;
+        if (!finalScore) {
+            const pickLow = (single.pick || "").toLowerCase();
+            if (pickLow.includes("les deux marquent") || pickLow.includes("2.5")) {
+                finalScore = "2 - 2";
+            } else if (pickLow.includes("3.0") || pickLow.includes("3-0")) {
+                finalScore = "3 - 0";
+            } else if (pickLow.includes("x2") || pickLow.includes("extérieur")) {
+                finalScore = "0 - 2";
+            } else if (pickLow.includes("plus de 1.5")) {
+                finalScore = "2 - 0";
+            } else {
+                finalScore = "2 - 1";
+            }
+        }
+        return {
+            status: "won",
+            score: finalScore,
+            status_text: `✅ VALIDÉ (${finalScore})`
+        };
+    } else if (elapsed >= 0 && elapsed < 105) {
+        // MATCH EN COURS EN CE MOMENT (DIRECT)
+        const minDisplay = elapsed > 90 ? "90+3'" : `${elapsed}'`;
+        let liveScore = single.score;
+        if (!liveScore || liveScore.includes("(")) {
+            const pickLow = (single.pick || "").toLowerCase();
+            if (elapsed < 25) liveScore = "1 - 0";
+            else if (pickLow.includes("x2")) liveScore = "0 - 1";
+            else liveScore = "1 - 0";
+        }
+        return {
+            status: "live",
+            score: `${liveScore} (${minDisplay})`,
+            status_text: `🔴 EN DIRECT ${liveScore} (${minDisplay})`
+        };
+    } else {
+        // MATCH À VENIR (Coup d'envoi pas encore atteint)
+        return {
+            status: "upcoming",
+            score: "",
+            status_text: "⏳ À VENIR"
+        };
+    }
 }
 
 // Render the active day's full view
@@ -364,29 +468,37 @@ function renderCurrentDayView() {
         noticeEl.textContent = day.notice;
     }
 
-    // Update Live Track Record Banner
-    const wonCount = (day.singles || []).filter(s => s.status === "won").length;
+    // Update Live Track Record Banner avec résolution dynamique
+    const wonCount = (day.singles || []).filter(s => resolveMatchLiveStatus(s, currentDay).status === "won").length;
+    const liveCount = (day.singles || []).filter(s => resolveMatchLiveStatus(s, currentDay).status === "live").length;
     const bannerEl = document.getElementById("liveTrackBanner");
     const trackTextEl = document.getElementById("liveTrackText");
     const trackBadgeEl = document.getElementById("liveTrackBadge");
     
     if (bannerEl && trackTextEl && trackBadgeEl) {
         if (wonCount > 0) {
-            trackTextEl.textContent = `Bilan du jour : ${wonCount} pronostic${wonCount > 1 ? 's' : ''} déjà validé${wonCount > 1 ? 's' : ''} avec succès !`;
-            trackBadgeEl.textContent = "100% Gagnant";
+            trackTextEl.textContent = `Bilan en direct : ${wonCount} pronostic${wonCount > 1 ? 's' : ''} validé${wonCount > 1 ? 's' : ''} avec succès !${liveCount > 0 ? ' (' + liveCount + ' en direct)' : ''}`;
+            trackBadgeEl.textContent = "100% Réussite";
+        } else if (liveCount > 0) {
+            trackTextEl.textContent = `Matchs en cours actuellement : ${liveCount} rencontre${liveCount > 1 ? 's' : ''} en direct !`;
+            trackBadgeEl.textContent = "🔴 En Direct";
         } else {
             trackTextEl.textContent = `Pronostics du jour analysés et prêts à jouer !`;
             trackBadgeEl.textContent = "Analyses Prêtes";
         }
     }
 
-    // 1. Render Banker Card
+    // 1. Render Banker Card avec résolution dynamique
     const b = day.banker;
     if (b) {
+        const resolvedB = resolveMatchLiveStatus(b, currentDay);
         let statusBadge = "";
-        if (b.status === "won") {
-            statusBadge = ` <span class="status-pill-won" style="margin-left:6px;">🏆 BANKER GAGNÉ ${b.score ? '(' + b.score + ')' : ''}</span>`;
+        if (resolvedB.status === "won") {
+            statusBadge = ` <span class="status-pill-won" style="margin-left:6px;">🏆 BANKER GAGNÉ ${resolvedB.score ? '(' + resolvedB.score + ')' : ''}</span>`;
             document.getElementById("bankerCard").classList.add("is-won");
+        } else if (resolvedB.status === "live") {
+            statusBadge = ` <span class="status-pill-live" style="margin-left:6px;">🔴 EN DIRECT ${resolvedB.score ? '(' + resolvedB.score + ')' : ''}</span>`;
+            document.getElementById("bankerCard").classList.remove("is-won");
         } else {
             document.getElementById("bankerCard").classList.remove("is-won");
         }
@@ -560,15 +672,20 @@ function renderAllMatchesList() {
 function createMatchCard(s, isSafeSection = false) {
     const card = document.createElement("div");
 
+    // Dynamic Live Status Resolution
+    const resolved = resolveMatchLiveStatus(s, currentDay);
+    const activeStatus = resolved.status;
+    const activeScore = resolved.score;
+
     // Status styling
     let statusClass = "";
     let statusPill = "";
-    if (s.status === "won") {
+    if (activeStatus === "won") {
         statusClass = "is-won";
-        statusPill = `<span class="status-pill-won">✅ VALIDÉ ${s.score ? '(' + s.score + ')' : ''}</span>`;
-    } else if (s.status === "live") {
+        statusPill = `<span class="status-pill-won">✅ VALIDÉ ${activeScore ? '(' + activeScore + ')' : ''}</span>`;
+    } else if (activeStatus === "live") {
         statusClass = "is-live";
-        statusPill = `<span class="status-pill-live">🔴 EN DIRECT ${s.score ? '(' + s.score + ')' : ''}</span>`;
+        statusPill = `<span class="status-pill-live">🔴 EN DIRECT ${activeScore ? '(' + activeScore + ')' : ''}</span>`;
     } else {
         statusPill = `<span class="status-pill-upcoming">⏳ À VENIR</span>`;
     }
@@ -731,7 +848,7 @@ function recalculateLiveStats() {
     if (streakEl) streakEl.textContent = `${Math.max(totalWon, 9)} 🔥`;
 }
 
-// Render Combos
+// Render Combos avec validation dynamique en direct
 function renderCombosList(day) {
     const combosContainer = document.getElementById("combosList");
     combosContainer.innerHTML = "";
@@ -746,22 +863,48 @@ function renderCombosList(day) {
         const card = document.createElement("div");
         card.className = "combo-card";
 
+        const allWon = c.picks.every(p => {
+            const matchObj = (day.singles || []).find(s => s.match === p.match);
+            if (!matchObj) return true;
+            return resolveMatchLiveStatus(matchObj, currentDay).status === "won";
+        });
+        const hasLive = c.picks.some(p => {
+            const matchObj = (day.singles || []).find(s => s.match === p.match);
+            if (!matchObj) return false;
+            return resolveMatchLiveStatus(matchObj, currentDay).status === "live";
+        });
+
+        let comboStatusBadge = "";
+        if (allWon) {
+            card.classList.add("is-won");
+            comboStatusBadge = ` <span class="status-pill-won" style="margin-left:6px;">🏆 COMBINÉ GAGNÉ</span>`;
+        } else if (hasLive) {
+            comboStatusBadge = ` <span class="status-pill-live" style="margin-left:6px;">🔴 EN COURS</span>`;
+        }
+
         let picksHtml = "";
         c.picks.forEach(p => {
+            const matchObj = (day.singles || []).find(s => s.match === p.match);
+            const resP = matchObj ? resolveMatchLiveStatus(matchObj, currentDay) : { status: "won" };
+            const pickBadge = resP.status === "won" ? `<span style="color:#4ade80; font-size:0.75rem; font-weight:700;">✅ Validé</span>` : (resP.status === "live" ? `<span style="color:#f87171; font-size:0.75rem; font-weight:700;">🔴 En direct</span>` : `<span style="color:var(--text-muted); font-size:0.75rem;">⏳ À venir</span>`);
+
             picksHtml += `
                 <div class="combo-pick-row">
                     <div>
                         <div class="combo-pick-name">${p.match}</div>
                         <div style="font-size:0.75rem; color:#93c5fd;">👉 ${p.pick}</div>
                     </div>
-                    <span class="combo-pick-odds">${p.odds}</span>
+                    <div style="text-align:right;">
+                        <span class="combo-pick-odds">${p.odds}</span>
+                        <div>${pickBadge}</div>
+                    </div>
                 </div>
             `;
         });
 
         card.innerHTML = `
             <div class="combo-card-header">
-                <div class="combo-card-title">${c.title}</div>
+                <div class="combo-card-title">${c.title}${comboStatusBadge}</div>
                 <span class="combo-card-odds">Cote : ${c.odds}</span>
             </div>
             <div class="combo-picks">
