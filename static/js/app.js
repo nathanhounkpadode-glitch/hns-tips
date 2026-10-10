@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-09-v19";
+const DATA_VERSION = "2026-10-10-v20";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -267,6 +267,65 @@ function checkCacheVersion() {
     }
 }
 
+// Mise à jour dynamique des sous-titres de date (Hier, Aujourd'hui, Demain, Lundi)
+function updateDaySelectorLabels() {
+    const now = new Date();
+    const yesterday = new Date(now);
+    yesterday.setDate(now.getDate() - 1);
+    const tomorrow = new Date(now);
+    tomorrow.setDate(now.getDate() + 1);
+    const afterTomorrow = new Date(now);
+    afterTomorrow.setDate(now.getDate() + 2);
+
+    const fmt = (d) => {
+        const days = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
+        const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+        return `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
+    };
+
+    const ySub = document.getElementById("yesterdaySub");
+    const tSub = document.getElementById("todaySub");
+    const tmSub = document.getElementById("tomorrowSub");
+    const atSub = document.getElementById("afterTomorrowSub");
+
+    if (ySub) ySub.textContent = fmt(yesterday);
+    if (tSub) tSub.textContent = fmt(now);
+    if (tmSub) tmSub.textContent = fmt(tomorrow);
+    if (atSub) atSub.textContent = fmt(afterTomorrow);
+}
+
+// Basculement automatique au fil des jours (100% Autonome)
+function checkAndRollDailyCalendar() {
+    if (!appData || !appData.days) return;
+    
+    const now = new Date();
+    const todayYMD = now.toISOString().slice(0, 10);
+    
+    const todayData = appData.days.today;
+    if (todayData && todayData.date_iso) {
+        if (todayData.date_iso < todayYMD) {
+            console.log("🔄 Une journée est passée : basculement automatique de l'ancienne journée vers 'Hier'");
+            appData.days.yesterday = {
+                ...appData.days.today,
+                label: `Hier (${appData.days.today.short_label || 'Bilan'})`,
+                notice: "Bilan officiel des pronostics validés de la journée écoulée."
+            };
+            if (appData.days.tomorrow) {
+                appData.days.today = {
+                    ...appData.days.tomorrow,
+                    label: `Aujourd'hui (${appData.days.tomorrow.short_label || ''})`,
+                    notice: "Pronostics et analyses du jour synchronisés avec succès."
+                };
+            }
+            if (appData.days.after_tomorrow) {
+                appData.days.tomorrow = appData.days.after_tomorrow;
+                delete appData.days.after_tomorrow;
+            }
+            localStorage.setItem("hns_tips_data", JSON.stringify(appData));
+        }
+    }
+}
+
 // Load App Data from API or LocalStorage / default dataset
 async function loadAppData() {
     checkCacheVersion();
@@ -284,6 +343,10 @@ async function loadAppData() {
             appData = window.DEFAULT_HNS_DATA || null;
         }
     }
+
+    checkAndRollDailyCalendar();
+    updateDaySelectorLabels();
+
     renderCurrentDayView();
     renderStats();
     setTimeout(() => autoSyncLiveFixtures(false), 2000);

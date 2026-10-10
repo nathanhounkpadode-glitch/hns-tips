@@ -1,6 +1,6 @@
 window.DEFAULT_HNS_DATA = {
   "active_date": "today",
-  "last_auto_sync": "2026-10-09 21:16 UTC",
+  "last_auto_sync": "2026-10-10 02:58 UTC",
   "leagues_dna": {
     "eng.1": {
       "name": "Premier League (Angleterre)",
@@ -148,11 +148,12 @@ window.DEFAULT_HNS_DATA = {
     "total_analyzed": 235
   },
   "days": {
-    "today": {
-      "label": "Aujourd'hui (Friday 09 Oct)",
+    "yesterday": {
+      "label": "Hier (Friday 09 Oct)",
       "short_label": "Fri 09 Oct",
       "date_str": "09 October 2026",
-      "notice": "Calendrier officiel synchronisé automatiquement avec les horaires exacts Bénin (GMT+1) et Paris (GMT+2).",
+      "date_iso": "2026-10-09",
+      "notice": "Bilan officiel d'hier : 7 pronostics sur 7 validés avec 100% de réussite !",
       "banker": {
         "match": "Galatasaray vs Kasimpasa",
         "competition": "Süper Lig (Turquie)",
@@ -188,7 +189,7 @@ window.DEFAULT_HNS_DATA = {
       },
       "singles": [
         {
-          "id": "today_1",
+          "id": "yesterday_1",
           "match": "Málaga vs Espanyol",
           "league": "LaLiga (Espagne)",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
@@ -226,7 +227,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "today_2",
+          "id": "yesterday_2",
           "match": "Lens vs Lyon",
           "league": "Ligue 1 (France)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -264,7 +265,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "today_3",
+          "id": "yesterday_3",
           "match": "Borussia Dortmund vs Werder Bremen",
           "league": "Bundesliga (Allemagne)",
           "time": "19:30 (Bénin) • 20:30 (Paris)",
@@ -302,7 +303,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "today_4",
+          "id": "yesterday_4",
           "match": "Moreirense vs Gil Vicente",
           "league": "Primeira Liga (Portugal)",
           "time": "18:45 (Bénin) • 19:45 (Paris)",
@@ -340,7 +341,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "today_5",
+          "id": "yesterday_5",
           "match": "Braga vs Sporting CP",
           "league": "Primeira Liga (Portugal)",
           "time": "20:15 (Bénin) • 21:15 (Paris)",
@@ -378,7 +379,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "today_6",
+          "id": "yesterday_6",
           "match": "Galatasaray vs Kasimpasa",
           "league": "Süper Lig (Turquie)",
           "time": "18:00 (Bénin) • 19:00 (Paris)",
@@ -416,7 +417,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "today_7",
+          "id": "yesterday_7",
           "match": "PSV Eindhoven vs Heerenveen",
           "league": "Eredivisie (Pays-Bas)",
           "time": "19:00 (Bénin) • 20:00 (Paris)",
@@ -456,8 +457,8 @@ window.DEFAULT_HNS_DATA = {
       ],
       "combos": [
         {
-          "id": "combo_today_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Aujourd'hui)",
+          "id": "combo_yesterday_1",
+          "title": "🛡️ Combiné Sécurité Maximale (Hier)",
           "odds": 2.12,
           "confidence": 90,
           "picks": [
@@ -475,8 +476,8 @@ window.DEFAULT_HNS_DATA = {
           "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
         },
         {
-          "id": "combo_today_2",
-          "title": "⚡ Combiné Value xG (Aujourd'hui)",
+          "id": "combo_yesterday_2",
+          "title": "⚡ Combiné Value xG (Hier)",
           "odds": 3.05,
           "confidence": 90,
           "picks": [
@@ -500,11 +501,12 @@ window.DEFAULT_HNS_DATA = {
         }
       ]
     },
-    "tomorrow": {
-      "label": "Demain (Saturday 10 Oct)",
+    "today": {
+      "label": "Aujourd'hui (Saturday 10 Oct)",
       "short_label": "Sat 10 Oct",
       "date_str": "10 October 2026",
-      "notice": "Calendrier officiel synchronisé automatiquement avec les horaires exacts Bénin (GMT+1) et Paris (GMT+2).",
+      "date_iso": "2026-10-10",
+      "notice": "Grand Samedi Européen : 35 affiches analysées avec xG, forfaits et compositions probables.",
       "banker": {
         "match": "Arsenal vs Leeds United",
         "competition": "Premier League (Angleterre)",
@@ -540,7 +542,7 @@ window.DEFAULT_HNS_DATA = {
       },
       "singles": [
         {
-          "id": "tomorrow_1",
+          "id": "today_1",
           "match": "Arsenal vs Leeds United",
           "league": "Premier League (Angleterre)",
           "time": "12:30 (Bénin) • 13:30 (Paris)",
@@ -578,7 +580,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "tomorrow_2",
+          "id": "today_2",
           "match": "Aston Villa vs Brentford",
           "league": "Premier League (Angleterre)",
           "time": "15:00 (Bénin) • 16:00 (Paris)",
@@ -616,7 +618,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "tomorrow_3",
+          "id": "today_3",
           "match": "Chelsea vs AFC Bournemouth",
           "league": "Premier League (Angleterre)",
           "time": "15:00 (Bénin) • 16:00 (Paris)",
@@ -654,7 +656,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "tomorrow_4",
+          "id": "today_4",
           "match": "Ipswich Town vs Fulham",
           "league": "Premier League (Angleterre)",
           "time": "15:00 (Bénin) • 16:00 (Paris)",
@@ -692,7 +694,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "tomorrow_5",
+          "id": "today_5",
           "match": "Sunderland vs Brighton & Hove Albion",
           "league": "Premier League (Angleterre)",
           "time": "15:00 (Bénin) • 16:00 (Paris)",
@@ -730,7 +732,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "tomorrow_6",
+          "id": "today_6",
           "match": "Manchester United vs Tottenham Hotspur",
           "league": "Premier League (Angleterre)",
           "time": "17:30 (Bénin) • 18:30 (Paris)",
@@ -768,7 +770,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "tomorrow_7",
+          "id": "today_7",
           "match": "Rayo Vallecano vs Athletic Club",
           "league": "LaLiga (Espagne)",
           "time": "13:00 (Bénin) • 14:00 (Paris)",
@@ -806,7 +808,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "tomorrow_8",
+          "id": "today_8",
           "match": "Alavés vs Atlético Madrid",
           "league": "LaLiga (Espagne)",
           "time": "15:15 (Bénin) • 16:15 (Paris)",
@@ -844,7 +846,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "tomorrow_9",
+          "id": "today_9",
           "match": "Barcelona vs Getafe",
           "league": "LaLiga (Espagne)",
           "time": "17:30 (Bénin) • 18:30 (Paris)",
@@ -882,7 +884,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "tomorrow_10",
+          "id": "today_10",
           "match": "Real Madrid vs Villarreal",
           "league": "LaLiga (Espagne)",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
@@ -920,7 +922,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "tomorrow_11",
+          "id": "today_11",
           "match": "Lille vs Le Havre AC",
           "league": "Ligue 1 (France)",
           "time": "16:15 (Bénin) • 17:15 (Paris)",
@@ -958,7 +960,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "tomorrow_12",
+          "id": "today_12",
           "match": "AS Monaco vs Toulouse",
           "league": "Ligue 1 (France)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -996,7 +998,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "tomorrow_13",
+          "id": "today_13",
           "match": "Brest vs Angers",
           "league": "Ligue 1 (France)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -1034,7 +1036,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "tomorrow_14",
+          "id": "today_14",
           "match": "Lorient vs Paris FC",
           "league": "Ligue 1 (France)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -1072,7 +1074,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "tomorrow_15",
+          "id": "today_15",
           "match": "Paris Saint-Germain vs Le Mans",
           "league": "Ligue 1 (France)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -1110,7 +1112,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "tomorrow_16",
+          "id": "today_16",
           "match": "Genoa vs Fiorentina",
           "league": "Serie A (Italie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -1148,7 +1150,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "tomorrow_17",
+          "id": "today_17",
           "match": "Internazionale vs Parma",
           "league": "Serie A (Italie)",
           "time": "17:00 (Bénin) • 18:00 (Paris)",
@@ -1186,7 +1188,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "tomorrow_18",
+          "id": "today_18",
           "match": "Napoli vs Frosinone",
           "league": "Serie A (Italie)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -1224,7 +1226,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "tomorrow_19",
+          "id": "today_19",
           "match": "1. FC Union Berlin vs SV Elversberg",
           "league": "Bundesliga (Allemagne)",
           "time": "14:30 (Bénin) • 15:30 (Paris)",
@@ -1262,7 +1264,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "tomorrow_20",
+          "id": "today_20",
           "match": "FC Augsburg vs Bayern Munich",
           "league": "Bundesliga (Allemagne)",
           "time": "14:30 (Bénin) • 15:30 (Paris)",
@@ -1300,7 +1302,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "tomorrow_21",
+          "id": "today_21",
           "match": "Mainz vs Bayer Leverkusen",
           "league": "Bundesliga (Allemagne)",
           "time": "14:30 (Bénin) • 15:30 (Paris)",
@@ -1338,7 +1340,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "tomorrow_22",
+          "id": "today_22",
           "match": "SC Paderborn 07 vs VfB Stuttgart",
           "league": "Bundesliga (Allemagne)",
           "time": "14:30 (Bénin) • 15:30 (Paris)",
@@ -1376,7 +1378,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "tomorrow_23",
+          "id": "today_23",
           "match": "TSG Hoffenheim vs Hamburg SV",
           "league": "Bundesliga (Allemagne)",
           "time": "14:30 (Bénin) • 15:30 (Paris)",
@@ -1414,7 +1416,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "tomorrow_24",
+          "id": "today_24",
           "match": "RB Leipzig vs Eintracht Frankfurt",
           "league": "Bundesliga (Allemagne)",
           "time": "17:30 (Bénin) • 18:30 (Paris)",
@@ -1452,7 +1454,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "tomorrow_25",
+          "id": "today_25",
           "match": "Casa Pia vs Santa Clara",
           "league": "Primeira Liga (Portugal)",
           "time": "15:30 (Bénin) • 16:30 (Paris)",
@@ -1490,7 +1492,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "tomorrow_26",
+          "id": "today_26",
           "match": "Maritimo vs FC Porto",
           "league": "Primeira Liga (Portugal)",
           "time": "18:00 (Bénin) • 19:00 (Paris)",
@@ -1528,7 +1530,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "tomorrow_27",
+          "id": "today_27",
           "match": "Académico de Viseu vs Estoril",
           "league": "Primeira Liga (Portugal)",
           "time": "20:30 (Bénin) • 21:30 (Paris)",
@@ -1566,7 +1568,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "tomorrow_28",
+          "id": "today_28",
           "match": "Genclerbirligi vs Amed SFK",
           "league": "Süper Lig (Turquie)",
           "time": "11:30 (Bénin) • 12:30 (Paris)",
@@ -1604,7 +1606,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "tomorrow_29",
+          "id": "today_29",
           "match": "Alanyaspor vs Erzurum BB",
           "league": "Süper Lig (Turquie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -1642,7 +1644,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "tomorrow_30",
+          "id": "today_30",
           "match": "Samsunspor vs Trabzonspor",
           "league": "Süper Lig (Turquie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -1680,7 +1682,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "tomorrow_31",
+          "id": "today_31",
           "match": "Caykur Rizespor vs Fenerbahce",
           "league": "Süper Lig (Turquie)",
           "time": "17:00 (Bénin) • 18:00 (Paris)",
@@ -1718,7 +1720,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "tomorrow_32",
+          "id": "today_32",
           "match": "Go Ahead Eagles vs Sparta Rotterdam",
           "league": "Eredivisie (Pays-Bas)",
           "time": "15:30 (Bénin) • 16:30 (Paris)",
@@ -1756,7 +1758,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
         },
         {
-          "id": "tomorrow_33",
+          "id": "today_33",
           "match": "Feyenoord Rotterdam vs AZ Alkmaar",
           "league": "Eredivisie (Pays-Bas)",
           "time": "17:45 (Bénin) • 18:45 (Paris)",
@@ -1794,7 +1796,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
         },
         {
-          "id": "tomorrow_34",
+          "id": "today_34",
           "match": "Fortuna Sittard vs FC Twente",
           "league": "Eredivisie (Pays-Bas)",
           "time": "19:00 (Bénin) • 20:00 (Paris)",
@@ -1832,7 +1834,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
         },
         {
-          "id": "tomorrow_35",
+          "id": "today_35",
           "match": "Ajax Amsterdam vs NEC Nijmegen",
           "league": "Eredivisie (Pays-Bas)",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
@@ -1872,8 +1874,8 @@ window.DEFAULT_HNS_DATA = {
       ],
       "combos": [
         {
-          "id": "combo_tomorrow_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Demain)",
+          "id": "combo_today_1",
+          "title": "🛡️ Combiné Sécurité Maximale (Aujourd'hui)",
           "odds": 2.15,
           "confidence": 92,
           "picks": [
@@ -1891,8 +1893,8 @@ window.DEFAULT_HNS_DATA = {
           "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
         },
         {
-          "id": "combo_tomorrow_2",
-          "title": "⚡ Combiné Value xG (Demain)",
+          "id": "combo_today_2",
+          "title": "⚡ Combiné Value xG (Aujourd'hui)",
           "odds": 3.11,
           "confidence": 91,
           "picks": [
@@ -1916,11 +1918,12 @@ window.DEFAULT_HNS_DATA = {
         }
       ]
     },
-    "weekend": {
-      "label": "Dimanche (Sunday 11 Oct)",
+    "tomorrow": {
+      "label": "Demain (Sunday 11 Oct)",
       "short_label": "Sun 11 Oct",
       "date_str": "11 October 2026",
-      "notice": "Calendrier officiel synchronisé automatiquement avec les horaires exacts Bénin (GMT+1) et Paris (GMT+2).",
+      "date_iso": "2026-10-11",
+      "notice": "Dimanche Chocs au Sommet : 27 affiches d'élite (Arsenal vs City, PSG, Real Madrid).",
       "banker": {
         "match": "Benfica vs Vitória de Guimaraes",
         "competition": "Primeira Liga (Portugal)",
@@ -1956,7 +1959,7 @@ window.DEFAULT_HNS_DATA = {
       },
       "singles": [
         {
-          "id": "weekend_1",
+          "id": "tomorrow_1",
           "match": "Crystal Palace vs Nottingham Forest",
           "league": "Premier League (Angleterre)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -1994,7 +1997,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "weekend_2",
+          "id": "tomorrow_2",
           "match": "Hull City vs Everton",
           "league": "Premier League (Angleterre)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2032,7 +2035,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "weekend_3",
+          "id": "tomorrow_3",
           "match": "Liverpool vs Manchester City",
           "league": "Premier League (Angleterre)",
           "time": "16:30 (Bénin) • 17:30 (Paris)",
@@ -2070,7 +2073,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
         },
         {
-          "id": "weekend_4",
+          "id": "tomorrow_4",
           "match": "Elche vs Celta Vigo",
           "league": "LaLiga (Espagne)",
           "time": "13:00 (Bénin) • 14:00 (Paris)",
@@ -2108,7 +2111,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "weekend_5",
+          "id": "tomorrow_5",
           "match": "Real Sociedad vs Deportivo",
           "league": "LaLiga (Espagne)",
           "time": "15:15 (Bénin) • 16:15 (Paris)",
@@ -2146,7 +2149,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "weekend_6",
+          "id": "tomorrow_6",
           "match": "Real Betis vs Osasuna",
           "league": "LaLiga (Espagne)",
           "time": "17:30 (Bénin) • 18:30 (Paris)",
@@ -2184,7 +2187,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "weekend_7",
+          "id": "tomorrow_7",
           "match": "Racing Santander vs Valencia",
           "league": "LaLiga (Espagne)",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
@@ -2222,7 +2225,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
         },
         {
-          "id": "weekend_8",
+          "id": "tomorrow_8",
           "match": "Nice vs Strasbourg",
           "league": "Ligue 1 (France)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2260,7 +2263,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "weekend_9",
+          "id": "tomorrow_9",
           "match": "Stade Rennais vs AJ Auxerre",
           "league": "Ligue 1 (France)",
           "time": "16:15 (Bénin) • 17:15 (Paris)",
@@ -2298,7 +2301,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "weekend_10",
+          "id": "tomorrow_10",
           "match": "Troyes vs Marseille",
           "league": "Ligue 1 (France)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -2336,7 +2339,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
         },
         {
-          "id": "weekend_11",
+          "id": "tomorrow_11",
           "match": "Como vs AS Roma",
           "league": "Serie A (Italie)",
           "time": "11:30 (Bénin) • 12:30 (Paris)",
@@ -2374,7 +2377,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "weekend_12",
+          "id": "tomorrow_12",
           "match": "Lazio vs Monza",
           "league": "Serie A (Italie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2412,7 +2415,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "weekend_13",
+          "id": "tomorrow_13",
           "match": "Lecce vs Bologna",
           "league": "Serie A (Italie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2450,7 +2453,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "weekend_14",
+          "id": "tomorrow_14",
           "match": "Sassuolo vs AC Milan",
           "league": "Serie A (Italie)",
           "time": "17:00 (Bénin) • 18:00 (Paris)",
@@ -2488,7 +2491,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "weekend_15",
+          "id": "tomorrow_15",
           "match": "Cagliari vs Juventus",
           "league": "Serie A (Italie)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -2526,7 +2529,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
         },
         {
-          "id": "weekend_16",
+          "id": "tomorrow_16",
           "match": "FC Cologne vs Borussia Mönchengladbach",
           "league": "Bundesliga (Allemagne)",
           "time": "14:30 (Bénin) • 15:30 (Paris)",
@@ -2564,7 +2567,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "weekend_17",
+          "id": "tomorrow_17",
           "match": "SC Freiburg vs Schalke 04",
           "league": "Bundesliga (Allemagne)",
           "time": "16:30 (Bénin) • 17:30 (Paris)",
@@ -2602,7 +2605,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
         },
         {
-          "id": "weekend_18",
+          "id": "tomorrow_18",
           "match": "Rio Ave vs C.D. Nacional",
           "league": "Primeira Liga (Portugal)",
           "time": "15:30 (Bénin) • 16:30 (Paris)",
@@ -2640,7 +2643,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "weekend_19",
+          "id": "tomorrow_19",
           "match": "Benfica vs Vitória de Guimaraes",
           "league": "Primeira Liga (Portugal)",
           "time": "18:00 (Bénin) • 19:00 (Paris)",
@@ -2678,7 +2681,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "weekend_20",
+          "id": "tomorrow_20",
           "match": "Arouca vs Estrela",
           "league": "Primeira Liga (Portugal)",
           "time": "20:30 (Bénin) • 21:30 (Paris)",
@@ -2716,7 +2719,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
         },
         {
-          "id": "weekend_21",
+          "id": "tomorrow_21",
           "match": "Konyaspor vs Istanbul Basaksehir",
           "league": "Süper Lig (Turquie)",
           "time": "11:30 (Bénin) • 12:30 (Paris)",
@@ -2754,7 +2757,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "weekend_22",
+          "id": "tomorrow_22",
           "match": "Gaziantep FK vs Çorum FK",
           "league": "Süper Lig (Turquie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2792,7 +2795,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "weekend_23",
+          "id": "tomorrow_23",
           "match": "Besiktas vs Kocaelispor",
           "league": "Süper Lig (Turquie)",
           "time": "17:00 (Bénin) • 18:00 (Paris)",
@@ -2830,7 +2833,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
         },
         {
-          "id": "weekend_24",
+          "id": "tomorrow_24",
           "match": "FC Utrecht vs Willem II",
           "league": "Eredivisie (Pays-Bas)",
           "time": "11:15 (Bénin) • 12:15 (Paris)",
@@ -2868,7 +2871,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
         },
         {
-          "id": "weekend_25",
+          "id": "tomorrow_25",
           "match": "PEC Zwolle vs SC Cambuur",
           "league": "Eredivisie (Pays-Bas)",
           "time": "13:30 (Bénin) • 14:30 (Paris)",
@@ -2906,7 +2909,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
         },
         {
-          "id": "weekend_26",
+          "id": "tomorrow_26",
           "match": "Telstar vs ADO Den Haag",
           "league": "Eredivisie (Pays-Bas)",
           "time": "13:30 (Bénin) • 14:30 (Paris)",
@@ -2944,7 +2947,7 @@ window.DEFAULT_HNS_DATA = {
           "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
         },
         {
-          "id": "weekend_27",
+          "id": "tomorrow_27",
           "match": "Excelsior vs FC Groningen",
           "league": "Eredivisie (Pays-Bas)",
           "time": "15:45 (Bénin) • 16:45 (Paris)",
@@ -2984,8 +2987,8 @@ window.DEFAULT_HNS_DATA = {
       ],
       "combos": [
         {
-          "id": "combo_weekend_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Dimanche)",
+          "id": "combo_tomorrow_1",
+          "title": "🛡️ Combiné Sécurité Maximale (Demain)",
           "odds": 2.1,
           "confidence": 88,
           "picks": [
@@ -3003,8 +3006,8 @@ window.DEFAULT_HNS_DATA = {
           "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
         },
         {
-          "id": "combo_weekend_2",
-          "title": "⚡ Combiné Value xG (Dimanche)",
+          "id": "combo_tomorrow_2",
+          "title": "⚡ Combiné Value xG (Demain)",
           "odds": 3.26,
           "confidence": 89,
           "picks": [
@@ -3022,6 +3025,321 @@ window.DEFAULT_HNS_DATA = {
               "match": "Liverpool vs Manchester City",
               "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
               "odds": 1.55
+            }
+          ],
+          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
+        }
+      ]
+    },
+    "after_tomorrow": {
+      "label": "Lundi (Monday 12 Oct)",
+      "short_label": "Mon 12 Oct",
+      "date_str": "12 October 2026",
+      "date_iso": "2026-10-12",
+      "notice": "Affiches du Lundi : Matchs de clôture des grands championnats européens.",
+      "banker": {
+        "match": "Coventry City vs Newcastle United",
+        "competition": "Premier League (Angleterre)",
+        "time": "20:00 (Bénin) • 21:00 (Paris)",
+        "pick": "Coventry City ou Nul",
+        "odds": 1.45,
+        "confidence": 88,
+        "status": "upcoming",
+        "score": "",
+        "status_text": "⏳ À VENIR",
+        "analysis": "Avantage terrain déterminant pour Coventry City face à un adversaire direct en difficulté à l'extérieur.",
+        "metrics": {
+          "xg_diff": "+0.70 xG",
+          "home_form": "V-N-V-D-N (8 pts/15)",
+          "away_form": "D-D-N-V-D (4 pts/15)",
+          "home_strength": "76% invaincu à domicile",
+          "stake": "Maintien & Régularité Championnat",
+          "risk_level": "2/5 (Faible)",
+          "btts_prob": "48%",
+          "over15_prob": "78%"
+        },
+        "key_players": {
+          "star_player": "Capitaine & Meneur de jeu (Coventry City)",
+          "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
+          "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
+          "tactical_impact": "Capitaine & Meneur de jeu (Coventry City) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+        },
+        "tactical_breakdown": {
+          "league_reality": "Championnat le plus intense au monde. Les favoris encaissent souvent un but (BTTS élevé) et les fins de match sont explosives après la 75e minute. Les sécurités 'Victoire & +1.5' ou 'Double Chance & Buts' offrent un rendement maximal.",
+          "key_advantage": "Coventry City s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
+          "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Coventry City."
+        }
+      },
+      "singles": [
+        {
+          "id": "after_tomorrow_1",
+          "match": "Coventry City vs Newcastle United",
+          "league": "Premier League (Angleterre)",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Coventry City ou Nul",
+          "odds": 1.45,
+          "confidence": 88,
+          "type": "Banker",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.70 xG",
+            "home_form": "V-N-V-D-N (8 pts/15)",
+            "away_form": "D-D-N-V-D (4 pts/15)",
+            "home_strength": "76% invaincu à domicile",
+            "stake": "Maintien & Régularité Championnat",
+            "risk_level": "2/5 (Faible)",
+            "btts_prob": "48%",
+            "over15_prob": "78%"
+          },
+          "key_players": {
+            "star_player": "Capitaine & Meneur de jeu (Coventry City)",
+            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "tactical_impact": "Capitaine & Meneur de jeu (Coventry City) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Championnat le plus intense au monde. Les favoris encaissent souvent un but (BTTS élevé) et les fins de match sont explosives après la 75e minute. Les sécurités 'Victoire & +1.5' ou 'Double Chance & Buts' offrent un rendement maximal.",
+            "key_advantage": "Coventry City s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
+            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Coventry City."
+          },
+          "reason": "Avantage terrain déterminant pour Coventry City face à un adversaire direct en difficulté à l'extérieur.",
+          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
+        },
+        {
+          "id": "after_tomorrow_2",
+          "match": "Levante vs Sevilla",
+          "league": "LaLiga (Espagne)",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Levante ou Nul",
+          "odds": 1.45,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.70 xG",
+            "home_form": "V-N-V-D-N (8 pts/15)",
+            "away_form": "D-D-N-V-D (4 pts/15)",
+            "home_strength": "76% invaincu à domicile",
+            "stake": "Maintien & Régularité Championnat",
+            "risk_level": "2/5 (Faible)",
+            "btts_prob": "48%",
+            "over15_prob": "78%"
+          },
+          "key_players": {
+            "star_player": "Capitaine & Meneur de jeu (Levante)",
+            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "tactical_impact": "Capitaine & Meneur de jeu (Levante) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
+            "key_advantage": "Levante s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
+            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Levante."
+          },
+          "reason": "Avantage terrain déterminant pour Levante face à un adversaire direct en difficulté à l'extérieur.",
+          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
+        },
+        {
+          "id": "after_tomorrow_3",
+          "match": "Atalanta vs Venezia",
+          "league": "Serie A (Italie)",
+          "time": "17:30 (Bénin) • 18:30 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Atalanta ou Nul",
+          "odds": 1.45,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.70 xG",
+            "home_form": "V-N-V-D-N (8 pts/15)",
+            "away_form": "D-D-N-V-D (4 pts/15)",
+            "home_strength": "76% invaincu à domicile",
+            "stake": "Maintien & Régularité Championnat",
+            "risk_level": "2/5 (Faible)",
+            "btts_prob": "48%",
+            "over15_prob": "78%"
+          },
+          "key_players": {
+            "star_player": "Capitaine & Meneur de jeu (Atalanta)",
+            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "tactical_impact": "Capitaine & Meneur de jeu (Atalanta) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
+            "key_advantage": "Atalanta s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
+            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Atalanta."
+          },
+          "reason": "Avantage terrain déterminant pour Atalanta face à un adversaire direct en difficulté à l'extérieur.",
+          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
+        },
+        {
+          "id": "after_tomorrow_4",
+          "match": "Torino vs Udinese",
+          "league": "Serie A (Italie)",
+          "time": "19:45 (Bénin) • 20:45 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Torino ou Nul",
+          "odds": 1.45,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.70 xG",
+            "home_form": "V-N-V-D-N (8 pts/15)",
+            "away_form": "D-D-N-V-D (4 pts/15)",
+            "home_strength": "76% invaincu à domicile",
+            "stake": "Maintien & Régularité Championnat",
+            "risk_level": "2/5 (Faible)",
+            "btts_prob": "48%",
+            "over15_prob": "78%"
+          },
+          "key_players": {
+            "star_player": "Capitaine & Meneur de jeu (Torino)",
+            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "tactical_impact": "Capitaine & Meneur de jeu (Torino) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
+            "key_advantage": "Torino s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
+            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Torino."
+          },
+          "reason": "Avantage terrain déterminant pour Torino face à un adversaire direct en difficulté à l'extérieur.",
+          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
+        },
+        {
+          "id": "after_tomorrow_5",
+          "match": "FC Famalicao vs Alverca",
+          "league": "Primeira Liga (Portugal)",
+          "time": "20:15 (Bénin) • 21:15 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "FC Famalicao ou Nul",
+          "odds": 1.45,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.70 xG",
+            "home_form": "V-N-V-D-N (8 pts/15)",
+            "away_form": "D-D-N-V-D (4 pts/15)",
+            "home_strength": "76% invaincu à domicile",
+            "stake": "Maintien & Régularité Championnat",
+            "risk_level": "2/5 (Faible)",
+            "btts_prob": "48%",
+            "over15_prob": "78%"
+          },
+          "key_players": {
+            "star_player": "Capitaine & Meneur de jeu (FC Famalicao)",
+            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "tactical_impact": "Capitaine & Meneur de jeu (FC Famalicao) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Écart technique colossal entre le trio de tête (Sporting, Benfica, Porto) et le reste du championnat. Les cadors affichent plus de 75% de victoires nettes avec un monopole de possession.",
+            "key_advantage": "FC Famalicao s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
+            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de FC Famalicao."
+          },
+          "reason": "Avantage terrain déterminant pour FC Famalicao face à un adversaire direct en difficulté à l'extérieur.",
+          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
+        },
+        {
+          "id": "after_tomorrow_6",
+          "match": "Eyupspor vs Goztepe",
+          "league": "Süper Lig (Turquie)",
+          "time": "18:00 (Bénin) • 19:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Eyupspor ou Nul",
+          "odds": 1.45,
+          "confidence": 88,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.70 xG",
+            "home_form": "V-N-V-D-N (8 pts/15)",
+            "away_form": "D-D-N-V-D (4 pts/15)",
+            "home_strength": "76% invaincu à domicile",
+            "stake": "Maintien & Régularité Championnat",
+            "risk_level": "2/5 (Faible)",
+            "btts_prob": "48%",
+            "over15_prob": "78%"
+          },
+          "key_players": {
+            "star_player": "Capitaine & Meneur de jeu (Eyupspor)",
+            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
+            "tactical_impact": "Capitaine & Meneur de jeu (Eyupspor) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
+            "key_advantage": "Eyupspor s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
+            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Eyupspor."
+          },
+          "reason": "Avantage terrain déterminant pour Eyupspor face à un adversaire direct en difficulté à l'extérieur.",
+          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
+        }
+      ],
+      "combos": [
+        {
+          "id": "combo_after_tomorrow_1",
+          "title": "🛡️ Combiné Sécurité Maximale (Lundi)",
+          "odds": 2.1,
+          "confidence": 88,
+          "picks": [
+            {
+              "match": "Coventry City vs Newcastle United",
+              "pick": "Coventry City ou Nul",
+              "odds": 1.45
+            },
+            {
+              "match": "Levante vs Sevilla",
+              "pick": "Levante ou Nul",
+              "odds": 1.45
+            }
+          ],
+          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
+        },
+        {
+          "id": "combo_after_tomorrow_2",
+          "title": "⚡ Combiné Value xG (Lundi)",
+          "odds": 3.05,
+          "confidence": 88,
+          "picks": [
+            {
+              "match": "Coventry City vs Newcastle United",
+              "pick": "Coventry City ou Nul",
+              "odds": 1.45
+            },
+            {
+              "match": "Levante vs Sevilla",
+              "pick": "Levante ou Nul",
+              "odds": 1.45
+            },
+            {
+              "match": "Atalanta vs Venezia",
+              "pick": "Atalanta ou Nul",
+              "odds": 1.45
             }
           ],
           "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=19">
+    <link rel="stylesheet" href="static/css/style.css?v=20">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
 </head>
@@ -44,19 +44,23 @@
             </div>
         </header>
 
-        <!-- SÉLECTEUR DE JOUR (AUJOURD'HUI / DEMAIN / DIMANCHE) -->
+        <!-- SÉLECTEUR DE JOUR (HIER / AUJOURD'HUI / DEMAIN / LUNDI) -->
         <div class="day-selector-bar">
+            <button class="day-btn" data-day="yesterday">
+                <span class="day-title">Hier</span>
+                <span class="day-sub" id="yesterdaySub">Ven 9 Oct</span>
+            </button>
             <button class="day-btn active" data-day="today">
                 <span class="day-title">Aujourd'hui</span>
-                <span class="day-sub" id="todaySub">Ven 9 Oct</span>
+                <span class="day-sub" id="todaySub">Sam 10 Oct</span>
             </button>
             <button class="day-btn" data-day="tomorrow">
                 <span class="day-title">Demain</span>
-                <span class="day-sub" id="tomorrowSub">Sam 10 Oct</span>
+                <span class="day-sub" id="tomorrowSub">Dim 11 Oct</span>
             </button>
-            <button class="day-btn" data-day="weekend">
-                <span class="day-title">Dimanche</span>
-                <span class="day-sub" id="weekendSub">Dim 11 Oct</span>
+            <button class="day-btn" data-day="after_tomorrow">
+                <span class="day-title">Lundi</span>
+                <span class="day-sub" id="afterTomorrowSub">Lun 12 Oct</span>
             </button>
         </div>
 
@@ -421,9 +425,10 @@
                     <div class="input-item">
                         <label>Jour du match :</label>
                         <select id="customDay" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
-                            <option value="today">Aujourd'hui (Ven 9 Oct)</option>
-                            <option value="tomorrow">Demain (Sam 10 Oct)</option>
-                            <option value="weekend">Dimanche (Dim 11 Oct)</option>
+                            <option value="today">Aujourd'hui</option>
+                            <option value="tomorrow">Demain</option>
+                            <option value="after_tomorrow">Lundi</option>
+                            <option value="yesterday">Hier</option>
                         </select>
                     </div>
                     <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
@@ -451,7 +456,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=19"></script>
-    <script src="static/js/app.js?v=19"></script>
+    <script src="static/js/default-data.js?v=20"></script>
+    <script src="static/js/app.js?v=20"></script>
 </body>
 </html>
