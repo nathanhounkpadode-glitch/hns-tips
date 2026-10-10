@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=27">
+    <link rel="stylesheet" href="static/css/style.css?v=28">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
@@ -167,6 +167,9 @@
                             <div id="bankerStarPlayer" style="margin-bottom:3px;">🌟 Joueur phare</div>
                             <div id="bankerAbsentees" style="color:#f87171;">🚑 Forfaits</div>
                         </div>
+                        <button class="btn-simulate-match banker-sim-btn" id="bankerSimBtn" onclick="openBankerSimulation()">
+                            🎲 Simuler le Banker (10 000 tests IA)
+                        </button>
                     </div>
 
                     <!-- LISTE DES SÉLECTIONS LES PLUS SÛRES -->
@@ -502,6 +505,112 @@
             </div>
         </div>
 
+        <!-- MODAL SIMULATEUR MONTE CARLO IA (10 000 CONFRONTATIONS) -->
+        <div class="modal-backdrop" id="simModal" style="display: none;">
+            <div class="modal-card sim-modal-card">
+                <div class="modal-header">
+                    <div>
+                        <div class="sim-modal-subtitle">🧠 IA QUANTITATIVE • MODÈLE DIXON-COLES & MONTE CARLO</div>
+                        <h3 id="simModalTitle">🎲 Simulation Monte Carlo (10 000 Matchs)</h3>
+                    </div>
+                    <button class="modal-close" id="closeSimModalBtn">&times;</button>
+                </div>
+
+                <div class="modal-body sim-modal-body">
+                    <!-- EN-TÊTE DU MATCH SÉLECTIONNÉ -->
+                    <div class="sim-match-header" id="simMatchHeader">
+                        <div class="sim-league-badge" id="simLeagueBadge">Premier League</div>
+                        <div class="sim-match-teams" id="simMatchTeams">Liverpool vs Manchester City</div>
+                        <div class="sim-match-meta" id="simMatchMeta">Coup d'envoi • 16:30 • Pronostic HNS : Les deux équipes marquent ou +2.5</div>
+                    </div>
+
+                    <!-- ÉCRAN DE CALCUL / CHARGEMENT (QUAND LA SIMULATION TOURNE) -->
+                    <div class="sim-loading-state" id="simLoadingState" style="display: none;">
+                        <div class="sim-radar-spinner"></div>
+                        <div class="sim-loading-title">Exécution de 10 000 confrontations en cours...</div>
+                        <div class="sim-loading-desc" id="simLoadingDesc">Traitement des métriques xG, PPDA, Field Tilt et avantage domicile...</div>
+                        <div class="sim-progress-bar-container">
+                            <div class="sim-progress-bar-fill" id="simProgressBarFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- RÉSULTATS COMPLETS DE LA SIMULATION -->
+                    <div class="sim-results-container" id="simResultsContainer">
+                        
+                        <!-- 1. PROBABILITÉS 1X2 -->
+                        <div class="sim-section-title">📊 PROBABILITÉS 1X2 CALCULÉES SUR 10 000 SCÉNARIOS</div>
+                        <div class="sim-prob-grid">
+                            <div class="sim-prob-box" id="simHomeBox">
+                                <div class="sim-prob-label" id="simHomeLabel">1 (Domicile)</div>
+                                <div class="sim-prob-pct" id="simHomePct">44.2%</div>
+                                <div class="sim-prob-bar"><div class="sim-prob-bar-fill home" id="simHomeBar"></div></div>
+                            </div>
+                            <div class="sim-prob-box" id="simDrawBox">
+                                <div class="sim-prob-label">Nul (X)</div>
+                                <div class="sim-prob-pct" id="simDrawPct">27.5%</div>
+                                <div class="sim-prob-bar"><div class="sim-prob-bar-fill draw" id="simDrawBar"></div></div>
+                            </div>
+                            <div class="sim-prob-box" id="simAwayBox">
+                                <div class="sim-prob-label" id="simAwayLabel">2 (Extérieur)</div>
+                                <div class="sim-prob-pct" id="simAwayPct">28.3%</div>
+                                <div class="sim-prob-bar"><div class="sim-prob-bar-fill away" id="simAwayBar"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- 2. TOP 4 SCORES EXACTS LES PLUS RÉCURRENTS -->
+                        <div class="sim-section-title">🎯 TOP 4 SCORES LES PLUS FRÉQUENTS DANS LES 10 000 SIMULATIONS</div>
+                        <div class="sim-scores-grid" id="simScoresGrid">
+                            <!-- Injected dynamically -->
+                        </div>
+
+                        <!-- 3. MARCHÉS DE BUTS & SPECTACLE -->
+                        <div class="sim-section-title">⚽ PROBABILITÉS DES MARCHÉS CLÉS</div>
+                        <div class="sim-markets-grid">
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">+1.5 Buts</div>
+                                <div class="sim-market-pct" id="simOver15Pct">84.2%</div>
+                                <div class="sim-market-badge" id="simOver15Badge">Très Élevé</div>
+                            </div>
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">+2.5 Buts</div>
+                                <div class="sim-market-pct" id="simOver25Pct">62.8%</div>
+                                <div class="sim-market-badge" id="simOver25Badge">Favorable</div>
+                            </div>
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">Les 2 Marquent (BTTS)</div>
+                                <div class="sim-market-pct" id="simBttsPct">66.4%</div>
+                                <div class="sim-market-badge" id="simBttsBadge">Très Favorable</div>
+                            </div>
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">xG Moyen Simulé</div>
+                                <div class="sim-market-pct" id="simAvgXg">1.8 - 1.4</div>
+                                <div class="sim-market-badge" id="simAvgXgBadge">Festival</div>
+                            </div>
+                        </div>
+
+                        <!-- 4. VERDICT ALGORTIHIQUE QUANTITATIF & CONSEIL ANTI-DOUILLE -->
+                        <div class="sim-verdict-box" id="simVerdictBox">
+                            <div class="sim-verdict-header">
+                                <span class="sim-verdict-tag">💡 AUDIT MATHÉMATIQUE HNS</span>
+                                <span class="sim-verdict-confidence" id="simVerdictConf">88.5% Viabilité</span>
+                            </div>
+                            <div class="sim-verdict-text" id="simVerdictText">
+                                Le pronostic sélectionné bénéficie d'une forte convergence statistique sur 10 000 scénarios.
+                            </div>
+                            <div class="sim-verdict-safety" id="simVerdictSafety">
+                                🛡️ <strong>Conseil Pro :</strong> Couverture Double Chance recommandée pour éliminer la variance résiduelle.
+                            </div>
+                        </div>
+
+                        <div class="sim-modal-actions">
+                            <button class="sim-btn-rerun" id="simRerunBtn">🔄 Relancer 10 000 Simulations</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- APP BOTTOM NAVIGATION BAR -->
         <nav class="app-bottom-nav">
             <button class="nav-item active" onclick="switchTab('home')">
@@ -520,7 +629,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=27"></script>
-    <script src="static/js/app.js?v=27"></script>
+    <script src="static/js/default-data.js?v=28"></script>
+    <script src="static/js/app.js?v=28"></script>
 </body>
 </html>

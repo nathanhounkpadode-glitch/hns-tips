@@ -1782,6 +1782,391 @@ body {
     font-weight: 800;
 }
 
+/* ======================================================== */
+/* SIMULATEUR MONTE CARLO & POISSON BIVARIÉ IA (10 000 TESTS) */
+/* ======================================================== */
+.btn-simulate-match {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(99, 102, 241, 0.18));
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    color: #38bdf8;
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 8px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.12);
+}
+
+.btn-simulate-match:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(99, 102, 241, 0.32));
+    border-color: #38bdf8;
+    color: #ffffff;
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3);
+}
+
+.banker-sim-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 16px;
+    font-size: 0.82rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(56, 189, 248, 0.2));
+    border: 1.5px solid rgba(255, 215, 0, 0.5);
+    color: #ffd700;
+}
+
+.banker-sim-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.28), rgba(56, 189, 248, 0.35));
+    border-color: #ffd700;
+    color: #ffffff;
+    box-shadow: 0 4px 18px rgba(255, 215, 0, 0.35);
+}
+
+.match-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.match-card-actions .btn-simulate-match {
+    flex: 1 1 55%;
+}
+
+.match-card-actions .btn-toggle-win {
+    flex: 1 1 40%;
+    margin-top: 0;
+}
+
+.sim-modal-card {
+    max-width: 620px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: linear-gradient(145deg, #0b1329, #080d1a);
+    border: 1.5px solid rgba(56, 189, 248, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.15);
+    border-radius: 18px;
+}
+
+.sim-modal-subtitle {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: #38bdf8;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.sim-match-header {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.sim-league-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    margin-bottom: 6px;
+}
+
+.sim-match-teams {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.sim-match-meta {
+    font-size: 0.74rem;
+    color: #94a3b8;
+}
+
+/* Écran d'animation de calcul */
+.sim-loading-state {
+    padding: 30px 15px;
+    text-align: center;
+}
+
+.sim-radar-spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    border: 3px solid rgba(56, 189, 248, 0.15);
+    border-top: 3px solid #38bdf8;
+    border-right: 3px solid #10b981;
+    animation: spin 0.8s linear infinite;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+.sim-loading-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.sim-loading-desc {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 18px;
+}
+
+.sim-progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.sim-progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #10b981);
+    border-radius: 6px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.sim-section-title {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #94a3b8;
+    margin: 16px 0 8px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Grille 1X2 */
+.sim-prob-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.sim-prob-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.sim-prob-box:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sim-prob-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sim-prob-pct {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.sim-prob-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.sim-prob-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.sim-prob-bar-fill.home { background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); }
+.sim-prob-bar-fill.draw { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
+.sim-prob-bar-fill.away { background: #f43f5e; box-shadow: 0 0 8px rgba(244, 63, 94, 0.6); }
+
+/* Grille Top Scores */
+.sim-scores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.sim-score-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 6px;
+    text-align: center;
+    position: relative;
+}
+
+.sim-score-rank {
+    font-size: 0.65rem;
+    margin-bottom: 2px;
+}
+
+.sim-score-val {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #38bdf8;
+    margin-bottom: 2px;
+}
+
+.sim-score-pct {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #cbd5e1;
+}
+
+/* Grille Marchés */
+.sim-markets-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.sim-market-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 9px 6px;
+    text-align: center;
+}
+
+.sim-market-name {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.sim-market-pct {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #10b981;
+    margin-bottom: 3px;
+}
+
+.sim-market-badge {
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 4px;
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+}
+
+/* Boîte Verdict IA */
+.sim-verdict-box {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(56, 189, 248, 0.08));
+    border: 1.5px solid rgba(16, 185, 129, 0.35);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.sim-verdict-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.sim-verdict-tag {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.4px;
+}
+
+.sim-verdict-confidence {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid #10b981;
+    color: #10b981;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.sim-verdict-text {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+}
+
+.sim-verdict-safety {
+    font-size: 0.72rem;
+    color: #93c5fd;
+    background: rgba(56, 189, 248, 0.08);
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+.sim-modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.sim-btn-rerun {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: #ffffff;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 9px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+    transition: all 0.2s ease;
+}
+
+.sim-btn-rerun:hover {
+    background: linear-gradient(135deg, #0369a1, #075985);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+}
+
+@media (max-width: 600px) {
+    .sim-scores-grid, .sim-markets-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 
 
 
