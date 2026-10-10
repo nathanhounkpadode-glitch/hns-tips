@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v22";
+const DATA_VERSION = "2026-10-10-v23";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -1100,7 +1100,15 @@ function formatTimeFromUTC(isoString) {
 }
 
 function generateAIPrediction(home, away, league) {
-    const elites = ["Manchester City", "Real Madrid", "Arsenal", "FC Barcelone", "Paris Saint-Germain", "Bayern", "Liverpool", "Inter", "Sporting", "Galatasaray", "PSV"];
+    const elites = [
+        "Manchester City", "Real Madrid", "Arsenal", "FC Barcelone", "Barça", "Barcelona",
+        "Paris Saint-Germain", "PSG", "Bayern", "Liverpool", "Inter", "Sporting",
+        "Galatasaray", "PSV", "Atlético", "Atletico", "Athletic", "Newcastle",
+        "Chelsea", "Tottenham", "Juventus", "Milan", "Napoli", "Fiorentina", "Bologna", "Atalanta",
+        "Leverkusen", "Dortmund", "Leipzig", "Stuttgart", "Porto", "Benfica", "Braga",
+        "Fenerbahce", "Besiktas", "Trabzonspor", "Basaksehir", "Ajax", "Feyenoord", "AZ Alkmaar",
+        "Sevilla", "Valencia", "Everton", "Brighton", "Aston Villa", "Monaco", "Lille", "Lens"
+    ];
     const isHomeElite = elites.some(e => home.toLowerCase().includes(e.toLowerCase()));
     const isAwayElite = elites.some(e => away.toLowerCase().includes(e.toLowerCase()));
 
