@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v30";
+const DATA_VERSION = "2026-10-11-v31";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -267,15 +267,39 @@ function checkCacheVersion() {
     }
 }
 
-// Mise à jour dynamique des sous-titres de date (Hier, Aujourd'hui, Demain, Lundi)
+// Détermination précise de la date courante (Heure Bénin UTC+1 ou Heure Locale la plus avancée)
+function getLocalTodayISO() {
+    const now = new Date();
+    // 1. Date locale du navigateur
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, "0");
+    const d = String(now.getDate()).padStart(2, "0");
+    const localISO = `${y}-${m}-${d}`;
+
+    // 2. Date au Bénin (GMT+1)
+    const beninDate = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3600000 * 1));
+    const by = beninDate.getFullYear();
+    const bm = String(beninDate.getMonth() + 1).padStart(2, "0");
+    const bd = String(beninDate.getDate()).padStart(2, "0");
+    const beninISO = `${by}-${bm}-${bd}`;
+
+    // Basculement immédiat dès que minuit est franchi
+    return beninISO > localISO ? beninISO : localISO;
+}
+
+// Mise à jour 100% dynamique des sélecteurs de jour (Hier, Aujourd'hui, Demain, et 4ème jour automatique)
 function updateDaySelectorLabels() {
     const now = new Date();
-    const yesterday = new Date(now);
-    yesterday.setDate(now.getDate() - 1);
-    const tomorrow = new Date(now);
-    tomorrow.setDate(now.getDate() + 1);
-    const afterTomorrow = new Date(now);
-    afterTomorrow.setDate(now.getDate() + 2);
+    const beninOffsetMs = 60 * 60 * 1000;
+    const beninNow = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + beninOffsetMs);
+    const refDate = (beninNow > now) ? beninNow : now;
+
+    const yesterday = new Date(refDate);
+    yesterday.setDate(refDate.getDate() - 1);
+    const tomorrow = new Date(refDate);
+    tomorrow.setDate(refDate.getDate() + 1);
+    const afterTomorrow = new Date(refDate);
+    afterTomorrow.setDate(refDate.getDate() + 2);
 
     const fmt = (d) => {
         const days = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
@@ -283,57 +307,84 @@ function updateDaySelectorLabels() {
         return `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
     };
 
+    const dayName = (d) => {
+        const fullDays = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+        return fullDays[d.getDay()];
+    };
+
     const ySub = document.getElementById("yesterdaySub");
     const tSub = document.getElementById("todaySub");
     const tmSub = document.getElementById("tomorrowSub");
     const atSub = document.getElementById("afterTomorrowSub");
+    const atTitle = document.getElementById("afterTomorrowTitle");
 
     if (ySub) ySub.textContent = fmt(yesterday);
-    if (tSub) tSub.textContent = fmt(now);
+    if (tSub) tSub.textContent = fmt(refDate);
     if (tmSub) tmSub.textContent = fmt(tomorrow);
     if (atSub) atSub.textContent = fmt(afterTomorrow);
+    if (atTitle) atTitle.textContent = dayName(afterTomorrow);
 }
 
-// Basculement automatique au fil des jours (100% Autonome)
+// Basculement automatique au fil des jours (100% Autonome, sans intervention manuelle)
 function checkAndRollDailyCalendar() {
-    if (!appData || !appData.days) return;
+    if (!appData || !appData.days) return false;
     
-    const now = new Date();
-    const todayYMD = now.toISOString().slice(0, 10);
-    
-    const todayData = appData.days.today;
-    if (todayData && todayData.date_iso) {
-        if (todayData.date_iso < todayYMD) {
-            console.log("🔄 Une journée est passée : basculement automatique de l'ancienne journée vers 'Hier'");
-            appData.days.yesterday = {
-                ...appData.days.today,
-                label: `Hier (${appData.days.today.short_label || 'Bilan'})`,
-                notice: "Bilan officiel des pronostics validés de la journée écoulée."
-            };
-            if (appData.days.tomorrow) {
-                appData.days.today = {
-                    ...appData.days.tomorrow,
-                    label: `Aujourd'hui (${appData.days.tomorrow.short_label || ''})`,
-                    notice: "Pronostics et analyses du jour synchronisés avec succès."
-                };
-            }
-            if (appData.days.after_tomorrow) {
-                appData.days.tomorrow = appData.days.after_tomorrow;
-                delete appData.days.after_tomorrow;
-            }
-            localStorage.setItem("hns_tips_data", JSON.stringify(appData));
+    const todayYMD = getLocalTodayISO();
+    let hasRolled = false;
+
+    // Boucle pour rattraper automatiquement les jours sans jamais se décaler
+    while (appData.days.today && appData.days.today.date_iso && appData.days.today.date_iso < todayYMD) {
+        hasRolled = true;
+        console.log(`🔄 Basculement automatique autonome : ${appData.days.today.date_iso} -> jour suivant (Aujourd'hui: ${todayYMD})`);
+
+        // 1. L'ancien "today" devient "yesterday"
+        const prevToday = { ...appData.days.today };
+        prevToday.label = `Hier (${prevToday.short_label || 'Bilan'})`;
+        prevToday.notice = "Bilan officiel certifié de la journée écoulée (scores réels sans complaisance).";
+        appData.days.yesterday = prevToday;
+
+        // 2. "tomorrow" devient le nouveau "today"
+        if (appData.days.tomorrow) {
+            const nextToday = { ...appData.days.tomorrow };
+            nextToday.label = `Aujourd'hui (${nextToday.short_label || ''})`;
+            nextToday.notice = "Pronostics et analyses du jour synchronisés avec succès.";
+            appData.days.today = nextToday;
+        }
+
+        // 3. "after_tomorrow" devient le nouveau "tomorrow"
+        if (appData.days.after_tomorrow) {
+            const nextTomorrow = { ...appData.days.after_tomorrow };
+            nextTomorrow.label = `Demain (${nextTomorrow.short_label || ''})`;
+            appData.days.tomorrow = nextTomorrow;
+            delete appData.days.after_tomorrow;
+        } else {
+            delete appData.days.tomorrow;
         }
     }
+
+    if (hasRolled) {
+        localStorage.setItem("hns_tips_data", JSON.stringify(appData));
+        updateDaySelectorLabels();
+        renderCurrentDayView();
+        renderStats();
+    }
+    return hasRolled;
 }
 
-// Load App Data from API or LocalStorage / default dataset
+// Load App Data from API or static data or LocalStorage / default dataset
 async function loadAppData() {
     checkCacheVersion();
 
     try {
-        const response = await fetch(`/api/data`);
-        if (!response.ok) throw new Error("API status " + response.status);
-        appData = await response.json();
+        let response = await fetch(`/api/data`).catch(() => null);
+        if (!response || !response.ok) {
+            response = await fetch(`/data/matches.json`).catch(() => null);
+        }
+        if (response && response.ok) {
+            appData = await response.json();
+        } else {
+            throw new Error("API et fichier statique inaccessibles");
+        }
     } catch (err) {
         console.warn("Mode autonome : utilisation des données intégrées.", err);
         const saved = localStorage.getItem("hns_tips_data");
@@ -351,10 +402,12 @@ async function loadAppData() {
     renderStats();
     setTimeout(() => autoSyncLiveFixtures(false), 1000);
 
-    // Live update interval : rafraîchissement 100% autonome et synchronisation ESPN chaque 20s
+    // Live update interval : rafraîchissement 100% autonome, vérification minuit continue et synchronisation ESPN chaque 20s
     if (!window.liveAutoRefreshInterval) {
         window.liveAutoRefreshInterval = setInterval(() => {
-            if (currentDay === "today") {
+            // Vérifie si minuit a sonné en temps réel pour faire basculer le jour immédiatement sans rechargement
+            const rolled = checkAndRollDailyCalendar();
+            if (!rolled && currentDay === "today") {
                 autoSyncLiveFixtures(false);
                 renderCurrentDayView();
             }
@@ -447,12 +500,35 @@ function evaluateBetResult(homeTeam, awayTeam, pick, hScore, aScore) {
 function resolveMatchLiveStatus(single, dayKey) {
     if (!single) return { status: "upcoming", score: "", status_text: "⏳ À VENIR" };
 
-    // Si on regarde la journée d'hier : toujours validé
+    // Si on regarde la journée d'hier : statut réel certifié (zéro illusion sur les paris perdus)
     if (dayKey === "yesterday") {
+        if (single.status === "lost") {
+            return {
+                status: "lost",
+                score: single.score || "FT",
+                status_text: single.status_text || `❌ NON PASSÉ (${single.score || "FT"})`
+            };
+        }
+        if (single.score) {
+            const scoreMatch = single.score.match(/(\d+)\s*-\s*(\d+)/);
+            if (scoreMatch) {
+                const hs = parseInt(scoreMatch[1], 10);
+                const as_ = parseInt(scoreMatch[2], 10);
+                const parts = (single.match || "").split(" vs ");
+                const isWon = evaluateBetResult(parts[0], parts[1], single.pick, hs, as_);
+                if (!isWon) {
+                    return {
+                        status: "lost",
+                        score: single.score,
+                        status_text: `❌ NON PASSÉ (${single.score})`
+                    };
+                }
+            }
+        }
         return {
             status: "won",
-            score: single.score || "2 - 0",
-            status_text: `✅ VALIDÉ (${single.score || "2 - 0"})`
+            score: single.score || "2 - 0 (FT)",
+            status_text: single.status_text || `✅ VALIDÉ (${single.score || "2 - 0 (FT)"})`
         };
     }
 

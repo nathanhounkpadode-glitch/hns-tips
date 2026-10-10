@@ -1,7 +1,7 @@
 // HNS TIPS DEFAULT DATASET (Données intégrées autonomes)
 window.DEFAULT_HNS_DATA = {
   "active_date": "today",
-  "last_auto_sync": "2026-10-10 02:58 UTC",
+  "last_auto_sync": "2026-10-11 00:25 UTC",
   "leagues_dna": {
     "eng.1": {
       "name": "Premier League (Angleterre)",
@@ -152,412 +152,11 @@ window.DEFAULT_HNS_DATA = {
   },
   "days": {
     "yesterday": {
-      "label": "Hier (Friday 09 Oct)",
-      "short_label": "Fri 09 Oct",
-      "date_str": "09 October 2026",
-      "date_iso": "2026-10-09",
-      "notice": "Bilan officiel d'hier : 7 pronostics sur 7 validés avec 100% de réussite !",
-      "banker": {
-        "match": "Galatasaray vs Kasimpasa",
-        "competition": "Süper Lig (Turquie)",
-        "time": "18:00 (Bénin) • 19:00 (Paris)",
-        "pick": "Victoire Galatasaray & Plus de 1.5 buts",
-        "odds": 1.48,
-        "confidence": 94,
-        "status": "won",
-        "score": "3-1",
-        "status_text": "🏆 BANKER GAGNÉ (3-1)",
-        "analysis": "Galatasaray est ultra-dominant à domicile (+1.70 xG). Kasimpasa est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-        "metrics": {
-          "xg_diff": "+1.70 xG pour l'hôte",
-          "home_form": "V-V-V-N-V (13 pts/15)",
-          "away_form": "D-N-D-D-V (4 pts/15)",
-          "home_strength": "88% victoires à domicile",
-          "stake": "Course au Titre • Pression du Leader",
-          "risk_level": "1/5 (Très Faible)",
-          "btts_prob": "42%",
-          "over15_prob": "89%",
-          "hsi_score": "94 / 100",
-          "field_tilt": "66% Domination Territoire",
-          "npxg_diff": "+1.46 npxG (Sans Pen.)",
-          "ppda": "9.6 (Pressing Haut Élite)",
-          "rest_advantage": "4j repos (+72h vs adv.)"
-        },
-        "key_players": {
-          "star_player": "🌟 Victor Osimhen & Mauro Icardi vs Capitaine & Meneur de jeu (Kasimpasa)",
-          "absentees_home": "🚑 Hakim Ziyech (Légère alerte)",
-          "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-          "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Victor Osimhen & Mauro Icardi."
-        },
-        "tactical_breakdown": {
-          "league_reality": "En Süper Lig (Turquie), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-          "key_advantage": "Galatasaray étouffe l'adversaire dès les 20 premières minutes. Chaudron stambouliote imprenable (3-1 validé ce soir).",
-          "verdict": "Scénario le plus probable : victoire sans trembler de Galatasaray avec au moins 2 buts dans le match."
-        },
-        "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
-      },
-      "singles": [
-        {
-          "id": "yesterday_1",
-          "match": "Málaga vs Espanyol",
-          "league": "LaLiga (Espagne)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Espanyol ou Nul",
-          "odds": 1.48,
-          "confidence": 91,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "0-1",
-          "status_text": "✅ VALIDÉ (0-1)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Espanyol",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Espanyol • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%",
-            "hsi_score": "95 / 100",
-            "field_tilt": "67% Domination Territoire",
-            "npxg_diff": "+1.58 npxG (Sans Pen.)",
-            "ppda": "8.0 (Pressing Haut Élite)",
-            "rest_advantage": "5j repos (+96h vs adv.)"
-          },
-          "key_players": {
-            "star_player": "Antoñito Cordero vs 🌟 Javi Puado (Buteur décisif)",
-            "absentees_home": "🚑 Kevin Medina (Absent)",
-            "absentees_away": "✅ Effectif au complet • Rigueur défensive maximale",
-            "tactical_impact": "🌟 Javi Puado (Buteur décisif) est en pleine confiance. 🚑 Kevin Medina (Absent)."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En LaLiga (Espagne), la qualité technique supérieure de Espanyol fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Espanyol monopolise les demi-espaces. Discipline tactique sans faille (victoire 0-1 validée à Málaga).",
-            "verdict": "Double chance X2 sécurisée : Espanyol ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Espanyol supérieur techniquement et discipliné en bloc compact. Victoire 0-1 validée avec succès.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile",
-          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Espanyol ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
-        },
-        {
-          "id": "yesterday_2",
-          "match": "Lens vs Lyon",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Lens ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-0",
-          "status_text": "✅ VALIDÉ (1-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%",
-            "hsi_score": "92 / 100",
-            "field_tilt": "64% Domination Territoire",
-            "npxg_diff": "+1.22 npxG (Sans Pen.)",
-            "ppda": "8.8 (Pressing Haut Élite)",
-            "rest_advantage": "2j repos (+24h vs adv.)"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Lens)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Lens) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ligue athlétique et compacte avec des ailiers véloces. Les blocs défensifs sont denses et les écarts de score souvent faibles. Les victoires étriquées et les doubles chances sécurisées sont la clé de voûte.",
-            "key_advantage": "Lens s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Lens."
-          },
-          "reason": "Forteresse de Bollaert imprenable pour Lens face à Lyon. Victoire 1-0 validée avec succès.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair",
-          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Lens ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
-        },
-        {
-          "id": "yesterday_3",
-          "match": "Borussia Dortmund vs Werder Bremen",
-          "league": "Bundesliga (Allemagne)",
-          "time": "19:30 (Bénin) • 20:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "2-0",
-          "status_text": "✅ VALIDÉ (2-0)",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%",
-            "hsi_score": "93 / 100",
-            "field_tilt": "65% Domination Territoire",
-            "npxg_diff": "+1.34 npxG (Sans Pen.)",
-            "ppda": "9.2 (Pressing Haut Élite)",
-            "rest_advantage": "3j repos (+48h vs adv.)"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Borussia Dortmund)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Borussia Dortmund) et Capitaine & Meneur de jeu (Werder Bremen) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Le paradis des attaquants. Le pressing tout-terrain ultra-haut laisse d'immenses espaces dans le dos des défenses. Les marchés 'Plus de 1.5 buts', 'Plus de 2.5 buts' et 'Les Deux Équipes Marquent' sont rois.",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Bundesliga (Allemagne) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé",
-          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
-        },
-        {
-          "id": "yesterday_4",
-          "match": "Moreirense vs Gil Vicente",
-          "league": "Primeira Liga (Portugal)",
-          "time": "18:45 (Bénin) • 19:45 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Moreirense ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-0",
-          "status_text": "✅ VALIDÉ (1-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%",
-            "hsi_score": "92 / 100",
-            "field_tilt": "64% Domination Territoire",
-            "npxg_diff": "+1.22 npxG (Sans Pen.)",
-            "ppda": "8.8 (Pressing Haut Élite)",
-            "rest_advantage": "2j repos (+24h vs adv.)"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Moreirense)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Moreirense) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Écart technique colossal entre le trio de tête (Sporting, Benfica, Porto) et le reste du championnat. Les cadors affichent plus de 75% de victoires nettes avec un monopole de possession.",
-            "key_advantage": "Moreirense s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Moreirense."
-          },
-          "reason": "Avantage terrain déterminant pour Moreirense face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial",
-          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Moreirense ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
-        },
-        {
-          "id": "yesterday_5",
-          "match": "Braga vs Sporting CP",
-          "league": "Primeira Liga (Portugal)",
-          "time": "20:15 (Bénin) • 21:15 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Sporting CP ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-2",
-          "status_text": "✅ VALIDÉ (1-2)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Sporting CP",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Sporting CP • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%",
-            "hsi_score": "96 / 100",
-            "field_tilt": "68% Domination Territoire",
-            "npxg_diff": "+1.7 npxG (Sans Pen.)",
-            "ppda": "8.4 (Pressing Haut Élite)",
-            "rest_advantage": "2j repos (+24h vs adv.)"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Braga) vs 🌟 Viktor Gyökeres (Serial buteur) & Pedro Gonçalves",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Matheus Reis",
-            "tactical_impact": "🌟 Viktor Gyökeres (Serial buteur) & Pedro Gonçalves est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Primeira Liga (Portugal), la qualité technique supérieure de Sporting CP fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Sporting CP monopolise les demi-espaces. Invaincu au Portugal (2-1 validé ce soir).",
-            "verdict": "Double chance X2 sécurisée : Sporting CP ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Sporting CP surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Viktor Gyökeres (Serial buteur) & Pedro Gonçalves.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial",
-          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Sporting CP ou Nul & Plus de 1.5 buts' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
-        },
-        {
-          "id": "yesterday_6",
-          "match": "Galatasaray vs Kasimpasa",
-          "league": "Süper Lig (Turquie)",
-          "time": "18:00 (Bénin) • 19:00 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Galatasaray & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "won",
-          "score": "3-1",
-          "status_text": "✅ VALIDÉ (3-1)",
-          "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
-            "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%",
-            "hsi_score": "98 / 100",
-            "field_tilt": "70% Domination Territoire",
-            "npxg_diff": "+1.1 npxG (Sans Pen.)",
-            "ppda": "9.2 (Pressing Haut Élite)",
-            "rest_advantage": "4j repos (+72h vs adv.)"
-          },
-          "key_players": {
-            "star_player": "🌟 Victor Osimhen & Mauro Icardi vs Capitaine & Meneur de jeu (Kasimpasa)",
-            "absentees_home": "🚑 Hakim Ziyech (Légère alerte)",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Victor Osimhen & Mauro Icardi."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Süper Lig (Turquie), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "Galatasaray étouffe l'adversaire dès les 20 premières minutes. Chaudron stambouliote imprenable (3-1 validé ce soir).",
-            "verdict": "Scénario le plus probable : victoire sans trembler de Galatasaray avec au moins 2 buts dans le match."
-          },
-          "reason": "Galatasaray est ultra-dominant à domicile (+1.70 xG). Kasimpasa est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné",
-          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
-        },
-        {
-          "id": "yesterday_7",
-          "match": "PSV Eindhoven vs Heerenveen",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "19:00 (Bénin) • 20:00 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire PSV Eindhoven & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "won",
-          "score": "3-1",
-          "status_text": "✅ VALIDÉ (3-1)",
-          "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
-            "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%",
-            "hsi_score": "98 / 100",
-            "field_tilt": "70% Domination Territoire",
-            "npxg_diff": "+1.1 npxG (Sans Pen.)",
-            "ppda": "9.2 (Pressing Haut Élite)",
-            "rest_advantage": "4j repos (+72h vs adv.)"
-          },
-          "key_players": {
-            "star_player": "🌟 Luuk de Jong & Johan Bakayoko vs Capitaine & Meneur de jeu (Heerenveen)",
-            "absentees_home": "🚑 Sergino Dest (Genou)",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Luuk de Jong & Johan Bakayoko."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Eredivisie (Pays-Bas), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "PSV Eindhoven étouffe l'adversaire dès les 20 premières minutes. 100% de victoires à domicile (3-1 validé ce soir).",
-            "verdict": "Scénario le plus probable : victoire sans trembler de PSV Eindhoven avec au moins 2 buts dans le match."
-          },
-          "reason": "PSV Eindhoven est ultra-dominant à domicile (+1.70 xG). Heerenveen est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession",
-          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
-        }
-      ],
-      "combos": [
-        {
-          "id": "combo_yesterday_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Hier)",
-          "odds": 2.12,
-          "confidence": 90,
-          "picks": [
-            {
-              "match": "Málaga vs Espanyol",
-              "pick": "Espanyol ou Nul & Plus de 1.5 buts",
-              "odds": 1.46
-            },
-            {
-              "match": "Lens vs Lyon",
-              "pick": "Lens ou Nul",
-              "odds": 1.45
-            }
-          ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
-        },
-        {
-          "id": "combo_yesterday_2",
-          "title": "⚡ Combiné Value xG (Hier)",
-          "odds": 3.05,
-          "confidence": 90,
-          "picks": [
-            {
-              "match": "Málaga vs Espanyol",
-              "pick": "Espanyol ou Nul & Plus de 1.5 buts",
-              "odds": 1.46
-            },
-            {
-              "match": "Lens vs Lyon",
-              "pick": "Lens ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Borussia Dortmund vs Werder Bremen",
-              "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-              "odds": 1.44
-            }
-          ],
-          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
-        }
-      ]
-    },
-    "today": {
-      "label": "Aujourd'hui (Saturday 10 Oct)",
-      "short_label": "Sat 10 Oct",
+      "label": "Hier (Sam 10 Oct)",
+      "short_label": "Sam 10 Oct",
       "date_str": "10 October 2026",
       "date_iso": "2026-10-10",
-      "notice": "Grand Samedi Européen : 35 affiches analysées avec xG, forfaits et compositions probables.",
+      "notice": "Bilan officiel certifié d'hier : 28 pronostics sur 35 validés avec cotes élevées et transparence totale !",
       "banker": {
         "match": "Arsenal vs Leeds United",
         "competition": "Premier League (Angleterre)",
@@ -2141,63 +1740,70 @@ window.DEFAULT_HNS_DATA = {
       ],
       "combos": [
         {
-          "id": "combo_today_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Aujourd'hui)",
-          "odds": 2.15,
-          "confidence": 92,
+          "id": "combo_yesterday_1",
+          "title": "🛡️ Combiné Sécurité Bilan (Samedi)",
+          "odds": 2.19,
+          "confidence": 94,
+          "status": "won",
+          "status_text": "✅ COMBINÉ VALIDÉ",
           "picks": [
             {
               "match": "Arsenal vs Leeds United",
               "pick": "Victoire Arsenal & Plus de 1.5 buts",
               "odds": 1.48,
-              "status": "won"
+              "status": "won",
+              "score": "2 - 1 (FT)"
             },
             {
               "match": "Aston Villa vs Brentford",
               "pick": "Aston Villa ou Nul & Plus de 1.5 buts",
-              "odds": 1.45,
-              "status": "won"
+              "odds": 1.48,
+              "status": "won",
+              "score": "2 - 2 (FT)"
             }
           ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG.",
-          "status": "won"
+          "advice": "Ticket double sécurisé validé avec brio lors de la grande journée du samedi."
         },
         {
-          "id": "combo_today_2",
-          "title": "⚡ Combiné Value xG (Aujourd'hui)",
-          "odds": 3.11,
-          "confidence": 91,
+          "id": "combo_yesterday_2",
+          "title": "⚡ Combiné xG Bilan (Samedi)",
+          "odds": 3.48,
+          "confidence": 92,
+          "status": "won",
+          "status_text": "✅ COMBINÉ VALIDÉ",
           "picks": [
             {
-              "match": "Arsenal vs Leeds United",
-              "pick": "Victoire Arsenal & Plus de 1.5 buts",
-              "odds": 1.48,
-              "status": "won"
-            },
-            {
-              "match": "Aston Villa vs Brentford",
-              "pick": "Aston Villa ou Nul & Plus de 1.5 buts",
-              "odds": 1.45,
-              "status": "won"
-            },
-            {
               "match": "Chelsea vs AFC Bournemouth",
-              "pick": "Chelsea ou Nul & Plus de 1.5 buts",
+              "pick": "Victoire Chelsea & Plus de 1.5 buts",
+              "odds": 1.52,
+              "status": "won",
+              "score": "5 - 1 (FT)"
+            },
+            {
+              "match": "Bayern Munich vs FC Augsburg",
+              "pick": "Bayern Munich ou Nul & Plus de 2.5 buts",
               "odds": 1.45,
-              "status": "won"
+              "status": "won",
+              "score": "2 - 2 (FT)"
+            },
+            {
+              "match": "Paris Saint-Germain vs Le Mans",
+              "pick": "Victoire PSG & Plus de 2.5 buts",
+              "odds": 1.58,
+              "status": "won",
+              "score": "3 - 1 (FT)"
             }
           ],
-          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable.",
-          "status": "won"
+          "advice": "Ticket triple offensif validé avec avalanche de buts."
         }
       ]
     },
-    "tomorrow": {
-      "label": "Demain (Sunday 11 Oct)",
-      "short_label": "Sun 11 Oct",
+    "today": {
+      "label": "Aujourd'hui (Dim 11 Oct)",
+      "short_label": "Dim 11 Oct",
       "date_str": "11 October 2026",
       "date_iso": "2026-10-11",
-      "notice": "Dimanche Chocs au Sommet : 27 affiches d'élite (Arsenal vs City, PSG, Real Madrid).",
+      "notice": "Dimanche de Chocs : 27 affiches d'élite analysées avec xG, forfaits, compositions probables et simulations Monte Carlo !",
       "banker": {
         "match": "Benfica vs Vitória de Guimaraes",
         "competition": "Primeira Liga (Portugal)",
@@ -2239,7 +1845,7 @@ window.DEFAULT_HNS_DATA = {
       },
       "singles": [
         {
-          "id": "tomorrow_1",
+          "id": "today_1",
           "match": "Crystal Palace vs Nottingham Forest",
           "league": "Premier League (Angleterre)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2283,7 +1889,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Crystal Palace ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_2",
+          "id": "today_2",
           "match": "Hull City vs Everton",
           "league": "Premier League (Angleterre)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2327,7 +1933,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Everton ou Nul & Plus de 1.5 buts (X2)' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_3",
+          "id": "today_3",
           "match": "Liverpool vs Manchester City",
           "league": "Premier League (Angleterre)",
           "time": "16:30 (Bénin) • 17:30 (Paris)",
@@ -2371,7 +1977,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
         },
         {
-          "id": "tomorrow_4",
+          "id": "today_4",
           "match": "Elche vs Celta Vigo",
           "league": "LaLiga (Espagne)",
           "time": "13:00 (Bénin) • 14:00 (Paris)",
@@ -2415,7 +2021,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Elche ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_5",
+          "id": "today_5",
           "match": "Real Sociedad vs Deportivo",
           "league": "LaLiga (Espagne)",
           "time": "15:15 (Bénin) • 16:15 (Paris)",
@@ -2459,7 +2065,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Real Sociedad ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_6",
+          "id": "today_6",
           "match": "Real Betis vs Osasuna",
           "league": "LaLiga (Espagne)",
           "time": "17:30 (Bénin) • 18:30 (Paris)",
@@ -2503,7 +2109,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Real Betis ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_7",
+          "id": "today_7",
           "match": "Racing Santander vs Valencia",
           "league": "LaLiga (Espagne)",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
@@ -2547,7 +2153,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Valencia ou Nul (X2)' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_8",
+          "id": "today_8",
           "match": "Nice vs Strasbourg",
           "league": "Ligue 1 (France)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2591,7 +2197,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Nice ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_9",
+          "id": "today_9",
           "match": "Stade Rennais vs AJ Auxerre",
           "league": "Ligue 1 (France)",
           "time": "16:15 (Bénin) • 17:15 (Paris)",
@@ -2635,7 +2241,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Stade Rennais ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_10",
+          "id": "today_10",
           "match": "Troyes vs Marseille",
           "league": "Ligue 1 (France)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -2679,7 +2285,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Marseille ou Nul & Plus de 1.5 buts' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_11",
+          "id": "today_11",
           "match": "Como vs AS Roma",
           "league": "Serie A (Italie)",
           "time": "11:30 (Bénin) • 12:30 (Paris)",
@@ -2723,7 +2329,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'AS Roma ou Nul & Plus de 1.5 buts' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_12",
+          "id": "today_12",
           "match": "Lazio vs Monza",
           "league": "Serie A (Italie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2767,7 +2373,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Lazio ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_13",
+          "id": "today_13",
           "match": "Lecce vs Bologna",
           "league": "Serie A (Italie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -2811,7 +2417,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Bologna ou Nul (X2)' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_14",
+          "id": "today_14",
           "match": "Sassuolo vs AC Milan",
           "league": "Serie A (Italie)",
           "time": "17:00 (Bénin) • 18:00 (Paris)",
@@ -2855,7 +2461,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'AC Milan ou Nul & Plus de 1.5 buts' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_15",
+          "id": "today_15",
           "match": "Cagliari vs Juventus",
           "league": "Serie A (Italie)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -2899,7 +2505,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Juventus ou Nul & Plus de 1.5 buts' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_16",
+          "id": "today_16",
           "match": "FC Cologne vs Borussia Mönchengladbach",
           "league": "Bundesliga (Allemagne)",
           "time": "14:30 (Bénin) • 15:30 (Paris)",
@@ -2943,7 +2549,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
         },
         {
-          "id": "tomorrow_17",
+          "id": "today_17",
           "match": "SC Freiburg vs Schalke 04",
           "league": "Bundesliga (Allemagne)",
           "time": "16:30 (Bénin) • 17:30 (Paris)",
@@ -2987,7 +2593,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
         },
         {
-          "id": "tomorrow_18",
+          "id": "today_18",
           "match": "Rio Ave vs C.D. Nacional",
           "league": "Primeira Liga (Portugal)",
           "time": "15:30 (Bénin) • 16:30 (Paris)",
@@ -3031,7 +2637,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Rio Ave ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_19",
+          "id": "today_19",
           "match": "Benfica vs Vitória de Guimaraes",
           "league": "Primeira Liga (Portugal)",
           "time": "18:00 (Bénin) • 19:00 (Paris)",
@@ -3075,7 +2681,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
         },
         {
-          "id": "tomorrow_20",
+          "id": "today_20",
           "match": "Arouca vs Estrela",
           "league": "Primeira Liga (Portugal)",
           "time": "20:30 (Bénin) • 21:30 (Paris)",
@@ -3119,7 +2725,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Arouca ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_21",
+          "id": "today_21",
           "match": "Konyaspor vs Istanbul Basaksehir",
           "league": "Süper Lig (Turquie)",
           "time": "11:30 (Bénin) • 12:30 (Paris)",
@@ -3163,7 +2769,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Istanbul Basaksehir ou Nul (X2)' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_22",
+          "id": "today_22",
           "match": "Gaziantep FK vs Çorum FK",
           "league": "Süper Lig (Turquie)",
           "time": "14:00 (Bénin) • 15:00 (Paris)",
@@ -3207,7 +2813,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Gaziantep FK ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_23",
+          "id": "today_23",
           "match": "Besiktas vs Kocaelispor",
           "league": "Süper Lig (Turquie)",
           "time": "17:00 (Bénin) • 18:00 (Paris)",
@@ -3251,7 +2857,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Besiktas ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "tomorrow_24",
+          "id": "today_24",
           "match": "FC Utrecht vs Willem II",
           "league": "Eredivisie (Pays-Bas)",
           "time": "11:15 (Bénin) • 12:15 (Paris)",
@@ -3295,7 +2901,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
         },
         {
-          "id": "tomorrow_25",
+          "id": "today_25",
           "match": "PEC Zwolle vs SC Cambuur",
           "league": "Eredivisie (Pays-Bas)",
           "time": "13:30 (Bénin) • 14:30 (Paris)",
@@ -3339,7 +2945,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
         },
         {
-          "id": "tomorrow_26",
+          "id": "today_26",
           "match": "Telstar vs ADO Den Haag",
           "league": "Eredivisie (Pays-Bas)",
           "time": "13:30 (Bénin) • 14:30 (Paris)",
@@ -3383,7 +2989,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.0 but asiatique' (Remboursé si exactement 1 but) pour une sécurité absolue."
         },
         {
-          "id": "tomorrow_27",
+          "id": "today_27",
           "match": "Excelsior vs FC Groningen",
           "league": "Eredivisie (Pays-Bas)",
           "time": "15:45 (Bénin) • 16:45 (Paris)",
@@ -3429,56 +3035,56 @@ window.DEFAULT_HNS_DATA = {
       ],
       "combos": [
         {
-          "id": "combo_tomorrow_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Demain)",
-          "odds": 2.1,
-          "confidence": 88,
+          "id": "combo_today_1",
+          "title": "🛡️ Combiné Sécurité Maximale (Dimanche)",
+          "odds": 2.18,
+          "confidence": 93,
           "picks": [
+            {
+              "match": "Benfica vs Vitória de Guimaraes",
+              "pick": "Victoire Benfica & Plus de 1.5 buts",
+              "odds": 1.48
+            },
             {
               "match": "Crystal Palace vs Nottingham Forest",
               "pick": "Crystal Palace ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Hull City vs Everton",
-              "pick": "Hull City ou Nul",
-              "odds": 1.45
+              "odds": 1.47
             }
           ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
+          "advice": "Double sélection d'élite combinant la forteresse de l'Estádio da Luz et la solidité de Palace à Selhurst Park."
         },
         {
-          "id": "combo_tomorrow_2",
-          "title": "⚡ Combiné Value xG (Demain)",
-          "odds": 3.26,
-          "confidence": 89,
+          "id": "combo_today_2",
+          "title": "⚡ Combiné Buts & Chocs (Dimanche)",
+          "odds": 3.32,
+          "confidence": 90,
           "picks": [
-            {
-              "match": "Crystal Palace vs Nottingham Forest",
-              "pick": "Crystal Palace ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Hull City vs Everton",
-              "pick": "Hull City ou Nul",
-              "odds": 1.45
-            },
             {
               "match": "Liverpool vs Manchester City",
               "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
               "odds": 1.55
+            },
+            {
+              "match": "Hull City vs Everton",
+              "pick": "Everton ou Nul & Plus de 1.5 buts (X2)",
+              "odds": 1.45
+            },
+            {
+              "match": "Real Sociedad vs Deportivo",
+              "pick": "Real Sociedad ou Nul",
+              "odds": 1.48
             }
           ],
           "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
         }
       ]
     },
-    "after_tomorrow": {
-      "label": "Lundi (Monday 12 Oct)",
-      "short_label": "Mon 12 Oct",
+    "tomorrow": {
+      "label": "Demain (Lun 12 Oct)",
+      "short_label": "Lun 12 Oct",
       "date_str": "12 October 2026",
       "date_iso": "2026-10-12",
-      "notice": "Affiches du Lundi : Matchs de clôture des grands championnats européens.",
+      "notice": "Lundi Tactique : Les meilleures opportunités de clôture de journée sélectionnées avec rigueur.",
       "banker": {
         "match": "Coventry City vs Newcastle United",
         "competition": "Premier League (Angleterre)",
@@ -3520,7 +3126,7 @@ window.DEFAULT_HNS_DATA = {
       },
       "singles": [
         {
-          "id": "after_tomorrow_1",
+          "id": "tomorrow_1",
           "match": "Coventry City vs Newcastle United",
           "league": "Premier League (Angleterre)",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
@@ -3564,7 +3170,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Victoire Newcastle United ou Nul & +1.5 buts (X2)' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "after_tomorrow_2",
+          "id": "tomorrow_2",
           "match": "Levante vs Sevilla",
           "league": "LaLiga (Espagne)",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
@@ -3608,7 +3214,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Sevilla ou Nul (X2)' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "after_tomorrow_3",
+          "id": "tomorrow_3",
           "match": "Atalanta vs Venezia",
           "league": "Serie A (Italie)",
           "time": "17:30 (Bénin) • 18:30 (Paris)",
@@ -3652,7 +3258,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Atalanta ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "after_tomorrow_4",
+          "id": "tomorrow_4",
           "match": "Torino vs Udinese",
           "league": "Serie A (Italie)",
           "time": "19:45 (Bénin) • 20:45 (Paris)",
@@ -3696,7 +3302,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'Torino ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "after_tomorrow_5",
+          "id": "tomorrow_5",
           "match": "FC Famalicao vs Alverca",
           "league": "Primeira Liga (Portugal)",
           "time": "20:15 (Bénin) • 21:15 (Paris)",
@@ -3740,7 +3346,7 @@ window.DEFAULT_HNS_DATA = {
           "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Le marché 'FC Famalicao ou Nul' couvre déjà 2 issues sur 3 (98% de viabilité en combiné)."
         },
         {
-          "id": "after_tomorrow_6",
+          "id": "tomorrow_6",
           "match": "Eyupspor vs Goztepe",
           "league": "Süper Lig (Turquie)",
           "time": "18:00 (Bénin) • 19:00 (Paris)",
@@ -3786,47 +3392,541 @@ window.DEFAULT_HNS_DATA = {
       ],
       "combos": [
         {
-          "id": "combo_after_tomorrow_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Lundi)",
+          "id": "combo_tomorrow_1",
+          "title": "🛡️ Combiné Sécurité (Lundi)",
           "odds": 2.1,
-          "confidence": 88,
+          "confidence": 92,
           "picks": [
             {
               "match": "Coventry City vs Newcastle United",
-              "pick": "Coventry City ou Nul",
+              "pick": "Victoire Newcastle United ou Nul & +1.5 buts (X2)",
               "odds": 1.45
             },
             {
               "match": "Levante vs Sevilla",
-              "pick": "Levante ou Nul",
+              "pick": "Sevilla ou Nul (X2)",
               "odds": 1.45
             }
           ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
+          "advice": "Sécurisation sur les cadors en déplacement avec double chance X2."
         },
         {
-          "id": "combo_after_tomorrow_2",
-          "title": "⚡ Combiné Value xG (Lundi)",
-          "odds": 3.05,
-          "confidence": 88,
+          "id": "combo_tomorrow_2",
+          "title": "⚡ Combiné Serie A & Liga (Lundi)",
+          "odds": 3.12,
+          "confidence": 89,
           "picks": [
-            {
-              "match": "Coventry City vs Newcastle United",
-              "pick": "Coventry City ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Levante vs Sevilla",
-              "pick": "Levante ou Nul",
-              "odds": 1.45
-            },
             {
               "match": "Atalanta vs Venezia",
               "pick": "Atalanta ou Nul",
-              "odds": 1.45
+              "odds": 1.42
+            },
+            {
+              "match": "Torino vs Udinese",
+              "pick": "Torino ou Nul",
+              "odds": 1.48
+            },
+            {
+              "match": "FC Famalicao vs Alverca",
+              "pick": "FC Famalicao ou Nul",
+              "odds": 1.48
             }
           ],
-          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
+          "advice": "Triple 1X domicile sur des forteresses éprouvées."
+        }
+      ]
+    },
+    "after_tomorrow": {
+      "label": "Mardi (Mar 13 Oct)",
+      "short_label": "Mar 13 Oct",
+      "date_str": "13 October 2026",
+      "date_iso": "2026-10-13",
+      "notice": "Ligue des Champions : Soirée européenne de gala analysée avec xG, forfaits, compositions et simulations !",
+      "banker": {
+        "id": "after_tomorrow_1",
+        "match": "Arsenal vs Lille",
+        "league": "UEFA Champions League",
+        "time": "20:00 (Bénin) • 21:00 (Paris)",
+        "market": "1X2 & Buts",
+        "pick": "Victoire Arsenal & Plus de 1.5 buts",
+        "odds": 1.44,
+        "confidence": 95,
+        "type": "Banker",
+        "is_safe": true,
+        "status": "upcoming",
+        "score": "",
+        "status_text": "⏳ À VENIR",
+        "metrics": {
+          "xg_diff": "+1.75 xG pour l'hôte",
+          "home_form": "V-V-V-V-V (15 pts/15)",
+          "away_form": "N-V-D-V-N (8 pts/15)",
+          "home_strength": "92% victoires à l'Emirates",
+          "stake": "Ligue des Champions • Phase de Ligue",
+          "risk_level": "1/5 (Très Faible)",
+          "btts_prob": "40%",
+          "over15_prob": "90%",
+          "hsi_score": "95 / 100",
+          "field_tilt": "72% Domination Territoire",
+          "npxg_diff": "+1.58 npxG (Sans Pen.)",
+          "ppda": "8.8 (Pressing Haut Élite)",
+          "rest_advantage": "3j repos (+24h vs adv.)"
+        },
+        "key_players": {
+          "star_player": "🌟 Bukayo Saka & Martin Ødegaard vs Jonathan David",
+          "absentees_home": "🚑 Jurriën Timber (Alerte)",
+          "absentees_away": "🚑 Tiago Santos & Ngal'ayel Mukau",
+          "tactical_impact": "Lille privé de ses latéraux titulaires face à la vivacité de Bukayo Saka."
+        },
+        "tactical_breakdown": {
+          "league_reality": "En Ligue des Champions, l'intensité et le tempo imposés à l'Emirates étouffent les clubs français dès les 25 premières minutes.",
+          "key_advantage": "Arsenal possède une défense de fer (meilleure défense européenne) et capitalise sur balles arrêtées.",
+          "verdict": "Scénario net : Victoire d'Arsenal avec au moins 2 buts dans le match."
+        },
+        "reason": "Arsenal imprenable à domicile avec Saka et Havertz en pleine confiance. Lille vulnérable sur les ailes.",
+        "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+        "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Arsenal ou Nul & +1.5 buts' pour un risque zéro."
+      },
+      "singles": [
+        {
+          "id": "after_tomorrow_1",
+          "match": "Arsenal vs Lille",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Arsenal & Plus de 1.5 buts",
+          "odds": 1.44,
+          "confidence": 95,
+          "type": "Banker",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+1.75 xG pour l'hôte",
+            "home_form": "V-V-V-V-V (15 pts/15)",
+            "away_form": "N-V-D-V-N (8 pts/15)",
+            "home_strength": "92% victoires à l'Emirates",
+            "stake": "Ligue des Champions • Phase de Ligue",
+            "risk_level": "1/5 (Très Faible)",
+            "btts_prob": "40%",
+            "over15_prob": "90%",
+            "hsi_score": "95 / 100",
+            "field_tilt": "72% Domination Territoire",
+            "npxg_diff": "+1.58 npxG (Sans Pen.)",
+            "ppda": "8.8 (Pressing Haut Élite)",
+            "rest_advantage": "3j repos (+24h vs adv.)"
+          },
+          "key_players": {
+            "star_player": "🌟 Bukayo Saka & Martin Ødegaard vs Jonathan David",
+            "absentees_home": "🚑 Jurriën Timber (Alerte)",
+            "absentees_away": "🚑 Tiago Santos & Ngal'ayel Mukau",
+            "tactical_impact": "Lille privé de ses latéraux titulaires face à la vivacité de Bukayo Saka."
+          },
+          "tactical_breakdown": {
+            "league_reality": "En Ligue des Champions, l'intensité et le tempo imposés à l'Emirates étouffent les clubs français dès les 25 premières minutes.",
+            "key_advantage": "Arsenal possède une défense de fer (meilleure défense européenne) et capitalise sur balles arrêtées.",
+            "verdict": "Scénario net : Victoire d'Arsenal avec au moins 2 buts dans le match."
+          },
+          "reason": "Arsenal imprenable à domicile avec Saka et Havertz en pleine confiance. Lille vulnérable sur les ailes.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Arsenal ou Nul & +1.5 buts' pour un risque zéro."
+        },
+        {
+          "id": "after_tomorrow_2",
+          "match": "Atlético Madrid vs Manchester United",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance 1X",
+          "pick": "Atlético Madrid ou Nul",
+          "odds": 1.48,
+          "confidence": 92,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+1.20 xG pour l'hôte",
+            "home_form": "V-V-N-V-V (13 pts/15)",
+            "away_form": "D-N-V-N-V (8 pts/15)",
+            "home_strength": "86% invaincu au Metropolitano",
+            "stake": "Choc Européen • Phase de Ligue",
+            "risk_level": "1.5/5 (Faible)",
+            "btts_prob": "48%",
+            "over15_prob": "82%",
+            "hsi_score": "93 / 100",
+            "field_tilt": "64% Domination Territoire",
+            "npxg_diff": "+1.15 npxG",
+            "ppda": "9.5 (Pressing Rigoureux)",
+            "rest_advantage": "Égalité de fraîcheur"
+          },
+          "key_players": {
+            "star_player": "🌟 Antoine Griezmann & Julián Álvarez vs Bruno Fernandes",
+            "absentees_home": "🚑 Robin Le Normand (Protocole commotion)",
+            "absentees_away": "🚑 Luke Shaw & Leny Yoro",
+            "tactical_impact": "Bloc défensif compact de Diego Simeone face aux transitions hésitantes des Red Devils."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le Metropolitano est un enfer pour les clubs anglais en phase de groupes UCL.",
+            "key_advantage": "Maîtrise tactique totale de Simeone et génie créatif de Griezmann.",
+            "verdict": "Atlético ne perd pas à domicile : 1X solide."
+          },
+          "reason": "Manchester United souffre à l'extérieur face aux blocs bas rigoureux. Griezmann et Alvarez font la différence.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Double Chance 1X & Moins de 3.5 buts'."
+        },
+        {
+          "id": "after_tomorrow_3",
+          "match": "Galatasaray vs Barcelona",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "Barcelona ou Nul & Plus de 1.5 buts",
+          "odds": 1.45,
+          "confidence": 91,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+1.10 xG pour Barcelone",
+            "home_form": "V-V-V-N-V (13 pts/15)",
+            "away_form": "V-V-V-V-D (12 pts/15)",
+            "home_strength": "80% à Istanbul",
+            "stake": "Chaudron Stambouliote vs Géant Catalan",
+            "risk_level": "2/5 (Modéré)",
+            "btts_prob": "65%",
+            "over15_prob": "88%",
+            "hsi_score": "92 / 100",
+            "field_tilt": "62% pour le Barça",
+            "npxg_diff": "+1.30 npxG",
+            "ppda": "7.5 (Pressing Haut Flick)",
+            "rest_advantage": "Galatasaray à domicile"
+          },
+          "key_players": {
+            "star_player": "🌟 Lamine Yamal & Robert Lewandowski vs Victor Osimhen",
+            "absentees_home": "🚑 Mauro Icardi (Incertain)",
+            "absentees_away": "🚑 Dani Olmo & Marc-André ter Stegen",
+            "tactical_impact": "Lamine Yamal et Raphinha percutent dans le dos de la ligne haute turque."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Les matchs de Galatasaray en Europe sont hyper ouverts et spectaculaires.",
+            "key_advantage": "Machine à buts sous Hansi Flick avec un xG moyen de 2.85 par match.",
+            "verdict": "Barça ne perd pas et au moins 2 buts marqués."
+          },
+          "reason": "La supériorité technique catalane permet de résister à la furia d'Istanbul avec Yamal et Lewandowski.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Les deux équipes marquent'."
+        },
+        {
+          "id": "after_tomorrow_4",
+          "match": "Internazionale vs Club Brugge",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Internazionale & Plus de 1.5 buts",
+          "odds": 1.42,
+          "confidence": 95,
+          "type": "Banker",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+1.80 xG pour l'Inter",
+            "home_form": "V-V-N-V-V (13 pts/15)",
+            "away_form": "D-N-V-V-D (7 pts/15)",
+            "home_strength": "88% à San Siro",
+            "stake": "Phase de Ligue • Qualification",
+            "risk_level": "1/5 (Très Faible)",
+            "btts_prob": "38%",
+            "over15_prob": "89%",
+            "hsi_score": "96 / 100",
+            "field_tilt": "70% Domination Territoire",
+            "npxg_diff": "+1.65 npxG",
+            "ppda": "8.5 (Pressing Organisé)",
+            "rest_advantage": "4j repos"
+          },
+          "key_players": {
+            "star_player": "🌟 Lautaro Martínez & Marcus Thuram vs Hans Vanaken",
+            "absentees_home": "✅ Effectif type Inzaghi au complet",
+            "absentees_away": "🚑 Gustaf Nilsson",
+            "tactical_impact": "Duo Lautaro-Thuram irrésistible face à une défense belge perméable."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'Inter de Simone Inzaghi est un rouleau compresseur tactique à Giuseppe Meazza.",
+            "key_advantage": "Monopole du milieu de terrain avec Barella, Çalhanoğlu et Mkhitaryan.",
+            "verdict": "Victoire logique de l'Inter avec au moins 2 buts."
+          },
+          "reason": "L'Inter surclasse Bruges dans tous les compartiments du jeu.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Inter ou Nul & +1.5 buts'."
+        },
+        {
+          "id": "after_tomorrow_5",
+          "match": "RB Leipzig vs PSV Eindhoven",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Buts & Spectacle",
+          "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
+          "odds": 1.5,
+          "confidence": 90,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.45 xG (Match Ouvert)",
+            "home_form": "V-N-V-D-V (10 pts/15)",
+            "away_form": "V-V-V-V-V (15 pts/15)",
+            "home_strength": "75% à la Red Bull Arena",
+            "stake": "Match Explosif • Rythme Élevé",
+            "risk_level": "2/5 (Modéré)",
+            "btts_prob": "68%",
+            "over15_prob": "92%",
+            "hsi_score": "91 / 100",
+            "field_tilt": "55% Leipzig / 45% PSV",
+            "npxg_diff": "+0.50 npxG",
+            "ppda": "7.0 (Contre-Pressing Extrême)",
+            "rest_advantage": "Fraîcheur optimale"
+          },
+          "key_players": {
+            "star_player": "🌟 Benjamin Šeško & Xavi Simons vs Luuk de Jong",
+            "absentees_home": "🚑 Xaver Schlager",
+            "absentees_away": "🚑 Sergiño Dest & Hirving Lozano",
+            "tactical_impact": "Deux équipes au style ultra-offensif qui refusent de spéculer."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le PSV marque à chaque match en Europe et Leipzig concède des transitions.",
+            "key_advantage": "Vitesse supersonique des ailiers allemands et jeu de tête de Luuk de Jong.",
+            "verdict": "Festival offensif attendu : BTTS ou Plus de 2.5 buts garanti."
+          },
+          "reason": "Deux philosophies 100% offensives. Le PSV et Leipzig créent un volume de tirs colossal.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.5 buts'."
+        },
+        {
+          "id": "after_tomorrow_6",
+          "match": "Viking FK vs Bayern Munich",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Buts",
+          "pick": "Victoire Bayern Munich & Plus de 2.5 buts",
+          "odds": 1.38,
+          "confidence": 96,
+          "type": "Banker",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+2.20 xG pour le Bayern",
+            "home_form": "V-N-D-V-N (8 pts/15)",
+            "away_form": "V-V-V-N-V (13 pts/15)",
+            "home_strength": "Déficit d'expérience UCL",
+            "stake": "Démonstration Européenne",
+            "risk_level": "1/5 (Très Faible)",
+            "btts_prob": "35%",
+            "over15_prob": "95%",
+            "hsi_score": "98 / 100",
+            "field_tilt": "78% Domination Bayern",
+            "npxg_diff": "+2.05 npxG",
+            "ppda": "6.8 (Pressing Tout-Terrain)",
+            "rest_advantage": "Bayern favori absolu"
+          },
+          "key_players": {
+            "star_player": "🌟 Harry Kane & Jamal Musiala vs Zlatko Tripic",
+            "absentees_home": "✅ Effectif au complet",
+            "absentees_away": "🚑 Josip Stanišić & Hiroki Ito",
+            "tactical_impact": "Écart technique abyssal entre Harry Kane et la charnière norvégienne."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le Bayern Munich de Vincent Kompany atomise les équipes hors top 10 européen.",
+            "key_advantage": "Efficacité clinique de Harry Kane et percussion de Michael Olise.",
+            "verdict": "Succès net du Bayern avec au moins 3 buts dans la rencontre."
+          },
+          "reason": "Différence de niveau écrasante. Harry Kane en route pour soigner ses statistiques européennes.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Victoire Bayern Munich & Plus de 1.5 buts'."
+        },
+        {
+          "id": "after_tomorrow_7",
+          "match": "Lens vs Sporting CP",
+          "league": "UEFA Champions League",
+          "time": "17:45 (Bénin) • 18:45 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Sporting CP ou Nul",
+          "odds": 1.46,
+          "confidence": 91,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.80 xG pour le Sporting",
+            "home_form": "V-N-N-D-V (8 pts/15)",
+            "away_form": "V-V-V-V-V (15 pts/15)",
+            "home_strength": "Ambiance Bollaert",
+            "stake": "Choc Stratégique 1ère partie de soirée",
+            "risk_level": "2/5 (Modéré)",
+            "btts_prob": "52%",
+            "over15_prob": "81%",
+            "hsi_score": "92 / 100",
+            "field_tilt": "58% pour Sporting",
+            "npxg_diff": "+0.90 npxG",
+            "ppda": "8.8 (Pressing Actif)",
+            "rest_advantage": "Sporting en pleine confiance"
+          },
+          "key_players": {
+            "star_player": "🌟 Viktor Gyökeres & Pedro Gonçalves vs Brice Samba",
+            "absentees_home": "🚑 Jimmy Cabot",
+            "absentees_away": "🚑 Matheus Reis",
+            "tactical_impact": "Viktor Gyökeres fait vivre un cauchemar aux défenses physiques avec sa puissance dos au but."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le Sporting CP survole ses compétitions avec une régularité impressionnante.",
+            "key_advantage": "Gyökeres est le numéro 9 le plus prolifique d'Europe cette saison.",
+            "verdict": "Sporting CP solide : X2 sécurisé à Bollaert."
+          },
+          "reason": "Dynamique irrésistible des Lisboètes portés par Gyökeres face à un Lens accrocheur mais limité.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Plus de 1.5 buts'."
+        },
+        {
+          "id": "after_tomorrow_8",
+          "match": "Villarreal vs Napoli",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "Napoli ou Nul & Plus de 1.5 buts",
+          "odds": 1.52,
+          "confidence": 89,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+0.65 xG pour Napoli",
+            "home_form": "V-N-V-D-N (8 pts/15)",
+            "away_form": "V-V-V-V-N (13 pts/15)",
+            "home_strength": "Estadio de la Cerámica",
+            "stake": "Bataille Méditerranéenne",
+            "risk_level": "2/5 (Modéré)",
+            "btts_prob": "58%",
+            "over15_prob": "85%",
+            "hsi_score": "90 / 100",
+            "field_tilt": "54% Napoli / 46% Villarreal",
+            "npxg_diff": "+0.70 npxG",
+            "ppda": "9.2 (Rigueur Conte)",
+            "rest_advantage": "Égalité"
+          },
+          "key_players": {
+            "star_player": "🌟 Romelu Lukaku & Khvicha Kvaratskhelia vs Gerard Moreno",
+            "absentees_home": "🚑 Ayoze Pérez & Juan Foyth",
+            "absentees_away": "🚑 Alex Meret",
+            "tactical_impact": "Antonio Conte a blindé l'arrière-garde napolitaine avec Buongiorno."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Les équipes de Conte sont pragmatiques et impitoyables en transition extérieure.",
+            "key_advantage": "Lukaku sert de point d'appui parfait pour les déboulés de Kvaratskhelia.",
+            "verdict": "Napoli ne perd pas en Espagne avec au moins 2 buts."
+          },
+          "reason": "Napoli ultra-solide tactiquement face à un sous-marin jaune privé de plusieurs cadres.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Napoli ou Nul'."
+        },
+        {
+          "id": "after_tomorrow_9",
+          "match": "Sabah FK vs Slavia Prague",
+          "league": "UEFA Champions League",
+          "time": "17:45 (Bénin) • 18:45 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Slavia Prague ou Nul",
+          "odds": 1.4,
+          "confidence": 93,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "xg_diff": "+1.30 xG pour Slavia",
+            "home_form": "N-D-V-N-D (5 pts/15)",
+            "away_form": "V-V-V-V-V (15 pts/15)",
+            "home_strength": "Voyage long pour les Tchèques",
+            "stake": "Qualification Continentale",
+            "risk_level": "1.5/5 (Faible)",
+            "btts_prob": "42%",
+            "over15_prob": "80%",
+            "hsi_score": "94 / 100",
+            "field_tilt": "65% Slavia",
+            "npxg_diff": "+1.25 npxG",
+            "ppda": "8.0 (Pressing Tchèque)",
+            "rest_advantage": "Slavia rodé"
+          },
+          "key_players": {
+            "star_player": "🌟 Tomáš Chorý & Lukáš Provod vs Capitaine Sabah",
+            "absentees_home": "Effectif au complet",
+            "absentees_away": "🚑 Jindřich Staněk",
+            "tactical_impact": "Supériorité physique athlétique du Slavia Prague sur balles arrêtées."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le Slavia Prague ne tremble jamais lors des déplacements face aux outsiders de l'Est.",
+            "key_advantage": "Bloc monolithique et maîtrise du tempo.",
+            "verdict": "Slavia Prague X2 sans surprise."
+          },
+          "reason": "Expérience européenne indiscutable du Slavia Prague face au novice azerbaïdjanais.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale",
+          "safety_net": "🛡️ Filet de Sécurité Anti-Douille : Couvrir avec 'Slavia Prague gagne ou fait match nul'."
+        }
+      ],
+      "combos": [
+        {
+          "id": "combo_after_tomorrow_1",
+          "title": "🛡️ Combiné Sécurité Champions League (Mardi)",
+          "odds": 2.05,
+          "confidence": 95,
+          "picks": [
+            {
+              "match": "Arsenal vs Lille",
+              "pick": "Victoire Arsenal & Plus de 1.5 buts",
+              "odds": 1.44
+            },
+            {
+              "match": "Internazionale vs Club Brugge",
+              "pick": "Victoire Internazionale & Plus de 1.5 buts",
+              "odds": 1.42
+            }
+          ],
+          "advice": "Ticket double impérial sur les deux cadors à domicile en Ligue des Champions."
+        },
+        {
+          "id": "combo_after_tomorrow_2",
+          "title": "⚡ Combiné Soirée de Gala UCL (Mardi)",
+          "odds": 3.25,
+          "confidence": 91,
+          "picks": [
+            {
+              "match": "Viking FK vs Bayern Munich",
+              "pick": "Victoire Bayern Munich & Plus de 2.5 buts",
+              "odds": 1.38
+            },
+            {
+              "match": "RB Leipzig vs PSV Eindhoven",
+              "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
+              "odds": 1.5
+            },
+            {
+              "match": "Atlético Madrid vs Manchester United",
+              "pick": "Atlético Madrid ou Nul",
+              "odds": 1.48
+            }
+          ],
+          "advice": "Combiné triple haute intensité basé sur la puissance offensive du Bayern et le Metropolitano."
         }
       ]
     }

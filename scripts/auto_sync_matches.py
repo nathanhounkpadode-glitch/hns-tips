@@ -593,11 +593,14 @@ def run_sync():
     tomorrow_dt = today_dt + datetime.timedelta(days=1)
     after_tomorrow_dt = today_dt + datetime.timedelta(days=2)
     
+    days_names_fr = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+    after_tomorrow_name = days_names_fr[after_tomorrow_dt.weekday()]
+
     days_config = {
         "yesterday": {"date": yesterday_dt, "name_fr": "Hier", "date_query": yesterday_dt.strftime("%Y%m%d")},
         "today": {"date": today_dt, "name_fr": "Aujourd'hui", "date_query": today_dt.strftime("%Y%m%d")},
         "tomorrow": {"date": tomorrow_dt, "name_fr": "Demain", "date_query": tomorrow_dt.strftime("%Y%m%d")},
-        "after_tomorrow": {"date": after_tomorrow_dt, "name_fr": "Lundi", "date_query": after_tomorrow_dt.strftime("%Y%m%d")}
+        "after_tomorrow": {"date": after_tomorrow_dt, "name_fr": after_tomorrow_name, "date_query": after_tomorrow_dt.strftime("%Y%m%d")}
     }
     
     final_days = {}
@@ -759,13 +762,13 @@ def run_sync():
 
         notice_text = cfg.get("notice", "Calendrier officiel synchronisé automatiquement avec les horaires exacts Bénin (GMT+1) et Paris (GMT+2).")
         if day_key == "yesterday":
-            notice_text = "Bilan officiel d'hier : 7 pronostics sur 7 validés avec 100% de réussite !"
+            notice_text = "Bilan officiel certifié de la journée écoulée (scores réels sans complaisance)."
         elif day_key == "today":
-            notice_text = "Grand Samedi Européen : 35 affiches analysées avec xG, forfaits et compositions probables."
+            notice_text = f"Grand {days_names_fr[today_dt.weekday()]} Européen : Toutes les affiches analysées avec xG, forfaits et compositions probables."
         elif day_key == "tomorrow":
-            notice_text = "Dimanche Chocs au Sommet : 27 affiches d'élite (Arsenal vs City, PSG, Real Madrid)."
+            notice_text = f"Affiches du {days_names_fr[tomorrow_dt.weekday()]} : Analyses d'élite et simulations statistiques."
         elif day_key == "after_tomorrow":
-            notice_text = "Affiches du Lundi : Matchs de clôture des grands championnats européens."
+            notice_text = f"Affiches du {after_tomorrow_name} : Analyses approfondies et value bets."
 
         date_formatted = target_date.strftime("%d %B %Y")
         final_days[day_key] = {
