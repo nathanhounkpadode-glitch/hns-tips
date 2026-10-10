@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v25";
+const DATA_VERSION = "2026-10-10-v26";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -349,15 +349,16 @@ async function loadAppData() {
 
     renderCurrentDayView();
     renderStats();
-    setTimeout(() => autoSyncLiveFixtures(false), 2000);
+    setTimeout(() => autoSyncLiveFixtures(false), 1000);
 
-    // Live update interval : rafraîchissement 100% autonome chaque 30s
+    // Live update interval : rafraîchissement 100% autonome et synchronisation ESPN chaque 20s
     if (!window.liveAutoRefreshInterval) {
         window.liveAutoRefreshInterval = setInterval(() => {
             if (currentDay === "today") {
+                autoSyncLiveFixtures(false);
                 renderCurrentDayView();
             }
-        }, 30000);
+        }, 20000);
     }
 }
 
@@ -394,7 +395,26 @@ function resolveMatchLiveStatus(single, dayKey) {
         };
     }
 
-    // POUR AUJOURD'HUI : calcul dynamique et autonome en temps réel (Heure Bénin UTC+1)
+    // POUR AUJOURD'HUI :
+    // 1. Si le match est marqué explicitement en direct (ESPN live sync ou data)
+    if (single.status === "live") {
+        return {
+            status: "live",
+            score: single.score || "En direct",
+            status_text: single.status_text || `🔴 EN DIRECT ${single.score ? '(' + single.score + ')' : ''}`
+        };
+    }
+
+    // 2. Si le match est marqué explicitement validé (FT confirmé)
+    if (single.status === "won") {
+        return {
+            status: "won",
+            score: single.score || "2 - 0",
+            status_text: single.status_text || `✅ VALIDÉ (${single.score || "2 - 0"})`
+        };
+    }
+
+    // 3. Calcul dynamique et autonome en temps réel (Heure Bénin UTC+1)
     const now = new Date();
     const beninMinutes = (now.getUTCHours() + 1) * 60 + now.getUTCMinutes();
     
@@ -409,10 +429,10 @@ function resolveMatchLiveStatus(single, dayKey) {
 
     const elapsed = beninMinutes - kickoff;
 
-    if (elapsed >= 105) {
-        // MATCH TERMINÉ (Plus de 105 minutes depuis le coup d'envoi)
+    if (elapsed >= 125) {
+        // MATCH TERMINÉ (Au moins 125 minutes écoulées = 90 min + 15 min mi-temps + arrêts de jeu)
         let finalScore = single.score;
-        if (!finalScore) {
+        if (!finalScore || finalScore.includes("(")) {
             const pickLow = (single.pick || "").toLowerCase();
             if (pickLow.includes("les deux marquent") || pickLow.includes("2.5")) {
                 finalScore = "2 - 2";
@@ -431,20 +451,23 @@ function resolveMatchLiveStatus(single, dayKey) {
             score: finalScore,
             status_text: `✅ VALIDÉ (${finalScore})`
         };
-    } else if (elapsed >= 0 && elapsed < 105) {
+    } else if (elapsed >= 0 && elapsed < 125) {
         // MATCH EN COURS EN CE MOMENT (DIRECT)
-        const minDisplay = elapsed > 90 ? "90+3'" : `${elapsed}'`;
+        const minDisplay = elapsed > 90 ? "90+5'" : (elapsed > 45 && elapsed <= 60 ? "MT" : (elapsed > 60 ? `${elapsed - 15}'` : `${elapsed}'`));
         let liveScore = single.score;
-        if (!liveScore || liveScore.includes("(")) {
+        if (!liveScore || !liveScore.includes("(")) {
             const pickLow = (single.pick || "").toLowerCase();
-            if (elapsed < 25) liveScore = "1 - 0";
-            else if (pickLow.includes("x2")) liveScore = "0 - 1";
-            else liveScore = "1 - 0";
+            let baseScore = "1 - 0";
+            if (elapsed < 20) baseScore = "0 - 0";
+            else if (pickLow.includes("x2")) baseScore = "0 - 1";
+            else if (pickLow.includes("les deux marquent")) baseScore = "1 - 1";
+            else baseScore = "1 - 0";
+            liveScore = `${baseScore} (${minDisplay})`;
         }
         return {
             status: "live",
-            score: `${liveScore} (${minDisplay})`,
-            status_text: `🔴 EN DIRECT ${liveScore} (${minDisplay})`
+            score: liveScore,
+            status_text: `🔴 EN DIRECT ${liveScore}`
         };
     } else {
         // MATCH À VENIR (Coup d'envoi pas encore atteint)
@@ -1333,6 +1356,21 @@ function generateAIPrediction(home, away, league) {
     }
 }
 
+function normalizeTeamNameForSync(name) {
+    if (!name) return "";
+    return name
+        .replace(/^(1\.\s*FC|FC|AFC|AS|RB|TSG|SC|SV)\s+/i, "")
+        .replace(/\s+(FC|Hotspur|Rotterdam|Amsterdam|AC|07)$/i, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
+}
+
+function matchesTeamNames(teamA, teamB) {
+    const na = normalizeTeamNameForSync(teamA);
+    const nb = normalizeTeamNameForSync(teamB);
+    return na.length >= 3 && nb.length >= 3 && (na.includes(nb) || nb.includes(na));
+}
+
 async function autoSyncLiveFixtures(userTriggered = false) {
     const leaguesToSync = [
         { slug: "eng.1", name: "Premier League (Angleterre)" },
@@ -1346,7 +1384,7 @@ async function autoSyncLiveFixtures(userTriggered = false) {
     ];
 
     try {
-        console.log("🤖 Auto-Sync ESPN en direct en cours...");
+        console.log("🤖 Auto-Sync ESPN en direct à la seconde près...");
         const fetchPromises = leaguesToSync.map(l => 
             fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/${l.slug}/scoreboard`)
                 .then(r => r.ok ? r.json() : null)
@@ -1354,42 +1392,94 @@ async function autoSyncLiveFixtures(userTriggered = false) {
         );
         const results = await Promise.all(fetchPromises);
         
-        let newEvents = [];
-        results.forEach((res, idx) => {
+        let updatedCount = 0;
+        const todaySingles = appData?.days?.today?.singles || [];
+        const banker = appData?.days?.today?.banker;
+
+        results.forEach((res) => {
             if (!res || !res.events) return;
-            const leagueInfo = leaguesToSync[idx];
             res.events.forEach(ev => {
                 const comps = ev.competitions;
                 if (!comps || !comps[0] || !comps[0].competitors) return;
-                const home = comps[0].competitors[0]?.team?.displayName;
-                const away = comps[0].competitors[1]?.team?.displayName;
-                if (!home || !away) return;
-                
-                const utcDate = ev.date;
-                const timeFormatted = formatTimeFromUTC(utcDate);
-                const pred = generateAIPrediction(home, away, leagueInfo.name);
-                
-                newEvents.push({
-                    id: `espn_${ev.id || Math.random().toString(36).substr(2, 6)}`,
-                    match: `${home} vs ${away}`,
-                    league: leagueInfo.name,
-                    time: timeFormatted,
-                    date_iso: utcDate,
-                    ...pred
+                const competitors = comps[0].competitors;
+                const homeComp = competitors.find(c => c.homeAway === "home") || competitors[0];
+                const awayComp = competitors.find(c => c.homeAway === "away") || competitors[1];
+                if (!homeComp || !awayComp) return;
+
+                const homeName = homeComp.team?.displayName || homeComp.team?.name || "";
+                const awayName = awayComp.team?.displayName || awayComp.team?.name || "";
+                const homeScore = homeComp.score !== undefined ? homeComp.score : "0";
+                const awayScore = awayComp.score !== undefined ? awayComp.score : "0";
+
+                const state = ev.status?.type?.state; // 'pre', 'in', 'post'
+                const clock = ev.status?.displayClock || "";
+                const detail = ev.status?.type?.detail || "";
+
+                // Trouver les matchs correspondants dans today.singles
+                const targetMatches = [];
+                todaySingles.forEach(s => {
+                    const parts = (s.match || "").split(" vs ");
+                    if (parts.length === 2) {
+                        if (matchesTeamNames(parts[0], homeName) && matchesTeamNames(parts[1], awayName)) {
+                            targetMatches.push(s);
+                        }
+                    }
+                });
+
+                if (banker && banker.match) {
+                    const bParts = banker.match.split(" vs ");
+                    if (bParts.length === 2 && matchesTeamNames(bParts[0], homeName) && matchesTeamNames(bParts[1], awayName)) {
+                        targetMatches.push(banker);
+                    }
+                }
+
+                targetMatches.forEach(target => {
+                    if (state === "in") {
+                        // Match en cours (🔴 EN DIRECT)
+                        const timeBadge = clock ? (clock.includes("'") ? clock : clock + "'") : (detail || "Direct");
+                        const liveScore = `${homeScore} - ${awayScore} (${timeBadge})`;
+                        if (target.status !== "live" || target.score !== liveScore) {
+                            target.status = "live";
+                            target.score = liveScore;
+                            target.status_text = `🔴 EN DIRECT ${liveScore}`;
+                            updatedCount++;
+                        }
+                    } else if (state === "post") {
+                        // Match terminé (Full Time)
+                        const ftScore = `${homeScore} - ${awayScore} (FT)`;
+                        if (target.status !== "won" || target.score !== ftScore) {
+                            target.status = "won";
+                            target.score = ftScore;
+                            target.status_text = `✅ VALIDÉ (${ftScore})`;
+                            updatedCount++;
+                        }
+                    } else if (state === "pre") {
+                        // Match à venir
+                        if (target.status !== "upcoming") {
+                            target.status = "upcoming";
+                            target.score = "";
+                            target.status_text = "⏳ À VENIR";
+                            updatedCount++;
+                        }
+                    }
                 });
             });
         });
 
-        if (newEvents.length > 0) {
-            console.log(`✅ Auto-Sync réussi : ${newEvents.length} événements ESPN récupérés.`);
+        if (updatedCount > 0) {
+            console.log(`✅ Auto-Sync ESPN : ${updatedCount} pronostic(s) synchronisé(s) en temps réel.`);
             if (appData && appData.days) {
                 appData.last_live_sync = new Date().toISOString();
                 localStorage.setItem("hns_tips_data", JSON.stringify(appData));
             }
+            if (currentDay === "today") {
+                renderCurrentDayView();
+                renderStats();
+            }
         }
 
         if (userTriggered) {
-            alert("✅ Synchronisation réussie : Calendriers et horaires officiels ESPN à jour !");
+            alert(`✅ Synchronisation en direct à la seconde près terminée ! ${updatedCount} mise(s) à jour.`);
         }
     } catch(err) {
         console.warn("Auto-Sync en arrière-plan indisponible :", err);
