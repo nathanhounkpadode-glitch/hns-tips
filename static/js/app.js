@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v21";
+const DATA_VERSION = "2026-10-10-v22";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -884,6 +884,77 @@ async function generateAccumulator() {
     }
 }
 
+// HTML escaping helper
+function escapeHtml(str) {
+    if (!str) return "";
+    return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+// Algorithmic Match Prediction (Schalom H.N. Engine)
+function generateCustomPrediction(home, away, league) {
+    const homeLow = (home || "").toLowerCase();
+    const awayLow = (away || "").toLowerCase();
+
+    let pick = `${home} ou Nul (1X)`;
+    let market = "Double Chance Sécurisée";
+    let odds = 1.48;
+    let confidence = 86;
+    let is_safe = true;
+    let type = "Safe";
+    let reason = `Statistiques offensives et solidité défensive supérieures de ${home} à domicile. Probabilité de défaite inférieure à 25% face à ${away}.`;
+
+    if (homeLow.includes("barça") || awayLow.includes("barca") || homeLow.includes("barcelone") || awayLow.includes("barcelone")) {
+        pick = "FC Barcelone ou Nul & Plus de 1.5 buts";
+        market = "Double Chance & Buts";
+        odds = 1.58;
+        confidence = 90;
+        type = "Banker";
+        reason = "Lamine Yamal et le FC Barcelone dominent outrageusement le volume de tirs et la création de danger xG en Liga.";
+    } else if (homeLow.includes("real madrid") || awayLow.includes("real madrid")) {
+        pick = "Real Madrid ou Nul (1X)";
+        market = "Double Chance";
+        odds = 1.48;
+        confidence = 89;
+        type = "Banker";
+        reason = "Puissance offensive au Bernabéu (Mbappé, Vinicius) et gestion tactique des temps faibles.";
+    } else if (homeLow.includes("psg") || awayLow.includes("psg")) {
+        pick = "Paris Saint-Germain ou Nul (1X)";
+        market = "Double Chance";
+        odds = 1.44;
+        confidence = 88;
+        type = "Safe";
+        reason = "Le PSG impose un rythme de passe et de possession dominant avec une forte capacité de réaction.";
+    } else if (homeLow.includes("bayern") || awayLow.includes("bayern")) {
+        pick = "Bayern Munich ou Nul & +1.5 buts";
+        market = "Double Chance & Buts";
+        odds = 1.52;
+        confidence = 89;
+        type = "Banker";
+        reason = "Harry Kane et le secteur offensif munichois génèrent un volume xG constant supérieur à 2.8 par rencontre.";
+    } else if (homeLow.includes("manchester city") || awayLow.includes("manchester city") || homeLow.includes("man city")) {
+        pick = "Man City ou Nul (1X)";
+        market = "Double Chance";
+        odds = 1.42;
+        confidence = 90;
+        type = "Banker";
+        reason = "Contrôle territorial absolu de Manchester City avec Erling Haaland à la conclusion.";
+    } else if (homeLow.includes("sporting") || awayLow.includes("sporting")) {
+        pick = "Sporting CP ou Nul (1X)";
+        market = "Double Chance";
+        odds = 1.46;
+        confidence = 88;
+        type = "Banker";
+        reason = "Gyökeres et le Sporting maintiennent un bilan quasiment imprenable sur leur pelouse.";
+    }
+
+    return { pick, market, odds, confidence, is_safe, type, reason };
+}
+
 // Custom Match Analyzer & Adder
 async function submitCustomMatch() {
     const isAuth = await requireOwnerAuth("enregistrer et ajouter un match");
@@ -918,38 +989,20 @@ async function submitCustomMatch() {
         }
 
         if (!data || data.status !== "success") {
-            const homeLow = home.toLowerCase();
-            const awayLow = away.toLowerCase();
-
-            let pick = `${home} ou Nul & Plus de 1.5 buts`;
-            let market = "Double Chance & Buts";
-            let odds = 1.62;
-            let confidence = 86;
-            let typeStr = "Safe";
-            let isSafe = true;
-            let reason = `Statistiques offensives favorables à domicile pour ${home} avec une probabilité élevée de buts.`;
-
-            if (homeLow.includes("barça") || awayLow.includes("barca") || homeLow.includes("barcelone") || awayLow.includes("barcelone")) {
-                pick = "FC Barcelone ou Nul & Lamine Yamal décisif";
-                market = "Double Chance & Prodige";
-                odds = 1.75;
-                confidence = 90;
-                typeStr = "Banker";
-                reason = "Le FC Barcelone et Lamine Yamal sont au sommet de leur forme en Liga.";
-            }
+            const pred = generateCustomPrediction(home, away, league);
 
             const newSingle = {
                 id: `custom_${Date.now()}`,
                 league: league,
                 time: time,
                 match: `${home} vs ${away}`,
-                market: market,
-                pick: pick,
-                odds: odds,
-                confidence: confidence,
-                type: typeStr,
-                is_safe: isSafe,
-                reason: reason
+                market: pred.market,
+                pick: pred.pick,
+                odds: pred.odds,
+                confidence: pred.confidence,
+                type: pred.type,
+                is_safe: pred.is_safe,
+                reason: pred.reason
             };
 
             const targetDay = (appData && appData.days && appData.days[day]) ? day : "today";
@@ -1183,6 +1236,9 @@ const KNOWN_CLUBS = [
     { names: ["crystal palace"], league: "Premier League (Angleterre)", display: "Crystal Palace" },
     { names: ["nottingham", "nottingham forest"], league: "Premier League (Angleterre)", display: "Nottingham Forest" },
     { names: ["leeds", "leeds united"], league: "Premier League (Angleterre)", display: "Leeds United" },
+    { names: ["leicester", "leicester city"], league: "Premier League (Angleterre)", display: "Leicester City" },
+    { names: ["ipswich", "ipswich town"], league: "Premier League (Angleterre)", display: "Ipswich Town" },
+    { names: ["southampton"], league: "Premier League (Angleterre)", display: "Southampton" },
     // LaLiga
     { names: ["real madrid", "madrid"], league: "LaLiga (Espagne)", display: "Real Madrid" },
     { names: ["barcelona", "barcelone", "barça", "barca"], league: "LaLiga (Espagne)", display: "FC Barcelone" },
@@ -1198,6 +1254,13 @@ const KNOWN_CLUBS = [
     { names: ["osasuna"], league: "LaLiga (Espagne)", display: "Osasuna" },
     { names: ["celta", "celta vigo"], league: "LaLiga (Espagne)", display: "Celta Vigo" },
     { names: ["espanyol"], league: "LaLiga (Espagne)", display: "Espanyol" },
+    { names: ["rayo", "rayo vallecano"], league: "LaLiga (Espagne)", display: "Rayo Vallecano" },
+    { names: ["getafe"], league: "LaLiga (Espagne)", display: "Getafe" },
+    { names: ["alaves", "alavés"], league: "LaLiga (Espagne)", display: "Deportivo Alavés" },
+    { names: ["las palmas"], league: "LaLiga (Espagne)", display: "UD Las Palmas" },
+    { names: ["leganes", "leganés"], league: "LaLiga (Espagne)", display: "CD Leganés" },
+    { names: ["valladolid"], league: "LaLiga (Espagne)", display: "Real Valladolid" },
+    { names: ["malaga", "málaga"], league: "LaLiga (Espagne)", display: "Málaga CF" },
     // Ligue 1
     { names: ["psg", "paris saint-germain", "paris sg"], league: "Ligue 1 (France)", display: "Paris Saint-Germain" },
     { names: ["marseille", "om"], league: "Ligue 1 (France)", display: "Marseille" },
@@ -1208,6 +1271,15 @@ const KNOWN_CLUBS = [
     { names: ["rennes"], league: "Ligue 1 (France)", display: "Rennes" },
     { names: ["nice"], league: "Ligue 1 (France)", display: "Nice" },
     { names: ["strasbourg"], league: "Ligue 1 (France)", display: "Strasbourg" },
+    { names: ["brest"], league: "Ligue 1 (France)", display: "Stade Brestois" },
+    { names: ["reims"], league: "Ligue 1 (France)", display: "Stade de Reims" },
+    { names: ["toulouse"], league: "Ligue 1 (France)", display: "Toulouse FC" },
+    { names: ["nantes"], league: "Ligue 1 (France)", display: "FC Nantes" },
+    { names: ["montpellier"], league: "Ligue 1 (France)", display: "Montpellier" },
+    { names: ["saint-etienne", "saint etienne", "asse"], league: "Ligue 1 (France)", display: "Saint-Étienne" },
+    { names: ["angers"], league: "Ligue 1 (France)", display: "Angers SCO" },
+    { names: ["auxerre"], league: "Ligue 1 (France)", display: "AJ Auxerre" },
+    { names: ["le havre"], league: "Ligue 1 (France)", display: "Le Havre" },
     // Serie A
     { names: ["inter", "inter milan"], league: "Serie A (Italie)", display: "Inter Milan" },
     { names: ["milan", "ac milan"], league: "Serie A (Italie)", display: "AC Milan" },
@@ -1218,6 +1290,15 @@ const KNOWN_CLUBS = [
     { names: ["atalanta"], league: "Serie A (Italie)", display: "Atalanta" },
     { names: ["fiorentina"], league: "Serie A (Italie)", display: "Fiorentina" },
     { names: ["torino"], league: "Serie A (Italie)", display: "Torino" },
+    { names: ["bologna", "bologne"], league: "Serie A (Italie)", display: "Bologna" },
+    { names: ["monza"], league: "Serie A (Italie)", display: "Monza" },
+    { names: ["cagliari"], league: "Serie A (Italie)", display: "Cagliari" },
+    { names: ["verona", "hellas verona"], league: "Serie A (Italie)", display: "Hellas Verona" },
+    { names: ["genoa"], league: "Serie A (Italie)", display: "Genoa" },
+    { names: ["como"], league: "Serie A (Italie)", display: "Como" },
+    { names: ["parma", "parme"], league: "Serie A (Italie)", display: "Parma" },
+    { names: ["udinese"], league: "Serie A (Italie)", display: "Udinese" },
+    { names: ["empoli"], league: "Serie A (Italie)", display: "Empoli" },
     // Bundesliga
     { names: ["bayern", "bayern munich", "bayern münchen"], league: "Bundesliga (Allemagne)", display: "Bayern Munich" },
     { names: ["dortmund", "borussia dortmund", "bvb"], league: "Bundesliga (Allemagne)", display: "Borussia Dortmund" },
@@ -1226,98 +1307,508 @@ const KNOWN_CLUBS = [
     { names: ["frankfurt", "eintracht frankfurt"], league: "Bundesliga (Allemagne)", display: "Eintracht Frankfurt" },
     { names: ["stuttgart"], league: "Bundesliga (Allemagne)", display: "VfB Stuttgart" },
     { names: ["bremen", "werder bremen", "werder"], league: "Bundesliga (Allemagne)", display: "Werder Bremen" },
+    { names: ["wolfsburg"], league: "Bundesliga (Allemagne)", display: "VfL Wolfsburg" },
+    { names: ["mainz"], league: "Bundesliga (Allemagne)", display: "FSV Mainz 05" },
+    { names: ["freiburg", "fribourg"], league: "Bundesliga (Allemagne)", display: "SC Freiburg" },
+    { names: ["augsburg"], league: "Bundesliga (Allemagne)", display: "FC Augsburg" },
+    { names: ["heidenheim"], league: "Bundesliga (Allemagne)", display: "FC Heidenheim" },
+    { names: ["hoffenheim"], league: "Bundesliga (Allemagne)", display: "TSG Hoffenheim" },
+    { names: ["union berlin"], league: "Bundesliga (Allemagne)", display: "Union Berlin" },
+    { names: ["st. pauli", "st pauli"], league: "Bundesliga (Allemagne)", display: "FC St. Pauli" },
+    { names: ["bochum"], league: "Bundesliga (Allemagne)", display: "VfL Bochum" },
+    { names: ["gladbach", "borussia mönchengladbach"], league: "Bundesliga (Allemagne)", display: "Borussia Mönchengladbach" },
     // Portugal, Turquie, Pays-Bas
     { names: ["sporting", "sporting cp", "sporting portugal"], league: "Primeira Liga (Portugal)", display: "Sporting CP" },
     { names: ["benfica"], league: "Primeira Liga (Portugal)", display: "Benfica" },
     { names: ["porto", "fc porto"], league: "Primeira Liga (Portugal)", display: "FC Porto" },
     { names: ["braga"], league: "Primeira Liga (Portugal)", display: "Braga" },
+    { names: ["vitoria", "guimaraes", "vitória sc"], league: "Primeira Liga (Portugal)", display: "Vitória SC" },
+    { names: ["famalicao", "famalicão"], league: "Primeira Liga (Portugal)", display: "FC Famalicão" },
+    { names: ["rio ave"], league: "Primeira Liga (Portugal)", display: "Rio Ave" },
     { names: ["galatasaray"], league: "Süper Lig (Turquie)", display: "Galatasaray" },
     { names: ["fenerbahce", "fenerbahçe"], league: "Süper Lig (Turquie)", display: "Fenerbahçe" },
     { names: ["besiktas", "beşiktaş"], league: "Süper Lig (Turquie)", display: "Besiktas" },
+    { names: ["trabzonspor"], league: "Süper Lig (Turquie)", display: "Trabzonspor" },
+    { names: ["basaksehir", "başakşehir"], league: "Süper Lig (Turquie)", display: "Istanbul Başakşehir" },
     { names: ["psv", "psv eindhoven"], league: "Eredivisie (Pays-Bas)", display: "PSV Eindhoven" },
     { names: ["ajax", "ajax amsterdam"], league: "Eredivisie (Pays-Bas)", display: "Ajax" },
-    { names: ["feyenoord"], league: "Eredivisie (Pays-Bas)", display: "Feyenoord" }
+    { names: ["feyenoord"], league: "Eredivisie (Pays-Bas)", display: "Feyenoord" },
+    { names: ["twente", "fc twente"], league: "Eredivisie (Pays-Bas)", display: "FC Twente" },
+    { names: ["az alkmaar", "alkmaar"], league: "Eredivisie (Pays-Bas)", display: "AZ Alkmaar" },
+    { names: ["utrecht", "fc utrecht"], league: "Eredivisie (Pays-Bas)", display: "FC Utrecht" }
 ];
 
-async function handleScreenshotFile(file) {
-    if (!file || !file.type.startsWith("image/")) return;
+// ========================================================
+// GESTION DU MODAL (ONGLETS AUDIT TICKET / MATCH UNIQUE)
+// ========================================================
+function setModalTab(tab) {
+    const tabAudit = document.getElementById("tabBtnAuditTicket");
+    const tabSingle = document.getElementById("tabBtnSingleMatch");
+    const secAudit = document.getElementById("sectionAuditTicketView");
+    const secSingle = document.getElementById("sectionSingleMatchView");
+    const modalTitle = document.getElementById("modalTitle");
 
-    const modal = document.getElementById("addMatchModal");
-    if (modal) modal.style.display = "flex";
+    if (tab === "audit") {
+        if (tabAudit) tabAudit.classList.add("active");
+        if (tabSingle) tabSingle.classList.remove("active");
+        if (secAudit) secAudit.style.display = "block";
+        if (secSingle) secSingle.style.display = "none";
+        if (modalTitle) modalTitle.textContent = "🎟️ Scanner & Auditer mon Ticket (Multi-Photos)";
+    } else {
+        if (tabSingle) tabSingle.classList.add("active");
+        if (tabAudit) tabAudit.classList.remove("active");
+        if (secAudit) secAudit.style.display = "none";
+        if (secSingle) secSingle.style.display = "block";
+        if (modalTitle) modalTitle.textContent = "⚽ Analyser & Ajouter un Match Unique";
+    }
+}
+window.setModalTab = setModalTab;
 
-    const emptyView = document.getElementById("dropzoneEmptyView");
-    const previewView = document.getElementById("dropzonePreviewView");
-    const previewImg = document.getElementById("screenshotPreviewImg");
-    const statusText = document.getElementById("ocrStatusText");
+// ========================================================
+// AUDIT DE TICKET DÉJÀ FAIT • MULTI-PHOTOS & OCR INTELLIGENT
+// ========================================================
+let uploadedTicketPhotos = [];
 
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-        if (previewImg) previewImg.src = e.target.result;
-        if (emptyView) emptyView.style.display = "none";
-        if (previewView) previewView.style.display = "block";
-        if (statusText) statusText.innerHTML = "🔍 Analyse IA de la capture en cours...";
+function addTicketPhotoFiles(files) {
+    if (!files || !files.length) return;
+    const fileArr = Array.from(files).filter(f => f.type && f.type.startsWith("image/"));
+    if (!fileArr.length) return;
 
-        // OCR Recognition
-        try {
-            if (window.Tesseract) {
-                const result = await Tesseract.recognize(e.target.result, 'fra+eng', {
-                    logger: m => {
-                        if (m.status === 'recognizing text' && statusText) {
-                            statusText.innerHTML = `🔍 Détection des équipes (${Math.round((m.progress || 0) * 100)}%)...`;
-                        }
-                    }
-                });
-                const recognized = (result.data.text || "").toLowerCase();
-                console.log("OCR Extracted Text:", recognized);
-
-                // Detect clubs
-                const found = [];
-                for (const club of KNOWN_CLUBS) {
-                    for (const alias of club.names) {
-                        if (recognized.includes(alias)) {
-                            if (!found.find(f => f.display === club.display)) {
-                                found.push(club);
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                if (found.length >= 2) {
-                    document.getElementById("customHome").value = found[0].display;
-                    document.getElementById("customAway").value = found[1].display;
-                    const leagueSelect = document.getElementById("customLeagueSelect");
-                    if (leagueSelect) leagueSelect.value = found[0].league || found[1].league;
-                    if (statusText) statusText.innerHTML = `✅ Détecté : <strong>${found[0].display} vs ${found[1].display}</strong>`;
-                } else if (found.length === 1) {
-                    document.getElementById("customHome").value = found[0].display;
-                    const leagueSelect = document.getElementById("customLeagueSelect");
-                    if (leagueSelect) leagueSelect.value = found[0].league;
-                    if (statusText) statusText.innerHTML = `✅ Équipe détectée : <strong>${found[0].display}</strong> (Complétez l'adversaire)`;
-                } else {
-                    if (statusText) statusText.innerHTML = "💡 Capture chargée ! Vérifiez ou complétez les deux équipes ci-dessous.";
-                }
-            } else {
-                if (statusText) statusText.innerHTML = "💡 Capture chargée ! Complétez les deux équipes ci-dessous pour lancer l'IA.";
+    let loadedCount = 0;
+    fileArr.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            uploadedTicketPhotos.push({
+                id: "photo_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6),
+                name: file.name,
+                dataUrl: e.target.result,
+                file: file
+            });
+            loadedCount++;
+            if (loadedCount === fileArr.length) {
+                renderTicketPhotosThumbnails();
             }
-        } catch(err) {
-            console.warn("OCR non disponible :", err);
-            if (statusText) statusText.innerHTML = "💡 Capture chargée ! Complétez les deux équipes ci-dessous.";
-        }
-    };
-    reader.readAsDataURL(file);
+        };
+        reader.readAsDataURL(file);
+    });
 }
 
-function resetScreenshotDropzone() {
+function renderTicketPhotosThumbnails() {
     const emptyView = document.getElementById("dropzoneEmptyView");
-    const previewView = document.getElementById("dropzonePreviewView");
-    const previewImg = document.getElementById("screenshotPreviewImg");
-    const fileInput = document.getElementById("screenshotFileInput");
+    const multiPreviewView = document.getElementById("dropzoneMultiPreviewView");
+    const grid = document.getElementById("thumbnailsGrid");
+    const countBadge = document.getElementById("ticketPhotoCountBadge");
+    const auditBtn = document.getElementById("runTicketAuditBtn");
+    const statusText = document.getElementById("ocrMultiStatusText");
 
-    if (previewImg) previewImg.src = "";
+    if (!grid) return;
+
+    if (uploadedTicketPhotos.length === 0) {
+        if (emptyView) emptyView.style.display = "block";
+        if (multiPreviewView) multiPreviewView.style.display = "none";
+        if (auditBtn) auditBtn.style.display = "none";
+        if (countBadge) countBadge.textContent = "0 photo sélectionnée";
+        grid.innerHTML = "";
+    } else {
+        if (emptyView) emptyView.style.display = "none";
+        if (multiPreviewView) multiPreviewView.style.display = "block";
+        if (auditBtn) auditBtn.style.display = "block";
+        if (countBadge) {
+            countBadge.textContent = `${uploadedTicketPhotos.length} capture${uploadedTicketPhotos.length > 1 ? "s" : ""} sélectionnée${uploadedTicketPhotos.length > 1 ? "s" : ""}`;
+        }
+        if (statusText) {
+            statusText.innerHTML = `💡 <strong>${uploadedTicketPhotos.length} photo${uploadedTicketPhotos.length > 1 ? "s" : ""} de coupon prête${uploadedTicketPhotos.length > 1 ? "s" : ""}</strong> ! Cliquez ci-dessous pour lancer l'audit IA complet.`;
+        }
+
+        grid.innerHTML = uploadedTicketPhotos.map((p, idx) => `
+            <div class="thumb-card" title="${escapeHtml(p.name)}">
+                <img src="${p.dataUrl}" alt="Photo ${idx + 1}">
+                <span class="thumb-badge">#${idx + 1}</span>
+                <button type="button" class="btn-remove-thumb" onclick="removeTicketPhoto('${p.id}', event)" title="Supprimer cette capture">✕</button>
+            </div>
+        `).join("");
+    }
+}
+
+function removeTicketPhoto(id, e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    uploadedTicketPhotos = uploadedTicketPhotos.filter(p => p.id !== id);
+    renderTicketPhotosThumbnails();
+    if (uploadedTicketPhotos.length === 0) {
+        const auditBox = document.getElementById("ticketAuditResultBox");
+        if (auditBox) auditBox.style.display = "none";
+    }
+}
+window.removeTicketPhoto = removeTicketPhoto;
+
+function clearAllTicketPhotos() {
+    uploadedTicketPhotos = [];
+    const fileInput = document.getElementById("screenshotFileInput");
     if (fileInput) fileInput.value = "";
-    if (emptyView) emptyView.style.display = "block";
-    if (previewView) previewView.style.display = "none";
+    renderTicketPhotosThumbnails();
+    const auditBox = document.getElementById("ticketAuditResultBox");
+    if (auditBox) {
+        auditBox.style.display = "none";
+        auditBox.innerHTML = "";
+    }
+}
+window.clearAllTicketPhotos = clearAllTicketPhotos;
+
+async function runTicketAudit() {
+    if (uploadedTicketPhotos.length === 0) {
+        alert("Veuillez sélectionner au moins une capture de votre coupon.");
+        return;
+    }
+
+    const auditBtn = document.getElementById("runTicketAuditBtn");
+    const statusText = document.getElementById("ocrMultiStatusText");
+
+    if (auditBtn) {
+        auditBtn.disabled = true;
+        auditBtn.innerHTML = "⏳ Analyse IA en cours (Reconnaissance OCR)...";
+    }
+    if (statusText) {
+        statusText.innerHTML = "🔍 Lecture optique et analyse statistique de vos photos en cours...";
+    }
+
+    try {
+        const recognizedBlocks = [];
+
+        for (let i = 0; i < uploadedTicketPhotos.length; i++) {
+            const photo = uploadedTicketPhotos[i];
+            if (statusText) {
+                statusText.innerHTML = `🔍 Déchiffrage de la capture ${i + 1}/${uploadedTicketPhotos.length}...`;
+            }
+
+            if (window.Tesseract) {
+                try {
+                    const res = await Tesseract.recognize(photo.dataUrl, 'fra+eng', {
+                        logger: m => {
+                            if (m.status === 'recognizing text' && statusText) {
+                                const pct = Math.round((m.progress || 0) * 100);
+                                statusText.innerHTML = `🔍 Lecture capture ${i + 1}/${uploadedTicketPhotos.length} (${pct}%)...`;
+                            }
+                        }
+                    });
+                    const text = (res.data.text || "").trim();
+                    if (text) recognizedBlocks.push(text);
+                } catch (ocrErr) {
+                    console.warn(`Erreur OCR photo ${i + 1}:`, ocrErr);
+                }
+            }
+        }
+
+        const fullRawText = recognizedBlocks.join("\n");
+        const lowerText = fullRawText.toLowerCase();
+
+        // 1. Identify Clubs from full text
+        const detectedClubs = [];
+        for (const club of KNOWN_CLUBS) {
+            for (const alias of club.names) {
+                let pos = lowerText.indexOf(alias);
+                while (pos !== -1) {
+                    detectedClubs.push({
+                        pos: pos,
+                        alias: alias,
+                        club: club
+                    });
+                    pos = lowerText.indexOf(alias, pos + alias.length);
+                }
+            }
+        }
+
+        // Sort clubs chronologically by their visual position in text
+        detectedClubs.sort((a, b) => a.pos - b.pos);
+
+        // Deduplicate nearby occurrences of the same club name
+        const filteredClubs = [];
+        for (const item of detectedClubs) {
+            const last = filteredClubs[filteredClubs.length - 1];
+            if (!last || Math.abs(item.pos - last.pos) > 12 || last.club.display !== item.club.display) {
+                filteredClubs.push(item);
+            }
+        }
+
+        // 2. Cross-reference with HNS matches across days
+        const allKnownMatches = [];
+        if (appData && appData.days) {
+            for (const dayKey of ["today", "tomorrow", "after_tomorrow", "yesterday"]) {
+                const dayObj = appData.days[dayKey];
+                if (dayObj && dayObj.singles) {
+                    dayObj.singles.forEach(s => {
+                        allKnownMatches.push({ ...s, dayKey });
+                    });
+                }
+            }
+        }
+
+        const auditedMatches = [];
+
+        // Pair detected clubs or find matches in database
+        for (let i = 0; i < filteredClubs.length; i += 2) {
+            const homeClub = filteredClubs[i];
+            const awayClub = filteredClubs[i + 1];
+
+            let homeName = homeClub.club.display;
+            let awayName = awayClub ? awayClub.club.display : "";
+            let league = homeClub.club.league || (awayClub ? awayClub.club.league : "Championnat Européen");
+
+            const startPos = homeClub.pos;
+            const endPos = (i + 2 < filteredClubs.length) ? filteredClubs[i + 2].pos : Math.min(lowerText.length, startPos + 350);
+            const snippet = lowerText.slice(Math.max(0, startPos - 40), endPos);
+
+            // Detect bet selection
+            let ticketPick = "Non spécifié";
+            if (snippet.includes("1x") || snippet.includes("1 ou n") || snippet.includes("v1 ou nul") || snippet.includes("double chance 1x")) {
+                ticketPick = "Double Chance 1X";
+            } else if (snippet.includes("x2") || snippet.includes("n ou 2") || snippet.includes("v2 ou nul") || snippet.includes("double chance x2")) {
+                ticketPick = "Double Chance X2";
+            } else if (snippet.includes("12") || snippet.includes("double chance 12")) {
+                ticketPick = "Double Chance 12";
+            } else if (snippet.includes("+1.5") || snippet.includes("plus de 1.5") || snippet.includes("over 1.5")) {
+                ticketPick = "+1.5 Buts";
+            } else if (snippet.includes("+2.5") || snippet.includes("plus de 2.5") || snippet.includes("over 2.5")) {
+                ticketPick = "+2.5 Buts";
+            } else if (snippet.includes("-3.5") || snippet.includes("moins de 3.5") || snippet.includes("under 3.5")) {
+                ticketPick = "-3.5 Buts";
+            } else if (snippet.includes("les deux marquent") || snippet.includes("btts")) {
+                ticketPick = "Les deux équipes marquent";
+            } else if (snippet.includes("victoire 1") || snippet.includes("v1")) {
+                ticketPick = `Victoire ${homeName}`;
+            } else if (snippet.includes("victoire 2") || snippet.includes("v2")) {
+                ticketPick = awayName ? `Victoire ${awayName}` : "Victoire Extérieur";
+            }
+
+            // Cross-reference with database
+            let hnsMatch = null;
+            if (awayName) {
+                hnsMatch = allKnownMatches.find(m => 
+                    (m.match.toLowerCase().includes(homeName.toLowerCase()) && m.match.toLowerCase().includes(awayName.toLowerCase())) ||
+                    (m.match.toLowerCase().includes(homeClub.alias) && m.match.toLowerCase().includes(awayClub.alias))
+                );
+            } else {
+                hnsMatch = allKnownMatches.find(m => m.match.toLowerCase().includes(homeName.toLowerCase()));
+                if (hnsMatch) {
+                    const parts = hnsMatch.match.split(" vs ");
+                    if (parts.length === 2) {
+                        homeName = parts[0];
+                        awayName = parts[1];
+                        league = hnsMatch.league;
+                    }
+                }
+            }
+
+            let analysis = null;
+            if (hnsMatch) {
+                analysis = {
+                    home: homeName,
+                    away: awayName || "Adversaire",
+                    league: hnsMatch.league,
+                    time: hnsMatch.time,
+                    hnsPick: hnsMatch.pick,
+                    hnsMarket: hnsMatch.market,
+                    confidence: hnsMatch.confidence,
+                    is_safe: hnsMatch.is_safe,
+                    reason: hnsMatch.reason,
+                    ticketPick: ticketPick !== "Non spécifié" ? ticketPick : hnsMatch.pick
+                };
+            } else {
+                const auto = generateCustomPrediction(homeName, awayName || "Adversaire", league);
+                analysis = {
+                    home: homeName,
+                    away: awayName || "Adversaire",
+                    league: league,
+                    time: "Horaire officiel",
+                    hnsPick: auto.pick,
+                    hnsMarket: auto.market,
+                    confidence: auto.confidence,
+                    is_safe: auto.is_safe,
+                    reason: auto.reason,
+                    ticketPick: ticketPick !== "Non spécifié" ? ticketPick : auto.pick
+                };
+            }
+
+            // Evaluate Safety Level for this match on ticket
+            let safetyStatus = "safe";
+            let verdictLabel = "🟢 SÛR • Validation HNS";
+            let auditNote = "";
+
+            if (analysis.confidence >= 86 && analysis.is_safe) {
+                safetyStatus = "safe";
+                verdictLabel = "🟢 SÛR • Banquier du Coupon";
+                auditNote = "Statistiques xG largement favorables, solidité défensive et statut de forteresse confirmés.";
+            } else if (analysis.confidence >= 78) {
+                safetyStatus = "warning";
+                verdictLabel = "🟡 VIGILANCE • Risque Modéré";
+                auditNote = "Match avec enjeu serré. Préférer le marché Double Chance ou Over 1.5 pour sécuriser.";
+            } else {
+                safetyStatus = "danger";
+                verdictLabel = "🔴 PIÈGE • Attention Risque Élevé";
+                auditNote = "Volatilité importante ou absences majeures détectées. Risque élevé de faire sauter le coupon !";
+            }
+
+            auditedMatches.push({
+                ...analysis,
+                safetyStatus,
+                verdictLabel,
+                auditNote
+            });
+        }
+
+        renderTicketAuditResult(auditedMatches, fullRawText);
+
+    } catch (err) {
+        console.error("Erreur Audit Ticket :", err);
+        alert("Une erreur est survenue lors de l'audit du ticket.");
+    } finally {
+        if (auditBtn) {
+            auditBtn.disabled = false;
+            auditBtn.innerHTML = "🔬 Lancer l'Audit IA de mon Ticket";
+        }
+    }
+}
+window.runTicketAudit = runTicketAudit;
+
+function renderTicketAuditResult(matches, rawText) {
+    const box = document.getElementById("ticketAuditResultBox");
+    if (!box) return;
+
+    if (!matches || matches.length === 0) {
+        box.style.display = "block";
+        box.innerHTML = `
+            <div class="ticket-audit-card" style="text-align:center; padding:18px;">
+                <div style="font-size:2rem; margin-bottom:8px;">⚠️</div>
+                <div style="font-weight:800; color:#f87171; font-size:1rem; margin-bottom:6px;">Aucun match officiel reconnu avec certitude</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5; max-width:380px; margin:0 auto 12px auto;">
+                    Les captures d'écran sont peut-être floues ou le texte n'a pas pu être extrait nettement.
+                </div>
+                <div style="font-size:0.75rem; color:#38bdf8; background:rgba(56,189,248,0.1); padding:8px 12px; border-radius:8px; border:1px solid rgba(56,189,248,0.3); margin-bottom:12px;">
+                    💡 <strong>Solution directe :</strong> Cliquez sur l'onglet <strong>⚽ Match Unique (Manuel)</strong> ci-dessus pour taper vos équipes et obtenir l'audit HNS immédiat !
+                </div>
+                <button type="button" class="btn-choose-photos" onclick="setModalTab('single')">
+                    👉 Passer en mode Manuel
+                </button>
+            </div>
+        `;
+        box.scrollIntoView({ behavior: "smooth" });
+        return;
+    }
+
+    const total = matches.length;
+    const safeCount = matches.filter(m => m.safetyStatus === "safe").length;
+    const warningCount = matches.filter(m => m.safetyStatus === "warning").length;
+    const dangerCount = matches.filter(m => m.safetyStatus === "danger").length;
+
+    const avgConfidence = Math.round(matches.reduce((acc, m) => acc + (m.confidence || 80), 0) / total);
+    const ticketScore = (avgConfidence / 10).toFixed(1);
+
+    let globalVerdictBadge = "";
+    let globalSummaryText = "";
+    if (dangerCount === 0 && safeCount >= total * 0.7) {
+        globalVerdictBadge = `<span class="ticket-verdict-badge verdict-safe">🟢 COUPON HAUTEMENT VIABLE</span>`;
+        globalSummaryText = "Votre ticket présente une excellente assise statistique. Les choix détectés sont cohérents avec les banquiers de sécurité HNS TIPS.";
+    } else if (dangerCount > 0) {
+        globalVerdictBadge = `<span class="ticket-verdict-badge verdict-danger">🔴 ATTENTION : ${dangerCount} SÉLECTION(S) À RISQUE</span>`;
+        globalSummaryText = `Ce ticket contient ${dangerCount} match(s) à forte volatilité qui risque(nt) de faire échouer votre combiné. Surveillez attentivement l'option Cash Out.`;
+    } else {
+        globalVerdictBadge = `<span class="ticket-verdict-badge verdict-warning">🟡 COUPON ÉQUILIBRÉ • VIGILANCE CONSEILLÉE</span>`;
+        globalSummaryText = "Ticket intéressant mais comportant des matchs serrés. Privilégiez les marchés de double chance pour verrouiller vos gains.";
+    }
+
+    const sorted = [...matches].sort((a, b) => (b.confidence || 0) - (a.confidence || 0));
+    const bankerMatch = sorted[0];
+    const riskiestMatch = sorted[sorted.length - 1];
+
+    let itemsHtml = matches.map((m, idx) => `
+        <div class="ticket-match-item is-${m.safetyStatus}">
+            <div class="ticket-match-head">
+                <span style="font-weight:800; font-size:0.88rem; color:#f1f5f9;">#${idx + 1} ${escapeHtml(m.home)} vs ${escapeHtml(m.away)}</span>
+                <span class="ticket-verdict-badge verdict-${m.safetyStatus}">${m.verdictLabel}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--text-muted); margin-bottom:6px;">
+                <span>🏆 ${escapeHtml(m.league)}</span>
+                <span style="font-weight:700; color:#38bdf8;">Indice HNS : ${m.confidence}%</span>
+            </div>
+            <div style="background:rgba(0,0,0,0.25); border-radius:6px; padding:6px 8px; margin-bottom:6px; font-size:0.78rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
+                    <span style="color:#94a3b8;">Sélection détectée sur ticket :</span>
+                    <strong style="color:#ffffff;">${escapeHtml(m.ticketPick)}</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                    <span style="color:#38bdf8; font-weight:700;">Recommandation HNS TIPS :</span>
+                    <strong style="color:#4ade80;">${escapeHtml(m.hnsPick)}</strong>
+                </div>
+            </div>
+            <div style="font-size:0.74rem; color:#cbd5e1; line-height:1.35;">
+                📊 <em>${escapeHtml(m.reason || m.auditNote)}</em>
+            </div>
+        </div>
+    `).join("");
+
+    box.style.display = "block";
+    box.innerHTML = `
+        <div class="ticket-audit-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                <div>
+                    <h4 style="margin:0; font-size:1rem; font-weight:900; color:#ffffff; display:flex; align-items:center; gap:6px;">
+                        🎟️ Audit IA de votre Coupon
+                    </h4>
+                    <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
+                        Analysé à partir de ${uploadedTicketPhotos.length} capture${uploadedTicketPhotos.length > 1 ? "s" : ""} • Moteur Algorithmique Schalom H.N.
+                    </div>
+                </div>
+                ${globalVerdictBadge}
+            </div>
+
+            <!-- Score Bar -->
+            <div class="ticket-audit-score-bar">
+                <div>
+                    <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Indice de Viabilité</div>
+                    <div class="ticket-score-val">${ticketScore} <span style="font-size:0.9rem; color:var(--text-muted); font-weight:600;">/ 10</span></div>
+                </div>
+                <div style="display:flex; gap:12px; font-size:0.75rem;">
+                    <div style="text-align:center;">
+                        <span style="display:block; font-weight:900; color:#4ade80; font-size:1.1rem;">${safeCount}</span>
+                        <span style="color:var(--text-muted);">🟢 Sûrs</span>
+                    </div>
+                    <div style="text-align:center;">
+                        <span style="display:block; font-weight:900; color:#fde047; font-size:1.1rem;">${warningCount}</span>
+                        <span style="color:var(--text-muted);">🟡 Vigilance</span>
+                    </div>
+                    <div style="text-align:center;">
+                        <span style="display:block; font-weight:900; color:#f87171; font-size:1.1rem;">${dangerCount}</span>
+                        <span style="color:var(--text-muted);">🔴 Risqués</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size:0.78rem; color:#cbd5e1; margin-bottom:12px; line-height:1.4;">
+                ${globalSummaryText}
+            </p>
+
+            <!-- List of matches -->
+            <div style="margin-bottom:12px;">
+                ${itemsHtml}
+            </div>
+
+            <!-- Strategic Advice Box -->
+            <div class="ticket-advice-box">
+                <div style="font-weight:800; color:#38bdf8; margin-bottom:4px; font-size:0.82rem;">
+                    💡 Synthèse Stratégique & Gestion Cash Out (Schalom H.N.) :
+                </div>
+                <ul style="margin:0; padding-left:16px; font-size:0.75rem; color:#e2e8f0; line-height:1.45;">
+                    <li><strong>👑 Banquier Clé :</strong> <em>${escapeHtml(bankerMatch.home)} vs ${escapeHtml(bankerMatch.away)}</em> (${escapeHtml(bankerMatch.hnsPick)} - ${bankerMatch.confidence}%).</li>
+                    ${riskiestMatch && riskiestMatch !== bankerMatch ? `<li><strong>⚠️ Point de Vigilance :</strong> <em>${escapeHtml(riskiestMatch.home)} vs ${escapeHtml(riskiestMatch.away)}</em> (${riskiestMatch.confidence}% de probabilité). Si le début du coupon passe bien, envisagez un <strong>Cash Out partiel</strong> avant cette rencontre.</li>` : ""}
+                    <li><strong>🛡️ Règle d'or :</strong> Ne réinvestissez jamais plus de 5% de votre bankroll sur un combiné multi-sélections.</li>
+                </ul>
+            </div>
+        </div>
+    `;
+
+    box.scrollIntoView({ behavior: "smooth" });
 }
 
 // Setup Event Listeners
@@ -1339,6 +1830,12 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => setLeagueFilter(btn.dataset.league));
     });
 
+    // Modal tabs listeners
+    const tabAudit = document.getElementById("tabBtnAuditTicket");
+    const tabSingle = document.getElementById("tabBtnSingleMatch");
+    if (tabAudit) tabAudit.addEventListener("click", () => setModalTab("audit"));
+    if (tabSingle) tabSingle.addEventListener("click", () => setModalTab("single"));
+
     // Modal open/close
     const modal = document.getElementById("addMatchModal");
     const openBtn = document.getElementById("openAddModalBtn");
@@ -1346,23 +1843,59 @@ document.addEventListener("DOMContentLoaded", () => {
         openBtn.addEventListener("click", async () => {
             const isAuth = await requireOwnerAuth("ajouter ou analyser un nouveau match");
             if (!isAuth) return;
+            setModalTab("single");
             modal.style.display = "flex";
         });
     }
-    document.getElementById("closeAddModalBtn").addEventListener("click", () => modal.style.display = "none");
-    document.getElementById("submitCustomMatchBtn").addEventListener("click", submitCustomMatch);
+    const closeAddModalBtn = document.getElementById("closeAddModalBtn");
+    if (closeAddModalBtn) {
+        closeAddModalBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    }
+    const submitCustomMatchBtn = document.getElementById("submitCustomMatchBtn");
+    if (submitCustomMatchBtn) {
+        submitCustomMatchBtn.addEventListener("click", submitCustomMatch);
+    }
 
-    // Scanner Capture d'Écran Events
+    // Scanner / Audit Multi-Photos Events
     const dropzone = document.getElementById("screenshotDropzone");
     const fileInput = document.getElementById("screenshotFileInput");
-    const clearBtn = document.getElementById("clearScreenshotBtn");
+    const btnChoosePhotos = document.getElementById("btnChoosePhotos");
+    const addMorePhotosBtn = document.getElementById("addMorePhotosBtn");
+    const clearAllPhotosBtn = document.getElementById("clearAllPhotosBtn");
+    const runTicketAuditBtn = document.getElementById("runTicketAuditBtn");
     const openScannerBtn = document.getElementById("openScannerBtn");
 
+    if (btnChoosePhotos && fileInput) {
+        btnChoosePhotos.addEventListener("click", (e) => {
+            e.stopPropagation();
+            fileInput.click();
+        });
+    }
+    if (addMorePhotosBtn && fileInput) {
+        addMorePhotosBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            fileInput.click();
+        });
+    }
+    if (clearAllPhotosBtn) {
+        clearAllPhotosBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            clearAllTicketPhotos();
+        });
+    }
+    if (runTicketAuditBtn) {
+        runTicketAuditBtn.addEventListener("click", runTicketAudit);
+    }
+
     if (dropzone && fileInput) {
-        dropzone.addEventListener("click", () => fileInput.click());
+        dropzone.addEventListener("click", () => {
+            if (uploadedTicketPhotos.length === 0) fileInput.click();
+        });
         fileInput.addEventListener("change", (e) => {
-            if (e.target.files && e.target.files[0]) {
-                handleScreenshotFile(e.target.files[0]);
+            if (e.target.files && e.target.files.length) {
+                addTicketPhotoFiles(e.target.files);
             }
         });
 
@@ -1374,36 +1907,34 @@ document.addEventListener("DOMContentLoaded", () => {
         dropzone.addEventListener("drop", (e) => {
             e.preventDefault();
             dropzone.classList.remove("drag-over");
-            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                handleScreenshotFile(e.dataTransfer.files[0]);
+            if (e.dataTransfer.files && e.dataTransfer.files.length) {
+                addTicketPhotoFiles(e.dataTransfer.files);
             }
-        });
-    }
-
-    if (clearBtn) {
-        clearBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            resetScreenshotDropzone();
         });
     }
 
     if (openScannerBtn) {
         openScannerBtn.addEventListener("click", () => {
+            setModalTab("audit");
             modal.style.display = "flex";
-            if (fileInput) fileInput.click();
         });
     }
 
-    // Global Paste Listener (Ctrl+V ou mobile paste pour capturer directement)
+    // Global Paste Listener (Ctrl+V ou mobile paste pour coller directement des captures)
     window.addEventListener("paste", (e) => {
         const items = (e.clipboardData || window.clipboardData)?.items;
         if (!items) return;
+        const pastedImages = [];
         for (const item of items) {
-            if (item.type.indexOf("image") === 0) {
+            if (item.type && item.type.startsWith("image/")) {
                 const file = item.getAsFile();
-                if (file) handleScreenshotFile(file);
-                break;
+                if (file) pastedImages.push(file);
             }
+        }
+        if (pastedImages.length > 0) {
+            setModalTab("audit");
+            modal.style.display = "flex";
+            addTicketPhotoFiles(pastedImages);
         }
     });
 

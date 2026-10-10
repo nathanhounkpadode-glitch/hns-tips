@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=21">
+    <link rel="stylesheet" href="static/css/style.css?v=22">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
@@ -392,73 +392,100 @@
         <div class="modal-backdrop" id="addMatchModal" style="display: none;">
             <div class="modal-card">
                 <div class="modal-header">
-                    <h3 id="modalTitle">⚡ Pronostiquer & Scanner un Match</h3>
+                    <h3 id="modalTitle">🎟️ Scanner & Auditer mon Ticket</h3>
                     <button class="modal-close" id="closeAddModalBtn">&times;</button>
                 </div>
+
+                <!-- ONGLETS MODAL : AUDIT TICKET OU MATCH UNIQUE -->
+                <div class="modal-tabs-bar">
+                    <button class="modal-tab-btn active" id="tabBtnAuditTicket">🎟️ Auditer mon Ticket (Multi-Photos)</button>
+                    <button class="modal-tab-btn" id="tabBtnSingleMatch">⚽ Match Unique (Manuel)</button>
+                </div>
+
                 <div class="modal-body">
-                    <!-- ZONE IMPORT / SCANNER CAPTURE D'ÉCRAN -->
-                    <div class="scanner-upload-card">
-                        <div class="scanner-upload-header">
-                            <span class="scanner-badge">📷 SCANNER IA HNS</span>
-                            <span style="font-size:0.75rem; color:var(--text-muted);">Reconnaissance automatique de match</span>
-                        </div>
-                        <div class="screenshot-dropzone" id="screenshotDropzone">
-                            <input type="file" id="screenshotFileInput" accept="image/*" style="display:none;">
-                            <div id="dropzoneEmptyView">
-                                <div style="font-size:2rem; margin-bottom:4px;">📸</div>
-                                <div style="font-weight:700; font-size:0.85rem; color:#60a5fa;">Importer ou Coller une Capture d'Écran</div>
-                                <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Ticket, coupon bookmaker, compo ou affiche (Ctrl+V ou Clic)</div>
+                    <!-- SECTION 1 : AUDIT DE TICKET DÉJÀ FAIT (MULTI-PHOTOS) -->
+                    <div id="sectionAuditTicketView">
+                        <div class="scanner-upload-card">
+                            <div class="scanner-upload-header">
+                                <span class="scanner-badge">📸 AUDIT DE TICKET • MULTI-CAPTURES</span>
+                                <span id="ticketPhotoCountBadge" style="font-size:0.75rem; color:#38bdf8; font-weight:700;">0 photo sélectionnée</span>
                             </div>
-                            <div id="dropzonePreviewView" style="display:none;">
-                                <img id="screenshotPreviewImg" src="" alt="Aperçu capture">
-                                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
-                                    <span id="ocrStatusText" style="font-size:0.75rem; color:#38bdf8; font-weight:600;">🔍 Analyse IA de la capture...</span>
-                                    <button type="button" class="btn-clear-img" id="clearScreenshotBtn">✕ Changer</button>
+                            <div class="screenshot-dropzone" id="screenshotDropzone">
+                                <input type="file" id="screenshotFileInput" accept="image/*" multiple style="display:none;">
+                                <div id="dropzoneEmptyView">
+                                    <div style="font-size:2.2rem; margin-bottom:4px;">📸</div>
+                                    <div style="font-weight:700; font-size:0.92rem; color:#60a5fa;">Importer les Photos de votre Ticket</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:3px; max-width:320px; margin-left:auto; margin-right:auto;">
+                                        Sélectionnez <strong>plusieurs captures d'affilée</strong> de votre coupon (Haut, Milieu, Bas) ou collez avec <strong>Ctrl+V</strong>
+                                    </div>
+                                    <button type="button" class="btn-choose-photos" id="btnChoosePhotos" style="margin-top:10px;">
+                                        📁 Choisir les Photos (Multi-Sélection)
+                                    </button>
+                                </div>
+                                <div id="dropzoneMultiPreviewView" style="display:none;">
+                                    <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; gap:8px;">
+                                        <button type="button" class="btn-add-more-photos" id="addMorePhotosBtn">➕ Ajouter d'autres photos</button>
+                                        <button type="button" class="btn-clear-all-photos" id="clearAllPhotosBtn">✕ Tout effacer</button>
+                                    </div>
+                                    <div id="ocrMultiStatusText" style="font-size:0.78rem; color:#38bdf8; font-weight:600; margin-top:10px; text-align:center;">
+                                        💡 Photos prêtes ! Cliquez ci-dessous pour lancer l'audit IA complet.
+                                    </div>
                                 </div>
                             </div>
+                            <button class="btn-generate" id="runTicketAuditBtn" style="margin-top:12px; display:none;">
+                                🔬 Lancer l'Audit IA de mon Ticket
+                            </button>
                         </div>
+
+                        <!-- RÉSULTAT DE L'AUDIT DE TICKET -->
+                        <div id="ticketAuditResultBox" style="display:none; margin-top:12px;"></div>
                     </div>
 
-                    <div style="text-align:center; margin:8px 0; font-size:0.75rem; color:var(--text-muted); font-weight:700;">
-                        ── OU VÉRIFICATION DES ÉQUIPES DÉTECTÉES ──
+                    <!-- SECTION 2 : AJOUT / PRONOSTIC D'UN MATCH UNIQUE MANUEL -->
+                    <div id="sectionSingleMatchView" style="display:none;">
+                        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
+                            Entrez les deux équipes d'un match pour générer l'analyse et l'ajouter aux pronostics du jour.
+                        </p>
+                        <div class="input-item">
+                            <label>Équipe Domicile :</label>
+                            <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Sporting...">
+                        </div>
+                        <div class="input-item">
+                            <label>Équipe Extérieur :</label>
+                            <input type="text" id="customAway" placeholder="Ex: Bayern, PSG, Benfica...">
+                        </div>
+                        <div class="input-item">
+                            <label>Compétition :</label>
+                            <select id="customLeagueSelect" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
+                                <option value="LaLiga (Espagne)">🇪🇸 LaLiga (Espagne)</option>
+                                <option value="Premier League (Angleterre)">🇬🇧 Premier League (Angleterre)</option>
+                                <option value="Ligue 1 (France)">🇫🇷 Ligue 1 (France)</option>
+                                <option value="Serie A (Italie)">🇮🇹 Serie A (Italie)</option>
+                                <option value="Primeira Liga (Portugal)">🇵🇹 Primeira Liga (Portugal)</option>
+                                <option value="Süper Lig (Turquie)">🇹🇷 Süper Lig (Turquie)</option>
+                                <option value="Eredivisie (Pays-Bas)">🇳🇱 Eredivisie (Pays-Bas)</option>
+                                <option value="Autre">🌍 Autre Championnat</option>
+                            </select>
+                        </div>
+                        <div class="input-item">
+                            <label>Heure du coup d'envoi (Bénin / GMT+1) :</label>
+                            <input type="text" id="customTime" value="19:45 (Bénin) • 20:45 (Paris)" placeholder="Ex: 19:45 (Bénin) • 20:45 (Paris)">
+                        </div>
+                        <div class="input-item">
+                            <label>Jour du match :</label>
+                            <select id="customDay" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
+                                <option value="today">Aujourd'hui</option>
+                                <option value="tomorrow">Demain</option>
+                                <option value="after_tomorrow">Lundi</option>
+                                <option value="yesterday">Hier</option>
+                            </select>
+                        </div>
+                        <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
+                            🤖 Analyser & Ajouter le Pronostic
+                        </button>
                     </div>
-                    <div class="input-item">
-                        <label>Équipe Domicile :</label>
-                        <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Sporting...">
-                    </div>
-                    <div class="input-item">
-                        <label>Équipe Extérieur :</label>
-                        <input type="text" id="customAway" placeholder="Ex: Bayern, PSG, Benfica...">
-                    </div>
-                    <div class="input-item">
-                        <label>Compétition :</label>
-                        <select id="customLeagueSelect" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
-                            <option value="LaLiga (Espagne)">🇪🇸 LaLiga (Espagne)</option>
-                            <option value="Premier League (Angleterre)">🇬🇧 Premier League (Angleterre)</option>
-                            <option value="Ligue 1 (France)">🇫🇷 Ligue 1 (France)</option>
-                            <option value="Serie A (Italie)">🇮🇹 Serie A (Italie)</option>
-                            <option value="Primeira Liga (Portugal)">🇵🇹 Primeira Liga (Portugal)</option>
-                            <option value="Süper Lig (Turquie)">🇹🇷 Süper Lig (Turquie)</option>
-                            <option value="Eredivisie (Pays-Bas)">🇳🇱 Eredivisie (Pays-Bas)</option>
-                            <option value="Autre">🌍 Autre Championnat</option>
-                        </select>
-                    </div>
-                    <div class="input-item">
-                        <label>Heure du coup d'envoi (Bénin / GMT+1) :</label>
-                        <input type="text" id="customTime" value="19:45 (Bénin) • 20:45 (Paris)" placeholder="Ex: 19:45 (Bénin) • 20:45 (Paris)">
-                    </div>
-                    <div class="input-item">
-                        <label>Jour du match :</label>
-                        <select id="customDay" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
-                            <option value="today">Aujourd'hui</option>
-                            <option value="tomorrow">Demain</option>
-                            <option value="after_tomorrow">Lundi</option>
-                            <option value="yesterday">Hier</option>
-                        </select>
-                    </div>
-                    <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
-                        🤖 Analyser & Ajouter le Pronostic
-                    </button>
+
                 </div>
             </div>
         </div>
@@ -481,7 +508,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=21"></script>
-    <script src="static/js/app.js?v=21"></script>
+    <script src="static/js/default-data.js?v=22"></script>
+    <script src="static/js/app.js?v=22"></script>
 </body>
 </html>
