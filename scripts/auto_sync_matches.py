@@ -117,6 +117,30 @@ LEAGUES_DNA = {
         "reality_summary": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
         "key_factor": "xG offensif colossal et vulnérabilité défensive récurrente.",
         "best_markets": ["Victoire & Plus de 1.5 buts", "Over 2.5 Buts", "Les Deux Équipes Marquent"]
+    },
+    "uefa.champions": {
+        "name": "UEFA Champions League",
+        "flag": "🇪🇺",
+        "dna_title": "Intensité Maximale & Rigueur Continentale",
+        "avg_goals": 3.05,
+        "btts_pct": "58%",
+        "over25_pct": "56%",
+        "fav_win_home_pct": "54%",
+        "reality_summary": "La reine des compétitions. Les cadors européens imposent une intensité folle et une efficacité clinique devant le but.",
+        "key_factor": "Expérience européenne, profondeur de banc et réalisme dans les zones de vérité.",
+        "best_markets": ["1X2 & Plus de 1.5 buts", "Les Deux Équipes Marquent", "Double Chance"]
+    },
+    "uefa.europa": {
+        "name": "UEFA Europa League",
+        "flag": "🇪🇺",
+        "dna_title": "Transitions Rapides & Matchs Ouverts",
+        "avg_goals": 2.92,
+        "btts_pct": "56%",
+        "over25_pct": "54%",
+        "fav_win_home_pct": "50%",
+        "reality_summary": "Compétition très disputée avec de gros écarts de style entre nations européennes.",
+        "key_factor": "Turnover d'effectif et motivation des favoris.",
+        "best_markets": ["Double Chance & Buts", "Over 2.5 Buts"]
     }
 }
 
