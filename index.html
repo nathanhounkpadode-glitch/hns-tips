@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=22">
+    <link rel="stylesheet" href="static/css/style.css?v=25">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
@@ -134,18 +134,30 @@
                         </div>
 
                         <!-- BANKER METRICS & SPÉCIFICITÉS -->
-                        <div class="banker-metrics-row" id="bankerMetricsRow">
+                        <div class="banker-metrics-row" id="bankerMetricsRow" style="grid-template-columns: repeat(3, 1fr); gap:6px;">
                             <div class="banker-metric-pill">
-                                <span class="lbl">📊 xG Diff.</span>
+                                <span class="lbl">📊 npxG Net</span>
                                 <span class="val" id="bankerXg">+1.65 xG</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">🔥 Field Tilt</span>
+                                <span class="val" id="bankerFieldTilt" style="color:#38bdf8;">68% Territoire</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">⚡ PPDA Press</span>
+                                <span class="val" id="bankerPpda" style="color:#a78bfa;">8.2 (Élite)</span>
                             </div>
                             <div class="banker-metric-pill">
                                 <span class="lbl">📈 Forme 5M</span>
                                 <span class="val" id="bankerForm">V-V-V-N-V</span>
                             </div>
                             <div class="banker-metric-pill">
-                                <span class="lbl">🛡️ Risque IA</span>
-                                <span class="val" id="bankerRisk">1/5 (Très Faible)</span>
+                                <span class="lbl">🔋 Fraîcheur</span>
+                                <span class="val" id="bankerRest" style="color:#34d399;">+48h Repos</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">🛡️ Indice HSI</span>
+                                <span class="val" id="bankerHsi" style="color:#10b981;">96 / 100</span>
                             </div>
                         </div>
 
@@ -508,7 +520,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=24"></script>
-    <script src="static/js/app.js?v=24"></script>
+    <script src="static/js/default-data.js?v=25"></script>
+    <script src="static/js/app.js?v=25"></script>
 </body>
 </html>

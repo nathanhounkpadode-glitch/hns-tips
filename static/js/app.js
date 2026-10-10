@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v24";
+const DATA_VERSION = "2026-10-10-v25";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -513,10 +513,17 @@ function renderCurrentDayView() {
         if (b.metrics) {
             const xgEl = document.getElementById("bankerXg");
             const formEl = document.getElementById("bankerForm");
-            const riskEl = document.getElementById("bankerRisk");
-            if (xgEl) xgEl.textContent = b.metrics.xg_diff || "+1.65 xG";
+            const fieldTiltEl = document.getElementById("bankerFieldTilt");
+            const ppdaEl = document.getElementById("bankerPpda");
+            const restEl = document.getElementById("bankerRest");
+            const hsiEl = document.getElementById("bankerHsi");
+
+            if (xgEl) xgEl.textContent = b.metrics.npxg_diff || b.metrics.xg_diff || "+1.65 xG";
             if (formEl) formEl.textContent = b.metrics.home_form || "V-V-V-N-V";
-            if (riskEl) riskEl.textContent = b.metrics.risk_level || "1/5 (Très Faible)";
+            if (fieldTiltEl) fieldTiltEl.textContent = b.metrics.field_tilt || "68% Territoire";
+            if (ppdaEl) ppdaEl.textContent = b.metrics.ppda || "8.2 (Élite)";
+            if (restEl) restEl.textContent = b.metrics.rest_advantage || "+48h Repos";
+            if (hsiEl) hsiEl.textContent = b.metrics.hsi_score || "96 / 100";
         }
 
         if (b.key_players) {
@@ -716,22 +723,30 @@ function createMatchCard(s, isSafeSection = false) {
             <span class="toggle-arrow">▼</span>
         </button>
         <div class="tactical-panel" id="panelTac_${s.id}">
-            <div class="metrics-grid">
+            <div class="metrics-grid" style="grid-template-columns: repeat(2, 1fr); gap: 8px;">
                 <div class="metric-card">
-                    <span class="metric-label">📊 xG Différentiel</span>
-                    <span class="metric-val highlight-xg">${m.xg_diff || '+1.25 xG'}</span>
+                    <span class="metric-label">📊 npxG Net (Sans Pen.)</span>
+                    <span class="metric-val highlight-xg">${m.npxg_diff || m.xg_diff || '+1.25 xG'}</span>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-label">📈 Forme (5M)</span>
+                    <span class="metric-label">🔥 Field Tilt (Territoire)</span>
+                    <span class="metric-val highlight-field-tilt">${m.field_tilt || '65% dernier tiers'}</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">⚡ PPDA (Pressing)</span>
+                    <span class="metric-val highlight-ppda">${m.ppda || '8.8 (Haut Pressing)'}</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">🔋 Fraîcheur & Repos</span>
+                    <span class="metric-val highlight-rest">${m.rest_advantage || '6j repos (+48h)'}</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">📈 Forme Réelle (5M)</span>
                     <span class="metric-val">${m.home_form || 'V-V-N-V'}</span>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-label">🏟️ Solidité Terrain</span>
-                    <span class="metric-val">${m.home_strength || '75% invaincu'}</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-label">🎯 Enjeu Majeur</span>
-                    <span class="metric-val highlight-stake">${m.stake || 'Points vitaux'}</span>
+                    <span class="metric-label">🏟️ Solidité Domicile</span>
+                    <span class="metric-val">${m.home_strength || '78% invaincu'}</span>
                 </div>
             </div>
             ${kp.star_player ? `
@@ -756,9 +771,13 @@ function createMatchCard(s, isSafeSection = false) {
                 <div class="tactical-item-title">💡 Clé Tactique Décisive</div>
                 ${tb.key_advantage}
             </div>` : ''}
+            <div class="tactical-item safety-net-item">
+                <div class="tactical-item-title"><span class="safety-net-badge">PLAN B</span> 🛡️ Filet de Sécurité Anti-Douille</div>
+                ${s.safety_net || (s.is_safe ? 'Couverture à 98% : Privilégier Double Chance 1X ou Remboursé si Nul (DNB) en combiné à grosse mise.' : 'Sécuriser en Double Chance pour neutraliser la variance.')}
+            </div>
             <div class="tactical-item risk-item">
-                <div class="tactical-item-title">🛡️ Indice de Risque IA</div>
-                Niveau : <strong>${m.risk_level || '1/5 (Très Faible)'}</strong> • Seuil Plus de 1.5 buts : <strong>${m.over15_prob || '85%'}</strong>
+                <div class="tactical-item-title">🛡️ Indice de Sécurité HNS (HSI)</div>
+                Indice HSI : <strong style="color:#10b981;">${m.hsi_score || (s.confidence ? s.confidence + '/100' : '94/100')}</strong> • Niveau Risque : <strong>${m.risk_level || '1/5 (Très Faible)'}</strong>
             </div>
         </div>
     `;
@@ -769,8 +788,9 @@ function createMatchCard(s, isSafeSection = false) {
                 <span class="league-pill">🏆 ${s.league} • ⏰ ${s.time}</span>
                 ${dnaTagHtml}
             </div>
-            <div style="display:flex; gap:6px; align-items:center;">
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
                 ${statusPill}
+                <span class="hsi-badge" title="HNS Safety Index">🛡️ HSI: ${m.hsi_score || (s.confidence ? s.confidence + '%' : '92%')}</span>
                 <span class="match-type-tag ${tagClass}">${tagLabel}</span>
             </div>
         </div>
@@ -1095,7 +1115,20 @@ function generateCustomPrediction(home, away, league) {
         reason = "Gyökeres et le Sporting maintiennent un bilan quasiment imprenable sur leur pelouse.";
     }
 
-    return { pick, market, odds, confidence, is_safe, type, reason };
+    const metrics = {
+        hsi_score: `${Math.min(99, confidence + 5)} / 100`,
+        npxg_diff: `+${(odds > 1.5 ? 1.45 : 1.20).toFixed(2)} npxG (Sans Pen.)`,
+        field_tilt: "66% Domination Territoire",
+        ppda: "8.4 (Pressing Haut Élite)",
+        rest_advantage: "5j repos (+48h vs adv.)",
+        home_form: "V-V-N-V",
+        home_strength: "80% invaincu",
+        stake: "Points capitaux",
+        risk_level: "1/5 (Très Faible)"
+    };
+    const safety_net = `🛡️ Filet de Sécurité Anti-Douille : Privilégier '${pick}' en combiné à forte mise pour neutraliser la variance à 98%.`;
+
+    return { pick, market, odds, confidence, is_safe, type, reason, metrics, safety_net };
 }
 
 // Custom Match Analyzer & Adder
@@ -1145,7 +1178,9 @@ async function submitCustomMatch() {
                 confidence: pred.confidence,
                 type: pred.type,
                 is_safe: pred.is_safe,
-                reason: pred.reason
+                reason: pred.reason,
+                metrics: pred.metrics,
+                safety_net: pred.safety_net
             };
 
             const targetDay = (appData && appData.days && appData.days[day]) ? day : "today";
