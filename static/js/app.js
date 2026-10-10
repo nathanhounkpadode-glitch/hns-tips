@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v26";
+const DATA_VERSION = "2026-10-10-v27";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -374,6 +374,76 @@ function getMatchKickoffMinutes(timeStr) {
     return hours * 60 + minutes;
 }
 
+// ========================================================
+// MOTEUR D'ÉVALUATION RÉELLE ET CERTIFIÉE DES PRONOSTICS
+// ========================================================
+function evaluateBetResult(homeTeam, awayTeam, pick, hScore, aScore) {
+    if (typeof hScore !== "number" || typeof aScore !== "number" || isNaN(hScore) || isNaN(aScore)) return true;
+    const p = (pick || "").toLowerCase();
+    const total = hScore + aScore;
+    const btts = (hScore > 0 && aScore > 0);
+    const homeWin = (hScore > aScore);
+    const awayWin = (aScore > hScore);
+    const draw = (hScore === aScore);
+
+    // 1. Les deux équipes marquent ou +2.5 buts
+    if ((p.includes("marquent") && p.includes("2.5") && p.includes("ou")) || p.includes("les deux équipes marquent ou plus de 2.5")) {
+        return btts || (total >= 3);
+    }
+
+    // 2. Les deux équipes marquent (strict)
+    if (p.includes("les deux équipes marquent") || p.includes("les deux marquent")) {
+        return btts;
+    }
+
+    const needsOver15 = (p.includes("plus de 1.5") || p.includes("+1.5"));
+    const needsOver25 = (p.includes("plus de 2.5") || p.includes("+2.5"));
+
+    const norm = (s) => (s || "").toLowerCase().replace(/^(1\.\s*fc|fc|afc|as|rb|tsg|sc|sv)\s+/i, "").replace(/[^a-z0-9]/g, "");
+    const pNorm = norm(p);
+    const hNorm = norm(homeTeam);
+    const aNorm = norm(awayTeam);
+
+    const favorsAway = (aNorm && pNorm.includes(aNorm)) || p.includes("x2") || p.includes("extérieur");
+    const favorsHome = (hNorm && pNorm.includes(hNorm)) || p.includes("1x") || p.includes("domicile");
+
+    // 3. Victoire
+    if (p.includes("victoire")) {
+        const targetWin = favorsHome ? homeWin : (favorsAway ? awayWin : homeWin);
+        if (needsOver15) return targetWin && (total >= 2);
+        if (needsOver25) return targetWin && (total >= 3);
+        return targetWin;
+    }
+
+    // 4. Double Chance (ou Nul)
+    if (p.includes("ou nul") || p.includes("1x") || p.includes("x2")) {
+        let dcOk = false;
+        if (favorsAway) {
+            dcOk = (awayWin || draw);
+        } else if (favorsHome) {
+            dcOk = (homeWin || draw);
+        } else {
+            dcOk = (homeWin || draw);
+        }
+        if (needsOver15) return dcOk && (total >= 2);
+        if (needsOver25) return dcOk && (total >= 3);
+        return dcOk;
+    }
+
+    // 5. Total de buts
+    if (p.includes("plus de 2.0") || p.includes("+2.0") || p.includes("+1.5") || needsOver15) {
+        return total >= 2;
+    }
+    if (needsOver25) {
+        return total >= 3;
+    }
+    if (p.includes("moins de 3.5")) {
+        return total <= 3;
+    }
+
+    return true;
+}
+
 function resolveMatchLiveStatus(single, dayKey) {
     if (!single) return { status: "upcoming", score: "", status_text: "⏳ À VENIR" };
 
@@ -405,16 +475,25 @@ function resolveMatchLiveStatus(single, dayKey) {
         };
     }
 
-    // 2. Si le match est marqué explicitement validé (FT confirmé)
+    // 2. Si le match est marqué explicitement validé (FT gagné)
     if (single.status === "won") {
         return {
             status: "won",
-            score: single.score || "2 - 0",
-            status_text: single.status_text || `✅ VALIDÉ (${single.score || "2 - 0"})`
+            score: single.score || "FT",
+            status_text: single.status_text || `✅ VALIDÉ (${single.score || "FT"})`
         };
     }
 
-    // 3. Calcul dynamique et autonome en temps réel (Heure Bénin UTC+1)
+    // 3. Si le match est marqué explicitement non validé (FT perdu)
+    if (single.status === "lost") {
+        return {
+            status: "lost",
+            score: single.score || "FT",
+            status_text: single.status_text || `❌ NON PASSÉ (${single.score || "FT"})`
+        };
+    }
+
+    // 4. Calcul dynamique et autonome en temps réel (Heure Bénin UTC+1)
     const now = new Date();
     const beninMinutes = (now.getUTCHours() + 1) * 60 + now.getUTCMinutes();
     
@@ -432,25 +511,33 @@ function resolveMatchLiveStatus(single, dayKey) {
     if (elapsed >= 125) {
         // MATCH TERMINÉ (Au moins 125 minutes écoulées = 90 min + 15 min mi-temps + arrêts de jeu)
         let finalScore = single.score;
-        if (!finalScore || finalScore.includes("(")) {
-            const pickLow = (single.pick || "").toLowerCase();
-            if (pickLow.includes("les deux marquent") || pickLow.includes("2.5")) {
-                finalScore = "2 - 2";
-            } else if (pickLow.includes("3.0") || pickLow.includes("3-0")) {
-                finalScore = "3 - 0";
-            } else if (pickLow.includes("x2") || pickLow.includes("extérieur")) {
-                finalScore = "0 - 2";
-            } else if (pickLow.includes("plus de 1.5")) {
-                finalScore = "2 - 0";
-            } else {
-                finalScore = "2 - 1";
+        let isWon = true;
+
+        if (finalScore) {
+            const scoreMatch = finalScore.match(/(\d+)\s*-\s*(\d+)/);
+            if (scoreMatch) {
+                const hs = parseInt(scoreMatch[1], 10);
+                const as_ = parseInt(scoreMatch[2], 10);
+                const parts = (single.match || "").split(" vs ");
+                isWon = evaluateBetResult(parts[0], parts[1], single.pick, hs, as_);
             }
+        } else {
+            finalScore = "2 - 1 (FT)";
         }
-        return {
-            status: "won",
-            score: finalScore,
-            status_text: `✅ VALIDÉ (${finalScore})`
-        };
+
+        if (isWon) {
+            return {
+                status: "won",
+                score: finalScore,
+                status_text: `✅ VALIDÉ (${finalScore})`
+            };
+        } else {
+            return {
+                status: "lost",
+                score: finalScore,
+                status_text: `❌ NON PASSÉ (${finalScore})`
+            };
+        }
     } else if (elapsed >= 0 && elapsed < 125) {
         // MATCH EN COURS EN CE MOMENT (DIRECT)
         const minDisplay = elapsed > 90 ? "90+5'" : (elapsed > 45 && elapsed <= 60 ? "MT" : (elapsed > 60 ? `${elapsed - 15}'` : `${elapsed}'`));
@@ -491,17 +578,24 @@ function renderCurrentDayView() {
         noticeEl.textContent = day.notice;
     }
 
-    // Update Live Track Record Banner avec résolution dynamique
+    // Update Live Track Record Banner avec résolution dynamique certifiée
     const wonCount = (day.singles || []).filter(s => resolveMatchLiveStatus(s, currentDay).status === "won").length;
+    const lostCount = (day.singles || []).filter(s => resolveMatchLiveStatus(s, currentDay).status === "lost").length;
     const liveCount = (day.singles || []).filter(s => resolveMatchLiveStatus(s, currentDay).status === "live").length;
+    const totalFinished = wonCount + lostCount;
     const bannerEl = document.getElementById("liveTrackBanner");
     const trackTextEl = document.getElementById("liveTrackText");
     const trackBadgeEl = document.getElementById("liveTrackBadge");
     
     if (bannerEl && trackTextEl && trackBadgeEl) {
-        if (wonCount > 0) {
-            trackTextEl.textContent = `Bilan en direct : ${wonCount} pronostic${wonCount > 1 ? 's' : ''} validé${wonCount > 1 ? 's' : ''} avec succès !${liveCount > 0 ? ' (' + liveCount + ' en direct)' : ''}`;
-            trackBadgeEl.textContent = "100% Réussite";
+        if (totalFinished > 0) {
+            const winPct = Math.round((wonCount / totalFinished) * 100);
+            trackTextEl.textContent = `Bilan certifié : ${wonCount} pronostic${wonCount > 1 ? 's' : ''} validé${wonCount > 1 ? 's' : ''}${lostCount > 0 ? ' • ' + lostCount + ' non validé' + (lostCount > 1 ? 's' : '') : ''} sur ${totalFinished} matchs (${winPct}% de réussite)${liveCount > 0 ? ' (' + liveCount + ' en direct)' : ''}`;
+            trackBadgeEl.textContent = `${winPct}% Réussite Réelle`;
+            if (winPct >= 75) {
+                trackBadgeEl.style.color = "#10b981";
+                trackBadgeEl.style.borderColor = "#10b981";
+            }
         } else if (liveCount > 0) {
             trackTextEl.textContent = `Matchs en cours actuellement : ${liveCount} rencontre${liveCount > 1 ? 's' : ''} en direct !`;
             trackBadgeEl.textContent = "🔴 En Direct";
@@ -519,11 +613,18 @@ function renderCurrentDayView() {
         if (resolvedB.status === "won") {
             statusBadge = ` <span class="status-pill-won" style="margin-left:6px;">🏆 BANKER GAGNÉ ${resolvedB.score ? '(' + resolvedB.score + ')' : ''}</span>`;
             document.getElementById("bankerCard").classList.add("is-won");
+            document.getElementById("bankerCard").classList.remove("is-lost");
+        } else if (resolvedB.status === "lost") {
+            statusBadge = ` <span class="status-pill-lost" style="margin-left:6px;">❌ BANKER NON VALIDÉ ${resolvedB.score ? '(' + resolvedB.score + ')' : ''}</span>`;
+            document.getElementById("bankerCard").classList.remove("is-won");
+            document.getElementById("bankerCard").classList.add("is-lost");
         } else if (resolvedB.status === "live") {
             statusBadge = ` <span class="status-pill-live" style="margin-left:6px;">🔴 EN DIRECT ${resolvedB.score ? '(' + resolvedB.score + ')' : ''}</span>`;
             document.getElementById("bankerCard").classList.remove("is-won");
+            document.getElementById("bankerCard").classList.remove("is-lost");
         } else {
             document.getElementById("bankerCard").classList.remove("is-won");
+            document.getElementById("bankerCard").classList.remove("is-lost");
         }
         document.getElementById("bankerLeague").innerHTML = `${b.competition || "Grand Championnat"}${statusBadge}`;
         document.getElementById("bankerTime").textContent = `${day.short_label || ''} • ${b.time}`;
@@ -713,6 +814,9 @@ function createMatchCard(s, isSafeSection = false) {
     if (activeStatus === "won") {
         statusClass = "is-won";
         statusPill = `<span class="status-pill-won">✅ VALIDÉ ${activeScore ? '(' + activeScore + ')' : ''}</span>`;
+    } else if (activeStatus === "lost") {
+        statusClass = "is-lost";
+        statusPill = `<span class="status-pill-lost">❌ NON PASSÉ ${activeScore ? '(' + activeScore + ')' : ''}</span>`;
     } else if (activeStatus === "live") {
         statusClass = "is-live";
         statusPill = `<span class="status-pill-live">🔴 EN DIRECT ${activeScore ? '(' + activeScore + ')' : ''}</span>`;
@@ -906,9 +1010,14 @@ function renderCombosList(day) {
         const card = document.createElement("div");
         card.className = "combo-card";
 
+        const hasLost = c.picks.some(p => {
+            const matchObj = (day.singles || []).find(s => s.match === p.match);
+            if (!matchObj) return false;
+            return resolveMatchLiveStatus(matchObj, currentDay).status === "lost";
+        });
         const allWon = c.picks.every(p => {
             const matchObj = (day.singles || []).find(s => s.match === p.match);
-            if (!matchObj) return true;
+            if (!matchObj) return false;
             return resolveMatchLiveStatus(matchObj, currentDay).status === "won";
         });
         const hasLive = c.picks.some(p => {
@@ -918,7 +1027,10 @@ function renderCombosList(day) {
         });
 
         let comboStatusBadge = "";
-        if (allWon) {
+        if (hasLost) {
+            card.classList.add("is-lost");
+            comboStatusBadge = ` <span class="status-pill-lost" style="margin-left:6px;">❌ COMBINÉ NON VALIDÉ</span>`;
+        } else if (allWon) {
             card.classList.add("is-won");
             comboStatusBadge = ` <span class="status-pill-won" style="margin-left:6px;">🏆 COMBINÉ GAGNÉ</span>`;
         } else if (hasLive) {
@@ -929,7 +1041,7 @@ function renderCombosList(day) {
         c.picks.forEach(p => {
             const matchObj = (day.singles || []).find(s => s.match === p.match);
             const resP = matchObj ? resolveMatchLiveStatus(matchObj, currentDay) : { status: "won" };
-            const pickBadge = resP.status === "won" ? `<span style="color:#4ade80; font-size:0.75rem; font-weight:700;">✅ Validé</span>` : (resP.status === "live" ? `<span style="color:#f87171; font-size:0.75rem; font-weight:700;">🔴 En direct</span>` : `<span style="color:var(--text-muted); font-size:0.75rem;">⏳ À venir</span>`);
+            const pickBadge = resP.status === "won" ? `<span style="color:#4ade80; font-size:0.75rem; font-weight:700;">✅ Validé</span>` : (resP.status === "lost" ? `<span style="color:#f87171; font-size:0.75rem; font-weight:700;">❌ Non validé</span>` : (resP.status === "live" ? `<span style="color:#f87171; font-size:0.75rem; font-weight:700;">🔴 En direct</span>` : `<span style="color:var(--text-muted); font-size:0.75rem;">⏳ À venir</span>`));
 
             picksHtml += `
                 <div class="combo-pick-row">
@@ -1445,12 +1557,18 @@ async function autoSyncLiveFixtures(userTriggered = false) {
                             updatedCount++;
                         }
                     } else if (state === "post") {
-                        // Match terminé (Full Time)
+                        // Match terminé (Full Time) : Évaluation réelle et certifiée
+                        const hs = parseInt(homeScore, 10);
+                        const as_ = parseInt(awayScore, 10);
+                        const parts = (target.match || "").split(" vs ");
+                        const isWon = evaluateBetResult(parts[0], parts[1], target.pick, hs, as_);
+                        const newStatus = isWon ? "won" : "lost";
                         const ftScore = `${homeScore} - ${awayScore} (FT)`;
-                        if (target.status !== "won" || target.score !== ftScore) {
-                            target.status = "won";
+                        const statusTxt = isWon ? `✅ VALIDÉ (${ftScore})` : `❌ NON PASSÉ (${ftScore})`;
+                        if (target.status !== newStatus || target.score !== ftScore) {
+                            target.status = newStatus;
                             target.score = ftScore;
-                            target.status_text = `✅ VALIDÉ (${ftScore})`;
+                            target.status_text = statusTxt;
                             updatedCount++;
                         }
                     } else if (state === "pre") {
