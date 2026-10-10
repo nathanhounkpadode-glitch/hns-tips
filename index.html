@@ -39,6 +39,7 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button class="icon-btn" id="openGlobalSimHeaderBtn" title="⚡ Simuler Tous les Matchs du Jour (10 000x)" onclick="openGlobalSimulationModal()">🎲</button>
                 <button class="icon-btn" id="openScannerBtn" title="Scanner une Capture d'Écran (Match / Coupon)">📷</button>
                 <button class="icon-btn" id="ownerLockBtn" title="Mode Propriétaire Schalom H.N.">🔒</button>
                 <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match (Réservé Propriétaire)">➕</button>
@@ -85,6 +86,19 @@
                         <span id="liveTrackText">Bilan du jour : 3 pronostics déjà validés ce soir !</span>
                     </div>
                     <span class="live-track-badge" id="liveTrackBadge">100% Gagnant</span>
+                </div>
+
+                <!-- BANNIÈRE HERO SIMULATION GLOBALE MONTE CARLO (10 000x PAR MATCH) -->
+                <div class="global-sim-hero-banner" onclick="openGlobalSimulationModal()">
+                    <div class="gsim-hero-content">
+                        <div class="gsim-hero-badge">⚡ MONTE CARLO 10 000x • MODÈLE QUANTITATIF</div>
+                        <div class="gsim-hero-title">Simuler Tous les Matchs du Jour</div>
+                        <div class="gsim-hero-desc">Confronte les métriques xG, PPDA et forces réelles sur 10 000 scénarios pour chaque match.</div>
+                    </div>
+                    <button class="gsim-hero-btn" type="button" onclick="event.stopPropagation(); openGlobalSimulationModal();">
+                        <span>🎲 Tout Simuler</span>
+                        <span class="gsim-btn-arrow">→</span>
+                    </button>
                 </div>
 
                 <!-- SÉLECTEUR DES 3 VUES PRINCIPALES -->
@@ -198,9 +212,14 @@
                 <!-- VUE 2 : TOUS LES MATCHS PAR CHAMPIONNAT (ANALYSE COMPLÈTE) -->
                 <div id="sectionAllMatches" class="sub-view">
                     
-                    <div class="section-header">
-                        <h2>🏆 ANALYSE COMPLÈTE DES 8 CHAMPIONNATS</h2>
-                        <span class="badge-neon" id="allCountBadge">Tous les Matchs</span>
+                    <div class="section-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <h2>🏆 ANALYSE COMPLÈTE DES 8 CHAMPIONNATS</h2>
+                            <span class="badge-neon" id="allCountBadge">Tous les Matchs</span>
+                        </div>
+                        <button class="btn-sim-all-inline" type="button" onclick="openGlobalSimulationModal()" title="Simuler l'ensemble des matchs de la journée">
+                            ⚡ Simuler Tous (10 000x)
+                        </button>
                     </div>
 
                     <!-- BARRE DE FILTRAGE HORIZONTALE PAR CHAMPIONNAT -->
@@ -499,6 +518,9 @@
                         <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
                             🤖 Analyser & Ajouter le Pronostic
                         </button>
+                        <button type="button" class="btn-simulate-custom" id="simulateCustomMatchBtn" style="margin-top:8px; width:100%;" onclick="simulateCustomInputMatch()">
+                            🎲 Simuler cette confrontation (10 000x Monte Carlo)
+                        </button>
                     </div>
 
                 </div>
@@ -611,6 +633,59 @@
             </div>
         </div>
 
+        <!-- MODAL SIMULATION GLOBALE DE TOUS LES MATCHS (MONTE CARLO 10 000x) -->
+        <div class="modal-backdrop" id="globalSimModal" style="display: none;">
+            <div class="modal-card global-sim-modal-card">
+                <div class="modal-header">
+                    <div>
+                        <div class="sim-modal-subtitle">🧠 IA QUANTITATIVE • SIMULATION MULTI-MATCHS 10 000x</div>
+                        <h3 id="globalSimModalTitle">⚡ Simulation Intégrale de Tous les Matchs</h3>
+                    </div>
+                    <button class="modal-close" id="closeGlobalSimModalBtn">&times;</button>
+                </div>
+
+                <div class="modal-body global-sim-modal-body">
+                    <!-- Écran d'animation de calcul multi-matchs -->
+                    <div class="global-sim-loading" id="globalSimLoading" style="display: none;">
+                        <div class="sim-radar-spinner"></div>
+                        <div class="sim-loading-title" id="globalSimLoadingTitle">Simulation massive de tous les matchs en cours...</div>
+                        <div class="sim-loading-desc" id="globalSimLoadingDesc">Calcul des distributions de Poisson bivarié sur 10 000 confrontations par match...</div>
+                        <div class="sim-progress-bar-container">
+                            <div class="sim-progress-bar-fill" id="globalSimProgressBarFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Conteneur des Résultats Globaux -->
+                    <div class="global-sim-results" id="globalSimResults" style="display: none;">
+                        <!-- En-tête Statistique & Banquier Suprême -->
+                        <div class="gsim-stats-grid" id="gsimStatsGrid"></div>
+
+                        <!-- Filtres & Tri -->
+                        <div class="gsim-controls-bar">
+                            <div class="gsim-filter-group">
+                                <select id="gsimLeagueFilter" class="gsim-select" onchange="filterGlobalSimResults()">
+                                    <option value="all">🌍 Tous les championnats</option>
+                                </select>
+                                <select id="gsimSortFilter" class="gsim-select" onchange="filterGlobalSimResults()">
+                                    <option value="viability">⭐ Plus fiables d'abord</option>
+                                    <option value="goals">⚽ Plus de buts (+2.5)</option>
+                                    <option value="time">⏰ Ordre chronologique</option>
+                                </select>
+                            </div>
+                            <input type="text" id="gsimSearchInput" class="gsim-search-input" placeholder="🔍 Filtrer par équipe..." oninput="filterGlobalSimResults()">
+                        </div>
+
+                        <!-- Liste de tous les matchs simulés -->
+                        <div class="gsim-matches-list" id="gsimMatchesList"></div>
+
+                        <div class="sim-modal-actions" style="margin-top: 16px;">
+                            <button class="sim-btn-rerun" id="globalSimRerunBtn" onclick="rerunCurrentGlobalSim()">🔄 Relancer la Simulation Complète</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- APP BOTTOM NAVIGATION BAR -->
         <nav class="app-bottom-nav">
             <button class="nav-item active" onclick="switchTab('home')">
@@ -629,7 +704,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=29"></script>
-    <script src="static/js/app.js?v=29"></script>
+    <script src="static/js/default-data.js?v=30"></script>
+    <script src="static/js/app.js?v=30"></script>
 </body>
 </html>

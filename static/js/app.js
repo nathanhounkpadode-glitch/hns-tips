@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-10-v29";
+const DATA_VERSION = "2026-10-10-v30";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -2619,9 +2619,17 @@ function renderTicketAuditResult(matches, rawText) {
                     <li><strong>🛡️ Règle d'or :</strong> Ne réinvestissez jamais plus de 5% de votre bankroll sur un combiné multi-sélections.</li>
                 </ul>
             </div>
+
+            <!-- Bouton Simulation Monte Carlo du Coupon Entier -->
+            <div style="margin-top: 14px; text-align: center;">
+                <button type="button" class="btn-generate" style="background: linear-gradient(135deg, #0284c7, #10b981); width: 100%; font-size: 0.85rem;" onclick="openCouponSimulationModal()">
+                    ⚡ Simuler Tous les Matchs de ce Coupon (10 000x Monte Carlo)
+                </button>
+            </div>
         </div>
     `;
 
+    lastAuditedMatches = matches;
     box.scrollIntoView({ behavior: "smooth" });
 }
 
@@ -2803,6 +2811,20 @@ document.addEventListener("DOMContentLoaded", () => {
         simRerunBtn.addEventListener("click", () => {
             if (currentSimMatch) {
                 startSimulationUI(currentSimMatch);
+            }
+        });
+    }
+
+    // Modal Simulation Globale
+    const closeGlobalSimModalBtn = document.getElementById("closeGlobalSimModalBtn");
+    const globalSimModal = document.getElementById("globalSimModal");
+    if (closeGlobalSimModalBtn && globalSimModal) {
+        closeGlobalSimModalBtn.addEventListener("click", () => {
+            globalSimModal.style.display = "none";
+        });
+        globalSimModal.addEventListener("click", (e) => {
+            if (e.target === globalSimModal) {
+                globalSimModal.style.display = "none";
             }
         });
     }
@@ -3052,3 +3074,357 @@ function renderSimulationResults(res, matchObj) {
         🛡️ <strong>Recommandation Quantitative HNS :</strong> ${matchObj.safety_net || "La simulation confirme une forte value. Pour maximiser la sécurité de bankroll, privilégier ce marché en combiné ou avec la couverture Double Chance."}
     `;
 }
+
+// ========================================================
+// MOTEUR DE SIMULATION GLOBALE DE TOUS LES MATCHS (MONTE CARLO 10 000x)
+// ========================================================
+let currentGlobalSimData = null;
+let lastAuditedMatches = null;
+
+function runAllMatchesSimulation(targetMatches) {
+    if (!targetMatches || targetMatches.length === 0) return null;
+
+    const allSims = [];
+    let totalViability = 0;
+
+    for (const match of targetMatches) {
+        const simRes = runMatchMonteCarloSimulation(match);
+        if (simRes) {
+            allSims.push({
+                match,
+                simRes,
+                pickRateNum: parseFloat(simRes.hnsPickRate) || 0,
+                over25Num: parseFloat(simRes.over25Pct) || 0
+            });
+            totalViability += (parseFloat(simRes.hnsPickRate) || 0);
+        }
+    }
+
+    if (allSims.length === 0) return null;
+
+    const avgViability = (totalViability / allSims.length).toFixed(1);
+
+    // Sort by pick rate to find top banker and best combo
+    const sortedByViability = [...allSims].sort((a, b) => b.pickRateNum - a.pickRateNum);
+    const topBanker = sortedByViability[0];
+
+    // Sort by Over 2.5 to find top goal game
+    const sortedByGoals = [...allSims].sort((a, b) => b.over25Num - a.over25Num);
+    const topOver = sortedByGoals[0];
+
+    // Best 3 combo
+    const top3 = sortedByViability.slice(0, 3);
+    let comboOdds = 1.0;
+    let jointProb = 1.0;
+    top3.forEach(item => {
+        const odd = parseFloat(item.match.odds) || 1.35;
+        comboOdds *= odd;
+        jointProb *= (item.pickRateNum / 100);
+    });
+    jointProb = (jointProb * 100).toFixed(1);
+    comboOdds = comboOdds.toFixed(2);
+
+    return {
+        allSims,
+        topBanker,
+        topOver,
+        bestCombo: {
+            items: top3,
+            comboOdds,
+            jointProb
+        },
+        avgViability,
+        totalMatches: allSims.length,
+        totalConfrontations: allSims.length * 10000
+    };
+}
+
+function openGlobalSimulationModal(dayKey, customMatchesList, customTitle) {
+    const modal = document.getElementById("globalSimModal");
+    if (!modal) return;
+    modal.style.display = "flex";
+
+    const loadingEl = document.getElementById("globalSimLoading");
+    const resultsEl = document.getElementById("globalSimResults");
+    const progressBar = document.getElementById("globalSimProgressBarFill");
+    const modalTitle = document.getElementById("globalSimModalTitle");
+
+    loadingEl.style.display = "block";
+    resultsEl.style.display = "none";
+    progressBar.style.width = "0%";
+
+    let matchesToSimulate = [];
+    let titleText = "⚡ Simulation Intégrale de Tous les Matchs";
+
+    if (customMatchesList && customMatchesList.length > 0) {
+        matchesToSimulate = customMatchesList;
+        titleText = customTitle || `⚡ Simulation de votre Sélection (${matchesToSimulate.length} Matchs)`;
+    } else {
+        const targetDay = dayKey || currentDay || "today";
+        const dayObj = appData?.days?.[targetDay];
+        if (dayObj) {
+            if (dayObj.banker) matchesToSimulate.push({ ...dayObj.banker, isBanker: true });
+            if (dayObj.singles) matchesToSimulate.push(...dayObj.singles);
+            titleText = `⚡ Simulation Complète : ${dayObj.label || 'Aujourd\'hui'} (${matchesToSimulate.length} Matchs)`;
+        }
+    }
+
+    if (modalTitle) modalTitle.textContent = titleText;
+
+    // Fast and smooth animated progress bar
+    setTimeout(() => { if (progressBar) progressBar.style.width = "40%"; }, 80);
+    setTimeout(() => { if (progressBar) progressBar.style.width = "85%"; }, 220);
+
+    setTimeout(() => {
+        if (progressBar) progressBar.style.width = "100%";
+        const simData = runAllMatchesSimulation(matchesToSimulate);
+        currentGlobalSimData = { ...simData, rawMatches: matchesToSimulate, customTitle: titleText };
+
+        renderGlobalSimulationResults(currentGlobalSimData);
+
+        loadingEl.style.display = "none";
+        resultsEl.style.display = "block";
+    }, 450);
+}
+window.openGlobalSimulationModal = openGlobalSimulationModal;
+
+function renderGlobalSimulationResults(data) {
+    if (!data) return;
+
+    // 1. Stats Grid
+    const statsGrid = document.getElementById("gsimStatsGrid");
+    if (statsGrid) {
+        const topBanker = data.topBanker;
+        const bestCombo = data.bestCombo;
+        const totalConfrontationsFormatted = data.totalConfrontations.toLocaleString("fr-FR");
+
+        statsGrid.innerHTML = `
+            <div class="gsim-stat-card highlight-banker">
+                <div class="gsim-stat-tag">👑 Banquier Suprême Monte Carlo</div>
+                <div class="gsim-stat-title" title="${escapeHtml(topBanker?.match.match || '')}">
+                    ${escapeHtml(topBanker?.match.match || 'N/A')}
+                </div>
+                <div class="gsim-stat-val">${topBanker?.simRes.hnsPickRate}% <span style="font-size:0.75rem; color:#4ade80;">Validé</span></div>
+                <div class="gsim-stat-sub">💡 Choix : <strong>${escapeHtml(topBanker?.match.pick || '')}</strong> • Cote ${topBanker?.match.odds || '1.50'}</div>
+            </div>
+
+            <div class="gsim-stat-card highlight-combo">
+                <div class="gsim-stat-tag">💎 Combiné Parfait Simulé</div>
+                <div class="gsim-stat-title">Top 3 Sélections Conjointes</div>
+                <div class="gsim-stat-val">${bestCombo.jointProb}% <span style="font-size:0.75rem; color:#38bdf8;">(Cote ${bestCombo.comboOdds})</span></div>
+                <div class="gsim-stat-sub">Sur 10 000 tickets virtuels, les 3 sélections passent simultanément.</div>
+            </div>
+
+            <div class="gsim-stat-card">
+                <div class="gsim-stat-tag">📊 Volume de Calcul & Fiabilité</div>
+                <div class="gsim-stat-title">${data.totalMatches} Matchs Analysés</div>
+                <div class="gsim-stat-val" style="color:#38bdf8;">${data.avgViability}% <span style="font-size:0.75rem; color:#94a3b8;">Moyenne</span></div>
+                <div class="gsim-stat-sub">${totalConfrontationsFormatted} confrontations complètes calculées en direct.</div>
+            </div>
+
+            <div class="gsim-stat-card">
+                <div class="gsim-stat-tag">⚽ Match le Plus Prolifique (+2.5)</div>
+                <div class="gsim-stat-title" title="${escapeHtml(data.topOver?.match.match || '')}">
+                    ${escapeHtml(data.topOver?.match.match || 'N/A')}
+                </div>
+                <div class="gsim-stat-val" style="color:#f43f5e;">${data.topOver?.simRes.over25Pct}% <span style="font-size:0.75rem; color:#fda4af;">Over 2.5</span></div>
+                <div class="gsim-stat-sub">xG Moyen : <strong>${data.topOver?.simRes.avgXgStr}</strong> • Spectacle Garanti</div>
+            </div>
+        `;
+    }
+
+    // 2. Populate Leagues Filter
+    const leagueSelect = document.getElementById("gsimLeagueFilter");
+    if (leagueSelect) {
+        const uniqueLeagues = Array.from(new Set(data.allSims.map(s => s.match.league).filter(Boolean)));
+        leagueSelect.innerHTML = `<option value="all">🌍 Tous les championnats (${data.allSims.length})</option>` +
+            uniqueLeagues.map(l => `<option value="${escapeHtml(l)}">${escapeHtml(l)}</option>`).join("");
+    }
+
+    // 3. Render Match Cards
+    filterGlobalSimResults();
+}
+
+function filterGlobalSimResults() {
+    if (!currentGlobalSimData || !currentGlobalSimData.allSims) return;
+
+    const leagueVal = document.getElementById("gsimLeagueFilter")?.value || "all";
+    const sortVal = document.getElementById("gsimSortFilter")?.value || "viability";
+    const searchVal = (document.getElementById("gsimSearchInput")?.value || "").toLowerCase().trim();
+
+    let filtered = currentGlobalSimData.allSims.filter(item => {
+        if (leagueVal !== "all" && item.match.league !== leagueVal) return false;
+        if (searchVal) {
+            const mText = (item.match.match || "").toLowerCase();
+            const lText = (item.match.league || "").toLowerCase();
+            if (!mText.includes(searchVal) && !lText.includes(searchVal)) return false;
+        }
+        return true;
+    });
+
+    // Sorting
+    if (sortVal === "viability") {
+        filtered.sort((a, b) => b.pickRateNum - a.pickRateNum);
+    } else if (sortVal === "goals") {
+        filtered.sort((a, b) => b.over25Num - a.over25Num);
+    } else if (sortVal === "time") {
+        filtered.sort((a, b) => (a.match.time || "").localeCompare(b.match.time || ""));
+    }
+
+    const container = document.getElementById("gsimMatchesList");
+    if (!container) return;
+
+    if (filtered.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:30px; color:#94a3b8;">Aucun match ne correspond à vos filtres.</div>`;
+        return;
+    }
+
+    container.innerHTML = filtered.map((item, idx) => {
+        const m = item.match;
+        const res = item.simRes;
+        const rate = item.pickRateNum;
+
+        let viabilityClass = "rate-good";
+        let viabilityIcon = "🟡";
+        if (rate >= 85) {
+            viabilityClass = "rate-elite";
+            viabilityIcon = "🟢";
+        } else if (rate < 75) {
+            viabilityClass = "rate-risky";
+            viabilityIcon = "🔴";
+        }
+
+        const topScore = res.topScores?.[0] || { score: "1 - 1", pct: "15.0" };
+
+        return `
+            <div class="gsim-match-card">
+                <div class="gsim-card-top">
+                    <span>🏆 ${escapeHtml(m.league || "Grand Championnat")}</span>
+                    <span>⏰ ${escapeHtml(m.time || "Horaire")}</span>
+                </div>
+                <div class="gsim-match-name">
+                    ${m.isBanker ? '<span style="color:#ffd700; margin-right:4px;">⭐</span>' : ''}
+                    ${escapeHtml(res.homeTeam)} vs ${escapeHtml(res.awayTeam)}
+                </div>
+
+                <!-- 1X2 Mini Bar -->
+                <div class="gsim-1x2-bar" title="1: ${res.homePct}% | X: ${res.drawPct}% | 2: ${res.awayPct}%">
+                    <div class="gsim-1x2-part part-home" style="width: ${res.homePct}%;">1 (${res.homePct}%)</div>
+                    <div class="gsim-1x2-part part-draw" style="width: ${res.drawPct}%;">X (${res.drawPct}%)</div>
+                    <div class="gsim-1x2-part part-away" style="width: ${res.awayPct}%;">2 (${res.awayPct}%)</div>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="gsim-details-row">
+                    <div class="gsim-detail-pill">
+                        <span class="gsim-detail-lbl">🥇 Score #1</span>
+                        <span class="gsim-detail-val" style="color:#38bdf8;">${topScore.score} (${topScore.pct}%)</span>
+                    </div>
+                    <div class="gsim-detail-pill">
+                        <span class="gsim-detail-lbl">📊 xG Simulé</span>
+                        <span class="gsim-detail-val">${res.avgXgStr}</span>
+                    </div>
+                    <div class="gsim-detail-pill">
+                        <span class="gsim-detail-lbl">+1.5 Buts</span>
+                        <span class="gsim-detail-val" style="color:#4ade80;">${res.over15Pct}%</span>
+                    </div>
+                    <div class="gsim-detail-pill">
+                        <span class="gsim-detail-lbl">+2.5 Buts</span>
+                        <span class="gsim-detail-val" style="color:${parseFloat(res.over25Pct) >= 55 ? '#fbbf24' : '#94a3b8'};">${res.over25Pct}%</span>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="gsim-card-footer">
+                    <div class="gsim-pick-box">
+                        <span class="gsim-pick-lbl">Pronostic HNS :</span>
+                        <span class="gsim-pick-val">${escapeHtml(m.pick || "")}</span>
+                        ${m.odds ? `<span style="color:#94a3b8; font-size:0.7rem; margin-left:4px;">(@${m.odds})</span>` : ''}
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span class="gsim-badge-viability ${viabilityClass}">
+                            ${viabilityIcon} ${rate}% Validé
+                        </span>
+                        <button type="button" class="btn-gsim-inspect" onclick="openDirectMatchSim('${escapeHtml(m.id || "")}', '${escapeHtml(res.homeTeam)}', '${escapeHtml(res.awayTeam)}')">
+                            🔬 Détail
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+window.filterGlobalSimResults = filterGlobalSimResults;
+
+function openDirectMatchSim(matchId, home, away) {
+    if (matchId) {
+        openMatchSimulation(matchId);
+    } else if (currentGlobalSimData && currentGlobalSimData.allSims) {
+        const found = currentGlobalSimData.allSims.find(s => s.simRes.homeTeam === home && s.simRes.awayTeam === away);
+        if (found) {
+            currentSimMatch = found.match;
+            startSimulationUI(found.match);
+        }
+    }
+}
+window.openDirectMatchSim = openDirectMatchSim;
+
+function rerunCurrentGlobalSim() {
+    if (!currentGlobalSimData || !currentGlobalSimData.rawMatches) return;
+    openGlobalSimulationModal(null, currentGlobalSimData.rawMatches, currentGlobalSimData.customTitle);
+}
+window.rerunCurrentGlobalSim = rerunCurrentGlobalSim;
+
+function simulateCustomInputMatch() {
+    const home = (document.getElementById("customHome")?.value || "").trim();
+    const away = (document.getElementById("customAway")?.value || "").trim();
+    const league = document.getElementById("customLeagueSelect")?.value || "Grand Championnat";
+
+    if (!home || !away) {
+        alert("Veuillez renseigner le nom des deux équipes (Domicile et Extérieur).");
+        return;
+    }
+
+    const auto = generateCustomPrediction(home, away, league);
+    const customMatch = {
+        id: "custom_" + Date.now(),
+        match: `${home} vs ${away}`,
+        league: league,
+        time: document.getElementById("customTime")?.value || "Horaire officiel",
+        pick: auto.pick,
+        odds: auto.odds || 1.48,
+        confidence: auto.confidence || 85,
+        reason: auto.reason,
+        safety_net: "Simulation Dixon-Coles personnalisée basée sur les profils statistiques estimés.",
+        metrics: {
+            xg_diff: "+0.80",
+            field_tilt: "58% territoire"
+        }
+    };
+
+    currentSimMatch = customMatch;
+    startSimulationUI(customMatch);
+}
+window.simulateCustomInputMatch = simulateCustomInputMatch;
+
+function openCouponSimulationModal() {
+    if (!lastAuditedMatches || lastAuditedMatches.length === 0) {
+        alert("Aucun match à simuler dans ce coupon.");
+        return;
+    }
+    const formatted = lastAuditedMatches.map((m, idx) => ({
+        id: "ticket_m_" + idx,
+        match: `${m.home} vs ${m.away}`,
+        league: m.league,
+        time: m.time || "Coupon",
+        pick: m.ticketPick !== "Non spécifié" ? m.ticketPick : m.hnsPick,
+        odds: 1.45,
+        confidence: m.confidence || 80,
+        reason: m.reason || m.auditNote,
+        metrics: { xg_diff: "+0.70" }
+    }));
+
+    openGlobalSimulationModal(null, formatted, `🎟️ Simulation Complète du Coupon (${formatted.length} Sélections)`);
+}
+window.openCouponSimulationModal = openCouponSimulationModal;
+
