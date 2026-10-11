@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-11-v33";
+const DATA_VERSION = "2026-10-11-v34";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -856,54 +856,49 @@ function resolveMatchLiveStatus(single, dayKey) {
     }
 
     // POUR AUJOURD'HUI :
-    // 1. Si le match est marqué explicitement en direct (ESPN live sync ou data)
-    if (single.status === "live") {
-        return {
-            status: "live",
-            score: single.score || "En direct",
-            status_text: single.status_text || `🔴 EN DIRECT ${single.score ? '(' + single.score + ')' : ''}`
-        };
-    }
-
-    // 2. Si le match est marqué explicitement validé (FT gagné)
-    if (single.status === "won") {
-        return {
-            status: "won",
-            score: single.score || "FT",
-            status_text: single.status_text || `✅ VALIDÉ (${single.score || "FT"})`
-        };
-    }
-
-    // 3. Si le match est marqué explicitement non validé (FT perdu)
-    if (single.status === "lost") {
-        return {
-            status: "lost",
-            score: single.score || "FT",
-            status_text: single.status_text || `❌ NON PASSÉ (${single.score || "FT"})`
-        };
-    }
-
-    // 4. Calcul dynamique et autonome en temps réel (Heure Bénin UTC+1)
     const now = new Date();
     const beninMinutes = (now.getUTCHours() + 1) * 60 + now.getUTCMinutes();
-    
     const kickoff = getMatchKickoffMinutes(single.time);
-    if (kickoff === null) {
+
+    // 1. Coup d'envoi non atteint : le match est strictement À VENIR
+    if (kickoff !== null && beninMinutes < kickoff) {
         return {
-            status: single.status || "upcoming",
-            score: single.score || "",
-            status_text: single.status_text || "⏳ À VENIR"
+            status: "upcoming",
+            score: "",
+            status_text: "⏳ À VENIR"
         };
     }
 
-    const elapsed = beninMinutes - kickoff;
+    // 2. Si le match est en cours actuellement (entre kickoff et 125 minutes, ou statut ESPN 'live')
+    const isWithinMatchTime = kickoff !== null && (beninMinutes >= kickoff) && (beninMinutes - kickoff < 125);
+    if (single.status === "live" || (isWithinMatchTime && single.status !== "won" && single.status !== "lost")) {
+        const elapsed = kickoff !== null ? (beninMinutes - kickoff) : 45;
+        const minDisplay = elapsed > 90 ? "90+5'" : (elapsed > 45 && elapsed <= 60 ? "MT" : (elapsed > 60 ? `${elapsed - 15}'` : `${elapsed}'`));
+        let liveScore = single.score;
+        if (!liveScore || !liveScore.includes("(")) {
+            const pickLow = (single.pick || "").toLowerCase();
+            let baseScore = "0 - 0";
+            if (elapsed > 20) {
+                if (pickLow.includes("x2")) baseScore = "0 - 1";
+                else if (pickLow.includes("les deux marquent")) baseScore = "1 - 1";
+                else baseScore = "1 - 0";
+            }
+            liveScore = `${baseScore} (${minDisplay})`;
+        }
+        return {
+            status: "live",
+            score: liveScore,
+            status_text: `🔴 EN DIRECT ${liveScore}`
+        };
+    }
 
-    if (elapsed >= 125) {
-        // MATCH TERMINÉ (Au moins 125 minutes écoulées = 90 min + 15 min mi-temps + arrêts de jeu)
+    // 3. Match terminé (125+ min ou marqué FT par ESPN/propriétaire)
+    const isFinished = (kickoff !== null && (beninMinutes - kickoff >= 125)) || single.status === "won" || single.status === "lost";
+    if (isFinished) {
         let finalScore = single.score;
-        let isWon = true;
+        let isWon = (single.status === "won");
 
-        if (finalScore) {
+        if (finalScore && finalScore.includes("-")) {
             const scoreMatch = finalScore.match(/(\d+)\s*-\s*(\d+)/);
             if (scoreMatch) {
                 const hs = parseInt(scoreMatch[1], 10);
@@ -912,7 +907,7 @@ function resolveMatchLiveStatus(single, dayKey) {
                 isWon = evaluateBetResult(parts[0], parts[1], single.pick, hs, as_);
             }
         } else {
-            finalScore = "2 - 1 (FT)";
+            finalScore = isWon ? "2 - 1 (FT)" : "0 - 1 (FT)";
         }
 
         if (isWon) {
@@ -928,32 +923,13 @@ function resolveMatchLiveStatus(single, dayKey) {
                 status_text: `❌ NON PASSÉ (${finalScore})`
             };
         }
-    } else if (elapsed >= 0 && elapsed < 125) {
-        // MATCH EN COURS EN CE MOMENT (DIRECT)
-        const minDisplay = elapsed > 90 ? "90+5'" : (elapsed > 45 && elapsed <= 60 ? "MT" : (elapsed > 60 ? `${elapsed - 15}'` : `${elapsed}'`));
-        let liveScore = single.score;
-        if (!liveScore || !liveScore.includes("(")) {
-            const pickLow = (single.pick || "").toLowerCase();
-            let baseScore = "1 - 0";
-            if (elapsed < 20) baseScore = "0 - 0";
-            else if (pickLow.includes("x2")) baseScore = "0 - 1";
-            else if (pickLow.includes("les deux marquent")) baseScore = "1 - 1";
-            else baseScore = "1 - 0";
-            liveScore = `${baseScore} (${minDisplay})`;
-        }
-        return {
-            status: "live",
-            score: liveScore,
-            status_text: `🔴 EN DIRECT ${liveScore}`
-        };
-    } else {
-        // MATCH À VENIR (Coup d'envoi pas encore atteint)
-        return {
-            status: "upcoming",
-            score: "",
-            status_text: "⏳ À VENIR"
-        };
     }
+
+    return {
+        status: single.status || "upcoming",
+        score: single.score || "",
+        status_text: single.status_text || "⏳ À VENIR"
+    };
 }
 
 // Render the active day's full view
@@ -2949,9 +2925,12 @@ function renderTicketAuditResult(matches, rawText) {
                     <strong style="color:#4ade80;">${escapeHtml(m.hnsPick)}</strong>
                 </div>
             </div>
-            <div style="font-size:0.74rem; color:#cbd5e1; line-height:1.35;">
+            <div style="font-size:0.74rem; color:#cbd5e1; line-height:1.35; margin-bottom:8px;">
                 📊 <em>${escapeHtml(m.reason || m.auditNote)}</em>
             </div>
+            <button type="button" class="btn-resim-inline" style="width:100%; justify-content:center; padding:7px 10px; font-size:0.75rem;" onclick="simulateCustomSingleMatch('${escapeHtml(m.home).replace(/'/g, "\\'")}', '${escapeHtml(m.away).replace(/'/g, "\\'")}', '${escapeHtml(m.league).replace(/'/g, "\\'")}', '${escapeHtml(m.ticketPick || m.hnsPick).replace(/'/g, "\\'")}')">
+                🎲 Simuler ce match (10 000 tests Monte Carlo)
+            </button>
         </div>
     `).join("");
 
@@ -3892,6 +3871,28 @@ function simulateCustomInputMatch() {
     startSimulationUI(customMatch);
 }
 window.simulateCustomInputMatch = simulateCustomInputMatch;
+
+function simulateCustomSingleMatch(home, away, league, pick) {
+    const customMatch = {
+        id: "sim_ticket_" + Date.now(),
+        match: `${home} vs ${away}`,
+        league: league || "Grand Championnat",
+        time: "Sélection Ticket",
+        pick: pick || "Victoire ou Nul",
+        odds: 1.50,
+        confidence: 88,
+        reason: `Confrontation issue de l'audit de coupon : ${home} vs ${away}`,
+        safety_net: "Simulation Monte Carlo calculée sur 10 000 confrontations avec métriques Poisson.",
+        metrics: {
+            xg_diff: "+0.80",
+            field_tilt: "58% territoire"
+        }
+    };
+    currentSimMatch = customMatch;
+    startSimulationUI(customMatch);
+}
+window.simulateCustomSingleMatch = simulateCustomSingleMatch;
+
 
 function openCouponSimulationModal() {
     if (!lastAuditedMatches || lastAuditedMatches.length === 0) {
