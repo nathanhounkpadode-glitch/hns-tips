@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-11-v35";
+const DATA_VERSION = "2026-10-11-v36";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -1298,6 +1298,7 @@ function createMatchCard(s, isSafeSection = false) {
             </div>
             <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
                 ${statusPill}
+                <button type="button" class="btn-stream-badge" onclick="event.stopPropagation(); openLiveStreamHub('${s.id}')" title="Où regarder ce match en direct (Canal+, 1xBet, 2D)">📺 Live / 1xBet</button>
                 <span class="hsi-badge" title="HNS Safety Index">🛡️ HSI: ${m.hsi_score || (s.confidence ? s.confidence + '%' : '92%')}</span>
                 <span class="match-type-tag ${tagClass}">${tagLabel}</span>
             </div>
@@ -1319,6 +1320,9 @@ function createMatchCard(s, isSafeSection = false) {
         ${tacticalPanelHtml}
         ${generateInlineSimulationHtml(s, false, sectionPrefix)}
         <div class="match-card-actions">
+            <button type="button" class="btn-stream-action" onclick="openLiveStreamHub('${s.id}')">
+                📺 Suivre en Direct (TV & 1xBet)
+            </button>
             <button class="btn-toggle-win ${s.status === 'won' ? 'active' : ''}" onclick="toggleMatchWon('${s.id}')">
                 ${s.status === 'won' ? '🏆 Pronostic Validé & Gagné !' : '✓ Marquer comme Validé / Gagné'}
             </button>
@@ -3244,6 +3248,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // Modal Live Stream & Diffuseurs Direct
+    const closeStreamModalBtn = document.getElementById("closeStreamModalBtn");
+    const liveStreamModal = document.getElementById("liveStreamModal");
+    if (closeStreamModalBtn && liveStreamModal) {
+        closeStreamModalBtn.addEventListener("click", () => {
+            liveStreamModal.style.display = "none";
+        });
+        liveStreamModal.addEventListener("click", (e) => {
+            if (e.target === liveStreamModal) {
+                liveStreamModal.style.display = "none";
+            }
+        });
+    }
 });
 
 // ========================================================
@@ -3505,6 +3523,85 @@ function openBankerSimulation() {
     currentSimMatch = day.banker;
     startSimulationUI(day.banker);
 }
+
+function openLiveStreamHub(matchId) {
+    if (!appData || !appData.days) return;
+    const day = appData.days[currentDay];
+    if (!day) return;
+    let match = (day.singles || []).find(s => s.id === matchId);
+    const isBanker = (matchId === "banker" || (day.banker && day.banker.id === matchId));
+    if (!match && isBanker) match = day.banker;
+    if (!match) return;
+
+    const modal = document.getElementById("liveStreamModal");
+    if (!modal) return;
+
+    const resolved = resolveMatchLiveStatus(match, currentDay);
+    const parts = (match.match || "").split(" vs ");
+    const homeTeam = parts[0] ? parts[0].trim() : "Domicile";
+    const awayTeam = parts[1] ? parts[1].trim() : "Extérieur";
+    const matchQuery = `${homeTeam} ${awayTeam}`;
+
+    // Header info
+    const leagueEl = document.getElementById("streamLeagueBadge");
+    if (leagueEl) leagueEl.textContent = `🏆 ${match.league || "Grand Championnat"}`;
+
+    const teamsEl = document.getElementById("streamMatchTeams");
+    if (teamsEl) teamsEl.textContent = match.match || `${homeTeam} vs ${awayTeam}`;
+
+    const timeEl = document.getElementById("streamMatchTime");
+    if (timeEl) timeEl.textContent = `⏰ ${match.time || "Horaire"} ${resolved.score ? '• Score : ' + resolved.score : ''}`;
+
+    const pickEl = document.getElementById("streamMatchPick");
+    if (pickEl) pickEl.innerHTML = `🎯 Pronostic HNS : <strong style="color:#ffd700;">${match.pick || ""}</strong> (Cote : ${match.odds || "1.50"})`;
+
+    const statusBadge = document.getElementById("streamStatusBadge");
+    if (statusBadge) {
+        statusBadge.textContent = resolved.status_text || "⏳ À VENIR";
+        if (resolved.status === "live") {
+            statusBadge.style.color = "#f87171";
+            statusBadge.style.borderColor = "#f87171";
+        } else if (resolved.status === "won") {
+            statusBadge.style.color = "#34d399";
+            statusBadge.style.borderColor = "#34d399";
+        } else {
+            statusBadge.style.color = "#cbd5e1";
+            statusBadge.style.borderColor = "rgba(255,255,255,0.15)";
+        }
+    }
+
+    // Direct Links
+    const flashLink = document.getElementById("streamLinkFlashscore");
+    if (flashLink) flashLink.href = `https://www.flashscore.fr/search/?q=${encodeURIComponent(matchQuery)}`;
+
+    const sofaLink = document.getElementById("streamLinkSofascore");
+    if (sofaLink) sofaLink.href = `https://www.sofascore.com/search?q=${encodeURIComponent(matchQuery)}`;
+
+    const youtubeLink = document.getElementById("streamLinkYoutube");
+    if (youtubeLink) youtubeLink.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(matchQuery + " live watchalong direct")}`;
+
+    const descTv = document.getElementById("streamTvChannelsDesc");
+    const leagueLower = (match.league || "").toLowerCase();
+    if (descTv) {
+        if (leagueLower.includes("premier league")) {
+            descTv.textContent = "Canal+ Sport Afrique (Canal+ Sport 1), beIN SPORTS, SuperSport Premier League.";
+        } else if (leagueLower.includes("laliga")) {
+            descTv.textContent = "beIN SPORTS 1/2, Canal+ Sport Afrique, SuperSport LaLiga.";
+        } else if (leagueLower.includes("serie a")) {
+            descTv.textContent = "beIN SPORTS, Canal+ Sport Afrique, SuperSport Football.";
+        } else if (leagueLower.includes("ligue 1")) {
+            descTv.textContent = "DAZN, beIN SPORTS, Canal+ Afrique.";
+        } else if (leagueLower.includes("champions league")) {
+            descTv.textContent = "Canal+ Sport Afrique, Canal+ Foot, beIN SPORTS 1, RMC Sport.";
+        } else {
+            descTv.textContent = "Canal+ Sport Afrique (MyCanal), beIN SPORTS, SuperSport.";
+        }
+    }
+
+    modal.style.display = "flex";
+}
+window.openLiveStreamHub = openLiveStreamHub;
+
 
 function startSimulationUI(matchObj) {
     const modal = document.getElementById("simModal");

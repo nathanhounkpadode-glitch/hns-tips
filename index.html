@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=29">
+    <link rel="stylesheet" href="static/css/style.css?v=30">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
@@ -168,6 +168,9 @@
                             <div id="bankerAbsentees" style="color:#f87171;">🚑 Forfaits</div>
                         </div>
                         <div id="bankerInlineSimContainer" style="margin-top:10px;"></div>
+                        <button type="button" class="btn-stream-action banker-stream-btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="openLiveStreamHub('banker')">
+                            📺 Suivre le Banker en Direct (Canal+, 1xBet, Tracker 2D)
+                        </button>
                     </div>
 
                     <!-- LISTE DES SÉLECTIONS LES PLUS SÛRES -->
@@ -670,6 +673,114 @@
             </div>
         </div>
 
+        <!-- MODAL DIFFUSEURS & STREAMING EN DIRECT (TV / 1XBET / TRACKER 2D / YOUTUBE) -->
+        <div class="modal" id="liveStreamModal" style="display: none;">
+            <div class="modal-content stream-hub-modal">
+                <div class="modal-header">
+                    <div>
+                        <h3 class="modal-title" id="streamModalTitle">📺 Suivre le Match en Direct</h3>
+                        <p class="modal-subtitle" id="streamModalSubtitle">Diffuseurs TV, Streaming Bookmaker & Tracker 2D</p>
+                    </div>
+                    <button class="modal-close" id="closeStreamModalBtn" type="button">✕</button>
+                </div>
+                <div class="modal-body stream-hub-modal-body">
+                    <!-- Bannière En-tête du Match -->
+                    <div class="stream-match-banner">
+                        <div class="stream-match-meta-top">
+                            <span class="stream-league-badge" id="streamLeagueBadge">🏆 Championnat</span>
+                            <span class="stream-status-badge" id="streamStatusBadge">⏳ À VENIR</span>
+                        </div>
+                        <div class="stream-match-teams" id="streamMatchTeams">Équipe A vs Équipe B</div>
+                        <div class="stream-match-time" id="streamMatchTime">⏰ Coup d'envoi officiel</div>
+                        <div class="stream-match-pick" id="streamMatchPick">🎯 Pronostic HNS : Victoire</div>
+                    </div>
+
+                    <!-- Grille des Redirections Directes -->
+                    <div class="stream-options-grid">
+                        <!-- 1. Match Tracker 2D Interactif (Gratuit) -->
+                        <div class="stream-option-card opt-tracker">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">⚡</span>
+                                <div>
+                                    <div class="stream-opt-title">Match Tracker 2D Interactif (Gratuit)</div>
+                                    <div class="stream-opt-desc">Animation du terrain, tirs, attaques dangereuses & stats à la seconde sans pub.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-flashscore" id="streamLinkFlashscore">
+                                    <span>🟢 Flashscore (Direct 2D)</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-sofascore" id="streamLinkSofascore">
+                                    <span>🔵 SofaScore (Radar & Notes)</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2. Streaming Bookmaker (1xBet / Betwinner) -->
+                        <div class="stream-option-card opt-bookmaker">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">🎰</span>
+                                <div>
+                                    <div class="stream-opt-title">Streaming Bookmaker (1xBet / Betwinner)</div>
+                                    <div class="stream-opt-desc">Flux vidéo live & cotes dynamiques pour les parieurs avec compte approvisionné.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://1xbet.com/live/football" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-1xbet" id="streamLink1xBet">
+                                    <span>⚡ 1xBet Live Stream</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://betwinner.com/live/football" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-betwinner" id="streamLinkBetwinner">
+                                    <span>🟡 Betwinner Live</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 3. Diffuseurs TV Officiels -->
+                        <div class="stream-option-card opt-tv">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">📺</span>
+                                <div>
+                                    <div class="stream-opt-title">Diffuseurs Officiels TV & Streaming</div>
+                                    <div class="stream-opt-desc" id="streamTvChannelsDesc">Canal+ Sport Afrique (MyCanal), beIN SPORTS, SuperSport.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://www.canalplus-afrique.com" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-canal" id="streamLinkCanal">
+                                    <span>📺 MyCanal Afrique</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://connect.beinsports.com" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-bein" id="streamLinkBein">
+                                    <span>🟣 beIN SPORTS Connect</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 4. Commentaires Audio / YouTube Watchalong -->
+                        <div class="stream-option-card opt-youtube">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">🎙️</span>
+                                <div>
+                                    <div class="stream-opt-title">Commentaires Audio & Watchalong (Gratuit)</div>
+                                    <div class="stream-opt-desc">Écoutez les commentateurs et l'ambiance des supporters en direct sur YouTube.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-youtube" id="streamLinkYoutube">
+                                    <span>🔴 Écouter le Live sur YouTube</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- APP BOTTOM NAVIGATION BAR -->
         <nav class="app-bottom-nav">
             <button class="nav-item active" onclick="switchTab('home')">
@@ -688,7 +799,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=35"></script>
-    <script src="static/js/app.js?v=35"></script>
+    <script src="static/js/default-data.js?v=36"></script>
+    <script src="static/js/app.js?v=36"></script>
 </body>
 </html>
