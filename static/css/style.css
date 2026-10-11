@@ -2592,6 +2592,173 @@ body {
     }
 }
 
+/* ======================================================== */
+/* MODULE DE SIMULATION MONTE CARLO EMBARQUÉ PAR MATCH (INLINE) */
+/* ======================================================== */
+.inline-sim-card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(8, 15, 30, 0.9));
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: all 0.25s ease;
+}
+
+.inline-sim-card:hover {
+    border-color: rgba(56, 189, 248, 0.45);
+    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.12);
+}
+
+.banker-inline-sim {
+    border-color: rgba(255, 215, 0, 0.35) !important;
+    background: linear-gradient(135deg, rgba(20, 25, 40, 0.85), rgba(30, 25, 10, 0.65)) !important;
+}
+
+.inline-sim-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.inline-sim-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #e2e8f0;
+    letter-spacing: 0.3px;
+}
+
+.inline-sim-icon {
+    font-size: 0.95rem;
+}
+
+.inline-sim-hit-badge {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.25));
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    color: #34d399;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 999px;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+}
+
+.inline-sim-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 5px;
+}
+
+.inline-sim-bar-labels .lbl-1 { color: #38bdf8; }
+.inline-sim-bar-labels .lbl-x { color: #fbbf24; }
+.inline-sim-bar-labels .lbl-2 { color: #f472b6; }
+
+.inline-sim-gauge {
+    display: flex;
+    height: 7px;
+    width: 100%;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.gauge-seg {
+    height: 100%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gauge-seg.seg-home { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+.gauge-seg.seg-draw { background: linear-gradient(90deg, #d97706, #fbbf24); }
+.gauge-seg.seg-away { background: linear-gradient(90deg, #db2777, #f472b6); }
+
+.inline-sim-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.sim-detail-pill {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.70rem;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sim-detail-pill .lbl {
+    color: #94a3b8;
+}
+
+.sim-detail-pill .val {
+    color: #f1f5f9;
+    font-weight: 700;
+}
+
+.inline-sim-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-resim-inline {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-resim-inline:hover {
+    background: rgba(56, 189, 248, 0.22);
+    color: #ffffff;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+}
+
+.btn-sim-zoom {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #94a3b8;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-sim-zoom:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
 
 
 

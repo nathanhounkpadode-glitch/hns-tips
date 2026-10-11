@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-11-v32";
+const DATA_VERSION = "2026-10-11-v33";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -1046,6 +1046,11 @@ function renderCurrentDayView() {
             if (starEl) starEl.innerHTML = `<strong>Joueurs Clés :</strong> ${b.key_players.star_player || "Titulaires phares"}`;
             if (absEl) absEl.innerHTML = `<strong>Absences & Forfaits :</strong> ${b.key_players.absentees_away || b.key_players.absentees_home || "Aucun forfait majeur"}`;
         }
+
+        const bankerSimEl = document.getElementById("bankerInlineSimContainer");
+        if (bankerSimEl) {
+            bankerSimEl.innerHTML = generateInlineSimulationHtml(b, true);
+        }
     }
 
     // 2. Render Safe Picks List (Section 1)
@@ -1326,10 +1331,8 @@ function createMatchCard(s, isSafeSection = false) {
             💡 <strong>Analyse IA :</strong> ${s.reason}
         </div>
         ${tacticalPanelHtml}
+        ${generateInlineSimulationHtml(s, false)}
         <div class="match-card-actions">
-            <button class="btn-simulate-match" onclick="openMatchSimulation('${s.id}')">
-                🎲 Simuler le Match (10 000 tests IA)
-            </button>
             <button class="btn-toggle-win ${s.status === 'won' ? 'active' : ''}" onclick="toggleMatchWon('${s.id}')">
                 ${s.status === 'won' ? '🏆 Pronostic Validé & Gagné !' : '✓ Marquer comme Validé / Gagné'}
             </button>
@@ -3347,6 +3350,99 @@ function runMatchMonteCarloSimulation(matchObj) {
         topScores
     };
 }
+
+function generateInlineSimulationHtml(matchObj, isBanker = false) {
+    if (!matchObj) return '';
+    const sim = runMatchMonteCarloSimulation(matchObj);
+    if (!sim) return '';
+
+    const topScore = (sim.topScores && sim.topScores[0]) ? sim.topScores[0] : { score: '2 - 1', pct: '15.2' };
+    const secondScore = (sim.topScores && sim.topScores[1]) ? sim.topScores[1] : { score: '1 - 1', pct: '12.8' };
+
+    const parts = (matchObj.match || "").split(" vs ");
+    const homeShort = parts[0] ? parts[0].trim().slice(0, 14) : "Dom";
+    const awayShort = parts[1] ? parts[1].trim().slice(0, 14) : "Ext";
+    const cardId = isBanker ? "bankerInlineSimCard" : `inlineSimCard_${matchObj.id}`;
+    const simTargetId = isBanker ? "banker" : matchObj.id;
+
+    return `
+        <div class="inline-sim-card ${isBanker ? 'banker-inline-sim' : ''}" id="${cardId}">
+            <div class="inline-sim-header">
+                <div class="inline-sim-title">
+                    <span class="inline-sim-icon">🎲</span>
+                    <span>Simulation Monte Carlo (10 000 Matchs)</span>
+                </div>
+                <span class="inline-sim-hit-badge">🎯 ${sim.hnsPickRate}% Validation IA</span>
+            </div>
+            <div class="inline-sim-bar-labels">
+                <span class="lbl-1">1 (${homeShort}) : <strong>${sim.homePct}%</strong></span>
+                <span class="lbl-x">Nul : <strong>${sim.drawPct}%</strong></span>
+                <span class="lbl-2">2 (${awayShort}) : <strong>${sim.awayPct}%</strong></span>
+            </div>
+            <div class="inline-sim-gauge">
+                <div class="gauge-seg seg-home" style="width: ${sim.homePct}%;" title="Victoire ${homeShort} ${sim.homePct}%"></div>
+                <div class="gauge-seg seg-draw" style="width: ${sim.drawPct}%;" title="Match Nul ${sim.drawPct}%"></div>
+                <div class="gauge-seg seg-away" style="width: ${sim.awayPct}%;" title="Victoire ${awayShort} ${sim.awayPct}%"></div>
+            </div>
+            <div class="inline-sim-details">
+                <div class="sim-detail-pill">
+                    <span class="lbl">🎯 Scores probables :</span>
+                    <span class="val"><strong>${topScore.score}</strong> (${topScore.pct}%) • <strong>${secondScore.score}</strong> (${secondScore.pct}%)</span>
+                </div>
+                <div class="sim-detail-pill">
+                    <span class="lbl">⚽ Les 2 Marquent :</span>
+                    <span class="val">${sim.bttsPct}%</span>
+                </div>
+                <div class="sim-detail-pill">
+                    <span class="lbl">🔥 Plus de 1.5 :</span>
+                    <span class="val">${sim.over15Pct}%</span>
+                </div>
+            </div>
+            <div class="inline-sim-foot">
+                <button type="button" class="btn-resim-inline" onclick="rerunInlineSimulation('${simTargetId}')" title="Rejouer 10 000 confrontations Monte Carlo">
+                    ⚡ Relancer la simulation
+                </button>
+                <button type="button" class="btn-sim-zoom" onclick="${isBanker ? 'openBankerSimulation()' : `openMatchSimulation('${matchObj.id}')`}" title="Voir l'audit détaillé">
+                    🔍 Détails complets
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function rerunInlineSimulation(matchId) {
+    if (!appData || !appData.days) return;
+    const day = appData.days[currentDay];
+    if (!day) return;
+    let match = (day.singles || []).find(s => s.id === matchId);
+    const isBanker = (matchId === "banker" || (day.banker && day.banker.id === matchId));
+    if (!match && isBanker) match = day.banker;
+    if (!match) return;
+
+    const cardId = isBanker ? "bankerInlineSimCard" : `inlineSimCard_${matchId}`;
+    const container = document.getElementById(cardId);
+    if (!container) return;
+
+    container.style.opacity = "0.5";
+    container.style.transform = "scale(0.98)";
+
+    setTimeout(() => {
+        const newHtml = generateInlineSimulationHtml(match, isBanker);
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = newHtml;
+        const newEl = tempDiv.firstElementChild;
+        if (container.parentNode && newEl) {
+            container.parentNode.replaceChild(newEl, container);
+            newEl.style.opacity = "1";
+            newEl.style.transform = "scale(1)";
+            newEl.style.boxShadow = "0 0 20px rgba(56, 189, 248, 0.4)";
+            setTimeout(() => { if (newEl) newEl.style.boxShadow = ""; }, 800);
+        }
+    }, 250);
+}
+window.rerunInlineSimulation = rerunInlineSimulation;
+window.generateInlineSimulationHtml = generateInlineSimulationHtml;
+
 
 function openMatchSimulation(matchId) {
     if (!appData || !appData.days) return;
