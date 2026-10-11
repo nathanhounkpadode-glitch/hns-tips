@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-11-v34";
+const DATA_VERSION = "2026-10-11-v35";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
@@ -204,6 +204,7 @@ let currentViewMode = "safe"; // 'safe', 'all', or 'combos'
 let selectedLeague = "all";
 let selectedRisk = "safe";
 let selectedCount = 3;
+const openTacticalPanels = new Set();
 
 // Switch Bottom Navigation Tabs (Pronos / Générateur / Bankroll)
 function switchTab(tabName) {
@@ -722,8 +723,8 @@ async function loadAppData() {
             // Vérifie si minuit a sonné en temps réel pour faire basculer le jour immédiatement sans rechargement
             const rolled = checkAndRollDailyCalendar();
             if (!rolled && currentDay === "today") {
+                // Seule la synchronisation ESPN peut actualiser s'il y a de vrais scores en direct, sans jamais refermer les panneaux ouverts
                 autoSyncLiveFixtures(false);
-                renderCurrentDayView();
             }
         }, 20000);
     }
@@ -1215,12 +1216,15 @@ function createMatchCard(s, isSafeSection = false) {
     const tb = s.tactical_breakdown || {};
     const kp = s.key_players || {};
 
+    const sectionPrefix = isSafeSection ? "safe" : "all";
+    const isPanelOpen = openTacticalPanels.has(s.id);
+
     tacticalPanelHtml = `
-        <button class="btn-tactical-toggle" id="btnTac_${s.id}" onclick="toggleTactical('${s.id}')">
+        <button class="btn-tactical-toggle ${isPanelOpen ? 'active' : ''}" id="btnTac_${sectionPrefix}_${s.id}" data-tac-btn-id="${s.id}" onclick="toggleTactical(this, '${s.id}', '${sectionPrefix}')">
             <span>🔬 Décryptage & Spécificités du Match</span>
             <span class="toggle-arrow">▼</span>
         </button>
-        <div class="tactical-panel" id="panelTac_${s.id}">
+        <div class="tactical-panel ${isPanelOpen ? 'open' : ''}" id="panelTac_${sectionPrefix}_${s.id}" data-tac-panel-id="${s.id}">
             <div class="metrics-grid" style="grid-template-columns: repeat(2, 1fr); gap: 8px;">
                 <div class="metric-card">
                     <span class="metric-label">📊 npxG Net (Sans Pen.)</span>
@@ -1277,6 +1281,12 @@ function createMatchCard(s, isSafeSection = false) {
                 <div class="tactical-item-title">🛡️ Indice de Sécurité HNS (HSI)</div>
                 Indice HSI : <strong style="color:#10b981;">${m.hsi_score || (s.confidence ? s.confidence + '/100' : '94/100')}</strong> • Niveau Risque : <strong>${m.risk_level || '1/5 (Très Faible)'}</strong>
             </div>
+            <div class="tactical-item-sim-shortcut" style="margin-top:10px; padding:8px 12px; background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.25); border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.75rem; color:#e2e8f0; font-weight:700;">🎲 Simulation Monte Carlo (10 000 confrontations)</span>
+                <button type="button" class="btn-resim-inline" style="padding:4px 8px; font-size:0.7rem;" onclick="event.stopPropagation(); rerunInlineSimulation('${s.id}', '${sectionPrefix}');">
+                    ⚡ Recalculer
+                </button>
+            </div>
         </div>
     `;
 
@@ -1307,7 +1317,7 @@ function createMatchCard(s, isSafeSection = false) {
             💡 <strong>Analyse IA :</strong> ${s.reason}
         </div>
         ${tacticalPanelHtml}
-        ${generateInlineSimulationHtml(s, false)}
+        ${generateInlineSimulationHtml(s, false, sectionPrefix)}
         <div class="match-card-actions">
             <button class="btn-toggle-win ${s.status === 'won' ? 'active' : ''}" onclick="toggleMatchWon('${s.id}')">
                 ${s.status === 'won' ? '🏆 Pronostic Validé & Gagné !' : '✓ Marquer comme Validé / Gagné'}
@@ -1317,13 +1327,40 @@ function createMatchCard(s, isSafeSection = false) {
     return card;
 }
 
-// Toggle tactical breakdown panel
-function toggleTactical(matchId) {
-    const panel = document.getElementById(`panelTac_${matchId}`);
-    const btn = document.getElementById(`btnTac_${matchId}`);
-    if (panel) panel.classList.toggle("open");
-    if (btn) btn.classList.toggle("active");
+// Toggle tactical breakdown panel avec persistance d'état et ciblage direct
+function toggleTactical(btnEl, matchId, sectionPrefix = "") {
+    if (typeof btnEl === "string") {
+        matchId = btnEl;
+        btnEl = document.querySelector(`[data-tac-btn-id="${matchId}"]`);
+    }
+
+    let panel = null;
+    if (btnEl && btnEl.nextElementSibling && btnEl.nextElementSibling.classList.contains("tactical-panel")) {
+        panel = btnEl.nextElementSibling;
+    } else if (sectionPrefix && matchId) {
+        panel = document.getElementById(`panelTac_${sectionPrefix}_${matchId}`);
+    } else if (matchId) {
+        panel = document.getElementById(`panelTac_${matchId}`) || document.querySelector(`[data-tac-panel-id="${matchId}"]`);
+    }
+
+    if (!panel) return;
+
+    panel.classList.toggle("open");
+    const isOpen = panel.classList.contains("open");
+    if (btnEl && btnEl.classList) {
+        btnEl.classList.toggle("active", isOpen);
+    }
+
+    if (matchId) {
+        if (isOpen) {
+            openTacticalPanels.add(matchId);
+        } else {
+            openTacticalPanels.delete(matchId);
+        }
+    }
 }
+window.toggleTactical = toggleTactical;
+
 
 // Toggle match status (Won / Upcoming)
 async function toggleMatchWon(matchId) {
@@ -1965,8 +2002,15 @@ async function autoSyncLiveFixtures(userTriggered = false) {
                 localStorage.setItem("hns_tips_data", JSON.stringify(appData));
             }
             if (currentDay === "today") {
+                const scrollY = window.scrollY;
                 renderCurrentDayView();
+                if (currentViewMode === "all") {
+                    renderAllMatchesList();
+                }
                 renderStats();
+                if (Math.abs(window.scrollY - scrollY) > 5) {
+                    window.scrollTo({ top: scrollY, behavior: 'instant' });
+                }
             }
         }
 
@@ -3330,7 +3374,7 @@ function runMatchMonteCarloSimulation(matchObj) {
     };
 }
 
-function generateInlineSimulationHtml(matchObj, isBanker = false) {
+function generateInlineSimulationHtml(matchObj, isBanker = false, sectionPrefix = "safe") {
     if (!matchObj) return '';
     const sim = runMatchMonteCarloSimulation(matchObj);
     if (!sim) return '';
@@ -3341,11 +3385,11 @@ function generateInlineSimulationHtml(matchObj, isBanker = false) {
     const parts = (matchObj.match || "").split(" vs ");
     const homeShort = parts[0] ? parts[0].trim().slice(0, 14) : "Dom";
     const awayShort = parts[1] ? parts[1].trim().slice(0, 14) : "Ext";
-    const cardId = isBanker ? "bankerInlineSimCard" : `inlineSimCard_${matchObj.id}`;
+    const cardId = isBanker ? "bankerInlineSimCard" : `inlineSimCard_${sectionPrefix}_${matchObj.id}`;
     const simTargetId = isBanker ? "banker" : matchObj.id;
 
     return `
-        <div class="inline-sim-card ${isBanker ? 'banker-inline-sim' : ''}" id="${cardId}">
+        <div class="inline-sim-card ${isBanker ? 'banker-inline-sim' : ''}" id="${cardId}" data-sim-match-id="${simTargetId}" data-section-prefix="${sectionPrefix}">
             <div class="inline-sim-header">
                 <div class="inline-sim-title">
                     <span class="inline-sim-icon">🎲</span>
@@ -3378,7 +3422,7 @@ function generateInlineSimulationHtml(matchObj, isBanker = false) {
                 </div>
             </div>
             <div class="inline-sim-foot">
-                <button type="button" class="btn-resim-inline" onclick="rerunInlineSimulation('${simTargetId}')" title="Rejouer 10 000 confrontations Monte Carlo">
+                <button type="button" class="btn-resim-inline" onclick="rerunInlineSimulation('${simTargetId}', '${sectionPrefix}')" title="Rejouer 10 000 confrontations Monte Carlo">
                     ⚡ Relancer la simulation
                 </button>
                 <button type="button" class="btn-sim-zoom" onclick="${isBanker ? 'openBankerSimulation()' : `openMatchSimulation('${matchObj.id}')`}" title="Voir l'audit détaillé">
@@ -3389,7 +3433,7 @@ function generateInlineSimulationHtml(matchObj, isBanker = false) {
     `;
 }
 
-function rerunInlineSimulation(matchId) {
+function rerunInlineSimulation(matchId, sectionPrefix = "") {
     if (!appData || !appData.days) return;
     const day = appData.days[currentDay];
     if (!day) return;
@@ -3398,29 +3442,47 @@ function rerunInlineSimulation(matchId) {
     if (!match && isBanker) match = day.banker;
     if (!match) return;
 
-    const cardId = isBanker ? "bankerInlineSimCard" : `inlineSimCard_${matchId}`;
-    const container = document.getElementById(cardId);
-    if (!container) return;
+    let targets = [];
+    if (isBanker) {
+        const bEl = document.getElementById("bankerInlineSimCard");
+        if (bEl) targets.push(bEl);
+    } else {
+        const found = document.querySelectorAll(`[data-sim-match-id="${matchId}"]`);
+        if (found.length > 0) {
+            targets = Array.from(found);
+        } else {
+            const fallback = document.getElementById(`inlineSimCard_${matchId}`);
+            if (fallback) targets.push(fallback);
+        }
+    }
 
-    container.style.opacity = "0.5";
-    container.style.transform = "scale(0.98)";
+    if (targets.length === 0) return;
+
+    targets.forEach(c => {
+        c.style.opacity = "0.5";
+        c.style.transform = "scale(0.98)";
+    });
 
     setTimeout(() => {
-        const newHtml = generateInlineSimulationHtml(match, isBanker);
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = newHtml;
-        const newEl = tempDiv.firstElementChild;
-        if (container.parentNode && newEl) {
-            container.parentNode.replaceChild(newEl, container);
-            newEl.style.opacity = "1";
-            newEl.style.transform = "scale(1)";
-            newEl.style.boxShadow = "0 0 20px rgba(56, 189, 248, 0.4)";
-            setTimeout(() => { if (newEl) newEl.style.boxShadow = ""; }, 800);
-        }
+        targets.forEach(container => {
+            const prefix = container.dataset.sectionPrefix || sectionPrefix || "safe";
+            const newHtml = generateInlineSimulationHtml(match, isBanker, prefix);
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = newHtml;
+            const newEl = tempDiv.firstElementChild;
+            if (container.parentNode && newEl) {
+                container.parentNode.replaceChild(newEl, container);
+                newEl.style.opacity = "1";
+                newEl.style.transform = "scale(1)";
+                newEl.style.boxShadow = "0 0 20px rgba(56, 189, 248, 0.4)";
+                setTimeout(() => { if (newEl) newEl.style.boxShadow = ""; }, 800);
+            }
+        });
     }, 250);
 }
 window.rerunInlineSimulation = rerunInlineSimulation;
 window.generateInlineSimulationHtml = generateInlineSimulationHtml;
+
 
 
 function openMatchSimulation(matchId) {
