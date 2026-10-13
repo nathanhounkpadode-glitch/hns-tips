@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=37">
+    <link rel="stylesheet" href="static/css/style.css?v=38">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
@@ -107,11 +107,11 @@
                         <div class="banker-bet-box">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                                 <div class="bet-label" style="margin-bottom:0;">Conseil Prioritaire HNS :</div>
-                                <a href="https://live-sports-news.com/" target="_blank" rel="noopener noreferrer" class="btn-live-stream-direct" onclick="event.stopPropagation();" title="Regarder le match en direct gratuitement sur live-sports-news.com">
+                                <button type="button" class="btn-live-stream-direct" onclick="event.stopPropagation(); openLiveStreamHub('banker')" title="Regarder le Match en Direct (Commentaires Français ou International)">
                                     <span class="live-dot-pulse"></span>
                                     <span>Live Vidéo</span>
                                     <span class="live-ext-arrow">↗</span>
-                                </a>
+                                </button>
                             </div>
                             <div class="bet-pick" id="bankerPick">Pronostic</div>
                             <div class="bet-meta">
@@ -688,27 +688,51 @@
 
                     <!-- Grille des Redirections Directes -->
                     <div class="stream-options-grid">
-                        <!-- 1. Streaming Vidéo Direct Gratuit (Live Sports News / Score-Live) -->
+                        <!-- 1. Streaming Vidéo Direct en Français (Canal+, beIN Sports, RMC) -->
+                        <div class="stream-option-card opt-stream-fr">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">🇫🇷</span>
+                                <div>
+                                    <div class="stream-opt-title">Streaming Gratuit en Français (Canal+ & beIN Sports)</div>
+                                    <div class="stream-opt-desc">Flux vidéo avec commentateurs français officiels sans inscription ni abonnement.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://streamonsports.net" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-direct-stream-fr" id="streamLinkStreamonsport">
+                                    <span>🇫🇷 Streamonsport (Canal+ / beIN)</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://livetv.sx/frx/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-secondary-stream" id="streamLinkLiveTVFr">
+                                    <span>📺 LiveTV en Français</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                            <div class="stream-tip-banner" style="border-left-color: #3b82f6;">
+                                💡 <strong>Commentaires 100% en français :</strong> Sur Streamonsport, choisis <em>Lecteur 1 (Canal+)</em> ou <em>Lecteur 2 (beIN)</em> sous le match pour entendre les commentateurs français.
+                            </div>
+                        </div>
+
+                        <!-- 2. Streaming Vidéo International HD (Live Sports News / Score-Live) -->
                         <div class="stream-option-card opt-stream-free">
                             <div class="stream-card-head">
                                 <span class="stream-opt-icon">⚡</span>
                                 <div>
-                                    <div class="stream-opt-title">Streaming Vidéo Gratuit Direct (Live Sports News)</div>
-                                    <div class="stream-opt-desc">Regardez le match en direct gratuitement sur le serveur web dédié.</div>
+                                    <div class="stream-opt-title">Streaming International HD (Live Sports News)</div>
+                                    <div class="stream-opt-desc">Flux vidéo direct. Pour le français : sélectionne <strong>Server 2</strong> ou <strong>Flux FR</strong> sous le lecteur.</div>
                                 </div>
                             </div>
                             <div class="stream-btn-row">
                                 <a href="https://live-sports-news.com/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-direct-stream-free" id="streamLinkLiveSportsNews">
-                                    <span>▶️ Lancer le Direct Vidéo (live-sports-news.com)</span>
+                                    <span>▶️ Live Sports News</span>
                                     <span>↗</span>
                                 </a>
                                 <a href="https://score-live.org/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-secondary-stream" id="streamLinkScoreLive">
-                                    <span>🌐 Serveur Miroir Rapide</span>
+                                    <span>🌐 Score-Live (Miroir)</span>
                                     <span>↗</span>
                                 </a>
                             </div>
                             <div class="stream-tip-banner">
-                                💡 <strong>Astuce anti-pub :</strong> Si une publicité s'ouvre au premier clic, fermez simplement le nouvel onglet et cliquez sur Play pour lancer le direct HD.
+                                💡 <strong>Astuce anti-pub :</strong> Si une publicité s'ouvre au premier clic, ferme simplement le nouvel onglet et clique sur Play.
                             </div>
                         </div>
 
@@ -814,7 +838,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=37"></script>
-    <script src="static/js/app.js?v=37"></script>
+    <script src="static/js/default-data.js?v=38"></script>
+    <script src="static/js/app.js?v=38"></script>
 </body>
 </html>

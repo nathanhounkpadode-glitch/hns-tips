@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-13-v37";
+const DATA_VERSION = "2026-10-13-v38";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION ADMINISTRATEUR (SHA-256)
@@ -1345,14 +1345,14 @@ function createMatchCard(s, isSafeSection = false) {
                 </div>
 
                 <div class="match-compact-actions">
-                    <a href="https://live-sports-news.com/" target="_blank" rel="noopener noreferrer" 
-                       class="btn-live-stream-direct" 
-                       onclick="event.stopPropagation();" 
-                       title="Regarder le Match en Direct Gratuitement sur live-sports-news.com">
+                    <button type="button" 
+                            class="btn-live-stream-direct" 
+                            onclick="event.stopPropagation(); openLiveStreamHub('${s.id}')" 
+                            title="Regarder le Match en Direct (Commentaires Français ou International)">
                         <span class="live-dot-pulse"></span>
                         <span class="live-btn-text">Live Vidéo</span>
                         <span class="live-ext-arrow">↗</span>
-                    </a>
+                    </button>
                     <button type="button" class="btn-card-chevron ${isCardExpanded ? 'rotated' : ''}" 
                             data-chevron-match="${s.id}" 
                             onclick="event.stopPropagation(); toggleMatchCardExpand('${s.id}', '${sectionPrefix}')" 
@@ -3627,6 +3627,12 @@ function openLiveStreamHub(matchId) {
     }
 
     // Direct Links
+    const streamonLink = document.getElementById("streamLinkStreamonsport");
+    if (streamonLink) streamonLink.href = "https://streamonsports.net";
+
+    const livetvLink = document.getElementById("streamLinkLiveTVFr");
+    if (livetvLink) livetvLink.href = "https://livetv.sx/frx/";
+
     const lsnLink = document.getElementById("streamLinkLiveSportsNews");
     if (lsnLink) lsnLink.href = "https://live-sports-news.com/";
 
