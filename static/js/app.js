@@ -1,9 +1,9 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-11-v36";
+const DATA_VERSION = "2026-10-13-v37";
 
 // ========================================================
-// SÉCURITÉ & AUTHENTIFICATION PROPRIÉTAIRE SCHALOM H.N. (SHA-256)
+// SÉCURITÉ & AUTHENTIFICATION ADMINISTRATEUR (SHA-256)
 // ========================================================
 const OWNER_SECURITY_HASHES = new Set([
     "0011ea074726c37d7d958f5448c63252a0a07fcd07a602924478032f916c875e",
@@ -39,7 +39,8 @@ const OWNER_SECURITY_HASHES = new Set([
 ]);
 
 function isOwnerAdmin() {
-    return localStorage.getItem("hns_owner_auth") === "granted_schalom";
+    const auth = localStorage.getItem("hns_owner_auth");
+    return auth === "granted_admin" || auth === "granted_schalom";
 }
 
 async function computeSha256(raw) {
@@ -61,31 +62,31 @@ function updateAdminLockUI() {
     if (isOwnerAdmin()) {
         lockBtn.classList.add("is-admin");
         lockBtn.innerHTML = "👑";
-        lockBtn.title = "Mode Propriétaire Actif (Schalom H.N.) • Cliquez pour verrouiller";
+        lockBtn.title = "Mode Administrateur Actif • Cliquez pour verrouiller";
     } else {
         lockBtn.classList.remove("is-admin");
         lockBtn.innerHTML = "🔒";
-        lockBtn.title = "Mode Lecture Seule • Cliquez pour déverrouiller (Réservé Schalom H.N.)";
+        lockBtn.title = "Mode Consultation • Cliquez pour déverrouiller l'accès administrateur";
     }
 }
 
 async function toggleOwnerLock() {
     if (isOwnerAdmin()) {
-        if (confirm("👑 Voulez-vous verrouiller l'application en mode Lecture Seule ?")) {
+        if (confirm("👑 Voulez-vous verrouiller l'application en mode Consultation (Lecture Seule) ?")) {
             localStorage.removeItem("hns_owner_auth");
             updateAdminLockUI();
-            alert("🔒 Application verrouillée en mode Lecture Seule pour tous les visiteurs.");
+            alert("🔒 Application verrouillée en mode Consultation.");
         }
     } else {
-        const pin = prompt("🔐 ACCÈS PROPRIÉTAIRE SCHALOM H.N.\nVeuillez saisir votre code d'accès administrateur :");
+        const pin = prompt("🔐 ACCÈS ADMINISTRATEUR HNS\nVeuillez saisir votre code d'accès administrateur :");
         if (!pin) return;
         const hashed = await computeSha256(pin);
         if (OWNER_SECURITY_HASHES.has(hashed)) {
-            localStorage.setItem("hns_owner_auth", "granted_schalom");
+            localStorage.setItem("hns_owner_auth", "granted_admin");
             updateAdminLockUI();
-            alert("👑 Bienvenue Schalom H.N. ! Vous avez les pleins droits d'administration sur HNS TIPS.");
+            alert("👑 Bienvenue ! Vous avez les pleins droits d'administration sur HNS TIPS.");
         } else {
-            alert("⛔ ACCÈS REFUSÉ :\nCette application et ses pronostics sont la propriété exclusive de Schalom H.N.\nSeul le propriétaire est autorisé à effectuer des modifications.");
+            alert("⛔ ACCÈS REFUSÉ :\nCode incorrect. Accès réservé à l'administrateur de l'application.");
         }
     }
 }
@@ -93,16 +94,16 @@ async function toggleOwnerLock() {
 async function requireOwnerAuth(actionDesc = "modifier cette application") {
     if (isOwnerAdmin()) return true;
     
-    const pin = prompt(`🔐 SÉCURITÉ SCHALOM H.N. :\nSeul le propriétaire Schalom H.N. a le droit de ${actionDesc}.\n\nEntrez votre code d'accès propriétaire pour continuer :`);
+    const pin = prompt(`🔐 SÉCURITÉ ADMINISTRATEUR HNS :\nCode d'accès requis pour ${actionDesc}.\n\nEntrez votre code d'accès administrateur pour continuer :`);
     if (!pin) return false;
     const hashed = await computeSha256(pin);
     if (OWNER_SECURITY_HASHES.has(hashed)) {
-        localStorage.setItem("hns_owner_auth", "granted_schalom");
+        localStorage.setItem("hns_owner_auth", "granted_admin");
         updateAdminLockUI();
-        alert("👑 Accès propriétaire validé !");
+        alert("👑 Accès Administrateur validé !");
         return true;
     } else {
-        alert("⛔ ACCÈS REFUSÉ :\nCode incorrect. Seul le propriétaire Schalom H.N. peut modifier cette application.");
+        alert("⛔ ACCÈS REFUSÉ :\nCode incorrect. Action réservée à l'administrateur.");
         return false;
     }
 }
@@ -205,6 +206,32 @@ let selectedLeague = "all";
 let selectedRisk = "safe";
 let selectedCount = 3;
 const openTacticalPanels = new Set();
+const expandedMatchCards = new Set();
+
+// Dépliage / repliage accordéon des cartes compactes au clic
+function toggleMatchCardExpand(matchId, sectionPrefix = "") {
+    if (!matchId) return;
+    if (expandedMatchCards.has(matchId)) {
+        expandedMatchCards.delete(matchId);
+    } else {
+        expandedMatchCards.add(matchId);
+    }
+    const isOpen = expandedMatchCards.has(matchId);
+
+    // Synchronisation sur toutes les occurrences de la carte (safe et all)
+    document.querySelectorAll(`[data-drawer-match="${matchId}"]`).forEach(drawer => {
+        drawer.classList.toggle("open", isOpen);
+    });
+    document.querySelectorAll(`[data-chevron-match="${matchId}"]`).forEach(btn => {
+        btn.classList.toggle("rotated", isOpen);
+        const txt = btn.querySelector(".chevron-text");
+        if (txt) txt.textContent = isOpen ? "Moins" : "Détails";
+    });
+    document.querySelectorAll(`[data-card-match="${matchId}"]`).forEach(card => {
+        card.classList.toggle("is-expanded", isOpen);
+    });
+}
+window.toggleMatchCardExpand = toggleMatchCardExpand;
 
 // Switch Bottom Navigation Tabs (Pronos / Générateur / Bankroll)
 function switchTab(tabName) {
@@ -1196,7 +1223,13 @@ function createMatchCard(s, isSafeSection = false) {
         statusPill = `<span class="status-pill-upcoming">⏳ À VENIR</span>`;
     }
 
+    const sectionPrefix = isSafeSection ? "safe" : "all";
+    const isCardExpanded = expandedMatchCards.has(s.id);
+    if (isCardExpanded) statusClass += " is-expanded";
+
     card.className = `match-card ${statusClass}`;
+    card.setAttribute("data-card-match", s.id);
+    card.setAttribute("data-section-prefix", sectionPrefix);
 
     let tagClass = "tag-value";
     let tagLabel = "💎 VALUE";
@@ -1208,7 +1241,7 @@ function createMatchCard(s, isSafeSection = false) {
         tagLabel = "🛡️ TRÈS SÛR";
     }
 
-    const dnaTagHtml = s.league_dna_summary ? `<div class="match-dna-tag">🧬 ${s.league_dna_summary}</div>` : '';
+    const dnaTagHtml = s.league_dna_summary ? `<div class="match-dna-tag" style="margin-top:4px;">🧬 ${s.league_dna_summary}</div>` : '';
 
     // Advanced Metrics & Tactical Breakdown HTML
     let tacticalPanelHtml = '';
@@ -1216,11 +1249,10 @@ function createMatchCard(s, isSafeSection = false) {
     const tb = s.tactical_breakdown || {};
     const kp = s.key_players || {};
 
-    const sectionPrefix = isSafeSection ? "safe" : "all";
     const isPanelOpen = openTacticalPanels.has(s.id);
 
     tacticalPanelHtml = `
-        <button class="btn-tactical-toggle ${isPanelOpen ? 'active' : ''}" id="btnTac_${sectionPrefix}_${s.id}" data-tac-btn-id="${s.id}" onclick="toggleTactical(this, '${s.id}', '${sectionPrefix}')">
+        <button class="btn-tactical-toggle ${isPanelOpen ? 'active' : ''}" id="btnTac_${sectionPrefix}_${s.id}" data-tac-btn-id="${s.id}" onclick="event.stopPropagation(); toggleTactical(this, '${s.id}', '${sectionPrefix}')">
             <span>🔬 Décryptage & Spécificités du Match</span>
             <span class="toggle-arrow">▼</span>
         </button>
@@ -1291,41 +1323,65 @@ function createMatchCard(s, isSafeSection = false) {
     `;
 
     card.innerHTML = `
-        <div class="match-card-top">
-            <div>
+        <!-- HEADER COMPACT ET ÉPURÉ (VISIBLE PAR DÉFAUT) -->
+        <div class="match-card-compact-header" onclick="toggleMatchCardExpand('${s.id}', '${sectionPrefix}')">
+            <div class="match-compact-meta-row">
                 <span class="league-pill">🏆 ${s.league} • ⏰ ${s.time}</span>
-                ${dnaTagHtml}
+                <div class="match-compact-badges">
+                    ${statusPill}
+                    <span class="match-type-tag ${tagClass}">${tagLabel}</span>
+                </div>
             </div>
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
-                ${statusPill}
-                <button type="button" class="btn-stream-badge" onclick="event.stopPropagation(); openLiveStreamHub('${s.id}')" title="Où regarder ce match en direct (Canal+, 1xBet, 2D)">📺 Live / 1xBet</button>
-                <span class="hsi-badge" title="HNS Safety Index">🛡️ HSI: ${m.hsi_score || (s.confidence ? s.confidence + '%' : '92%')}</span>
-                <span class="match-type-tag ${tagClass}">${tagLabel}</span>
+
+            <div class="match-compact-main-row">
+                <div class="match-compact-info">
+                    <div class="match-compact-title">⚽ ${s.match}</div>
+                    <div class="match-compact-pick-line">
+                        <span class="compact-pick-bullet">🎯</span>
+                        <span class="compact-pick-text">${s.pick}</span>
+                        <span class="compact-odds-pill">@${s.odds}</span>
+                        <span class="compact-conf-pill">${s.confidence}%</span>
+                    </div>
+                </div>
+
+                <div class="match-compact-actions">
+                    <a href="https://live-sports-news.com/" target="_blank" rel="noopener noreferrer" 
+                       class="btn-live-stream-direct" 
+                       onclick="event.stopPropagation();" 
+                       title="Regarder le Match en Direct Gratuitement sur live-sports-news.com">
+                        <span class="live-dot-pulse"></span>
+                        <span class="live-btn-text">Live Vidéo</span>
+                        <span class="live-ext-arrow">↗</span>
+                    </a>
+                    <button type="button" class="btn-card-chevron ${isCardExpanded ? 'rotated' : ''}" 
+                            data-chevron-match="${s.id}" 
+                            onclick="event.stopPropagation(); toggleMatchCardExpand('${s.id}', '${sectionPrefix}')" 
+                            title="Afficher l'analyse détaillée et la simulation">
+                        <span class="chevron-text">${isCardExpanded ? 'Moins' : 'Détails'}</span>
+                        <span class="chevron-arrow">▼</span>
+                    </button>
+                </div>
             </div>
+            ${dnaTagHtml}
         </div>
-        <div class="match-title">⚽ ${s.match}</div>
-        <div class="match-bet-box">
-            <div>
-                <div class="match-market-name">${s.market}</div>
-                <div class="match-pick-text">✓ ${s.pick}</div>
+
+        <!-- TIROIR DÉROULANT : RÉVÉLÉ UNIQUEMENT AU CLIC/TAP SUR LE MATCH -->
+        <div class="match-card-drawer ${isCardExpanded ? 'open' : ''}" id="drawer_${sectionPrefix}_${s.id}" data-drawer-match="${s.id}">
+            <div class="drawer-inner-content">
+                <div class="match-reason-box">
+                    💡 <strong>Analyse IA & Algorithme HNS :</strong> ${s.reason}
+                </div>
+                ${tacticalPanelHtml}
+                ${generateInlineSimulationHtml(s, false, sectionPrefix)}
+                <div class="match-card-actions">
+                    <button type="button" class="btn-stream-action" onclick="event.stopPropagation(); openLiveStreamHub('${s.id}')">
+                        📺 Options Live (TV, 1xBet, Tracker 2D)
+                    </button>
+                    <button class="btn-toggle-win ${s.status === 'won' ? 'active' : ''}" onclick="event.stopPropagation(); toggleMatchWon('${s.id}')">
+                        ${s.status === 'won' ? '🏆 Pronostic Validé & Gagné !' : '✓ Marquer comme Validé / Gagné'}
+                    </button>
+                </div>
             </div>
-            <div class="match-meta-right">
-                <span class="confidence-chip">${s.confidence}%</span>
-                <span class="odds-chip">${s.odds}</span>
-            </div>
-        </div>
-        <div class="match-reason-box">
-            💡 <strong>Analyse IA :</strong> ${s.reason}
-        </div>
-        ${tacticalPanelHtml}
-        ${generateInlineSimulationHtml(s, false, sectionPrefix)}
-        <div class="match-card-actions">
-            <button type="button" class="btn-stream-action" onclick="openLiveStreamHub('${s.id}')">
-                📺 Suivre en Direct (TV & 1xBet)
-            </button>
-            <button class="btn-toggle-win ${s.status === 'won' ? 'active' : ''}" onclick="toggleMatchWon('${s.id}')">
-                ${s.status === 'won' ? '🏆 Pronostic Validé & Gagné !' : '✓ Marquer comme Validé / Gagné'}
-            </button>
         </div>
     `;
     return card;
@@ -1608,7 +1664,7 @@ function escapeHtml(str) {
         .replaceAll("'", "&#039;");
 }
 
-// Algorithmic Match Prediction (Schalom H.N. Engine)
+// Algorithmic Match Prediction (HNS Quant Engine)
 function generateCustomPrediction(home, away, league) {
     const homeLow = (home || "").toLowerCase();
     const awayLow = (away || "").toLowerCase();
@@ -2991,7 +3047,7 @@ function renderTicketAuditResult(matches, rawText) {
                         🎟️ Audit IA de votre Coupon
                     </h4>
                     <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">
-                        Analysé à partir de ${uploadedTicketPhotos.length} capture${uploadedTicketPhotos.length > 1 ? "s" : ""} • Moteur Algorithmique Schalom H.N.
+                        Analysé à partir de ${uploadedTicketPhotos.length} capture${uploadedTicketPhotos.length > 1 ? "s" : ""} • Moteur Algorithmique HNS Quant
                     </div>
                 </div>
                 ${globalVerdictBadge}
@@ -3031,7 +3087,7 @@ function renderTicketAuditResult(matches, rawText) {
             <!-- Strategic Advice Box -->
             <div class="ticket-advice-box">
                 <div style="font-weight:800; color:#38bdf8; margin-bottom:4px; font-size:0.82rem;">
-                    💡 Synthèse Stratégique & Gestion Cash Out (Schalom H.N.) :
+                    💡 Synthèse Stratégique & Gestion Cash Out (HNS Tips) :
                 </div>
                 <ul style="margin:0; padding-left:16px; font-size:0.75rem; color:#e2e8f0; line-height:1.45;">
                     <li><strong>👑 Banquier Clé :</strong> <em>${escapeHtml(bankerMatch.home)} vs ${escapeHtml(bankerMatch.away)}</em> (${escapeHtml(bankerMatch.hnsPick)} - ${bankerMatch.confidence}%).</li>
@@ -3180,7 +3236,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Verrouillage Propriétaire Schalom H.N.
+    // Verrouillage Administration Sécurisée
     const ownerLockBtn = document.getElementById("ownerLockBtn");
     if (ownerLockBtn) {
         ownerLockBtn.addEventListener("click", toggleOwnerLock);
@@ -3571,6 +3627,12 @@ function openLiveStreamHub(matchId) {
     }
 
     // Direct Links
+    const lsnLink = document.getElementById("streamLinkLiveSportsNews");
+    if (lsnLink) lsnLink.href = "https://live-sports-news.com/";
+
+    const scoreLiveLink = document.getElementById("streamLinkScoreLive");
+    if (scoreLiveLink) scoreLiveLink.href = "https://score-live.org/";
+
     const flashLink = document.getElementById("streamLinkFlashscore");
     if (flashLink) flashLink.href = `https://www.flashscore.fr/search/?q=${encodeURIComponent(matchQuery)}`;
 

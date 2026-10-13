@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
     <meta name="theme-color" content="#070b14">
-    <link rel="stylesheet" href="static/css/style.css?v=30">
+    <link rel="stylesheet" href="static/css/style.css?v=37">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="manifest" href="static/manifest.json">
@@ -13,56 +13,40 @@
 <body>
     <div class="app-shell">
 
-        <!-- FILIGRANE D'APPARTENANCE OFFICIEL (SCHALOM H.N.) -->
-        <div class="watermark-container" aria-hidden="true">
-            <div class="watermark-row"><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span></div>
-            <div class="watermark-row"><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span></div>
-            <div class="watermark-row"><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span></div>
-            <div class="watermark-row"><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span></div>
-            <div class="watermark-row"><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span></div>
-            <div class="watermark-row"><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span></div>
-            <div class="watermark-row"><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span></div>
-            <div class="watermark-row"><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span></div>
-            <div class="watermark-row"><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span></div>
-            <div class="watermark-row"><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span></div>
-            <div class="watermark-row"><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span></div>
-            <div class="watermark-row"><span>HNS TIPS</span><span>•</span><span>SCHALOM H.N.</span><span>•</span><span>HNS TIPS</span></div>
-        </div>
-
         <!-- APP HEADER -->
         <header class="app-header">
             <div class="brand">
                 <img src="static/icons/logo.jpg" alt="HNS Tips" class="brand-logo-img">
                 <div class="brand-info">
                     <h1>HNS TIPS</h1>
-                    <span class="brand-tag"><span class="pulse-dot"></span> 🔒 Propriété Exclusive Schalom H.N.</span>
+                    <span class="brand-tag"><span class="pulse-dot"></span> ⚡ Algorithme Quantitatif HNS</span>
                 </div>
             </div>
             <div class="header-actions">
                 <button class="icon-btn" id="openScannerBtn" title="Scanner une Capture d'Écran (Match / Coupon)">📷</button>
-                <button class="icon-btn" id="ownerLockBtn" title="Mode Propriétaire Schalom H.N.">🔒</button>
+                <button class="icon-btn" id="ownerLockBtn" title="Mode Administration Sécurisé">🔒</button>
                 <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match (Réservé Propriétaire)">➕</button>
                 <button class="icon-btn" id="refreshBtn" title="Actualiser les pronostics">🔄</button>
             </div>
         </header>
 
-        <!-- SÉLECTEUR DE JOUR (HIER / AUJOURD'HUI / DEMAIN / LUNDI) -->
+        <!-- SÉLECTEUR DE JOUR (HIER / AUJOURD'HUI / DEMAIN / JEUDI) -->
         <div class="day-selector-bar">
             <button class="day-btn" data-day="yesterday">
                 <span class="day-title" id="yesterdayTitle">Hier</span>
-                <span class="day-sub" id="yesterdaySub">Sam 10 Oct</span>
+                <span class="day-sub" id="yesterdaySub">Lun 12 Oct</span>
             </button>
             <button class="day-btn active" data-day="today">
                 <span class="day-title" id="todayTitle">Aujourd'hui</span>
-                <span class="day-sub" id="todaySub">Dim 11 Oct</span>
+                <span class="day-sub" id="todaySub">Mar 13 Oct</span>
             </button>
             <button class="day-btn" data-day="tomorrow">
                 <span class="day-title" id="tomorrowTitle">Demain</span>
-                <span class="day-sub" id="tomorrowSub">Lun 12 Oct</span>
+                <span class="day-sub" id="tomorrowSub">Mer 14 Oct</span>
             </button>
             <button class="day-btn" data-day="after_tomorrow">
-                <span class="day-title" id="afterTomorrowTitle">Mardi</span>
-                <span class="day-sub" id="afterTomorrowSub">Mar 13 Oct</span>
+                <span class="day-title" id="afterTomorrowTitle">Jeudi</span>
+                <span class="day-sub" id="afterTomorrowSub">Jeu 15 Oct</span>
             </button>
         </div>
 
@@ -121,11 +105,18 @@
                         <div class="banker-match" id="bankerMatch">Match</div>
                         
                         <div class="banker-bet-box">
-                            <div class="bet-label">Conseil Prioritaire HNS :</div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                                <div class="bet-label" style="margin-bottom:0;">Conseil Prioritaire HNS :</div>
+                                <a href="https://live-sports-news.com/" target="_blank" rel="noopener noreferrer" class="btn-live-stream-direct" onclick="event.stopPropagation();" title="Regarder le match en direct gratuitement sur live-sports-news.com">
+                                    <span class="live-dot-pulse"></span>
+                                    <span>Live Vidéo</span>
+                                    <span class="live-ext-arrow">↗</span>
+                                </a>
+                            </div>
                             <div class="bet-pick" id="bankerPick">Pronostic</div>
                             <div class="bet-meta">
-                                <span class="odds-pill-gold" id="bankerOdds">Cote : 1.58</span>
-                                <span class="confidence-badge-gold" id="bankerConfidence">93% Confiance</span>
+                                <span class="odds-pill-gold" id="bankerOdds">Cote : 1.48</span>
+                                <span class="confidence-badge-gold" id="bankerConfidence">95% Confiance</span>
                             </div>
                         </div>
 
@@ -401,10 +392,10 @@
                 </div>
             </section>
 
-            <!-- SIGNATURE OFFICIELLE CRÉATEUR SCHALOM H.N. -->
+            <!-- SIGNATURE OFFICIELLE HNS TIPS -->
             <div class="creator-signature">
                 <span class="signature-icon">⚡</span>
-                <span>Conçu & Développé par <strong>Schalom H.N.</strong> • HNS Tips Official</span>
+                <span>Plateforme Officielle <strong>HNS Tips</strong> • Algorithme Prédictif & Intelligence Sportive</span>
             </div>
 
         </main>
@@ -697,7 +688,31 @@
 
                     <!-- Grille des Redirections Directes -->
                     <div class="stream-options-grid">
-                        <!-- 1. Match Tracker 2D Interactif (Gratuit) -->
+                        <!-- 1. Streaming Vidéo Direct Gratuit (Live Sports News / Score-Live) -->
+                        <div class="stream-option-card opt-stream-free">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">⚡</span>
+                                <div>
+                                    <div class="stream-opt-title">Streaming Vidéo Gratuit Direct (Live Sports News)</div>
+                                    <div class="stream-opt-desc">Regardez le match en direct gratuitement sur le serveur web dédié.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://live-sports-news.com/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-direct-stream-free" id="streamLinkLiveSportsNews">
+                                    <span>▶️ Lancer le Direct Vidéo (live-sports-news.com)</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://score-live.org/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-secondary-stream" id="streamLinkScoreLive">
+                                    <span>🌐 Serveur Miroir Rapide</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                            <div class="stream-tip-banner">
+                                💡 <strong>Astuce anti-pub :</strong> Si une publicité s'ouvre au premier clic, fermez simplement le nouvel onglet et cliquez sur Play pour lancer le direct HD.
+                            </div>
+                        </div>
+
+                        <!-- 2. Match Tracker 2D Interactif (Gratuit) -->
                         <div class="stream-option-card opt-tracker">
                             <div class="stream-card-head">
                                 <span class="stream-opt-icon">⚡</span>
@@ -799,7 +814,7 @@
 
     </div>
 
-    <script src="static/js/default-data.js?v=36"></script>
-    <script src="static/js/app.js?v=36"></script>
+    <script src="static/js/default-data.js?v=37"></script>
+    <script src="static/js/app.js?v=37"></script>
 </body>
 </html>

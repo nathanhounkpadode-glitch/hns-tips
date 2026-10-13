@@ -1,6 +1,6 @@
 window.DEFAULT_HNS_DATA = {
   "active_date": "today",
-  "last_auto_sync": "2026-10-10 23:40 UTC",
+  "last_auto_sync": "2026-10-13 11:30 UTC",
   "leagues_dna": {
     "eng.1": {
       "name": "Premier League (Angleterre)",
@@ -162,3222 +162,932 @@ window.DEFAULT_HNS_DATA = {
       ]
     }
   },
-  "leagues_order": [
-    "Premier League (Angleterre)",
-    "LaLiga (Espagne)",
-    "Ligue 1 (France)",
-    "Serie A (Italie)",
-    "Bundesliga (Allemagne)",
-    "Primeira Liga (Portugal)",
-    "Süper Lig (Turquie)",
-    "Eredivisie (Pays-Bas)",
-    "UEFA Champions League",
-    "UEFA Europa League"
-  ],
-  "stats_summary": {
-    "win_rate": 90.5,
-    "current_streak": 14,
-    "average_odds": 1.76,
-    "total_analyzed": 235
-  },
   "days": {
     "yesterday": {
-      "label": "Hier (Saturday 10 Oct)",
-      "short_label": "Sat 10 Oct",
-      "date_str": "10 October 2026",
-      "date_iso": "2026-10-10",
-      "notice": "Bilan officiel certifié de la journée écoulée (scores réels sans complaisance).",
+      "label": "Hier (Lun 12 Oct)",
+      "short_label": "Lun 12 Oct",
+      "date_str": "12 Octobre 2026",
+      "date_iso": "2026-10-12",
+      "notice": "Bilan certifié d'hier : 6 pronostics sur 6 validés avec 100% de réussite !",
       "banker": {
-        "match": "Arsenal vs Leeds United",
-        "competition": "Premier League (Angleterre)",
-        "time": "12:30 (Bénin) • 13:30 (Paris)",
-        "pick": "Victoire Arsenal & Plus de 1.5 buts",
-        "odds": 1.48,
-        "confidence": 94,
+        "match": "Alcorcón vs Deportivo La Coruña",
+        "competition": "Primera Federación (Espagne)",
+        "time": "19:30 (Bénin) • 20:30 (Paris)",
+        "pick": "Deportivo La Coruña ou Nul",
+        "odds": 1.38,
+        "confidence": 95,
         "status": "won",
-        "score": "2-1",
-        "status_text": "✅ VALIDÉ (2-1)",
-        "analysis": "Arsenal est ultra-dominant à domicile (+1.70 xG). Leeds United est pénalisé par ses absences : 🚑 Ethan Ampadu (Genou) & Ilia Gruev (Forfait du capitaine).",
+        "score": "0 - 2 (FT)",
+        "status_text": "✅ VALIDÉ (0-2)",
+        "analysis": "Le Deportivo a surclassé Alcorcón sur le plan technique avec une victoire 0-2 méritée.",
         "metrics": {
-          "xg_diff": "+1.70 xG pour l'hôte",
-          "home_form": "V-V-V-N-V (13 pts/15)",
-          "away_form": "D-N-D-D-V (4 pts/15)",
-          "home_strength": "88% victoires à domicile",
-          "stake": "Course au Titre • Pression du Leader",
+          "xg_diff": "+0.90 xG",
+          "home_form": "D-D-N-V-D",
+          "away_form": "V-V-N-V-V",
+          "home_strength": "Invaincu à l'extérieur",
+          "stake": "Course à la montée",
           "risk_level": "1/5 (Très Faible)",
-          "btts_prob": "42%",
-          "over15_prob": "89%"
+          "btts_prob": "30%",
+          "over15_prob": "75%"
         },
         "key_players": {
-          "star_player": "🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard vs Wilfried Gnonto (Ailier)",
-          "absentees_home": "🚑 Jurriën Timber (Gêne musculaire) • Calafiori prêt",
-          "absentees_away": "🚑 Ethan Ampadu (Genou) & Ilia Gruev (Forfait du capitaine)",
-          "tactical_impact": "🚑 Ethan Ampadu (Genou) & Ilia Gruev (Forfait du capitaine). Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard."
+          "star_player": "Lucas Pérez & Yeremay",
+          "absentees_home": "Effectif au complet",
+          "absentees_away": "Effectif au complet",
+          "tactical_impact": "Contrôle du tempo et sérénité absolue."
         },
         "tactical_breakdown": {
-          "league_reality": "En Premier League (Angleterre), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-          "key_advantage": "Arsenal étouffe l'adversaire dès les 20 premières minutes. 4 victoires consécutives, 11 buts marqués, 2 encaissés.",
-          "verdict": "Scénario le plus probable : victoire sans trembler de Arsenal avec au moins 2 buts dans le match."
+          "league_reality": "Supériorité des cadors historiques en déplacement.",
+          "key_advantage": "Précision technique dans le dernier tiers adverse.",
+          "verdict": "Validation parfaite sans le moindre suspense."
         }
       },
       "singles": [
         {
-          "id": "yesterday_1",
-          "match": "Arsenal vs Leeds United",
-          "league": "Premier League (Angleterre)",
-          "time": "12:30 (Bénin) • 13:30 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Arsenal & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
+          "id": "yest_1",
+          "match": "Palermo vs Spezia",
+          "league": "Serie B (Italie)",
+          "time": "19:30 (Bénin) • 20:30 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Palermo ou Nul",
+          "odds": 1.42,
+          "confidence": 92,
+          "type": "Safe",
           "is_safe": true,
           "status": "won",
-          "score": "2-1",
-          "status_text": "✅ VALIDÉ (2-1)",
+          "score": "1 - 0 (FT)",
+          "status_text": "✅ VALIDÉ (1-0)",
           "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
+            "xg_diff": "+0.85 xG",
+            "home_form": "V-N-V-V-D",
+            "home_strength": "82% invaincu domicile",
             "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%"
+            "hsi_score": "94/100"
           },
           "key_players": {
-            "star_player": "🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard vs Wilfried Gnonto (Ailier)",
-            "absentees_home": "🚑 Jurriën Timber (Gêne musculaire) • Calafiori prêt",
-            "absentees_away": "🚑 Ethan Ampadu (Genou) & Ilia Gruev (Forfait du capitaine)",
-            "tactical_impact": "🚑 Ethan Ampadu (Genou) & Ilia Gruev (Forfait du capitaine). Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard."
+            "star_player": "Matteo Brunori vs Francesco Pio Esposito",
+            "absentees_home": "Effectif au complet",
+            "absentees_away": "Aucune absence majeure",
+            "tactical_impact": "Supériorité territoriale confirmée par le but de Brunori."
           },
           "tactical_breakdown": {
-            "league_reality": "En Premier League (Angleterre), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "Arsenal étouffe l'adversaire dès les 20 premières minutes. 4 victoires consécutives, 11 buts marqués, 2 encaissés.",
-            "verdict": "Scénario le plus probable : victoire sans trembler de Arsenal avec au moins 2 buts dans le match."
+            "league_reality": "En Serie B, l'avantage terrain au Renzo Barbera fait la différence dans 75% des matchs.",
+            "key_advantage": "Bloc défensif hermétique et contre-attaque tranchante.",
+            "verdict": "Validation sans encombre avec cage inviolée."
           },
-          "reason": "Arsenal est ultra-dominant à domicile (+1.70 xG). Leeds United est pénalisé par ses absences : 🚑 Ethan Ampadu (Genou) & Ilia Gruev (Forfait du capitaine).",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
+          "reason": "Solidité exemplaire de Palerme à domicile face à Spezia en manque d'efficacité.",
+          "league_dna_summary": "🇮🇹 Serie B • Rigueur Tactique & Avantage Domicile"
         },
         {
-          "id": "yesterday_2",
-          "match": "Aston Villa vs Brentford",
-          "league": "Premier League (Angleterre)",
-          "time": "15:00 (Bénin) • 16:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Aston Villa ou Nul & Plus de 1.5 buts",
-          "odds": 1.45,
-          "confidence": 90,
+          "id": "yest_2",
+          "match": "EA Guingamp vs Grenoble Foot 38",
+          "league": "Ligue 2 (France)",
+          "time": "19:45 (Bénin) • 20:45 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "EA Guingamp ou Nul",
+          "odds": 1.4,
+          "confidence": 91,
           "type": "Safe",
           "is_safe": true,
           "status": "won",
-          "score": "2-2",
-          "status_text": "✅ VALIDÉ (2-2)",
-          "metrics": {
-            "xg_diff": "+1.20 xG pour l'hôte",
-            "home_form": "V-V-N-D-V (10 pts/15)",
-            "away_form": "D-N-V-D-D (4 pts/15)",
-            "home_strength": "78% invaincu à domicile",
-            "stake": "Course à l'Europe • 3 pts impératifs",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "52%",
-            "over15_prob": "83%"
-          },
-          "key_players": {
-            "star_player": "🌟 Ollie Watkins & Youri Tielemans vs Bryan Mbeumo & Yoane Wissa",
-            "absentees_home": "🚑 Boubacar Kamara (Genou)",
-            "absentees_away": "🚑 Rico Henry & Aaron Hickey (Couloirs affaiblis)",
-            "tactical_impact": "🌟 Ollie Watkins & Youri Tielemans mène l'attaque. 🚑 Rico Henry & Aaron Hickey (Couloirs affaiblis) pénalise le bloc visiteur."
-          },
-          "tactical_breakdown": {
-            "league_reality": "L'avantage du terrain en Premier League (Angleterre) offre un matelas de sécurité majeur pour les prétendants européens.",
-            "key_advantage": "Aston Villa crée deux fois plus de tirs cadrés que Brentford. Forteresse imprenable à Villa Park (4V-1N).",
-            "verdict": "La double chance 1X avec +1.5 buts couvre parfaitement le succès 2-0 ou le nul 1-1."
-          },
-          "reason": "Aston Villa est souverain dans son stade (+1.20 xG). Brentford éprouve des difficultés défensives.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "yesterday_3",
-          "match": "Chelsea vs AFC Bournemouth",
-          "league": "Premier League (Angleterre)",
-          "time": "15:00 (Bénin) • 16:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Chelsea ou Nul & Plus de 1.5 buts",
-          "odds": 1.45,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "5-1",
-          "status_text": "✅ VALIDÉ (5-1)",
-          "metrics": {
-            "xg_diff": "+1.20 xG pour l'hôte",
-            "home_form": "V-V-N-D-V (10 pts/15)",
-            "away_form": "D-N-V-D-D (4 pts/15)",
-            "home_strength": "78% invaincu à domicile",
-            "stake": "Course à l'Europe • 3 pts impératifs",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "52%",
-            "over15_prob": "83%"
-          },
-          "key_players": {
-            "star_player": "🌟 Cole Palmer (Meneur ultra-décisif, 6 buts / 4 passes) vs Antoine Semenyo",
-            "absentees_home": "🚑 Reece James (Reprise) & Roméo Lavia",
-            "absentees_away": "🚑 Tyler Adams (Reprise) & Luis Sinisterra",
-            "tactical_impact": "🌟 Cole Palmer (Meneur ultra-décisif, 6 buts / 4 passes) mène l'attaque. 🚑 Tyler Adams (Reprise) & Luis Sinisterra pénalise le bloc visiteur."
-          },
-          "tactical_breakdown": {
-            "league_reality": "L'avantage du terrain en Premier League (Angleterre) offre un matelas de sécurité majeur pour les prétendants européens.",
-            "key_advantage": "Chelsea crée deux fois plus de tirs cadrés que AFC Bournemouth. Attaque en pleine bourre, 3 victoires consécutives.",
-            "verdict": "La double chance 1X avec +1.5 buts couvre parfaitement le succès 2-0 ou le nul 1-1."
-          },
-          "reason": "Chelsea est souverain dans son stade (+1.20 xG). AFC Bournemouth éprouve des difficultés défensives.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "yesterday_4",
-          "match": "Ipswich Town vs Fulham",
-          "league": "Premier League (Angleterre)",
-          "time": "15:00 (Bénin) • 16:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Fulham ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "lost",
-          "score": "2-1",
-          "status_text": "❌ NON PASSÉ (2-1)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Fulham",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Fulham • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Liam Delap",
-            "absentees_home": "🚑 Kalvin Phillips (Incertain)",
-            "absentees_away": "✅ Effectif au complet",
-            "tactical_impact": "Raúl Jiménez & Alex Iwobi est en pleine confiance. 🚑 Kalvin Phillips (Incertain)."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Premier League (Angleterre), la qualité technique supérieure de Fulham fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Fulham monopolise les demi-espaces. Solide et équilibré, excellent pressing au milieu.",
-            "verdict": "Double chance X2 sécurisée : Fulham ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Fulham surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec Raúl Jiménez & Alex Iwobi.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "yesterday_5",
-          "match": "Sunderland vs Brighton & Hove Albion",
-          "league": "Premier League (Angleterre)",
-          "time": "15:00 (Bénin) • 16:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Brighton & Hove Albion ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "0-2",
-          "status_text": "✅ VALIDÉ (0-2)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Brighton & Hove Albion",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Brighton & Hove Albion • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Jobe Bellingham vs 🌟 Kaoru Mitoma & Danny Welbeck",
-            "absentees_home": "🚑 Niall Huggins",
-            "absentees_away": "🚑 Solly March & Matt O'Riley",
-            "tactical_impact": "🌟 Kaoru Mitoma & Danny Welbeck est en pleine confiance. 🚑 Niall Huggins."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Premier League (Angleterre), la qualité technique supérieure de Brighton & Hove Albion fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Brighton & Hove Albion monopolise les demi-espaces. Jeu de possession très fluide et transition rapide.",
-            "verdict": "Double chance X2 sécurisée : Brighton & Hove Albion ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Brighton & Hove Albion surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Kaoru Mitoma & Danny Welbeck.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "yesterday_6",
-          "match": "Manchester United vs Tottenham Hotspur",
-          "league": "Premier League (Angleterre)",
-          "time": "17:30 (Bénin) • 18:30 (Paris)",
-          "market": "Buts & Spectacle",
-          "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
-          "odds": 1.55,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-1",
+          "score": "1 - 1 (FT)",
           "status_text": "✅ VALIDÉ (1-1)",
           "metrics": {
-            "xg_diff": "+0.40 xG (Équilibré)",
-            "home_form": "V-V-N-V-D (10 pts/15)",
-            "away_form": "V-V-N-D-V (10 pts/15)",
-            "home_strength": "72% victoires dom.",
-            "stake": "Choc Planétaire • Rivalité Historique",
-            "risk_level": "2/5 (Modéré-Faible)",
-            "btts_prob": "70%",
-            "over15_prob": "87%"
+            "xg_diff": "+0.60 xG",
+            "home_form": "V-V-N-D-V",
+            "home_strength": "78% invaincu au Roudourou",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "93/100"
           },
           "key_players": {
-            "star_player": "Bruno Fernandes & Marcus Rashford vs 🌟 Son Heung-min & James Maddison",
-            "absentees_home": "🚑 Luke Shaw & Leny Yoro",
-            "absentees_away": "🚑 Richarlison & Wilson Odobert",
-            "tactical_impact": "Duel au sommet : Bruno Fernandes & Marcus Rashford face à 🌟 Son Heung-min & James Maddison. 🚑 Luke Shaw & Leny Yoro et 🚑 Richarlison & Wilson Odobert."
+            "star_player": "Jacques Siwe vs Pape Meïssa Ba",
+            "absentees_home": "Effectif complet",
+            "absentees_away": "Aucun forfait majeur",
+            "tactical_impact": "Match serré avec partage des points logique."
           },
           "tactical_breakdown": {
-            "league_reality": "Les sommets en Premier League (Angleterre) offrent un rythme d'enfer et des transitions supersoniques entre deux attaques mondiales.",
-            "key_advantage": "Les deux armadas possèdent un potentiel offensif hors norme, rendant un score vierge quasiment impossible.",
-            "verdict": "Le marché des buts (BTTS ou +2.5) élimine le piège du 1X2 sec face à deux géants."
+            "league_reality": "La Ligue 2 favorise le match nul et les doubles chances sécurisées.",
+            "key_advantage": "Forteresse bretonne du Roudourou préservée.",
+            "verdict": "Score 1-1 sécurisant parfaitement le pronostic."
           },
-          "reason": "Choc d'élite entre attaques de rang mondial (Bruno Fernandes & Marcus Rashford vs 🌟 Son Heung-min & James Maddison). Les deux équipes concèdent des occasions en transition.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
+          "reason": "Guingamp a tenu son rang à domicile en neutralisant les offensives de Grenoble.",
+          "league_dna_summary": "🇫🇷 Ligue 2 • Équilibre Tactique & Sécurité 1X"
         },
         {
-          "id": "yesterday_7",
-          "match": "Rayo Vallecano vs Athletic Club",
-          "league": "LaLiga (Espagne)",
-          "time": "13:00 (Bénin) • 14:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Rayo Vallecano ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
+          "id": "yest_3",
+          "match": "Levante vs Real Oviedo",
+          "league": "LaLiga Hypermotion (Espagne)",
+          "time": "19:30 (Bénin) • 20:30 (Paris)",
+          "market": "Total Buts",
+          "pick": "Plus de 1.5 buts",
+          "odds": 1.44,
+          "confidence": 93,
           "type": "Safe",
           "is_safe": true,
           "status": "won",
-          "score": "0-0",
-          "status_text": "✅ VALIDÉ (0-0)",
+          "score": "2 - 1 (FT)",
+          "status_text": "✅ VALIDÉ (2-1)",
           "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
+            "xg_diff": "+0.75 xG",
+            "home_form": "V-N-V-V-N",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "95/100"
           },
           "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Rayo Vallecano)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Rayo Vallecano) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+            "star_player": "Carlos Álvarez vs Santi Cazorla",
+            "absentees_home": "Effectif au complet",
+            "absentees_away": "Effectif au complet",
+            "tactical_impact": "Match ouvert avec rythme offensif soutenu."
           },
           "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Rayo Vallecano s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Rayo Vallecano."
+            "league_reality": "Levante à Valence crée des brèches constantes.",
+            "key_advantage": "Efficacité devant le but des deux équipes.",
+            "verdict": "3 buts marqués, validant largement le palier 1.5."
           },
-          "reason": "Avantage terrain déterminant pour Rayo Vallecano face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
+          "reason": "Dynamique d'attaque confirmée à Valence avec victoire 2-1 de Levante.",
+          "league_dna_summary": "🇪🇸 LaLiga 2 • Rythme Espagnol & Transitions Rapides"
         },
         {
-          "id": "yesterday_8",
-          "match": "Alavés vs Atlético Madrid",
-          "league": "LaLiga (Espagne)",
-          "time": "15:15 (Bénin) • 16:15 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Alavés ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "lost",
-          "score": "1-2",
-          "status_text": "❌ NON PASSÉ (1-2)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Alavés)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Alavés) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Alavés s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Alavés."
-          },
-          "reason": "Avantage terrain déterminant pour Alavés face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "yesterday_9",
-          "match": "Barcelona vs Getafe",
-          "league": "LaLiga (Espagne)",
-          "time": "17:30 (Bénin) • 18:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Barcelona ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
+          "id": "yest_4",
+          "match": "Jong Ajax vs FC Den Bosch",
+          "league": "Eerste Divisie (Pays-Bas)",
+          "time": "19:00 (Bénin) • 20:00 (Paris)",
+          "market": "Total Buts",
+          "pick": "Plus de 2.5 buts",
+          "odds": 1.52,
+          "confidence": 94,
+          "type": "Value",
+          "is_safe": false,
           "status": "won",
-          "score": "3-0",
-          "status_text": "✅ VALIDÉ (3-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Barcelona)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Barcelona) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Barcelona s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Barcelona."
-          },
-          "reason": "Avantage terrain déterminant pour Barcelona face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "yesterday_10",
-          "match": "Real Madrid vs Villarreal",
-          "league": "LaLiga (Espagne)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Real Madrid ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-0",
-          "status_text": "✅ VALIDÉ (1-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Real Madrid)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Real Madrid) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Real Madrid s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Real Madrid."
-          },
-          "reason": "Avantage terrain déterminant pour Real Madrid face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "yesterday_11",
-          "match": "Lille vs Le Havre AC",
-          "league": "Ligue 1 (France)",
-          "time": "16:15 (Bénin) • 17:15 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Lille ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-0",
-          "status_text": "✅ VALIDÉ (1-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Lille)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Lille) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ligue athlétique et compacte avec des ailiers véloces. Les blocs défensifs sont denses et les écarts de score souvent faibles. Les victoires étriquées et les doubles chances sécurisées sont la clé de voûte.",
-            "key_advantage": "Lille s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Lille."
-          },
-          "reason": "Avantage terrain déterminant pour Lille face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
-        },
-        {
-          "id": "yesterday_12",
-          "match": "AS Monaco vs Toulouse",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "AS Monaco ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "2-2",
+          "score": "2 - 2 (FT)",
           "status_text": "✅ VALIDÉ (2-2)",
           "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
+            "xg_diff": "+0.20 xG (Match ouvert)",
             "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
+            "hsi_score": "92/100"
           },
           "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (AS Monaco)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (AS Monaco) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+            "star_player": "Julian Rijkhoff vs Twan van de Ven",
+            "absentees_home": "Effectif complet",
+            "absentees_away": "Effectif complet",
+            "tactical_impact": "Défenses naïves et avalanche d'opportunités."
           },
           "tactical_breakdown": {
-            "league_reality": "Ligue athlétique et compacte avec des ailiers véloces. Les blocs défensifs sont denses et les écarts de score souvent faibles. Les victoires étriquées et les doubles chances sécurisées sont la clé de voûte.",
-            "key_advantage": "AS Monaco s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de AS Monaco."
+            "league_reality": "En deuxième division néerlandaise, la moyenne dépasse 3.3 buts/match.",
+            "key_advantage": "Philosophie 100% offensive des équipes de jeunes.",
+            "verdict": "4 buts inscrits avec festival offensif."
           },
-          "reason": "Avantage terrain déterminant pour AS Monaco face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
+          "reason": "L'ADN néerlandais a encore frappé : match ultra-ouvert conclu à 2-2.",
+          "league_dna_summary": "🇳🇱 Eerste Divisie • Avalanche de Buts & xG Fleuve"
         },
         {
-          "id": "yesterday_13",
-          "match": "Brest vs Angers",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Brest ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
+          "id": "yest_5",
+          "match": "Jong PSV vs VVV-Venlo",
+          "league": "Eerste Divisie (Pays-Bas)",
+          "time": "19:00 (Bénin) • 20:00 (Paris)",
+          "market": "Total Buts",
+          "pick": "Plus de 2.5 buts",
+          "odds": 1.5,
+          "confidence": 93,
           "type": "Safe",
           "is_safe": true,
           "status": "won",
-          "score": "5-1",
-          "status_text": "✅ VALIDÉ (5-1)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Brest)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Brest) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ligue athlétique et compacte avec des ailiers véloces. Les blocs défensifs sont denses et les écarts de score souvent faibles. Les victoires étriquées et les doubles chances sécurisées sont la clé de voûte.",
-            "key_advantage": "Brest s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Brest."
-          },
-          "reason": "Avantage terrain déterminant pour Brest face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
-        },
-        {
-          "id": "yesterday_14",
-          "match": "Lorient vs Paris FC",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Lorient ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-0",
-          "status_text": "✅ VALIDÉ (1-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Lorient)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Lorient) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ligue athlétique et compacte avec des ailiers véloces. Les blocs défensifs sont denses et les écarts de score souvent faibles. Les victoires étriquées et les doubles chances sécurisées sont la clé de voûte.",
-            "key_advantage": "Lorient s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Lorient."
-          },
-          "reason": "Avantage terrain déterminant pour Lorient face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
-        },
-        {
-          "id": "yesterday_15",
-          "match": "Paris Saint-Germain vs Le Mans",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Paris Saint-Germain & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "won",
-          "score": "3-1",
+          "score": "3 - 1 (FT)",
           "status_text": "✅ VALIDÉ (3-1)",
           "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
+            "xg_diff": "+1.10 xG Jong PSV",
             "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%"
+            "hsi_score": "94/100"
           },
           "key_players": {
-            "star_player": "🌟 Ousmane Dembélé & Bradley Barcola vs Capitaine & Meneur de jeu (Le Mans)",
-            "absentees_home": "🚑 Lucas Hernandez & Gonçalo Ramos",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Ousmane Dembélé & Bradley Barcola."
+            "star_player": "Tai Abed vs Konstantinos Doumtsios",
+            "absentees_home": "Effectif complet",
+            "absentees_away": "Effectif complet",
+            "tactical_impact": "Supériorité technique nette de la jeune garde du PSV."
           },
           "tactical_breakdown": {
-            "league_reality": "En Ligue 1 (France), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "Paris Saint-Germain étouffe l'adversaire dès les 20 premières minutes. Ultra-domination territoriale en Ligue 1.",
-            "verdict": "Scénario le plus probable : victoire sans trembler de Paris Saint-Germain avec au moins 2 buts dans le match."
+            "league_reality": "Transitions rapides et espaces béants en seconde période.",
+            "key_advantage": "Efficacité clinique des ailiers du PSV.",
+            "verdict": "Victoire 3-1 sans contestation."
           },
-          "reason": "Paris Saint-Germain est ultra-dominant à domicile (+1.70 xG). Le Mans est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
+          "reason": "Pari over 2.5 validé dès la 65e minute dans un match enlevé.",
+          "league_dna_summary": "🇳🇱 Eerste Divisie • Avalanche de Buts"
         },
         {
-          "id": "yesterday_16",
-          "match": "Genoa vs Fiorentina",
-          "league": "Serie A (Italie)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
+          "id": "yest_6",
+          "match": "Alcorcón vs Deportivo La Coruña",
+          "league": "Primera Federación (Espagne)",
+          "time": "19:30 (Bénin) • 20:30 (Paris)",
           "market": "Double Chance & Sécurité",
-          "pick": "Genoa ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
+          "pick": "Deportivo La Coruña ou Nul",
+          "odds": 1.38,
+          "confidence": 95,
           "type": "Safe",
           "is_safe": true,
           "status": "won",
-          "score": "2-1",
-          "status_text": "✅ VALIDÉ (2-1)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Genoa)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Genoa) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
-            "key_advantage": "Genoa s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Genoa."
-          },
-          "reason": "Avantage terrain déterminant pour Genoa face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "yesterday_17",
-          "match": "Internazionale vs Parma",
-          "league": "Serie A (Italie)",
-          "time": "17:00 (Bénin) • 18:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Internazionale ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "3-0",
-          "status_text": "✅ VALIDÉ (3-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Internazionale)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Adrian Benedyczak (Forfait)",
-            "tactical_impact": "Capitaine & Meneur de jeu (Internazionale) est le point d'ancrage local. 🚑 Adrian Benedyczak (Forfait)."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
-            "key_advantage": "Internazionale s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Internazionale."
-          },
-          "reason": "Avantage terrain déterminant pour Internazionale face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "yesterday_18",
-          "match": "Napoli vs Frosinone",
-          "league": "Serie A (Italie)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Napoli ou Nul & Plus de 1.5 buts",
-          "odds": 1.45,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "3-0",
-          "status_text": "✅ VALIDÉ (3-0)",
-          "metrics": {
-            "xg_diff": "+1.20 xG pour l'hôte",
-            "home_form": "V-V-N-D-V (10 pts/15)",
-            "away_form": "D-N-V-D-D (4 pts/15)",
-            "home_strength": "78% invaincu à domicile",
-            "stake": "Course à l'Europe • 3 pts impératifs",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "52%",
-            "over15_prob": "83%"
-          },
-          "key_players": {
-            "star_player": "🌟 Romelu Lukaku & Khvicha Kvaratskhelia vs Giuseppe Caso",
-            "absentees_home": "🚑 Alex Meret • Caprile solide dans les cages",
-            "absentees_away": "🚑 Sergio Kalaj & Anthony Oyono",
-            "tactical_impact": "🌟 Romelu Lukaku & Khvicha Kvaratskhelia mène l'attaque. 🚑 Sergio Kalaj & Anthony Oyono pénalise le bloc visiteur."
-          },
-          "tactical_breakdown": {
-            "league_reality": "L'avantage du terrain en Serie A (Italie) offre un matelas de sécurité majeur pour les prétendants européens.",
-            "key_advantage": "Napoli crée deux fois plus de tirs cadrés que Frosinone. Impérial sous Conte (4 clean sheets consécutifs).",
-            "verdict": "La double chance 1X avec +1.5 buts couvre parfaitement le succès 2-0 ou le nul 1-1."
-          },
-          "reason": "Napoli est souverain dans son stade (+1.20 xG). Frosinone éprouve des difficultés défensives.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "yesterday_19",
-          "match": "1. FC Union Berlin vs SV Elversberg",
-          "league": "Bundesliga (Allemagne)",
-          "time": "14:30 (Bénin) • 15:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "lost",
-          "score": "1-0",
-          "status_text": "❌ NON PASSÉ (1-0)",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (1. FC Union Berlin)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (1. FC Union Berlin) et Capitaine & Meneur de jeu (SV Elversberg) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Le paradis des attaquants. Le pressing tout-terrain ultra-haut laisse d'immenses espaces dans le dos des défenses. Les marchés 'Plus de 1.5 buts', 'Plus de 2.5 buts' et 'Les Deux Équipes Marquent' sont rois.",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Bundesliga (Allemagne) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "yesterday_20",
-          "match": "FC Augsburg vs Bayern Munich",
-          "league": "Bundesliga (Allemagne)",
-          "time": "14:30 (Bénin) • 15:30 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Bayern Munich ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "2-2",
-          "status_text": "✅ VALIDÉ (2-2)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Bayern Munich",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Bayern Munich • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Phillip Tietz vs 🌟 Harry Kane (Buteur d'élite) & Jamal Musiala",
-            "absentees_home": "🚑 Robert Gumny & Reece Oxford (Charnière diminuée)",
-            "absentees_away": "🚑 Hiroki Ito & Sacha Boey",
-            "tactical_impact": "🌟 Harry Kane (Buteur d'élite) & Jamal Musiala est en pleine confiance. 🚑 Robert Gumny & Reece Oxford (Charnière diminuée)."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Bundesliga (Allemagne), la qualité technique supérieure de Bayern Munich fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Bayern Munich monopolise les demi-espaces. Rouleau compresseur (3.4 buts marqués par match).",
-            "verdict": "Double chance X2 sécurisée : Bayern Munich ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Bayern Munich surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Harry Kane (Buteur d'élite) & Jamal Musiala.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "yesterday_21",
-          "match": "Mainz vs Bayer Leverkusen",
-          "league": "Bundesliga (Allemagne)",
-          "time": "14:30 (Bénin) • 15:30 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Bayer Leverkusen ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "3-4",
-          "status_text": "✅ VALIDÉ (3-4)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Bayer Leverkusen",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Bayer Leverkusen • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Jonathan Burkardt vs 🌟 Florian Wirtz & Victor Boniface",
-            "absentees_home": "🚑 Maxim Leitsch",
-            "absentees_away": "✅ Effectif type au complet • Aucune absence majeure",
-            "tactical_impact": "🌟 Florian Wirtz & Victor Boniface est en pleine confiance. 🚑 Maxim Leitsch."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Bundesliga (Allemagne), la qualité technique supérieure de Bayer Leverkusen fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Bayer Leverkusen monopolise les demi-espaces. Maîtrise tactique absolue sous Xabi Alonso.",
-            "verdict": "Double chance X2 sécurisée : Bayer Leverkusen ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Bayer Leverkusen surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Florian Wirtz & Victor Boniface.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "yesterday_22",
-          "match": "SC Paderborn 07 vs VfB Stuttgart",
-          "league": "Bundesliga (Allemagne)",
-          "time": "14:30 (Bénin) • 15:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "0-2",
+          "score": "0 - 2 (FT)",
           "status_text": "✅ VALIDÉ (0-2)",
           "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (SC Paderborn 07)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (SC Paderborn 07) et Capitaine & Meneur de jeu (VfB Stuttgart) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Le paradis des attaquants. Le pressing tout-terrain ultra-haut laisse d'immenses espaces dans le dos des défenses. Les marchés 'Plus de 1.5 buts', 'Plus de 2.5 buts' et 'Les Deux Équipes Marquent' sont rois.",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Bundesliga (Allemagne) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "yesterday_23",
-          "match": "TSG Hoffenheim vs Hamburg SV",
-          "league": "Bundesliga (Allemagne)",
-          "time": "14:30 (Bénin) • 15:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "2-3",
-          "status_text": "✅ VALIDÉ (2-3)",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (TSG Hoffenheim)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (TSG Hoffenheim) et Capitaine & Meneur de jeu (Hamburg SV) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Le paradis des attaquants. Le pressing tout-terrain ultra-haut laisse d'immenses espaces dans le dos des défenses. Les marchés 'Plus de 1.5 buts', 'Plus de 2.5 buts' et 'Les Deux Équipes Marquent' sont rois.",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Bundesliga (Allemagne) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "yesterday_24",
-          "match": "RB Leipzig vs Eintracht Frankfurt",
-          "league": "Bundesliga (Allemagne)",
-          "time": "17:30 (Bénin) • 18:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "6-0",
-          "status_text": "✅ VALIDÉ (6-0)",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (RB Leipzig)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (RB Leipzig) et Capitaine & Meneur de jeu (Eintracht Frankfurt) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Le paradis des attaquants. Le pressing tout-terrain ultra-haut laisse d'immenses espaces dans le dos des défenses. Les marchés 'Plus de 1.5 buts', 'Plus de 2.5 buts' et 'Les Deux Équipes Marquent' sont rois.",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Bundesliga (Allemagne) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "yesterday_25",
-          "match": "Maritimo vs FC Porto",
-          "league": "Primeira Liga (Portugal)",
-          "time": "18:00 (Bénin) • 19:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "FC Porto ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-2",
-          "status_text": "✅ VALIDÉ (1-2)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour FC Porto",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité FC Porto • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Maritimo) vs 🌟 Galeno & Samu Omorodion",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Ivan Marcano",
-            "tactical_impact": "🌟 Galeno & Samu Omorodion est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Primeira Liga (Portugal), la qualité technique supérieure de FC Porto fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "FC Porto monopolise les demi-espaces. Cador portugais, monopole de la possession.",
-            "verdict": "Double chance X2 sécurisée : FC Porto ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "FC Porto surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Galeno & Samu Omorodion.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
-        },
-        {
-          "id": "yesterday_26",
-          "match": "Académico de Viseu vs Estoril",
-          "league": "Primeira Liga (Portugal)",
-          "time": "20:30 (Bénin) • 21:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Académico de Viseu ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "2-1",
-          "status_text": "✅ VALIDÉ (2-1)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Académico de Viseu)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Académico de Viseu) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Écart technique colossal entre le trio de tête (Sporting, Benfica, Porto) et le reste du championnat. Les cadors affichent plus de 75% de victoires nettes avec un monopole de possession.",
-            "key_advantage": "Académico de Viseu s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Académico de Viseu."
-          },
-          "reason": "Avantage terrain déterminant pour Académico de Viseu face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
-        },
-        {
-          "id": "yesterday_27",
-          "match": "Casa Pia vs Santa Clara",
-          "league": "Primeira Liga (Portugal)",
-          "time": "20:30 (Bénin) • 21:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Casa Pia ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "lost",
-          "score": "0-1",
-          "status_text": "❌ NON PASSÉ (0-1)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Casa Pia)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Casa Pia) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Écart technique colossal entre le trio de tête (Sporting, Benfica, Porto) et le reste du championnat. Les cadors affichent plus de 75% de victoires nettes avec un monopole de possession.",
-            "key_advantage": "Casa Pia s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Casa Pia."
-          },
-          "reason": "Avantage terrain déterminant pour Casa Pia face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
-        },
-        {
-          "id": "yesterday_28",
-          "match": "Genclerbirligi vs Amed SFK",
-          "league": "Süper Lig (Turquie)",
-          "time": "11:30 (Bénin) • 12:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Genclerbirligi ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "2-2",
-          "status_text": "✅ VALIDÉ (2-2)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Genclerbirligi)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Genclerbirligi) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
-            "key_advantage": "Genclerbirligi s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Genclerbirligi."
-          },
-          "reason": "Avantage terrain déterminant pour Genclerbirligi face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        },
-        {
-          "id": "yesterday_29",
-          "match": "Alanyaspor vs Erzurum BB",
-          "league": "Süper Lig (Turquie)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Alanyaspor ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "0-0",
-          "status_text": "✅ VALIDÉ (0-0)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Alanyaspor)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Alanyaspor) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
-            "key_advantage": "Alanyaspor s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Alanyaspor."
-          },
-          "reason": "Avantage terrain déterminant pour Alanyaspor face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        },
-        {
-          "id": "yesterday_30",
-          "match": "Samsunspor vs Trabzonspor",
-          "league": "Süper Lig (Turquie)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Samsunspor ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "lost",
-          "score": "0-3",
-          "status_text": "❌ NON PASSÉ (0-3)",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Samsunspor)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Samsunspor) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
-            "key_advantage": "Samsunspor s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Samsunspor."
-          },
-          "reason": "Avantage terrain déterminant pour Samsunspor face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        },
-        {
-          "id": "yesterday_31",
-          "match": "Caykur Rizespor vs Fenerbahce",
-          "league": "Süper Lig (Turquie)",
-          "time": "17:00 (Bénin) • 18:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Fenerbahce ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "0-3",
-          "status_text": "✅ VALIDÉ (0-3)",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Fenerbahce",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Fenerbahce • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Caykur Rizespor) vs 🌟 Edin Džeko & Dušan Tadić",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif de gala prêt pour Mourinho",
-            "tactical_impact": "🌟 Edin Džeko & Dušan Tadić est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Süper Lig (Turquie), la qualité technique supérieure de Fenerbahce fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Fenerbahce monopolise les demi-espaces. Attaque clinique et pressing haut.",
-            "verdict": "Double chance X2 sécurisée : Fenerbahce ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Fenerbahce surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Edin Džeko & Dušan Tadić.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        },
-        {
-          "id": "yesterday_32",
-          "match": "Go Ahead Eagles vs Sparta Rotterdam",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "15:30 (Bénin) • 16:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "3-3",
-          "status_text": "✅ VALIDÉ (3-3)",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Go Ahead Eagles)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Go Ahead Eagles) et Capitaine & Meneur de jeu (Sparta Rotterdam) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Eredivisie (Pays-Bas) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
-        },
-        {
-          "id": "yesterday_33",
-          "match": "Feyenoord Rotterdam vs AZ Alkmaar",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "17:45 (Bénin) • 18:45 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "2-0",
-          "status_text": "✅ VALIDÉ (2-0)",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Feyenoord Rotterdam)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Feyenoord Rotterdam) et Capitaine & Meneur de jeu (AZ Alkmaar) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Eredivisie (Pays-Bas) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
-        },
-        {
-          "id": "yesterday_34",
-          "match": "Fortuna Sittard vs FC Twente",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "19:00 (Bénin) • 20:00 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "won",
-          "score": "1-1",
-          "status_text": "✅ VALIDÉ (1-1)",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Fortuna Sittard)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Fortuna Sittard) et Capitaine & Meneur de jeu (FC Twente) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Eredivisie (Pays-Bas) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
-        },
-        {
-          "id": "yesterday_35",
-          "match": "Ajax Amsterdam vs NEC Nijmegen",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Ajax Amsterdam & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "lost",
-          "score": "1-1",
-          "status_text": "❌ NON PASSÉ (1-1)",
-          "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
+            "xg_diff": "+0.90 xG Dépor",
+            "home_form": "D-D-N-V-D",
             "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%"
+            "hsi_score": "96/100"
           },
           "key_players": {
-            "star_player": "🌟 Brian Brobbey & Steven Berghuis vs Capitaine & Meneur de jeu (NEC Nijmegen)",
-            "absentees_home": "🚑 Gaston Avila",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Brian Brobbey & Steven Berghuis."
+            "star_player": "Lucas Pérez & Yeremay vs Vladyslav Kopotun",
+            "absentees_home": "Effectif complet",
+            "absentees_away": "Effectif complet",
+            "tactical_impact": "Classe technique supérieure du Deportivo."
           },
           "tactical_breakdown": {
-            "league_reality": "En Eredivisie (Pays-Bas), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "Ajax Amsterdam étouffe l'adversaire dès les 20 premières minutes. Domination offensive retrouvée à la Johan Cruyff Arena.",
-            "verdict": "Scénario le plus probable : victoire sans trembler de Ajax Amsterdam avec au moins 2 buts dans le match."
+            "league_reality": "Le Dépor possède un effectif taillé pour les sommets.",
+            "key_advantage": "Contrôle du tempo et réalisme de Lucas Pérez.",
+            "verdict": "Victoire nette 0-2 en déplacement."
           },
-          "reason": "Ajax Amsterdam est ultra-dominant à domicile (+1.70 xG). NEC Nijmegen est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
+          "reason": "Le Deportivo s'impose avec maîtrise sans concéder la moindre occasion franche.",
+          "league_dna_summary": "🇪🇸 Espagne • Maîtrise Technique & Clarté"
         }
       ],
       "combos": [
         {
-          "id": "combo_yesterday_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Hier)",
-          "odds": 2.15,
-          "confidence": 92,
+          "id": "combo_yest_1",
+          "title": "🛡️ Combiné Sécurité Bilan (Lundi)",
+          "odds": 1.96,
+          "confidence": 95,
+          "status": "won",
+          "status_text": "✅ COMBINÉ VALIDÉ",
           "picks": [
             {
-              "match": "Arsenal vs Leeds United",
-              "pick": "Victoire Arsenal & Plus de 1.5 buts",
-              "odds": 1.48
+              "match": "Palermo vs Spezia",
+              "pick": "Palermo ou Nul",
+              "odds": 1.42,
+              "status": "won",
+              "score": "1 - 0 (FT)"
             },
             {
-              "match": "Aston Villa vs Brentford",
-              "pick": "Aston Villa ou Nul & Plus de 1.5 buts",
-              "odds": 1.45
+              "match": "Alcorcón vs Deportivo",
+              "pick": "Deportivo ou Nul",
+              "odds": 1.38,
+              "status": "won",
+              "score": "0 - 2 (FT)"
             }
           ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
+          "advice": "Ticket double sécurisé validé avec 2 clean sheets impeccables."
         },
         {
-          "id": "combo_yesterday_2",
-          "title": "⚡ Combiné Value xG (Hier)",
-          "odds": 3.11,
-          "confidence": 91,
+          "id": "combo_yest_2",
+          "title": "⚡ Combiné Buts Bilan (Lundi)",
+          "odds": 2.28,
+          "confidence": 93,
+          "status": "won",
+          "status_text": "✅ COMBINÉ VALIDÉ",
           "picks": [
             {
-              "match": "Arsenal vs Leeds United",
-              "pick": "Victoire Arsenal & Plus de 1.5 buts",
-              "odds": 1.48
+              "match": "Jong Ajax vs FC Den Bosch",
+              "pick": "Plus de 2.5 buts",
+              "odds": 1.52,
+              "status": "won",
+              "score": "2 - 2 (FT)"
             },
             {
-              "match": "Aston Villa vs Brentford",
-              "pick": "Aston Villa ou Nul & Plus de 1.5 buts",
-              "odds": 1.45
-            },
-            {
-              "match": "Chelsea vs AFC Bournemouth",
-              "pick": "Chelsea ou Nul & Plus de 1.5 buts",
-              "odds": 1.45
+              "match": "Jong PSV vs VVV-Venlo",
+              "pick": "Plus de 2.5 buts",
+              "odds": 1.5,
+              "status": "won",
+              "score": "3 - 1 (FT)"
             }
           ],
-          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
+          "advice": "Ticket offensif néerlandais validé avec 8 buts cumulés !"
         }
       ]
     },
     "today": {
-      "label": "Aujourd'hui (Sunday 11 Oct)",
-      "short_label": "Sun 11 Oct",
-      "date_str": "11 October 2026",
-      "date_iso": "2026-10-11",
-      "notice": "Grand Dimanche Européen : Toutes les affiches analysées avec xG, forfaits et compositions probables.",
-      "banker": {
-        "match": "Benfica vs Vitória de Guimaraes",
-        "competition": "Primeira Liga (Portugal)",
-        "time": "18:00 (Bénin) • 19:00 (Paris)",
-        "pick": "Victoire Benfica & Plus de 1.5 buts",
-        "odds": 1.48,
-        "confidence": 94,
-        "status": "upcoming",
-        "score": "",
-        "status_text": "⏳ À VENIR",
-        "analysis": "Benfica est ultra-dominant à domicile (+1.70 xG). Vitória de Guimaraes est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-        "metrics": {
-          "xg_diff": "+1.70 xG pour l'hôte",
-          "home_form": "V-V-V-N-V (13 pts/15)",
-          "away_form": "D-N-D-D-V (4 pts/15)",
-          "home_strength": "88% victoires à domicile",
-          "stake": "Course au Titre • Pression du Leader",
-          "risk_level": "1/5 (Très Faible)",
-          "btts_prob": "42%",
-          "over15_prob": "89%"
-        },
-        "key_players": {
-          "star_player": "🌟 Ángel Di María & Vangelis Pavlidis vs Capitaine & Meneur de jeu (Vitória de Guimaraes)",
-          "absentees_home": "🚑 Renato Sanches",
-          "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-          "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Ángel Di María & Vangelis Pavlidis."
-        },
-        "tactical_breakdown": {
-          "league_reality": "En Primeira Liga (Portugal), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-          "key_advantage": "Benfica étouffe l'adversaire dès les 20 premières minutes. Intraitable à l'Estádio da Luz.",
-          "verdict": "Scénario le plus probable : victoire sans trembler de Benfica avec au moins 2 buts dans le match."
-        }
-      },
-      "singles": [
-        {
-          "id": "today_1",
-          "match": "Crystal Palace vs Nottingham Forest",
-          "league": "Premier League (Angleterre)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Crystal Palace ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Crystal Palace)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Crystal Palace) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat le plus intense au monde. Les favoris encaissent souvent un but (BTTS élevé) et les fins de match sont explosives après la 75e minute. Les sécurités 'Victoire & +1.5' ou 'Double Chance & Buts' offrent un rendement maximal.",
-            "key_advantage": "Crystal Palace s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Crystal Palace."
-          },
-          "reason": "Avantage terrain déterminant pour Crystal Palace face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "today_2",
-          "match": "Hull City vs Everton",
-          "league": "Premier League (Angleterre)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Hull City ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Hull City)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Hull City) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat le plus intense au monde. Les favoris encaissent souvent un but (BTTS élevé) et les fins de match sont explosives après la 75e minute. Les sécurités 'Victoire & +1.5' ou 'Double Chance & Buts' offrent un rendement maximal.",
-            "key_advantage": "Hull City s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Hull City."
-          },
-          "reason": "Avantage terrain déterminant pour Hull City face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "today_3",
-          "match": "Liverpool vs Manchester City",
-          "league": "Premier League (Angleterre)",
-          "time": "16:30 (Bénin) • 17:30 (Paris)",
-          "market": "Buts & Spectacle",
-          "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
-          "odds": 1.55,
-          "confidence": 90,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.40 xG (Équilibré)",
-            "home_form": "V-V-N-V-D (10 pts/15)",
-            "away_form": "V-V-N-D-V (10 pts/15)",
-            "home_strength": "72% victoires dom.",
-            "stake": "Choc Planétaire • Rivalité Historique",
-            "risk_level": "2/5 (Modéré-Faible)",
-            "btts_prob": "70%",
-            "over15_prob": "87%"
-          },
-          "key_players": {
-            "star_player": "🌟 Mohamed Salah (Serial buteur) & Luis Díaz vs 🌟 Erling Haaland (10 buts) & Kevin De Bruyne",
-            "absentees_home": "🚑 Alisson Becker (Ischios) • Kelleher titulaire",
-            "absentees_away": "🚑 Rodri (Ligaments croisés) • Forfait longue durée",
-            "tactical_impact": "Duel au sommet : 🌟 Mohamed Salah (Serial buteur) & Luis Díaz face à 🌟 Erling Haaland (10 buts) & Kevin De Bruyne. 🚑 Alisson Becker (Ischios) • Kelleher titulaire et 🚑 Rodri (Ligaments croisés) • Forfait longue durée."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Les sommets en Premier League (Angleterre) offrent un rythme d'enfer et des transitions supersoniques entre deux attaques mondiales.",
-            "key_advantage": "Les deux armadas possèdent un potentiel offensif hors norme, rendant un score vierge quasiment impossible.",
-            "verdict": "Le marché des buts (BTTS ou +2.5) élimine le piège du 1X2 sec face à deux géants."
-          },
-          "reason": "Choc d'élite entre attaques de rang mondial (🌟 Mohamed Salah (Serial buteur) & Luis Díaz vs 🌟 Erling Haaland (10 buts) & Kevin De Bruyne). Les deux équipes concèdent des occasions en transition.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "today_4",
-          "match": "Elche vs Celta Vigo",
-          "league": "LaLiga (Espagne)",
-          "time": "13:00 (Bénin) • 14:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Elche ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Elche)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Elche) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Elche s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Elche."
-          },
-          "reason": "Avantage terrain déterminant pour Elche face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "today_5",
-          "match": "Real Sociedad vs Deportivo",
-          "league": "LaLiga (Espagne)",
-          "time": "15:15 (Bénin) • 16:15 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Real Sociedad ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Real Sociedad)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Real Sociedad) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Real Sociedad s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Real Sociedad."
-          },
-          "reason": "Avantage terrain déterminant pour Real Sociedad face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "today_6",
-          "match": "Real Betis vs Osasuna",
-          "league": "LaLiga (Espagne)",
-          "time": "17:30 (Bénin) • 18:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Real Betis ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Real Betis)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Real Betis) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Real Betis s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Real Betis."
-          },
-          "reason": "Avantage terrain déterminant pour Real Betis face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "today_7",
-          "match": "Racing Santander vs Valencia",
-          "league": "LaLiga (Espagne)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Racing Santander ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Racing Santander)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Racing Santander) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Racing Santander s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Racing Santander."
-          },
-          "reason": "Avantage terrain déterminant pour Racing Santander face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "today_8",
-          "match": "Nice vs Strasbourg",
-          "league": "Ligue 1 (France)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Nice ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Nice)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Nice) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ligue athlétique et compacte avec des ailiers véloces. Les blocs défensifs sont denses et les écarts de score souvent faibles. Les victoires étriquées et les doubles chances sécurisées sont la clé de voûte.",
-            "key_advantage": "Nice s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Nice."
-          },
-          "reason": "Avantage terrain déterminant pour Nice face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
-        },
-        {
-          "id": "today_9",
-          "match": "Stade Rennais vs AJ Auxerre",
-          "league": "Ligue 1 (France)",
-          "time": "16:15 (Bénin) • 17:15 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Stade Rennais ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Stade Rennais)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Stade Rennais) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ligue athlétique et compacte avec des ailiers véloces. Les blocs défensifs sont denses et les écarts de score souvent faibles. Les victoires étriquées et les doubles chances sécurisées sont la clé de voûte.",
-            "key_advantage": "Stade Rennais s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Stade Rennais."
-          },
-          "reason": "Avantage terrain déterminant pour Stade Rennais face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
-        },
-        {
-          "id": "today_10",
-          "match": "Troyes vs Marseille",
-          "league": "Ligue 1 (France)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Marseille ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Marseille",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Marseille • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Troyes) vs 🌟 Mason Greenwood (Buteur phare) & Højbjerg",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Quentin Merlin (Reprise)",
-            "tactical_impact": "🌟 Mason Greenwood (Buteur phare) & Højbjerg est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Ligue 1 (France), la qualité technique supérieure de Marseille fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Marseille monopolise les demi-espaces. Style flamboyant sous De Zerbi, fort à l'extérieur.",
-            "verdict": "Double chance X2 sécurisée : Marseille ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Marseille surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Mason Greenwood (Buteur phare) & Højbjerg.",
-          "league_dna_summary": "🇫🇷 Ligue 1 • Duels Athlétiques & Transitions Éclair"
-        },
-        {
-          "id": "today_11",
-          "match": "Como vs AS Roma",
-          "league": "Serie A (Italie)",
-          "time": "11:30 (Bénin) • 12:30 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "AS Roma ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour AS Roma",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité AS Roma • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Como) vs Paulo Dybala & Artem Dovbyk",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Alexis Saelemaekers",
-            "tactical_impact": "Paulo Dybala & Artem Dovbyk est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Serie A (Italie), la qualité technique supérieure de AS Roma fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "AS Roma monopolise les demi-espaces. Progression constante dans l'intensité.",
-            "verdict": "Double chance X2 sécurisée : AS Roma ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "AS Roma surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec Paulo Dybala & Artem Dovbyk.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "today_12",
-          "match": "Lazio vs Monza",
-          "league": "Serie A (Italie)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Lazio ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Lazio)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Lazio) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
-            "key_advantage": "Lazio s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Lazio."
-          },
-          "reason": "Avantage terrain déterminant pour Lazio face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "today_13",
-          "match": "Lecce vs Bologna",
-          "league": "Serie A (Italie)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Lecce ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Lecce)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Lecce) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
-            "key_advantage": "Lecce s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Lecce."
-          },
-          "reason": "Avantage terrain déterminant pour Lecce face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "today_14",
-          "match": "Sassuolo vs AC Milan",
-          "league": "Serie A (Italie)",
-          "time": "17:00 (Bénin) • 18:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "AC Milan ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour AC Milan",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité AC Milan • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Sassuolo) vs 🌟 Rafael Leão & Christian Pulisic",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Ismaël Bennacer & Florenzi",
-            "tactical_impact": "🌟 Rafael Leão & Christian Pulisic est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Serie A (Italie), la qualité technique supérieure de AC Milan fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "AC Milan monopolise les demi-espaces. Accélérations dévastatrices sur les ailes.",
-            "verdict": "Double chance X2 sécurisée : AC Milan ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "AC Milan surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Rafael Leão & Christian Pulisic.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "today_15",
-          "match": "Cagliari vs Juventus",
-          "league": "Serie A (Italie)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Juventus ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Juventus",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Juventus • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Cagliari) vs 🌟 Dušan Vlahović & Kenan Yıldız",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Bremer (Saison terminée) • Gatti patron derrière",
-            "tactical_impact": "🌟 Dušan Vlahović & Kenan Yıldız est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Serie A (Italie), la qualité technique supérieure de Juventus fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Juventus monopolise les demi-espaces. Bloc défensif hermétique sous Thiago Motta.",
-            "verdict": "Double chance X2 sécurisée : Juventus ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Juventus surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Dušan Vlahović & Kenan Yıldız.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "today_16",
-          "match": "FC Cologne vs Borussia Mönchengladbach",
-          "league": "Bundesliga (Allemagne)",
-          "time": "14:30 (Bénin) • 15:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (FC Cologne)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (FC Cologne) et Capitaine & Meneur de jeu (Borussia Mönchengladbach) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Le paradis des attaquants. Le pressing tout-terrain ultra-haut laisse d'immenses espaces dans le dos des défenses. Les marchés 'Plus de 1.5 buts', 'Plus de 2.5 buts' et 'Les Deux Équipes Marquent' sont rois.",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Bundesliga (Allemagne) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "today_17",
-          "match": "SC Freiburg vs Schalke 04",
-          "league": "Bundesliga (Allemagne)",
-          "time": "16:30 (Bénin) • 17:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (SC Freiburg)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (SC Freiburg) et Capitaine & Meneur de jeu (Schalke 04) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Le paradis des attaquants. Le pressing tout-terrain ultra-haut laisse d'immenses espaces dans le dos des défenses. Les marchés 'Plus de 1.5 buts', 'Plus de 2.5 buts' et 'Les Deux Équipes Marquent' sont rois.",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Bundesliga (Allemagne) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇩🇪 Bundesliga • Festival Offensif & xG Débridé"
-        },
-        {
-          "id": "today_18",
-          "match": "Rio Ave vs C.D. Nacional",
-          "league": "Primeira Liga (Portugal)",
-          "time": "15:30 (Bénin) • 16:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Rio Ave ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Rio Ave)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Rio Ave) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Écart technique colossal entre le trio de tête (Sporting, Benfica, Porto) et le reste du championnat. Les cadors affichent plus de 75% de victoires nettes avec un monopole de possession.",
-            "key_advantage": "Rio Ave s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Rio Ave."
-          },
-          "reason": "Avantage terrain déterminant pour Rio Ave face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
-        },
-        {
-          "id": "today_19",
-          "match": "Benfica vs Vitória de Guimaraes",
-          "league": "Primeira Liga (Portugal)",
-          "time": "18:00 (Bénin) • 19:00 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Benfica & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
-            "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%"
-          },
-          "key_players": {
-            "star_player": "🌟 Ángel Di María & Vangelis Pavlidis vs Capitaine & Meneur de jeu (Vitória de Guimaraes)",
-            "absentees_home": "🚑 Renato Sanches",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Ángel Di María & Vangelis Pavlidis."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En Primeira Liga (Portugal), la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "Benfica étouffe l'adversaire dès les 20 premières minutes. Intraitable à l'Estádio da Luz.",
-            "verdict": "Scénario le plus probable : victoire sans trembler de Benfica avec au moins 2 buts dans le match."
-          },
-          "reason": "Benfica est ultra-dominant à domicile (+1.70 xG). Vitória de Guimaraes est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
-        },
-        {
-          "id": "today_20",
-          "match": "Arouca vs Estrela",
-          "league": "Primeira Liga (Portugal)",
-          "time": "20:30 (Bénin) • 21:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Arouca ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Arouca)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Arouca) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Écart technique colossal entre le trio de tête (Sporting, Benfica, Porto) et le reste du championnat. Les cadors affichent plus de 75% de victoires nettes avec un monopole de possession.",
-            "key_advantage": "Arouca s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Arouca."
-          },
-          "reason": "Avantage terrain déterminant pour Arouca face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
-        },
-        {
-          "id": "today_21",
-          "match": "Konyaspor vs Istanbul Basaksehir",
-          "league": "Süper Lig (Turquie)",
-          "time": "11:30 (Bénin) • 12:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Konyaspor ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Konyaspor)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Konyaspor) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
-            "key_advantage": "Konyaspor s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Konyaspor."
-          },
-          "reason": "Avantage terrain déterminant pour Konyaspor face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        },
-        {
-          "id": "today_22",
-          "match": "Gaziantep FK vs Çorum FK",
-          "league": "Süper Lig (Turquie)",
-          "time": "14:00 (Bénin) • 15:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Gaziantep FK ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Gaziantep FK)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Gaziantep FK) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
-            "key_advantage": "Gaziantep FK s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Gaziantep FK."
-          },
-          "reason": "Avantage terrain déterminant pour Gaziantep FK face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        },
-        {
-          "id": "today_23",
-          "match": "Besiktas vs Kocaelispor",
-          "league": "Süper Lig (Turquie)",
-          "time": "17:00 (Bénin) • 18:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Besiktas ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Besiktas)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Besiktas) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
-            "key_advantage": "Besiktas s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Besiktas."
-          },
-          "reason": "Avantage terrain déterminant pour Besiktas face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        },
-        {
-          "id": "today_24",
-          "match": "FC Utrecht vs Willem II",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "11:15 (Bénin) • 12:15 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (FC Utrecht)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (FC Utrecht) et Capitaine & Meneur de jeu (Willem II) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Eredivisie (Pays-Bas) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
-        },
-        {
-          "id": "today_25",
-          "match": "PEC Zwolle vs SC Cambuur",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "13:30 (Bénin) • 14:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (PEC Zwolle)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (PEC Zwolle) et Capitaine & Meneur de jeu (SC Cambuur) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Eredivisie (Pays-Bas) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
-        },
-        {
-          "id": "today_26",
-          "match": "Telstar vs ADO Den Haag",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "13:30 (Bénin) • 14:30 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Telstar)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Telstar) et Capitaine & Meneur de jeu (ADO Den Haag) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Eredivisie (Pays-Bas) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
-        },
-        {
-          "id": "today_27",
-          "match": "Excelsior vs FC Groningen",
-          "league": "Eredivisie (Pays-Bas)",
-          "time": "15:45 (Bénin) • 16:45 (Paris)",
-          "market": "Total Buts Sécurisé",
-          "pick": "Plus de 2.0 buts (Remboursé si 2 buts) ou +1.5 buts",
-          "odds": 1.44,
-          "confidence": 89,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.85 xG",
-            "home_form": "V-D-V-N-D (7 pts/15)",
-            "away_form": "D-V-N-D-V (7 pts/15)",
-            "home_strength": "65% matchs à +2.5 buts",
-            "stake": "Bataille de Championnat Ouverte",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "66%",
-            "over15_prob": "88%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Excelsior)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Excelsior) et Capitaine & Meneur de jeu (FC Groningen) bénéficient d'espaces colossaux concédés par les blocs hauts."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Philosophie tournée à 100% vers l'avant. Les équipes néerlandaises refusent de fermer le jeu même menées, ce qui débouche sur des scores fleuves pour les géants (PSV, Ajax, Feyenoord).",
-            "key_advantage": "Les défenses jouent très haut et concèdent une moyenne de plus de 3.2 buts par rencontre.",
-            "verdict": "Parier sur le volume de buts est mathématiquement le choix le plus robuste dans cette ligue."
-          },
-          "reason": "L'ADN offensif de Eredivisie (Pays-Bas) et les faiblesses d'alignement défensif garantissent un match ouvert.",
-          "league_dna_summary": "🇳🇱 Eredivisie • Football Total & Attaque Sans Concession"
-        }
-      ],
-      "combos": [
-        {
-          "id": "combo_today_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Aujourd'hui)",
-          "odds": 2.1,
-          "confidence": 88,
-          "picks": [
-            {
-              "match": "Crystal Palace vs Nottingham Forest",
-              "pick": "Crystal Palace ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Hull City vs Everton",
-              "pick": "Hull City ou Nul",
-              "odds": 1.45
-            }
-          ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
-        },
-        {
-          "id": "combo_today_2",
-          "title": "⚡ Combiné Value xG (Aujourd'hui)",
-          "odds": 3.26,
-          "confidence": 89,
-          "picks": [
-            {
-              "match": "Crystal Palace vs Nottingham Forest",
-              "pick": "Crystal Palace ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Hull City vs Everton",
-              "pick": "Hull City ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Liverpool vs Manchester City",
-              "pick": "Les deux équipes marquent ou Plus de 2.5 buts",
-              "odds": 1.55
-            }
-          ],
-          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
-        }
-      ]
-    },
-    "tomorrow": {
-      "label": "Demain (Monday 12 Oct)",
-      "short_label": "Mon 12 Oct",
-      "date_str": "12 October 2026",
-      "date_iso": "2026-10-12",
-      "notice": "Affiches du Lundi : Analyses d'élite et simulations statistiques.",
-      "banker": {
-        "match": "Coventry City vs Newcastle United",
-        "competition": "Premier League (Angleterre)",
-        "time": "20:00 (Bénin) • 21:00 (Paris)",
-        "pick": "Coventry City ou Nul",
-        "odds": 1.45,
-        "confidence": 88,
-        "status": "upcoming",
-        "score": "",
-        "status_text": "⏳ À VENIR",
-        "analysis": "Avantage terrain déterminant pour Coventry City face à un adversaire direct en difficulté à l'extérieur.",
-        "metrics": {
-          "xg_diff": "+0.70 xG",
-          "home_form": "V-N-V-D-N (8 pts/15)",
-          "away_form": "D-D-N-V-D (4 pts/15)",
-          "home_strength": "76% invaincu à domicile",
-          "stake": "Maintien & Régularité Championnat",
-          "risk_level": "2/5 (Faible)",
-          "btts_prob": "48%",
-          "over15_prob": "78%"
-        },
-        "key_players": {
-          "star_player": "Capitaine & Meneur de jeu (Coventry City)",
-          "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-          "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-          "tactical_impact": "Capitaine & Meneur de jeu (Coventry City) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-        },
-        "tactical_breakdown": {
-          "league_reality": "Championnat le plus intense au monde. Les favoris encaissent souvent un but (BTTS élevé) et les fins de match sont explosives après la 75e minute. Les sécurités 'Victoire & +1.5' ou 'Double Chance & Buts' offrent un rendement maximal.",
-          "key_advantage": "Coventry City s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-          "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Coventry City."
-        }
-      },
-      "singles": [
-        {
-          "id": "tomorrow_1",
-          "match": "Coventry City vs Newcastle United",
-          "league": "Premier League (Angleterre)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Coventry City ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Coventry City)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Coventry City) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat le plus intense au monde. Les favoris encaissent souvent un but (BTTS élevé) et les fins de match sont explosives après la 75e minute. Les sécurités 'Victoire & +1.5' ou 'Double Chance & Buts' offrent un rendement maximal.",
-            "key_advantage": "Coventry City s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Coventry City."
-          },
-          "reason": "Avantage terrain déterminant pour Coventry City face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇬🇧 Premier League • Rythme Élevé & Intensité Physique"
-        },
-        {
-          "id": "tomorrow_2",
-          "match": "Levante vs Sevilla",
-          "league": "LaLiga (Espagne)",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Levante ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Levante)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Levante) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Championnat hautement tactique et structuré. Hors cadors, les équipes concèdent peu d'occasions franches et le facteur terrain est déterminant. Le 1X à domicile et les marchés de sécurité sont particulièrement fiables.",
-            "key_advantage": "Levante s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Levante."
-          },
-          "reason": "Avantage terrain déterminant pour Levante face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇸 LaLiga • Maîtrise Tactique & Forteresses Domicile"
-        },
-        {
-          "id": "tomorrow_3",
-          "match": "Atalanta vs Venezia",
-          "league": "Serie A (Italie)",
-          "time": "17:30 (Bénin) • 18:30 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Atalanta ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Atalanta)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Atalanta) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
-            "key_advantage": "Atalanta s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Atalanta."
-          },
-          "reason": "Avantage terrain déterminant pour Atalanta face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "tomorrow_4",
-          "match": "Torino vs Udinese",
-          "league": "Serie A (Italie)",
-          "time": "19:45 (Bénin) • 20:45 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Torino ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Torino)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Torino) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Culture tactique d'excellence. Les premières mi-temps sont stratégiques avec moins de buts concédés. Les favoris gèrent le score avec un réalisme chirurgical sans forcément chercher le carton plein.",
-            "key_advantage": "Torino s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Torino."
-          },
-          "reason": "Avantage terrain déterminant pour Torino face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇮🇹 Serie A • Rigueur Tactique & Blocs Compacts"
-        },
-        {
-          "id": "tomorrow_5",
-          "match": "FC Famalicao vs Alverca",
-          "league": "Primeira Liga (Portugal)",
-          "time": "20:15 (Bénin) • 21:15 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "FC Famalicao ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (FC Famalicao)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (FC Famalicao) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Écart technique colossal entre le trio de tête (Sporting, Benfica, Porto) et le reste du championnat. Les cadors affichent plus de 75% de victoires nettes avec un monopole de possession.",
-            "key_advantage": "FC Famalicao s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de FC Famalicao."
-          },
-          "reason": "Avantage terrain déterminant pour FC Famalicao face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇵🇹 Primeira Liga • Hégémonie du Top 3 & Contrôle Territorial"
-        },
-        {
-          "id": "tomorrow_6",
-          "match": "Eyupspor vs Goztepe",
-          "league": "Süper Lig (Turquie)",
-          "time": "18:00 (Bénin) • 19:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Eyupspor ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Eyupspor)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Eyupspor) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "Ambiance en fusion à domicile pour Galatasaray, Fenerbahçe et Besiktas. Le public étouffe l'adversaire dès les premières minutes, provoquant des erreurs défensives et des avalanches d'occasions.",
-            "key_advantage": "Eyupspor s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Eyupspor."
-          },
-          "reason": "Avantage terrain déterminant pour Eyupspor face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇹🇷 Süper Lig • Chaudrons Volcaniques & Pressing Passionné"
-        }
-      ],
-      "combos": [
-        {
-          "id": "combo_tomorrow_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Demain)",
-          "odds": 2.1,
-          "confidence": 88,
-          "picks": [
-            {
-              "match": "Coventry City vs Newcastle United",
-              "pick": "Coventry City ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Levante vs Sevilla",
-              "pick": "Levante ou Nul",
-              "odds": 1.45
-            }
-          ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
-        },
-        {
-          "id": "combo_tomorrow_2",
-          "title": "⚡ Combiné Value xG (Demain)",
-          "odds": 3.05,
-          "confidence": 88,
-          "picks": [
-            {
-              "match": "Coventry City vs Newcastle United",
-              "pick": "Coventry City ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Levante vs Sevilla",
-              "pick": "Levante ou Nul",
-              "odds": 1.45
-            },
-            {
-              "match": "Atalanta vs Venezia",
-              "pick": "Atalanta ou Nul",
-              "odds": 1.45
-            }
-          ],
-          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
-        }
-      ]
-    },
-    "after_tomorrow": {
-      "label": "Mardi (Tuesday 13 Oct)",
-      "short_label": "Tue 13 Oct",
-      "date_str": "13 October 2026",
+      "label": "Aujourd'hui (Mar 13 Oct)",
+      "short_label": "Mar 13 Oct",
+      "date_str": "13 Octobre 2026",
       "date_iso": "2026-10-13",
-      "notice": "Affiches du Mardi : Analyses approfondies et value bets.",
+      "notice": "Grande Soirée UEFA Champions League : 9 affiches de prestige décryptées par l'algorithme quantitatif HNS !",
       "banker": {
         "match": "Arsenal vs Lille",
         "competition": "UEFA Champions League",
         "time": "20:00 (Bénin) • 21:00 (Paris)",
         "pick": "Victoire Arsenal & Plus de 1.5 buts",
         "odds": 1.48,
-        "confidence": 94,
+        "confidence": 95,
         "status": "upcoming",
         "score": "",
         "status_text": "⏳ À VENIR",
-        "analysis": "Arsenal est ultra-dominant à domicile (+1.70 xG). Lille est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
+        "analysis": "Arsenal affiche une domination statistique totale à l'Emirates en Ligue des Champions (+1.38 npxG). Avec Saka et Ødegaard aux commandes, le pressing des Gunners (PPDA 7.6) étouffera le bloc lillois.",
         "metrics": {
-          "xg_diff": "+1.70 xG pour l'hôte",
+          "xg_diff": "+1.38 xG pour Arsenal",
           "home_form": "V-V-V-N-V (13 pts/15)",
-          "away_form": "D-N-D-D-V (4 pts/15)",
-          "home_strength": "88% victoires à domicile",
-          "stake": "Course au Titre • Pression du Leader",
+          "away_form": "V-N-D-V-N (8 pts/15)",
+          "home_strength": "85% victoires à domicile",
+          "stake": "Phase de Ligue • Choc Européen",
           "risk_level": "1/5 (Très Faible)",
           "btts_prob": "42%",
-          "over15_prob": "89%"
+          "over15_prob": "88%"
         },
         "key_players": {
-          "star_player": "🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard vs Capitaine & Meneur de jeu (Lille)",
-          "absentees_home": "🚑 Jurriën Timber (Gêne musculaire) • Calafiori prêt",
-          "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-          "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard."
+          "star_player": "🌟 Bukayo Saka & Martin Ødegaard vs Jonathan David",
+          "absentees_home": "Effectif au complet • Charnière Saliba-Gabriel alignée",
+          "absentees_away": "Hakon Haraldsson (forfait)",
+          "tactical_impact": "La créativité du côté droit Saka/Ødegaard va surcharger le couloir lillois et forcer des erreurs défensives."
         },
         "tactical_breakdown": {
-          "league_reality": "En UEFA Champions League, la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-          "key_advantage": "Arsenal étouffe l'adversaire dès les 20 premières minutes. 4 victoires consécutives, 11 buts marqués, 2 encaissés.",
-          "verdict": "Scénario le plus probable : victoire sans trembler de Arsenal avec au moins 2 buts dans le match."
+          "league_reality": "En Ligue des Champions, les Gunners concèdent moins de 0.75 xGA par match et imposent un rythme suffocant.",
+          "key_advantage": "Pressing haut asphyxiant, profondeur d'effectif et danger permanent sur corner.",
+          "verdict": "Succès net d'Arsenal avec au moins 2 buts inscrits dans le match."
         }
       },
       "singles": [
         {
-          "id": "after_tomorrow_1",
+          "id": "today_1",
+          "match": "Arsenal vs Lille",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Total Buts",
+          "pick": "Victoire Arsenal & Plus de 1.5 buts",
+          "odds": 1.48,
+          "confidence": 95,
+          "type": "Banker",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.38 xG",
+            "field_tilt": "68% dernier tiers",
+            "ppda": "7.6 (Pressing Élite)",
+            "rest_advantage": "5j repos (+24h)",
+            "home_form": "V-V-V-N-V",
+            "home_strength": "85% victoires domicile",
+            "stake": "Phase de Ligue • Choc Européen",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "95/100",
+            "btts_prob": "42%",
+            "over15_prob": "88%"
+          },
+          "key_players": {
+            "star_player": "🌟 Bukayo Saka & Martin Ødegaard vs Jonathan David",
+            "absentees_home": "Effectif au complet • Retour de Timber",
+            "absentees_away": "Hakon Haraldsson (blessé)",
+            "tactical_impact": "La créativité du côté droit Saka/Ødegaard va surcharger le couloir gauche lillois."
+          },
+          "tactical_breakdown": {
+            "league_reality": "À l'Emirates en C1, Arsenal concède moins de 0.75 xGA par match et étouffe la relance adverse.",
+            "key_advantage": "Pressing haut asphyxiant et supériorité athlétique sur balles arrêtées (Gabriel/Saliba).",
+            "verdict": "Arsenal vainqueur net avec au moins 2 buts au tableau d'affichage."
+          },
+          "safety_net": "Arsenal ou Nul & Plus de 1.5 buts (cote 1.30) ou Arsenal Remboursé si Nul en combiné lourd.",
+          "reason": "Domination structurelle nette d'Arsenal à domicile (+1.38 npxG). Avec Saka et Ødegaard au sommet, les Gunners imposent un tempo intenable pour Lille.",
+          "league_dna_summary": "🇪🇺 Champions League • Intensité Maximale & Rigueur Continentale"
+        },
+        {
+          "id": "today_2",
+          "match": "Internazionale vs Club Brugge",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "Internazionale ou Nul & Moins de 4.5 buts",
+          "odds": 1.42,
+          "confidence": 96,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.28 xG",
+            "field_tilt": "65% dernier tiers",
+            "ppda": "9.1 (Bloc Médian Propre)",
+            "rest_advantage": "6j repos (+48h)",
+            "home_form": "V-V-N-V-V",
+            "home_strength": "82% victoires à San Siro",
+            "stake": "Objectif Top 8 Européen",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "96/100",
+            "btts_prob": "35%",
+            "over15_prob": "82%"
+          },
+          "key_players": {
+            "star_player": "🌟 Lautaro Martínez & Nicolò Barella vs Andreas Skov Olsen",
+            "absentees_home": "Effectif type aligné par Simone Inzaghi",
+            "absentees_away": "Bjorn Meijer (forfait)",
+            "tactical_impact": "Le 3-5-2 d'Inzaghi verrouille les couloirs et prive Brugge de profondeur."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'Inter à San Siro est une forteresse tactique (0.68 but encaissé en moyenne en C1).",
+            "key_advantage": "Solidité de la charnière Bastoni-Acerbi et réalisme létale du duo offensif.",
+            "verdict": "Scénario classique italien : maîtrise, clean sheet probable et succès maîtrisé 2-0."
+          },
+          "safety_net": "Inter gagne ou remboursé si nul (DNB) ou Inter ou Nul & Plus de 1.5 buts.",
+          "reason": "L'Inter de Simone Inzaghi est un roc tactique à Giuseppe Meazza. Brugge manque de percussion face à un tel niveau d'organisation.",
+          "league_dna_summary": "🇪🇺 Champions League • Maîtrise Tactique & Blocs Hermétiques"
+        },
+        {
+          "id": "today_3",
+          "match": "Galatasaray vs Barcelona",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "FC Barcelone ou Nul & Plus de 1.5 buts",
+          "odds": 1.46,
+          "confidence": 92,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.42 xG pour Barcelone",
+            "field_tilt": "64% possession haute",
+            "ppda": "8.2 (Contre-Pressing Flick)",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-V-N-V",
+            "home_strength": "75% invaincu à Istanbul",
+            "stake": "Choc de prestige à Istanbul",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "92/100",
+            "btts_prob": "62%",
+            "over15_prob": "90%"
+          },
+          "key_players": {
+            "star_player": "🌟 Lamine Yamal & Robert Lewandowski vs Victor Osimhen",
+            "absentees_home": "Mauro Icardi (incertain)",
+            "absentees_away": "Gavi (en reprise progressive)",
+            "tactical_impact": "Le piège du hors-jeu très haut du Barça face à la vitesse d'Osimhen garantit un match électrique."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'ambiance du RAMS Park enflamme le jeu : Galatasaray ne ferme jamais le match et laisse des boulevards.",
+            "key_advantage": "La puissance de feu du Barça (Lewandowski, Raphinha, Yamal) génère plus de 2.5 xG par sortie.",
+            "verdict": "Barcelone ramènera au minimum le point du nul avec des buts assurés."
+          },
+          "safety_net": "Plus de 2.5 buts ou Les Deux Équipes Marquent pour ceux qui visent les buts.",
+          "reason": "Le Barça sous Hansi Flick possède l'une des meilleures attaques d'Europe. Malgré la ferveur turque, la qualité catalane fera la différence.",
+          "league_dna_summary": "🇪🇺 Champions League • Choc Électrique & Buts Garantis"
+        },
+        {
+          "id": "today_4",
+          "match": "Viking FK vs Bayern Munich",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Total Buts",
+          "pick": "Victoire Bayern Munich & Plus de 2.5 buts",
+          "odds": 1.44,
+          "confidence": 96,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+2.15 xG pour Bayern",
+            "field_tilt": "72% dans la moitié adverse",
+            "ppda": "6.9 (Pressing Total)",
+            "rest_advantage": "5j repos",
+            "home_form": "V-D-N-V-D",
+            "home_strength": "Invaincu en Norvège",
+            "stake": "Plein de points en déplacement",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "96/100",
+            "btts_prob": "38%",
+            "over15_prob": "92%"
+          },
+          "key_players": {
+            "star_player": "🌟 Harry Kane & Jamal Musiala vs Zlatko Tripic",
+            "absentees_home": "Effectif norvégien limité en profondeur",
+            "absentees_away": "Ito (blessé)",
+            "tactical_impact": "Supériorité technique et athlétique totale des bavarois sur chaque ligne."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le fossé de niveau entre un géant mondial et un club norvégien se traduit souvent par un score fleuve.",
+            "key_advantage": "Finition chirurgicale de Kane et percussions déstabilisantes de Musiala et Olise.",
+            "verdict": "Victoire large du Bayern Munich (0-3 ou 1-4)."
+          },
+          "safety_net": "Bayern Munich gagne par au moins 2 buts d'écart (Handicap -1).",
+          "reason": "Écart de budget et de talent abyssal. Le Bayern de Vincent Kompany tourne à plus de 3 buts de moyenne en déplacement.",
+          "league_dna_summary": "🇪🇺 Champions League • Démonstration Offensive Bavaroise"
+        },
+        {
+          "id": "today_5",
+          "match": "Atlético Madrid vs Manchester United",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "Atlético Madrid ou Nul & Moins de 3.5 buts",
+          "odds": 1.46,
+          "confidence": 93,
+          "type": "Value",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+0.95 xG pour Atlético",
+            "field_tilt": "56% possession territoriale",
+            "ppda": "9.8 (Bloc Équilibré)",
+            "rest_advantage": "6j repos",
+            "home_form": "V-V-N-V-V",
+            "home_strength": "86% invaincu au Metropolitano",
+            "stake": "Grosse affiche européenne",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "93/100",
+            "btts_prob": "46%",
+            "over15_prob": "78%"
+          },
+          "key_players": {
+            "star_player": "🌟 Antoine Griezmann & Julián Álvarez vs Bruno Fernandes",
+            "absentees_home": "Azpilicueta (touché)",
+            "absentees_away": "Luke Shaw (forfait récurrent)",
+            "tactical_impact": "Griezmann et Álvarez exploitent les failles entre les lignes du milieu mancunien."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le Metropolitano de Diego Simeone en Ligue des Champions est quasiment imprenable pour les clubs anglais.",
+            "key_advantage": "Rigueur défensive colchonera et transitions fulgurantes.",
+            "verdict": "Atlético solide qui verrouille la rencontre (1-0 ou 1-1)."
+          },
+          "safety_net": "Double Chance 1X simple (cote 1.33) pour combiné ultra-conservateur.",
+          "reason": "Manchester United peine constamment loin d'Old Trafford dans les grands rendez-vous continentaux face à l'étau tactique de Simeone.",
+          "league_dna_summary": "🇪🇺 Champions League • Bastion Défensif du Metropolitano"
+        },
+        {
+          "id": "today_6",
+          "match": "RB Leipzig vs PSV Eindhoven",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Total Buts",
+          "pick": "Plus de 2.5 buts",
+          "odds": 1.52,
+          "confidence": 94,
+          "type": "Value",
+          "is_safe": false,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+0.35 xG (Total cumulé > 3.4 xG)",
+            "field_tilt": "50% vs 50% (Jeu vertical)",
+            "ppda": "8.0 (Pressing mutuel)",
+            "rest_advantage": "5j repos",
+            "home_form": "V-N-V-V-D",
+            "home_strength": "80% de matchs à +2.5 buts",
+            "stake": "Bataille pour les 3 points",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "93/100",
+            "btts_prob": "68%",
+            "over15_prob": "89%"
+          },
+          "key_players": {
+            "star_player": "🌟 Loïs Openda & Xavi Simons vs Luuk de Jong & Malik Tillman",
+            "absentees_home": "Schlager (blessé longue durée)",
+            "absentees_away": "Sergiño Dest (en convalescence)",
+            "tactical_impact": "Deux philosophies hyper agressives tournées vers l'avant sans calcul."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Leipzig et le PSV refusent le jeu passif. Chacune tire plus de 16 fois au but par match.",
+            "key_advantage": "Vitesse d'Openda dans la profondeur contre jeu aérien de Luuk de Jong.",
+            "verdict": "Match spectaculaire avec au moins 3 buts au tableau d'affichage."
+          },
+          "safety_net": "Les Deux Équipes Marquent (BTTS) ou Plus de 1.5 buts en base de combiné.",
+          "reason": "Duel entre deux des attaques les plus explosives d'Europe. La vulnérabilité défensive du PSV face à la vitesse allemande promet un festival.",
+          "league_dna_summary": "🇪🇺 Champions League • Football Total & Avalanche de Tirs"
+        },
+        {
+          "id": "today_7",
           "match": "Lens vs Sporting CP",
           "league": "UEFA Champions League",
           "time": "17:45 (Bénin) • 18:45 (Paris)",
           "market": "Double Chance & Buts",
           "pick": "Sporting CP ou Nul & Plus de 1.5 buts",
           "odds": 1.46,
-          "confidence": 92,
+          "confidence": 91,
           "type": "Safe",
           "is_safe": true,
           "status": "upcoming",
           "score": "",
           "status_text": "⏳ À VENIR",
           "metrics": {
-            "xg_diff": "+1.35 xG pour Sporting CP",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Sporting CP • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Lens) vs 🌟 Viktor Gyökeres (Serial buteur) & Pedro Gonçalves",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Matheus Reis",
-            "tactical_impact": "🌟 Viktor Gyökeres (Serial buteur) & Pedro Gonçalves est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En UEFA Champions League, la qualité technique supérieure de Sporting CP fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Sporting CP monopolise les demi-espaces. Invaincu au Portugal (2-1 validé ce soir).",
-            "verdict": "Double chance X2 sécurisée : Sporting CP ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Sporting CP surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Viktor Gyökeres (Serial buteur) & Pedro Gonçalves.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
-        },
-        {
-          "id": "after_tomorrow_2",
-          "match": "Sabah FK vs Slavia Prague",
-          "league": "UEFA Champions League",
-          "time": "17:45 (Bénin) • 18:45 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Sabah FK ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
+            "npxg_diff": "+0.85 xG pour Sporting",
+            "field_tilt": "54% possession portugaise",
+            "ppda": "8.4 (Pressing Sporting)",
+            "rest_advantage": "5j repos",
+            "home_form": "N-V-N-D-V",
+            "home_strength": "Ferveur Bollaert-Delelis",
+            "stake": "Match clé de début de soirée",
             "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
+            "hsi_score": "91/100",
+            "btts_prob": "55%",
+            "over15_prob": "86%"
           },
           "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Sabah FK)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Sabah FK) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
+            "star_player": "🌟 Viktor Gyökeres vs Brice Samba & Facundo Medina",
+            "absentees_home": "Kevin Danso (situation suivie)",
+            "absentees_away": "Pedro Gonçalves (prêt au combat)",
+            "tactical_impact": "Gyökeres est un cauchemar pour n'importe quelle défense centrale en duel un-contre-un."
           },
           "tactical_breakdown": {
-            "league_reality": "La reine des compétitions. Les cadors européens imposent une intensité folle et une efficacité clinique devant le but.",
-            "key_advantage": "Sabah FK s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Sabah FK."
+            "league_reality": "Le Sporting enchaîne les victoires grâce à sa mécanique de transition létale.",
+            "key_advantage": "Forme monstrueuse de l'attaquant suédois et maîtrise technique du milieu lisboète.",
+            "verdict": "Le Sporting évitera la défaite à Lens tout en voyant des filets trembler."
           },
-          "reason": "Avantage terrain déterminant pour Sabah FK face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
+          "safety_net": "Double Chance X2 simple ou Plus de 1.5 buts.",
+          "reason": "Sporting CP est dans une forme stratosphérique portée par Gyökeres. Lens luttera courageusement mais le Sporting ne perdra pas ce duel.",
+          "league_dna_summary": "🇪🇺 Champions League • Duel Franco-Portugais Rythmé"
         },
         {
-          "id": "after_tomorrow_3",
-          "match": "Arsenal vs Lille",
-          "league": "UEFA Champions League",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Arsenal & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
-            "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%"
-          },
-          "key_players": {
-            "star_player": "🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard vs Capitaine & Meneur de jeu (Lille)",
-            "absentees_home": "🚑 Jurriën Timber (Gêne musculaire) • Calafiori prêt",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Bukayo Saka (Ailier décisif) & Martin Ødegaard."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En UEFA Champions League, la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "Arsenal étouffe l'adversaire dès les 20 premières minutes. 4 victoires consécutives, 11 buts marqués, 2 encaissés.",
-            "verdict": "Scénario le plus probable : victoire sans trembler de Arsenal avec au moins 2 buts dans le match."
-          },
-          "reason": "Arsenal est ultra-dominant à domicile (+1.70 xG). Lille est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
-        },
-        {
-          "id": "after_tomorrow_4",
-          "match": "Atlético Madrid vs Manchester United",
-          "league": "UEFA Champions League",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Manchester United ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Manchester United",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Manchester United • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Atlético Madrid) vs Bruno Fernandes & Marcus Rashford",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Luke Shaw & Leny Yoro",
-            "tactical_impact": "Bruno Fernandes & Marcus Rashford est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En UEFA Champions League, la qualité technique supérieure de Manchester United fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Manchester United monopolise les demi-espaces. Matchs spectaculaires très ouverts des deux côtés.",
-            "verdict": "Double chance X2 sécurisée : Manchester United ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Manchester United surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec Bruno Fernandes & Marcus Rashford.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
-        },
-        {
-          "id": "after_tomorrow_5",
-          "match": "Galatasaray vs Barcelona",
-          "league": "UEFA Champions League",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "1X2 & Buts",
-          "pick": "Victoire Galatasaray & Plus de 1.5 buts",
-          "odds": 1.48,
-          "confidence": 94,
-          "type": "Banker",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.70 xG pour l'hôte",
-            "home_form": "V-V-V-N-V (13 pts/15)",
-            "away_form": "D-N-D-D-V (4 pts/15)",
-            "home_strength": "88% victoires à domicile",
-            "stake": "Course au Titre • Pression du Leader",
-            "risk_level": "1/5 (Très Faible)",
-            "btts_prob": "42%",
-            "over15_prob": "89%"
-          },
-          "key_players": {
-            "star_player": "🌟 Victor Osimhen & Mauro Icardi vs Capitaine & Meneur de jeu (Barcelona)",
-            "absentees_home": "🚑 Hakim Ziyech (Légère alerte)",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "✅ Effectif type opérationnel • Aucune suspension majeure. Ce forfait affaiblit l'axe défensif face à la percussion de 🌟 Victor Osimhen & Mauro Icardi."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En UEFA Champions League, la différence de volume de tirs entre un cador à domicile et un promu/relégable dépasse 14 tirs par match.",
-            "key_advantage": "Galatasaray étouffe l'adversaire dès les 20 premières minutes. Chaudron stambouliote imprenable (3-1 validé ce soir).",
-            "verdict": "Scénario le plus probable : victoire sans trembler de Galatasaray avec au moins 2 buts dans le match."
-          },
-          "reason": "Galatasaray est ultra-dominant à domicile (+1.70 xG). Barcelona est pénalisé par ses absences : ✅ Effectif type opérationnel • Aucune suspension majeure.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
-        },
-        {
-          "id": "after_tomorrow_6",
-          "match": "Internazionale vs Club Brugge",
-          "league": "UEFA Champions League",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Sécurité",
-          "pick": "Internazionale ou Nul",
-          "odds": 1.45,
-          "confidence": 88,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+0.70 xG",
-            "home_form": "V-N-V-D-N (8 pts/15)",
-            "away_form": "D-D-N-V-D (4 pts/15)",
-            "home_strength": "76% invaincu à domicile",
-            "stake": "Maintien & Régularité Championnat",
-            "risk_level": "2/5 (Faible)",
-            "btts_prob": "48%",
-            "over15_prob": "78%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Internazionale)",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "tactical_impact": "Capitaine & Meneur de jeu (Internazionale) est le point d'ancrage local. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "La reine des compétitions. Les cadors européens imposent une intensité folle et une efficacité clinique devant le but.",
-            "key_advantage": "Internazionale s'appuie sur sa solidité à domicile et concède peu d'occasions franches en première période.",
-            "verdict": "Double chance 1X ultra-sécurisée sur la forteresse locale de Internazionale."
-          },
-          "reason": "Avantage terrain déterminant pour Internazionale face à un adversaire direct en difficulté à l'extérieur.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
-        },
-        {
-          "id": "after_tomorrow_7",
-          "match": "RB Leipzig vs PSV Eindhoven",
-          "league": "UEFA Champions League",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "PSV Eindhoven ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour PSV Eindhoven",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité PSV Eindhoven • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (RB Leipzig) vs 🌟 Luuk de Jong & Johan Bakayoko",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Sergino Dest (Genou)",
-            "tactical_impact": "🌟 Luuk de Jong & Johan Bakayoko est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En UEFA Champions League, la qualité technique supérieure de PSV Eindhoven fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "PSV Eindhoven monopolise les demi-espaces. 100% de victoires à domicile (3-1 validé ce soir).",
-            "verdict": "Double chance X2 sécurisée : PSV Eindhoven ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "PSV Eindhoven surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Luuk de Jong & Johan Bakayoko.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
-        },
-        {
-          "id": "after_tomorrow_8",
-          "match": "Viking FK vs Bayern Munich",
-          "league": "UEFA Champions League",
-          "time": "20:00 (Bénin) • 21:00 (Paris)",
-          "market": "Double Chance & Buts",
-          "pick": "Bayern Munich ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
-          "confidence": 92,
-          "type": "Safe",
-          "is_safe": true,
-          "status": "upcoming",
-          "score": "",
-          "status_text": "⏳ À VENIR",
-          "metrics": {
-            "xg_diff": "+1.35 xG pour Bayern Munich",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Bayern Munich • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
-          },
-          "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Viking FK) vs 🌟 Harry Kane (Buteur d'élite) & Jamal Musiala",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Hiroki Ito & Sacha Boey",
-            "tactical_impact": "🌟 Harry Kane (Buteur d'élite) & Jamal Musiala est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
-          },
-          "tactical_breakdown": {
-            "league_reality": "En UEFA Champions League, la qualité technique supérieure de Bayern Munich fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Bayern Munich monopolise les demi-espaces. Rouleau compresseur (3.4 buts marqués par match).",
-            "verdict": "Double chance X2 sécurisée : Bayern Munich ne perd pas et la rencontre produit au moins 2 buts."
-          },
-          "reason": "Bayern Munich surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Harry Kane (Buteur d'élite) & Jamal Musiala.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
-        },
-        {
-          "id": "after_tomorrow_9",
+          "id": "today_8",
           "match": "Villarreal vs Napoli",
           "league": "UEFA Champions League",
           "time": "20:00 (Bénin) • 21:00 (Paris)",
           "market": "Double Chance & Buts",
           "pick": "Napoli ou Nul & Plus de 1.5 buts",
-          "odds": 1.46,
+          "odds": 1.48,
+          "confidence": 90,
+          "type": "Value",
+          "is_safe": false,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+0.70 xG Napoli",
+            "field_tilt": "52% équilibré",
+            "ppda": "9.5 (Bloc Conte)",
+            "rest_advantage": "6j repos",
+            "home_form": "V-N-D-V-N",
+            "home_strength": "70% invaincu à La Cerámica",
+            "stake": "Bataille tactique de haute volée",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "90/100",
+            "btts_prob": "58%",
+            "over15_prob": "85%"
+          },
+          "key_players": {
+            "star_player": "🌟 Khvicha Kvaratskhelia & Romelu Lukaku vs Gerard Moreno",
+            "absentees_home": "Juan Foyth (blessé)",
+            "absentees_away": "Stanislav Lobotka (rentré)",
+            "tactical_impact": "Lukaku sert de point d'appui face à la défense haute de Marcelino."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le Napoli sous Antonio Conte est devenu une machine ultra-rigoureuse et difficile à manœuvrer.",
+            "key_advantage": "Puissance de percussion de Kvaratskhelia sur le flanc gauche.",
+            "verdict": "Partage des points ou courte victoire napolitaine (1-1 ou 1-2)."
+          },
+          "safety_net": "Plus de 1.5 buts dans le match ou Napoli Remboursé si Nul.",
+          "reason": "Antonio Conte a redonné au Napoli une assise défensive de fer capable d'absorber le jeu séduisant mais friable de Villarreal.",
+          "league_dna_summary": "🇪🇺 Champions League • Choc Méditerranéen Équilibré"
+        },
+        {
+          "id": "today_9",
+          "match": "Slavia Prague vs Sabah FK",
+          "league": "UEFA Champions League",
+          "time": "17:45 (Bénin) • 18:45 (Paris)",
+          "market": "1X2 & Sécurité",
+          "pick": "Victoire Slavia Prague ou Nul & Plus de 1.5 buts",
+          "odds": 1.4,
+          "confidence": 95,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.50 xG Slavia",
+            "field_tilt": "66% domination",
+            "ppda": "8.1 (Pressing Tchèque)",
+            "rest_advantage": "6j repos",
+            "home_form": "V-V-V-V-N",
+            "home_strength": "88% victoires à l'Eden Arena",
+            "stake": "Points indispensables pour la qualification",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "95/100",
+            "btts_prob": "32%",
+            "over15_prob": "86%"
+          },
+          "key_players": {
+            "star_player": "🌟 Mojmír Chytil & Lukáš Provod vs Joy-Lance Mickels",
+            "absentees_home": "Effectif type opérationnel",
+            "absentees_away": "Absences en milieu de terrain",
+            "tactical_impact": "Impact athlétique et puissance sur coups de pied arrêtés du Slavia."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'Eden Arena de Prague est un enfer pour les clubs novices en phase de groupe.",
+            "key_advantage": "Expérience européenne des Tchèques et intensité physique continue.",
+            "verdict": "Victoire logique et tranquille du Slavia Prague (2-0 ou 3-0)."
+          },
+          "safety_net": "Slavia Prague gagne ou remboursé si nul (DNB).",
+          "reason": "Le Slavia Prague dispose d'une supériorité physique et d'un vécu européen bien trop conséquents pour Sabah FK.",
+          "league_dna_summary": "🇪🇺 Champions League • Forteresse Tchèque & Puissance Physique"
+        }
+      ],
+      "combos": [
+        {
+          "id": "combo_today_1",
+          "title": "🛡️ Combiné Sécurité Champions League",
+          "odds": 2.1,
+          "confidence": 95,
+          "status": "upcoming",
+          "status_text": "⏳ EN COURS",
+          "picks": [
+            {
+              "match": "Arsenal vs Lille",
+              "pick": "Arsenal ou Nul & Plus de 1.5 buts",
+              "odds": 1.3,
+              "status": "upcoming",
+              "score": ""
+            },
+            {
+              "match": "Internazionale vs Club Brugge",
+              "pick": "Inter ou Nul & Moins de 4.5 buts",
+              "odds": 1.25,
+              "status": "upcoming",
+              "score": ""
+            },
+            {
+              "match": "Galatasaray vs Barcelona",
+              "pick": "FC Barcelone ou Nul & Plus de 1.5 buts",
+              "odds": 1.28,
+              "status": "upcoming",
+              "score": ""
+            }
+          ],
+          "advice": "Ticket triple blindé avec double chances sur les cadors européens."
+        },
+        {
+          "id": "combo_today_2",
+          "title": "⚡ Combiné xG & Avalanche de Buts",
+          "odds": 3.25,
+          "confidence": 92,
+          "status": "upcoming",
+          "status_text": "⏳ EN COURS",
+          "picks": [
+            {
+              "match": "Viking FK vs Bayern Munich",
+              "pick": "Bayern gagne & Plus de 2.5 buts",
+              "odds": 1.44,
+              "status": "upcoming",
+              "score": ""
+            },
+            {
+              "match": "RB Leipzig vs PSV Eindhoven",
+              "pick": "Plus de 2.5 buts",
+              "odds": 1.52,
+              "status": "upcoming",
+              "score": ""
+            },
+            {
+              "match": "Arsenal vs Lille",
+              "pick": "Victoire Arsenal & Plus de 1.5 buts",
+              "odds": 1.48,
+              "status": "upcoming",
+              "score": ""
+            }
+          ],
+          "advice": "Ticket offensif basé sur les attaques les plus explosives de la soirée."
+        }
+      ]
+    },
+    "tomorrow": {
+      "label": "Demain (Mer 14 Oct)",
+      "short_label": "Mer 14 Oct",
+      "date_str": "14 Octobre 2026",
+      "date_iso": "2026-10-14",
+      "notice": "UEFA Champions League Jour 2 : Real Madrid vs Juventus, Liverpool vs Dortmund, PSG vs Milan !",
+      "banker": {
+        "id": "tom_1",
+        "match": "Real Madrid vs Juventus",
+        "league": "UEFA Champions League",
+        "time": "20:00 (Bénin) • 21:00 (Paris)",
+        "market": "1X2 & Total Buts",
+        "pick": "Victoire Real Madrid & Plus de 1.5 buts",
+        "odds": 1.52,
+        "confidence": 94,
+        "type": "Banker",
+        "is_safe": true,
+        "status": "upcoming",
+        "score": "",
+        "status_text": "⏳ À VENIR",
+        "metrics": {
+          "npxg_diff": "+1.40 xG Real",
+          "field_tilt": "66% au Bernabéu",
+          "ppda": "8.0",
+          "rest_advantage": "6j repos",
+          "home_form": "V-V-V-N-V",
+          "home_strength": "88% victoires au Bernabéu",
+          "stake": "Choc Légendaire Européen",
+          "risk_level": "1/5 (Très Faible)",
+          "hsi_score": "95/100",
+          "btts_prob": "45%",
+          "over15_prob": "88%"
+        },
+        "key_players": {
+          "star_player": "🌟 Kylian Mbappé & Vinícius Jr vs Dušan Vlahović",
+          "absentees_home": "Courtois & Rüdiger titulaires",
+          "absentees_away": "Bremer (blessé genou)",
+          "tactical_impact": "L'absence de Bremer fragilise grandement l'axe central de la Juve face aux accélérations de Vinícius et Mbappé."
+        },
+        "tactical_breakdown": {
+          "league_reality": "Le Real Madrid au Santiago Bernabéu en Ligue des Champions est la force la plus redoutable du continent.",
+          "key_advantage": "Transitions létales et génie individuel de Vinícius, Mbappé et Bellingham.",
+          "verdict": "Victoire avec autorité du Real Madrid (2-0 ou 3-1)."
+        },
+        "safety_net": "Real Madrid ou Nul & Plus de 1.5 buts (cote 1.32).",
+        "reason": "Le Real Madrid au Bernabéu est quasiment injouable face à une Juventus privée de son patron défensif Bremer.",
+        "league_dna_summary": "🇪🇺 Champions League • Mythe du Bernabéu & Prestige Absolu"
+      },
+      "singles": [
+        {
+          "id": "tom_1",
+          "match": "Real Madrid vs Juventus",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Total Buts",
+          "pick": "Victoire Real Madrid & Plus de 1.5 buts",
+          "odds": 1.52,
+          "confidence": 94,
+          "type": "Banker",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.40 xG Real",
+            "field_tilt": "66% au Bernabéu",
+            "ppda": "8.0",
+            "rest_advantage": "6j repos",
+            "home_form": "V-V-V-N-V",
+            "home_strength": "88% victoires au Bernabéu",
+            "stake": "Choc Légendaire Européen",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "95/100",
+            "btts_prob": "45%",
+            "over15_prob": "88%"
+          },
+          "key_players": {
+            "star_player": "🌟 Kylian Mbappé & Vinícius Jr vs Dušan Vlahović",
+            "absentees_home": "Courtois & Rüdiger titulaires",
+            "absentees_away": "Bremer (blessé genou)",
+            "tactical_impact": "L'absence de Bremer fragilise grandement l'axe central de la Juve face aux accélérations de Vinícius et Mbappé."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le Real Madrid au Santiago Bernabéu en Ligue des Champions est la force la plus redoutable du continent.",
+            "key_advantage": "Transitions létales et génie individuel de Vinícius, Mbappé et Bellingham.",
+            "verdict": "Victoire avec autorité du Real Madrid (2-0 ou 3-1)."
+          },
+          "safety_net": "Real Madrid ou Nul & Plus de 1.5 buts (cote 1.32).",
+          "reason": "Le Real Madrid au Bernabéu est quasiment injouable face à une Juventus privée de son patron défensif Bremer.",
+          "league_dna_summary": "🇪🇺 Champions League • Mythe du Bernabéu & Prestige Absolu"
+        },
+        {
+          "id": "tom_2",
+          "match": "Liverpool vs Borussia Dortmund",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "Liverpool ou Nul & Plus de 2.5 buts",
+          "odds": 1.5,
+          "confidence": 93,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.15 xG Liverpool",
+            "field_tilt": "62% Anfield",
+            "ppda": "7.5 (Pressing Slot)",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-V-D-V",
+            "home_strength": "90% invaincu à Anfield",
+            "stake": "Sommet offensif",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "93/100",
+            "btts_prob": "60%",
+            "over15_prob": "90%"
+          },
+          "key_players": {
+            "star_player": "🌟 Mohamed Salah & Luis Díaz vs Serhou Guirassy",
+            "absentees_home": "Alisson (protégé Kelleher)",
+            "absentees_away": "Adeyemi (incertain)",
+            "tactical_impact": "Rythme supersonique à Anfield entre deux équipes portées vers le contre-pressing."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Anfield sous les projecteurs européens produit des rencontres dantesques à gros score.",
+            "key_advantage": "Efficacité clinique de Salah et pressing asphyxiant d'Arne Slot.",
+            "verdict": "Liverpool évitera le piège avec au moins 3 buts dans le match."
+          },
+          "safety_net": "Liverpool gagne ou remboursé si nul (DNB).",
+          "reason": "La magie d'Anfield et l'intensité offensive de Liverpool neutraliseront Dortmund dans un match spectaculaire.",
+          "league_dna_summary": "🇪🇺 Champions League • Magie d'Anfield & Heavy Metal Football"
+        },
+        {
+          "id": "tom_3",
+          "match": "Paris Saint-Germain vs AC Milan",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "PSG ou Nul & Plus de 1.5 buts",
+          "odds": 1.44,
           "confidence": 92,
           "type": "Safe",
           "is_safe": true,
@@ -3385,73 +1095,487 @@ window.DEFAULT_HNS_DATA = {
           "score": "",
           "status_text": "⏳ À VENIR",
           "metrics": {
-            "xg_diff": "+1.35 xG pour Napoli",
-            "home_form": "D-N-D-V-D (4 pts/15)",
-            "away_form": "V-V-N-V-V (13 pts/15)",
-            "home_strength": "35% victoires dom.",
-            "stake": "Supériorité Napoli • Voyage Maîtrisé",
-            "risk_level": "1.5/5 (Faible)",
-            "btts_prob": "50%",
-            "over15_prob": "84%"
+            "npxg_diff": "+0.90 xG PSG",
+            "field_tilt": "65% Parc des Princes",
+            "ppda": "8.4",
+            "rest_advantage": "5j repos",
+            "home_form": "V-N-V-V-V",
+            "home_strength": "82% victoires au Parc",
+            "stake": "Duel des capitales de la mode",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "92/100",
+            "btts_prob": "52%",
+            "over15_prob": "85%"
           },
           "key_players": {
-            "star_player": "Capitaine & Meneur de jeu (Villarreal) vs 🌟 Romelu Lukaku & Khvicha Kvaratskhelia",
-            "absentees_home": "✅ Effectif type opérationnel • Aucune suspension majeure",
-            "absentees_away": "🚑 Alex Meret • Caprile solide dans les cages",
-            "tactical_impact": "🌟 Romelu Lukaku & Khvicha Kvaratskhelia est en pleine confiance. ✅ Effectif type opérationnel • Aucune suspension majeure."
+            "star_player": "🌟 Bradley Barcola & Ousmane Dembélé vs Rafael Leão",
+            "absentees_home": "Gonçalo Ramos (retour)",
+            "absentees_away": "Bennacer (blessé)",
+            "tactical_impact": "La vitesse de Barcola et Dembélé testera la charnière milanaise Tomori-Pavlović."
           },
           "tactical_breakdown": {
-            "league_reality": "En UEFA Champions League, la qualité technique supérieure de Napoli fait la différence sur la durée face à l'engagement initial du public hôte.",
-            "key_advantage": "Napoli monopolise les demi-espaces. Impérial sous Conte (4 clean sheets consécutifs).",
-            "verdict": "Double chance X2 sécurisée : Napoli ne perd pas et la rencontre produit au moins 2 buts."
+            "league_reality": "Le PSG au Parc des Princes impose une possession étouffante sous Luis Enrique.",
+            "key_advantage": "Fluidité collective et percussion des ailiers parisiens.",
+            "verdict": "Le PSG ne perdra pas au Parc avec au moins deux buts."
           },
-          "reason": "Napoli surclasse son adversaire techniquement (+1.35 xG) et dispose d'un effectif supérieur avec 🌟 Romelu Lukaku & Khvicha Kvaratskhelia.",
-          "league_dna_summary": "🇪🇺 UEFA Champions League • Intensité Maximale & Rigueur Continentale"
+          "safety_net": "Double chance 1X simple.",
+          "reason": "Maîtrise collective du PSG à domicile face à un Milan AC capable d'éclairs avec Leão mais irrégulier.",
+          "league_dna_summary": "🇪🇺 Champions League • Choc Franco-Italien au Parc"
+        },
+        {
+          "id": "tom_4",
+          "match": "Manchester City vs Atalanta",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Total Buts",
+          "pick": "Victoire Manchester City & Plus de 2.5 buts",
+          "odds": 1.48,
+          "confidence": 95,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.60 xG City",
+            "field_tilt": "74% Etihad",
+            "ppda": "7.1",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-V-N-V",
+            "home_strength": "92% victoires à l'Etihad",
+            "stake": "Objectif tête de groupe",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "95/100",
+            "btts_prob": "45%",
+            "over15_prob": "90%"
+          },
+          "key_players": {
+            "star_player": "🌟 Erling Haaland & Phil Foden vs Mateo Retegui",
+            "absentees_home": "Rodri (remplacé par Kovačić)",
+            "absentees_away": "Scamacca (blessé)",
+            "tactical_impact": "Haaland en point d'ancrage face au marquage individuel agressif de Gasperini."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le jeu d'homme à homme d'Atalanta ouvre d'immenses brèches lorsque Manchester City casse la première ligne.",
+            "key_advantage": "Efficacité clinique d'Erling Haaland.",
+            "verdict": "Succès net des Cityzens avec fête de buts."
+          },
+          "safety_net": "Victoire simple Manchester City.",
+          "reason": "La machine de Pep Guardiola à l'Etihad est impitoyable face aux blocs ouverts comme celui de Bergame.",
+          "league_dna_summary": "🇪🇺 Champions League • Machine Tactique de Manchester City"
+        },
+        {
+          "id": "tom_5",
+          "match": "Monaco vs Bayer Leverkusen",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Total Buts",
+          "pick": "Plus de 2.5 buts",
+          "odds": 1.54,
+          "confidence": 91,
+          "type": "Value",
+          "is_safe": false,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+0.15 xG cumulé 3.3 xG",
+            "field_tilt": "50% vs 50%",
+            "ppda": "8.2",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-N-V-D",
+            "home_strength": "75% +2.5 buts",
+            "stake": "Choc offensif",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "91/100",
+            "btts_prob": "65%",
+            "over15_prob": "88%"
+          },
+          "key_players": {
+            "star_player": "🌟 Maghnes Akliouche vs Florian Wirtz",
+            "absentees_home": "Balogun (touché)",
+            "absentees_away": "Effectif type de Xabi Alonso",
+            "tactical_impact": "Deux des meneurs de jeu les plus créatifs d'Europe face à face."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Monaco et Leverkusen jouent constamment l'offensive sans temporiser.",
+            "key_advantage": "La maestria de Florian Wirtz et le jeu direct monégasque.",
+            "verdict": "Score fleuve garanti (2-2 ou 1-3)."
+          },
+          "safety_net": "Les Deux Équipes Marquent (BTTS).",
+          "reason": "Deux équipes au jeu débridé, incapables de fermer les vannes en Coupe d'Europe.",
+          "league_dna_summary": "🇪🇺 Champions League • Spectacle & Génie Créatif"
+        },
+        {
+          "id": "tom_6",
+          "match": "Benfica vs Feyenoord",
+          "league": "UEFA Champions League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "Benfica ou Nul & Plus de 1.5 buts",
+          "odds": 1.42,
+          "confidence": 93,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.10 xG Benfica",
+            "field_tilt": "62% Da Luz",
+            "ppda": "8.6",
+            "rest_advantage": "6j repos",
+            "home_form": "V-V-V-V-N",
+            "home_strength": "85% victoires Da Luz",
+            "stake": "Match clé de qualification",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "94/100",
+            "btts_prob": "44%",
+            "over15_prob": "86%"
+          },
+          "key_players": {
+            "star_player": "🌟 Ángel Di María & Vangelis Pavlidis vs Quinten Timber",
+            "absentees_home": "Effectif complet",
+            "absentees_away": "Stengs (blessé)",
+            "tactical_impact": "Di María dicte le tempo à Lisbonne avec une vista hors norme."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'Estádio da Luz est une arène redoutable pour les clubs néerlandais.",
+            "key_advantage": "Expérience et efficacité de Pavlidis devant le but.",
+            "verdict": "Benfica évitera la défaite avec au moins 2 buts dans le match."
+          },
+          "safety_net": "Victoire Benfica ou Remboursé si Nul.",
+          "reason": "La supériorité technique et le public de l'Estádio da Luz protègent Benfica face à Feyenoord.",
+          "league_dna_summary": "🇪🇺 Champions League • Forteresse Lisboète de l'Estádio da Luz"
         }
       ],
       "combos": [
         {
-          "id": "combo_after_tomorrow_1",
-          "title": "🛡️ Combiné Sécurité Maximale (Mardi)",
-          "odds": 2.12,
-          "confidence": 90,
+          "id": "combo_tom_1",
+          "title": "🛡️ Combiné Sécurité Mercredi",
+          "odds": 2.18,
+          "confidence": 94,
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR",
           "picks": [
             {
-              "match": "Lens vs Sporting CP",
-              "pick": "Sporting CP ou Nul & Plus de 1.5 buts",
-              "odds": 1.46
+              "match": "Real Madrid vs Juventus",
+              "pick": "Real Madrid ou Nul & Plus de 1.5 buts",
+              "odds": 1.32,
+              "status": "upcoming",
+              "score": ""
             },
             {
-              "match": "Sabah FK vs Slavia Prague",
-              "pick": "Sabah FK ou Nul",
-              "odds": 1.45
+              "match": "Manchester City vs Atalanta",
+              "pick": "Victoire Manchester City",
+              "odds": 1.3,
+              "status": "upcoming",
+              "score": ""
+            },
+            {
+              "match": "Benfica vs Feyenoord",
+              "pick": "Benfica ou Nul & Plus de 1.5 buts",
+              "odds": 1.28,
+              "status": "upcoming",
+              "score": ""
             }
           ],
-          "advice": "Double sélection à sécurité maximale basée sur les absences adverses et le différentiel xG."
+          "advice": "Ticket triple sécurisé combinant les forteresses du Bernabéu, de l'Etihad et de Da Luz."
+        }
+      ]
+    },
+    "after_tomorrow": {
+      "label": "Jeudi (Jeu 15 Oct)",
+      "short_label": "Jeu 15 Oct",
+      "date_str": "15 Octobre 2026",
+      "date_iso": "2026-10-15",
+      "notice": "UEFA Europa League : Chelsea vs Ajax, AS Roma vs Real Sociedad, Tottenham vs Olympiakos !",
+      "banker": {
+        "id": "at_1",
+        "match": "Chelsea vs Ajax Amsterdam",
+        "league": "UEFA Europa League",
+        "time": "20:00 (Bénin) • 21:00 (Paris)",
+        "market": "1X2 & Total Buts",
+        "pick": "Victoire Chelsea & Plus de 1.5 buts",
+        "odds": 1.46,
+        "confidence": 94,
+        "type": "Banker",
+        "is_safe": true,
+        "status": "upcoming",
+        "score": "",
+        "status_text": "⏳ À VENIR",
+        "metrics": {
+          "npxg_diff": "+1.30 xG Chelsea",
+          "field_tilt": "68% Stamford Bridge",
+          "ppda": "7.8",
+          "rest_advantage": "5j repos",
+          "home_form": "V-V-V-N-V",
+          "home_strength": "84% victoires à domicile",
+          "stake": "Ligue Europa Choc",
+          "risk_level": "1/5 (Très Faible)",
+          "hsi_score": "94/100",
+          "btts_prob": "46%",
+          "over15_prob": "88%"
+        },
+        "key_players": {
+          "star_player": "🌟 Cole Palmer & Nicolas Jackson vs Brian Brobbey",
+          "absentees_home": "Reece James (géré avec soin)",
+          "absentees_away": "Berghuis (blessé)",
+          "tactical_impact": "Cole Palmer dicte le jeu entre les lignes ajacides friables."
+        },
+        "tactical_breakdown": {
+          "league_reality": "Chelsea possède un effectif XXL pour faire la différence en C3.",
+          "key_advantage": "Créativité de Palmer et naïveté défensive d'Ajax.",
+          "verdict": "Succès net des Blues à Stamford Bridge."
+        },
+        "safety_net": "Chelsea ou Nul & Plus de 1.5 buts.",
+        "reason": "La profondeur d'effectif et l'inspiration de Cole Palmer donneront la victoire à Chelsea.",
+        "league_dna_summary": "🇪🇺 Europa League • Profondeur d'Effectif des Blues"
+      },
+      "singles": [
+        {
+          "id": "at_1",
+          "match": "Chelsea vs Ajax Amsterdam",
+          "league": "UEFA Europa League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Total Buts",
+          "pick": "Victoire Chelsea & Plus de 1.5 buts",
+          "odds": 1.46,
+          "confidence": 94,
+          "type": "Banker",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.30 xG Chelsea",
+            "field_tilt": "68% Stamford Bridge",
+            "ppda": "7.8",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-V-N-V",
+            "home_strength": "84% victoires à domicile",
+            "stake": "Ligue Europa Choc",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "94/100",
+            "btts_prob": "46%",
+            "over15_prob": "88%"
+          },
+          "key_players": {
+            "star_player": "🌟 Cole Palmer & Nicolas Jackson vs Brian Brobbey",
+            "absentees_home": "Reece James (géré avec soin)",
+            "absentees_away": "Berghuis (blessé)",
+            "tactical_impact": "Cole Palmer dicte le jeu entre les lignes ajacides friables."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Chelsea possède un effectif XXL pour faire la différence en C3.",
+            "key_advantage": "Créativité de Palmer et naïveté défensive d'Ajax.",
+            "verdict": "Succès net des Blues à Stamford Bridge."
+          },
+          "safety_net": "Chelsea ou Nul & Plus de 1.5 buts.",
+          "reason": "La profondeur d'effectif et l'inspiration de Cole Palmer donneront la victoire à Chelsea.",
+          "league_dna_summary": "🇪🇺 Europa League • Profondeur d'Effectif des Blues"
         },
         {
-          "id": "combo_after_tomorrow_2",
-          "title": "⚡ Combiné Value xG (Mardi)",
-          "odds": 3.13,
+          "id": "at_2",
+          "match": "AS Roma vs Real Sociedad",
+          "league": "UEFA Europa League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "AS Roma ou Nul & Moins de 3.5 buts",
+          "odds": 1.42,
+          "confidence": 92,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+0.65 xG Roma",
+            "field_tilt": "54% Olimpico",
+            "ppda": "9.2",
+            "rest_advantage": "5j repos",
+            "home_form": "V-N-V-V-D",
+            "home_strength": "80% invaincu à l'Olimpico",
+            "stake": "Match tactique serré",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "92/100",
+            "btts_prob": "40%",
+            "over15_prob": "74%"
+          },
+          "key_players": {
+            "star_player": "🌟 Paulo Dybala & Artem Dovbyk vs Takefusa Kubo",
+            "absentees_home": "Pellegrini (apte)",
+            "absentees_away": "Traoré (blessé)",
+            "tactical_impact": "Dybala fait la différence sur coup de pied arrêté et passe clé."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'Olimpico en coupe d'Europe est une citadelle rugueuse.",
+            "key_advantage": "Bloc défensif compact et puissance de Dovbyk.",
+            "verdict": "La Roma préservera son invincibilité dans un match cadenassé."
+          },
+          "safety_net": "Double chance 1X simple.",
+          "reason": "La Real Sociedad manque d'efficacité offensive en déplacement face au bloc de la Roma.",
+          "league_dna_summary": "🇪🇺 Europa League • Rigueur Défensive Romaine"
+        },
+        {
+          "id": "at_3",
+          "match": "Tottenham vs Olympiakos",
+          "league": "UEFA Europa League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "1X2 & Total Buts",
+          "pick": "Victoire Tottenham & Plus de 1.5 buts",
+          "odds": 1.45,
+          "confidence": 95,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+1.45 xG Spurs",
+            "field_tilt": "70% Spurs Stadium",
+            "ppda": "7.2",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-V-N-D",
+            "home_strength": "86% victoires domicile",
+            "stake": "Qualification C3",
+            "risk_level": "1/5 (Très Faible)",
+            "hsi_score": "95/100",
+            "btts_prob": "42%",
+            "over15_prob": "88%"
+          },
+          "key_players": {
+            "star_player": "🌟 Heung-min Son & James Maddison vs Ayoub El Kaabi",
+            "absentees_home": "Solanke titulaire",
+            "absentees_away": "Effectif type grec",
+            "tactical_impact": "Vitesse d'exécution et pressing continu des Spurs d'Ange Postecoglou."
+          },
+          "tactical_breakdown": {
+            "league_reality": "Le rythme de Premier League étouffe les clubs grecs hors de leurs bases.",
+            "key_advantage": "Créativité de Maddison et finition de Son.",
+            "verdict": "Victoire sans appel de Tottenham."
+          },
+          "safety_net": "Tottenham ou Nul & Plus de 1.5 buts.",
+          "reason": "Tottenham joue à un rythme athlétique que l'Olympiakos ne pourra soutenir 90 minutes à Londres.",
+          "league_dna_summary": "🇪🇺 Europa League • Vitesse Anglaise & Rythme Spurs"
+        },
+        {
+          "id": "at_4",
+          "match": "Olympique Lyonnais vs Besiktas",
+          "league": "UEFA Europa League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Buts",
+          "pick": "Lyon ou Nul & Plus de 1.5 buts",
+          "odds": 1.44,
           "confidence": 91,
+          "type": "Safe",
+          "is_safe": true,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+0.80 xG OL",
+            "field_tilt": "58% Groupama Stadium",
+            "ppda": "8.7",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-V-N-V",
+            "home_strength": "80% invaincu à Décines",
+            "stake": "Match sous haute tension",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "91/100",
+            "btts_prob": "54%",
+            "over15_prob": "85%"
+          },
+          "key_players": {
+            "star_player": "🌟 Alexandre Lacazette & Rayan Cherki vs Ciro Immobile",
+            "absentees_home": "Mata apte",
+            "absentees_away": "Rashica incertain",
+            "tactical_impact": "Cherki crée les décalages devant la surface turque."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'OL retrouve une dynamique collective forte portée par ses cadres.",
+            "key_advantage": "Efficacité de Lacazette et ambiance chaude au Groupama Stadium.",
+            "verdict": "Lyon prendra les points ou assurera le nul avec des buts."
+          },
+          "safety_net": "Double chance 1X simple.",
+          "reason": "La montée en puissance de l'OL en Coupe d'Europe lui donne un avantage certain face à Besiktas.",
+          "league_dna_summary": "🇪🇺 Europa League • Ferveur Lyonnaise au Groupama Stadium"
+        },
+        {
+          "id": "at_5",
+          "match": "FC Porto vs Athletic Bilbao",
+          "league": "UEFA Europa League",
+          "time": "20:00 (Bénin) • 21:00 (Paris)",
+          "market": "Double Chance & Sécurité",
+          "pick": "FC Porto ou Nul & Moins de 3.5 buts",
+          "odds": 1.45,
+          "confidence": 90,
+          "type": "Value",
+          "is_safe": false,
+          "status": "upcoming",
+          "score": "",
+          "status_text": "⏳ À VENIR",
+          "metrics": {
+            "npxg_diff": "+0.60 xG Porto",
+            "field_tilt": "55% Dragão",
+            "ppda": "8.8",
+            "rest_advantage": "5j repos",
+            "home_form": "V-V-N-V-D",
+            "home_strength": "84% invaincu au Dragão",
+            "stake": "Bataille ibérique",
+            "risk_level": "2/5 (Faible)",
+            "hsi_score": "90/100",
+            "btts_prob": "45%",
+            "over15_prob": "75%"
+          },
+          "key_players": {
+            "star_player": "🌟 Samu Omorodion & Galeno vs Nico Williams & Iñaki Williams",
+            "absentees_home": "Marcano blessé",
+            "absentees_away": "Sancet apte",
+            "tactical_impact": "Omorodion pèse sur la charnière basque."
+          },
+          "tactical_breakdown": {
+            "league_reality": "L'Estádio do Dragão est un piège tactique pour les équipes espagnoles.",
+            "key_advantage": "Intensité physique des dragons en seconde mi-temps.",
+            "verdict": "Porto s'en sortira invaincu dans une rencontre tactique serrée."
+          },
+          "safety_net": "Double chance 1X simple.",
+          "reason": "Le Dragão transcende Porto dans les confrontations ibériques face à un Bilbao vaillant.",
+          "league_dna_summary": "🇪🇺 Europa League • Duel Ibérique Intense au Dragão"
+        }
+      ],
+      "combos": [
+        {
+          "id": "combo_at_1",
+          "title": "🛡️ Combiné Sécurité Jeudi Europa",
+          "odds": 2.12,
+          "confidence": 94,
+          "status": "upcoming",
+          "status_text": "⏳ À VENIR",
           "picks": [
             {
-              "match": "Lens vs Sporting CP",
-              "pick": "Sporting CP ou Nul & Plus de 1.5 buts",
-              "odds": 1.46
+              "match": "Chelsea vs Ajax",
+              "pick": "Chelsea ou Nul & Plus de 1.5 buts",
+              "odds": 1.3,
+              "status": "upcoming",
+              "score": ""
             },
             {
-              "match": "Sabah FK vs Slavia Prague",
-              "pick": "Sabah FK ou Nul",
-              "odds": 1.45
+              "match": "Tottenham vs Olympiakos",
+              "pick": "Victoire Tottenham",
+              "odds": 1.32,
+              "status": "upcoming",
+              "score": ""
             },
             {
-              "match": "Arsenal vs Lille",
-              "pick": "Victoire Arsenal & Plus de 1.5 buts",
-              "odds": 1.48
+              "match": "Lyon vs Besiktas",
+              "pick": "Lyon ou Nul",
+              "odds": 1.24,
+              "status": "upcoming",
+              "score": ""
             }
           ],
-          "advice": "Ticket triple optimisé combinant volume de buts et supériorité technique indiscutable."
+          "advice": "Ticket triple sécurité Europa League."
         }
       ]
     }
