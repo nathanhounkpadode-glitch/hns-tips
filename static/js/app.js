@@ -1,6 +1,6 @@
 // HNS TIPS — APPLICATION FRONTEND LOGIC (8 CHAMPIONNATS & ANALYSES COMPLÈTES)
 
-const DATA_VERSION = "2026-10-13-v38";
+const DATA_VERSION = "2026-10-14-v39";
 
 // ========================================================
 // SÉCURITÉ & AUTHENTIFICATION ADMINISTRATEUR (SHA-256)

@@ -127,7 +127,10 @@ class HNSTipsHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.end_headers()
-            with open(BASE_DIR / "templates" / "index.html", "rb") as f:
+            target_html = BASE_DIR / "index.html"
+            if not target_html.exists():
+                target_html = BASE_DIR / "templates" / "index.html"
+            with open(target_html, "rb") as f:
                 self.wfile.write(f.read())
             return
 

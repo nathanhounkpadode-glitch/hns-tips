@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HNS Tips — Pronostics Football & IA</title>
-    <meta name="theme-color" content="#0d111a">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#070b14">
+    <link rel="stylesheet" href="static/css/style.css?v=39">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <link rel="manifest" href="static/manifest.json">
 </head>
 <body>
     <div class="app-shell">
@@ -14,117 +16,268 @@
         <!-- APP HEADER -->
         <header class="app-header">
             <div class="brand">
-                <img src="/static/icons/logo.jpg" alt="HNS Tips" class="brand-logo-img">
+                <img src="static/icons/logo.jpg" alt="HNS Tips" class="brand-logo-img">
                 <div class="brand-info">
                     <h1>HNS TIPS</h1>
-                    <span class="brand-tag"><span class="pulse-dot"></span> Matchs Réels & IA</span>
+                    <span class="brand-tag"><span class="pulse-dot"></span> ⚡ Algorithme Quantitatif HNS</span>
                 </div>
             </div>
             <div class="header-actions">
-                <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match réel">➕</button>
+                <button class="icon-btn" id="openScannerBtn" title="Scanner une Capture d'Écran (Match / Coupon)">📷</button>
+                <button class="icon-btn" id="ownerLockBtn" title="Mode Administration Sécurisé">🔒</button>
+                <button class="icon-btn" id="openAddModalBtn" title="Pronostiquer un match (Réservé Propriétaire)">➕</button>
                 <button class="icon-btn" id="refreshBtn" title="Actualiser les pronostics">🔄</button>
             </div>
         </header>
 
-        <!-- SÉLECTEUR DE JOUR (AUJOURD'HUI / DEMAIN / CE WEEK-END) -->
+        <!-- SÉLECTEUR DE JOUR (HIER / AUJOURD'HUI / DEMAIN / JEUDI) -->
         <div class="day-selector-bar">
+            <button class="day-btn" data-day="yesterday">
+                <span class="day-title" id="yesterdayTitle">Hier</span>
+                <span class="day-sub" id="yesterdaySub">Lun 12 Oct</span>
+            </button>
             <button class="day-btn active" data-day="today">
-                <span class="day-title">Aujourd'hui</span>
-                <span class="day-sub">Jeudi 8 Oct</span>
+                <span class="day-title" id="todayTitle">Aujourd'hui</span>
+                <span class="day-sub" id="todaySub">Mar 13 Oct</span>
             </button>
             <button class="day-btn" data-day="tomorrow">
-                <span class="day-title">Demain</span>
-                <span class="day-sub">Vendredi 9 Oct</span>
+                <span class="day-title" id="tomorrowTitle">Demain</span>
+                <span class="day-sub" id="tomorrowSub">Mer 14 Oct</span>
             </button>
-            <button class="day-btn" data-day="weekend">
-                <span class="day-title">Week-end</span>
-                <span class="day-sub">Sam - Dim</span>
+            <button class="day-btn" data-day="after_tomorrow">
+                <span class="day-title" id="afterTomorrowTitle">Jeudi</span>
+                <span class="day-sub" id="afterTomorrowSub">Jeu 15 Oct</span>
             </button>
         </div>
 
-        <!-- BARRE D'AJOUT RAPIDE -->
-        <div class="quick-add-bar">
-            <button class="quick-add-btn" id="openAddModalBtn2">
-                <span>➕</span> Pronostiquer un match réel de ton choix
-            </button>
+        <!-- BANDEAU ANNONCE CHAMPIONNATS -->
+        <div class="championship-announcement">
+            <span class="badge-tag">🇪🇸 🇬🇧 🇫🇷 🇮🇹 🇵🇹 🇹🇷 🇳🇱</span>
+            <span class="announcement-text" id="dayNoticeText">Reprise des 7 championnats européens : toutes les affiches analysées par l'IA !</span>
         </div>
 
         <!-- MAIN SCROLLABLE CONTENT -->
         <main class="app-main">
 
-            <!-- TAB 1: ACCUEIL & PRONOSTICS QUOTIDIENS -->
+            <!-- TAB 1: PRONOSTICS & ANALYSES -->
             <section id="tab-home" class="tab-view active">
 
-                <!-- SWITCH CATEGORIE : PARIS SIMPLES vs COMBINÉS DU JOUR -->
-                <div class="category-toggle">
-                    <button class="cat-toggle-btn active" id="toggleSingles">🎯 Paris Simples</button>
-                    <button class="cat-toggle-btn" id="toggleCombos">⚡ Combinés Prêts</button>
+                <!-- BANNIÈRE DE SIGNALEMENT DES PRONOSTICS GAGNÉS -->
+                <div class="live-track-banner" id="liveTrackBanner">
+                    <div class="live-track-title">
+                        <span>🔥</span>
+                        <span id="liveTrackText">Pronostics du jour analysés et prêts à jouer !</span>
+                    </div>
+                    <span class="live-track-badge" id="liveTrackBadge">Analyses Prêtes</span>
                 </div>
 
-                <!-- VUE 1 : PARIS SIMPLES DU JOUR -->
-                <div id="viewSingles" class="category-view active">
+                <!-- SÉLECTEUR DES 3 VUES PRINCIPALES -->
+                <div class="view-mode-bar">
+                    <button class="view-mode-btn active" id="viewModeSafe" data-view="safe">
+                        <span class="vm-icon">🛡️</span>
+                        <span class="vm-label">Matchs les Plus Sûrs</span>
+                    </button>
+                    <button class="view-mode-btn" id="viewModeAll" data-view="all">
+                        <span class="vm-icon">🏆</span>
+                        <span class="vm-label">Tous les Matchs</span>
+                    </button>
+                    <button class="view-mode-btn" id="viewModeCombos" data-view="combos">
+                        <span class="vm-icon">⚡</span>
+                        <span class="vm-label">Combinés Prêts</span>
+                    </button>
+                </div>
+
+                <!-- VUE 1 : SECTION MATCHS LES PLUS SÛRS (BANKER + SAFES) -->
+                <div id="sectionSafePicks" class="sub-view active">
                     
-                    <!-- BANKER DU JOUR EN TÊTE -->
+                    <!-- EN-TÊTE DU BANKER -->
                     <div class="section-header">
                         <h2>⭐ LE BANKER DU JOUR</h2>
-                        <span class="badge-gold">Top Confiance</span>
+                        <span class="badge-gold">Sélection N°1</span>
                     </div>
 
+                    <!-- CARTE DU BANKER DU JOUR -->
                     <div class="banker-card" id="bankerCard">
                         <div class="banker-header">
                             <span class="banker-league" id="bankerLeague">Compétition</span>
-                            <span class="banker-time" id="bankerTime">20:45</span>
+                            <span class="banker-time" id="bankerTime">Horaire</span>
                         </div>
                         <div class="banker-match" id="bankerMatch">Match</div>
                         
                         <div class="banker-bet-box">
-                            <div class="bet-label">Sélection Prioritaire :</div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                                <div class="bet-label" style="margin-bottom:0;">Conseil Prioritaire HNS :</div>
+                                <button type="button" class="btn-live-stream-direct" onclick="event.stopPropagation(); openLiveStreamHub('banker')" title="Regarder le Match en Direct (Commentaires Français ou International)">
+                                    <span class="live-dot-pulse"></span>
+                                    <span>Live Vidéo</span>
+                                    <span class="live-ext-arrow">↗</span>
+                                </button>
+                            </div>
                             <div class="bet-pick" id="bankerPick">Pronostic</div>
                             <div class="bet-meta">
-                                <span class="odds-pill" id="bankerOdds">Cote : 1.70</span>
-                                <span class="confidence-badge" id="bankerConfidence">90% Confiance</span>
+                                <span class="odds-pill-gold" id="bankerOdds">Cote : 1.48</span>
+                                <span class="confidence-badge-gold" id="bankerConfidence">95% Confiance</span>
                             </div>
                         </div>
 
                         <div class="banker-analysis" id="bankerAnalysis">
-                            Chargement...
+                            Chargement de l'analyse tactique...
+                        </div>
+
+                        <!-- BANKER METRICS & SPÉCIFICITÉS -->
+                        <div class="banker-metrics-row" id="bankerMetricsRow" style="grid-template-columns: repeat(3, 1fr); gap:6px;">
+                            <div class="banker-metric-pill">
+                                <span class="lbl">📊 npxG Net</span>
+                                <span class="val" id="bankerXg">+1.65 xG</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">🔥 Field Tilt</span>
+                                <span class="val" id="bankerFieldTilt" style="color:#38bdf8;">68% Territoire</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">⚡ PPDA Press</span>
+                                <span class="val" id="bankerPpda" style="color:#a78bfa;">8.2 (Élite)</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">📈 Forme 5M</span>
+                                <span class="val" id="bankerForm">V-V-V-N-V</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">🔋 Fraîcheur</span>
+                                <span class="val" id="bankerRest" style="color:#34d399;">+48h Repos</span>
+                            </div>
+                            <div class="banker-metric-pill">
+                                <span class="lbl">🛡️ Indice HSI</span>
+                                <span class="val" id="bankerHsi" style="color:#10b981;">96 / 100</span>
+                            </div>
+                        </div>
+
+                        <!-- BANKER FORFAITS & FACTEUR X -->
+                        <div class="banker-intel-card" id="bankerIntelCard" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.2); border-radius:10px; padding:10px; margin-top:10px; font-size:0.73rem; line-height:1.45; color:#cbd5e1;">
+                            <div style="font-weight:800; color:#ffd700; margin-bottom:4px;">🌟 Facteur X & Absences Clés :</div>
+                            <div id="bankerStarPlayer" style="margin-bottom:3px;">🌟 Joueur phare</div>
+                            <div id="bankerAbsentees" style="color:#f87171;">🚑 Forfaits</div>
+                        </div>
+                        <div id="bankerInlineSimContainer" style="margin-top:10px;"></div>
+                        <button type="button" class="btn-stream-action banker-stream-btn" style="margin-top:10px; width:100%; justify-content:center;" onclick="openLiveStreamHub('banker')">
+                            📺 Suivre le Banker en Direct (Canal+, 1xBet, Tracker 2D)
+                        </button>
+                    </div>
+
+                    <!-- LISTE DES SÉLECTIONS LES PLUS SÛRES -->
+                    <div class="section-header">
+                        <h2>🛡️ SÉLECTIONS LES PLUS SÛRES</h2>
+                        <span class="badge-safe" id="safeCountBadge">Safe Picks</span>
+                    </div>
+
+                    <div class="safe-info-banner">
+                        <span>🛡️</span>
+                        <p>Ces pronostics ciblent la sécurité maximale (favoris intouchables, double chance & sécurité buts) pour minimiser le risque.</p>
+                    </div>
+
+                    <div class="matches-list" id="safePicksList">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div class="explore-switch-banner">
+                        <button class="btn-explore-all" onclick="setViewMode('all')">
+                            🏆 Voir aussi l'analyse complète de tous les championnats &rarr;
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- VUE 2 : TOUS LES MATCHS PAR CHAMPIONNAT (ANALYSE COMPLÈTE) -->
+                <div id="sectionAllMatches" class="sub-view">
+                    
+                    <div class="section-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <h2>🏆 ANALYSE COMPLÈTE DES 8 CHAMPIONNATS</h2>
+                            <span class="badge-neon" id="allCountBadge">Tous les Matchs</span>
+                        </div>
+                        <button class="btn-sim-all-inline" type="button" onclick="openGlobalSimulationModal()" title="Simuler l'ensemble des matchs de la journée">
+                            ⚡ Simuler Tous (10 000x)
+                        </button>
+                    </div>
+
+                    <!-- BARRE DE FILTRAGE HORIZONTALE PAR CHAMPIONNAT -->
+                    <div class="leagues-filter-container">
+                        <div class="leagues-filter-scroll" id="leaguesFilterScroll">
+                            <button class="league-filter-btn active" data-league="all">
+                                <span>⚡ Tous</span>
+                                <span class="pill-count" id="countAll">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="LaLiga (Espagne)">
+                                <span>🇪🇸 LaLiga</span>
+                                <span class="pill-count" id="countLaLiga">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Premier League (Angleterre)">
+                                <span>🇬🇧 Premier League</span>
+                                <span class="pill-count" id="countPremier">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Ligue 1 (France)">
+                                <span>🇫🇷 Ligue 1</span>
+                                <span class="pill-count" id="countLigue1">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Serie A (Italie)">
+                                <span>🇮🇹 Serie A</span>
+                                <span class="pill-count" id="countSerieA">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Primeira Liga (Portugal)">
+                                <span>🇵🇹 Primeira Liga</span>
+                                <span class="pill-count" id="countPrimeira">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Süper Lig (Turquie)">
+                                <span>🇹🇷 Süper Lig</span>
+                                <span class="pill-count" id="countSuperLig">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Eredivisie (Pays-Bas)">
+                                <span>🇳🇱 Eredivisie</span>
+                                <span class="pill-count" id="countEredivisie">0</span>
+                            </button>
+                            <button class="league-filter-btn" data-league="Bundesliga (Allemagne)">
+                                <span>🇩🇪 Bundesliga</span>
+                                <span class="pill-count" id="countBundesliga">0</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- LISTE DE TOUS LES PARIS SIMPLES DU JOUR -->
-                    <div class="section-header">
-                        <h2>📋 SÉLECTIONS SIMPLES DU JOUR</h2>
-                        <span class="badge-neon" id="singlesCountBadge">Sélections</span>
-                    </div>
+                    <!-- ENCART DYNAMIQUE ADN & RÉALITÉ DU CHAMPIONNAT -->
+                    <div id="leagueDnaContainer"></div>
 
-                    <div class="singles-list" id="singlesList">
+                    <!-- LISTE DE TOUS LES MATCHS DU JOUR -->
+                    <div class="matches-list" id="allMatchesList">
                         <!-- Populated by JS -->
                     </div>
+
                 </div>
 
-                <!-- VUE 2 : COMBINÉS PRÊTS DU JOUR -->
-                <div id="viewCombos" class="category-view">
+                <!-- VUE 3 : COMBINÉS PRÊTS DU JOUR -->
+                <div id="sectionCombos" class="sub-view">
+                    
                     <div class="section-header">
                         <h2>⚡ LES COMBINÉS DU JOUR</h2>
                         <span class="badge-gold">Prêts à Jouer</span>
                     </div>
+
                     <div class="combos-list" id="combosList">
                         <!-- Populated by JS -->
                     </div>
+
                 </div>
 
                 <!-- QUICK STATS BAR -->
                 <div class="quick-stats-row">
                     <div class="stat-box">
-                        <div class="stat-val" id="winRateVal">83.1%</div>
-                        <div class="stat-lbl">Taux de Réussite</div>
+                        <div class="stat-val" id="winRateVal">87.4%</div>
+                        <div class="stat-lbl">Taux Réussite</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-val" id="streakVal">5 🔥</div>
+                        <div class="stat-val" id="streakVal">8 🔥</div>
                         <div class="stat-lbl">Série Gagnante</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-val" id="avgOddsVal">1.88</div>
+                        <div class="stat-val" id="avgOddsVal">1.84</div>
                         <div class="stat-lbl">Cote Moyenne</div>
                     </div>
                 </div>
@@ -139,7 +292,7 @@
                 </div>
 
                 <div class="generator-banner">
-                    <p>Personnalise ton combiné pour le jour sélectionné. L'IA assemble les meilleures cotes statistiques selon ton objectif.</p>
+                    <p>L'IA assemble automatiquement le meilleur combiné selon tes critères parmi les matchs du jour sélectionné.</p>
                 </div>
 
                 <div class="generator-controls">
@@ -206,7 +359,7 @@
                 </div>
 
                 <div class="bankroll-card">
-                    <p class="bankroll-desc">Calcule mathématiquement la mise prudente pour protéger ton argent et éviter tout risque excessif.</p>
+                    <p class="bankroll-desc">Calcule mathématiquement la mise prudente pour protéger ton argent avec le Critère de Kelly fractionné.</p>
                     
                     <div class="bankroll-inputs">
                         <div class="input-item">
@@ -239,46 +392,430 @@
                 </div>
             </section>
 
+            <!-- SIGNATURE OFFICIELLE HNS TIPS -->
+            <div class="creator-signature">
+                <span class="signature-icon">⚡</span>
+                <span>Plateforme Officielle <strong>HNS Tips</strong> • Algorithme Prédictif & Intelligence Sportive</span>
+            </div>
+
         </main>
 
         <!-- MODAL AJOUT / ANALYSE MATCH RÉEL -->
         <div class="modal-backdrop" id="addMatchModal" style="display: none;">
             <div class="modal-card">
                 <div class="modal-header">
-                    <h3>⚡ Pronostiquer un Match Réel</h3>
+                    <h3 id="modalTitle">🎟️ Scanner & Auditer mon Ticket</h3>
                     <button class="modal-close" id="closeAddModalBtn">&times;</button>
                 </div>
+
+                <!-- ONGLETS MODAL : AUDIT TICKET OU MATCH UNIQUE -->
+                <div class="modal-tabs-bar">
+                    <button class="modal-tab-btn active" id="tabBtnAuditTicket">🎟️ Auditer mon Ticket (Multi-Photos)</button>
+                    <button class="modal-tab-btn" id="tabBtnSingleMatch">⚽ Match Unique (Manuel)</button>
+                </div>
+
                 <div class="modal-body">
-                    <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
-                        Entre les deux équipes qui jouent aujourd'hui. L'IA de HNS Tips va calculer le pronostic optimal et l'ajouter à ta liste.
-                    </p>
-                    <div class="input-item">
-                        <label>Équipe Domicile :</label>
-                        <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Argentine...">
+                    <!-- SECTION 1 : AUDIT DE TICKET DÉJÀ FAIT (MULTI-PHOTOS) -->
+                    <div id="sectionAuditTicketView">
+                        <div class="scanner-upload-card">
+                            <div class="scanner-upload-header">
+                                <span class="scanner-badge">📸 AUDIT DE TICKET • MULTI-CAPTURES</span>
+                                <span id="ticketPhotoCountBadge" style="font-size:0.75rem; color:#38bdf8; font-weight:700;">0 photo sélectionnée</span>
+                            </div>
+                            <div class="screenshot-dropzone" id="screenshotDropzone">
+                                <input type="file" id="screenshotFileInput" accept="image/*" multiple style="display:none;">
+                                <div id="dropzoneEmptyView">
+                                    <div style="font-size:2.2rem; margin-bottom:4px;">📸</div>
+                                    <div style="font-weight:700; font-size:0.92rem; color:#60a5fa;">Importer les Photos de votre Ticket</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:3px; max-width:320px; margin-left:auto; margin-right:auto;">
+                                        Sélectionnez <strong>plusieurs captures d'affilée</strong> de votre coupon (Haut, Milieu, Bas) ou collez avec <strong>Ctrl+V</strong>
+                                    </div>
+                                    <button type="button" class="btn-choose-photos" id="btnChoosePhotos" style="margin-top:10px;">
+                                        📁 Choisir les Photos (Multi-Sélection)
+                                    </button>
+                                </div>
+                                <div id="dropzoneMultiPreviewView" style="display:none;">
+                                    <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; gap:8px;">
+                                        <button type="button" class="btn-add-more-photos" id="addMorePhotosBtn">➕ Ajouter d'autres photos</button>
+                                        <button type="button" class="btn-clear-all-photos" id="clearAllPhotosBtn">✕ Tout effacer</button>
+                                    </div>
+                                    <div id="ocrMultiStatusText" style="font-size:0.78rem; color:#38bdf8; font-weight:600; margin-top:10px; text-align:center;">
+                                        💡 Photos prêtes ! Cliquez ci-dessous pour lancer l'audit IA complet.
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-generate" id="runTicketAuditBtn" style="margin-top:12px; display:none;">
+                                🔬 Lancer l'Audit IA de mon Ticket
+                            </button>
+                        </div>
+
+                        <!-- RÉSULTAT DE L'AUDIT DE TICKET -->
+                        <div id="ticketAuditResultBox" style="display:none; margin-top:12px;"></div>
                     </div>
-                    <div class="input-item">
-                        <label>Équipe Extérieur :</label>
-                        <input type="text" id="customAway" placeholder="Ex: Bayern, PSG, Danemark...">
+
+                    <!-- SECTION 2 : AJOUT / PRONOSTIC D'UN MATCH UNIQUE MANUEL -->
+                    <div id="sectionSingleMatchView" style="display:none;">
+                        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
+                            Entrez les deux équipes d'un match pour générer l'analyse et l'ajouter aux pronostics du jour.
+                        </p>
+                        <div class="input-item">
+                            <label>Équipe Domicile :</label>
+                            <input type="text" id="customHome" placeholder="Ex: FC Barcelone, Real, Sporting...">
+                        </div>
+                        <div class="input-item">
+                            <label>Équipe Extérieur :</label>
+                            <input type="text" id="customAway" placeholder="Ex: Bayern, PSG, Benfica...">
+                        </div>
+                        <div class="input-item">
+                            <label>Compétition :</label>
+                            <select id="customLeagueSelect" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
+                                <option value="LaLiga (Espagne)">🇪🇸 LaLiga (Espagne)</option>
+                                <option value="Premier League (Angleterre)">🇬🇧 Premier League (Angleterre)</option>
+                                <option value="Ligue 1 (France)">🇫🇷 Ligue 1 (France)</option>
+                                <option value="Serie A (Italie)">🇮🇹 Serie A (Italie)</option>
+                                <option value="Primeira Liga (Portugal)">🇵🇹 Primeira Liga (Portugal)</option>
+                                <option value="Süper Lig (Turquie)">🇹🇷 Süper Lig (Turquie)</option>
+                                <option value="Eredivisie (Pays-Bas)">🇳🇱 Eredivisie (Pays-Bas)</option>
+                                <option value="Autre">🌍 Autre Championnat</option>
+                            </select>
+                        </div>
+                        <div class="input-item">
+                            <label>Heure du coup d'envoi (Bénin / GMT+1) :</label>
+                            <input type="text" id="customTime" value="19:45 (Bénin) • 20:45 (Paris)" placeholder="Ex: 19:45 (Bénin) • 20:45 (Paris)">
+                        </div>
+                        <div class="input-item">
+                            <label>Jour du match :</label>
+                            <select id="customDay" style="width:100%; background:#162032; border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
+                                <option value="today">Aujourd'hui</option>
+                                <option value="tomorrow">Demain</option>
+                                <option value="after_tomorrow" id="customDayAfterTomorrowOpt">Mardi</option>
+                                <option value="yesterday">Hier</option>
+                            </select>
+                        </div>
+                        <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
+                            🤖 Analyser & Ajouter le Pronostic
+                        </button>
+                        <button type="button" class="btn-simulate-custom" id="simulateCustomMatchBtn" style="margin-top:8px; width:100%;" onclick="simulateCustomInputMatch()">
+                            🎲 Simuler cette confrontation (10 000x Monte Carlo)
+                        </button>
                     </div>
-                    <div class="input-item">
-                        <label>Compétition :</label>
-                        <input type="text" id="customLeague" placeholder="Ex: Ligue des Champions, LaLiga, etc.">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL SIMULATEUR MONTE CARLO IA (10 000 CONFRONTATIONS) -->
+        <div class="modal-backdrop" id="simModal" style="display: none;">
+            <div class="modal-card sim-modal-card">
+                <div class="modal-header">
+                    <div>
+                        <div class="sim-modal-subtitle">🧠 IA QUANTITATIVE • MODÈLE DIXON-COLES & MONTE CARLO</div>
+                        <h3 id="simModalTitle">🎲 Simulation Monte Carlo (10 000 Matchs)</h3>
                     </div>
-                    <div class="input-item">
-                        <label>Heure du coup d'envoi :</label>
-                        <input type="text" id="customTime" value="20:45" placeholder="Ex: 21:00">
+                    <button class="modal-close" id="closeSimModalBtn">&times;</button>
+                </div>
+
+                <div class="modal-body sim-modal-body">
+                    <!-- EN-TÊTE DU MATCH SÉLECTIONNÉ -->
+                    <div class="sim-match-header" id="simMatchHeader">
+                        <div class="sim-league-badge" id="simLeagueBadge">Premier League</div>
+                        <div class="sim-match-teams" id="simMatchTeams">Liverpool vs Manchester City</div>
+                        <div class="sim-match-meta" id="simMatchMeta">Coup d'envoi • 16:30 • Pronostic HNS : Les deux équipes marquent ou +2.5</div>
                     </div>
-                    <div class="input-item">
-                        <label>Jour du match :</label>
-                        <select id="customDay" style="width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--card-border); color:white; padding:10px; border-radius:8px;">
-                            <option value="today">Aujourd'hui</option>
-                            <option value="tomorrow">Demain</option>
-                            <option value="weekend">Ce Week-end</option>
-                        </select>
+
+                    <!-- ÉCRAN DE CALCUL / CHARGEMENT (QUAND LA SIMULATION TOURNE) -->
+                    <div class="sim-loading-state" id="simLoadingState" style="display: none;">
+                        <div class="sim-radar-spinner"></div>
+                        <div class="sim-loading-title">Exécution de 10 000 confrontations en cours...</div>
+                        <div class="sim-loading-desc" id="simLoadingDesc">Traitement des métriques xG, PPDA, Field Tilt et avantage domicile...</div>
+                        <div class="sim-progress-bar-container">
+                            <div class="sim-progress-bar-fill" id="simProgressBarFill"></div>
+                        </div>
                     </div>
-                    <button class="btn-generate" id="submitCustomMatchBtn" style="margin-top:14px;">
-                        🤖 Analyser & Ajouter le Pronostic
-                    </button>
+
+                    <!-- RÉSULTATS COMPLETS DE LA SIMULATION -->
+                    <div class="sim-results-container" id="simResultsContainer">
+                        
+                        <!-- 1. PROBABILITÉS 1X2 -->
+                        <div class="sim-section-title">📊 PROBABILITÉS 1X2 CALCULÉES SUR 10 000 SCÉNARIOS</div>
+                        <div class="sim-prob-grid">
+                            <div class="sim-prob-box" id="simHomeBox">
+                                <div class="sim-prob-label" id="simHomeLabel">1 (Domicile)</div>
+                                <div class="sim-prob-pct" id="simHomePct">44.2%</div>
+                                <div class="sim-prob-bar"><div class="sim-prob-bar-fill home" id="simHomeBar"></div></div>
+                            </div>
+                            <div class="sim-prob-box" id="simDrawBox">
+                                <div class="sim-prob-label">Nul (X)</div>
+                                <div class="sim-prob-pct" id="simDrawPct">27.5%</div>
+                                <div class="sim-prob-bar"><div class="sim-prob-bar-fill draw" id="simDrawBar"></div></div>
+                            </div>
+                            <div class="sim-prob-box" id="simAwayBox">
+                                <div class="sim-prob-label" id="simAwayLabel">2 (Extérieur)</div>
+                                <div class="sim-prob-pct" id="simAwayPct">28.3%</div>
+                                <div class="sim-prob-bar"><div class="sim-prob-bar-fill away" id="simAwayBar"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- 2. TOP 4 SCORES EXACTS LES PLUS RÉCURRENTS -->
+                        <div class="sim-section-title">🎯 TOP 4 SCORES LES PLUS FRÉQUENTS DANS LES 10 000 SIMULATIONS</div>
+                        <div class="sim-scores-grid" id="simScoresGrid">
+                            <!-- Injected dynamically -->
+                        </div>
+
+                        <!-- 3. MARCHÉS DE BUTS & SPECTACLE -->
+                        <div class="sim-section-title">⚽ PROBABILITÉS DES MARCHÉS CLÉS</div>
+                        <div class="sim-markets-grid">
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">+1.5 Buts</div>
+                                <div class="sim-market-pct" id="simOver15Pct">84.2%</div>
+                                <div class="sim-market-badge" id="simOver15Badge">Très Élevé</div>
+                            </div>
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">+2.5 Buts</div>
+                                <div class="sim-market-pct" id="simOver25Pct">62.8%</div>
+                                <div class="sim-market-badge" id="simOver25Badge">Favorable</div>
+                            </div>
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">Les 2 Marquent (BTTS)</div>
+                                <div class="sim-market-pct" id="simBttsPct">66.4%</div>
+                                <div class="sim-market-badge" id="simBttsBadge">Très Favorable</div>
+                            </div>
+                            <div class="sim-market-item">
+                                <div class="sim-market-name">xG Moyen Simulé</div>
+                                <div class="sim-market-pct" id="simAvgXg">1.8 - 1.4</div>
+                                <div class="sim-market-badge" id="simAvgXgBadge">Festival</div>
+                            </div>
+                        </div>
+
+                        <!-- 4. VERDICT ALGORTIHIQUE QUANTITATIF & CONSEIL ANTI-DOUILLE -->
+                        <div class="sim-verdict-box" id="simVerdictBox">
+                            <div class="sim-verdict-header">
+                                <span class="sim-verdict-tag">💡 AUDIT MATHÉMATIQUE HNS</span>
+                                <span class="sim-verdict-confidence" id="simVerdictConf">88.5% Viabilité</span>
+                            </div>
+                            <div class="sim-verdict-text" id="simVerdictText">
+                                Le pronostic sélectionné bénéficie d'une forte convergence statistique sur 10 000 scénarios.
+                            </div>
+                            <div class="sim-verdict-safety" id="simVerdictSafety">
+                                🛡️ <strong>Conseil Pro :</strong> Couverture Double Chance recommandée pour éliminer la variance résiduelle.
+                            </div>
+                        </div>
+
+                        <div class="sim-modal-actions">
+                            <button class="sim-btn-rerun" id="simRerunBtn">🔄 Relancer 10 000 Simulations</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL SIMULATION GLOBALE DE TOUS LES MATCHS (MONTE CARLO 10 000x) -->
+        <div class="modal-backdrop" id="globalSimModal" style="display: none;">
+            <div class="modal-card global-sim-modal-card">
+                <div class="modal-header">
+                    <div>
+                        <div class="sim-modal-subtitle">🧠 IA QUANTITATIVE • SIMULATION MULTI-MATCHS 10 000x</div>
+                        <h3 id="globalSimModalTitle">⚡ Simulation Intégrale de Tous les Matchs</h3>
+                    </div>
+                    <button class="modal-close" id="closeGlobalSimModalBtn">&times;</button>
+                </div>
+
+                <div class="modal-body global-sim-modal-body">
+                    <!-- Écran d'animation de calcul multi-matchs -->
+                    <div class="global-sim-loading" id="globalSimLoading" style="display: none;">
+                        <div class="sim-radar-spinner"></div>
+                        <div class="sim-loading-title" id="globalSimLoadingTitle">Simulation massive de tous les matchs en cours...</div>
+                        <div class="sim-loading-desc" id="globalSimLoadingDesc">Calcul des distributions de Poisson bivarié sur 10 000 confrontations par match...</div>
+                        <div class="sim-progress-bar-container">
+                            <div class="sim-progress-bar-fill" id="globalSimProgressBarFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Conteneur des Résultats Globaux -->
+                    <div class="global-sim-results" id="globalSimResults" style="display: none;">
+                        <!-- En-tête Statistique & Banquier Suprême -->
+                        <div class="gsim-stats-grid" id="gsimStatsGrid"></div>
+
+                        <!-- Filtres & Tri -->
+                        <div class="gsim-controls-bar">
+                            <div class="gsim-filter-group">
+                                <select id="gsimLeagueFilter" class="gsim-select" onchange="filterGlobalSimResults()">
+                                    <option value="all">🌍 Tous les championnats</option>
+                                </select>
+                                <select id="gsimSortFilter" class="gsim-select" onchange="filterGlobalSimResults()">
+                                    <option value="viability">⭐ Plus fiables d'abord</option>
+                                    <option value="goals">⚽ Plus de buts (+2.5)</option>
+                                    <option value="time">⏰ Ordre chronologique</option>
+                                </select>
+                            </div>
+                            <input type="text" id="gsimSearchInput" class="gsim-search-input" placeholder="🔍 Filtrer par équipe..." oninput="filterGlobalSimResults()">
+                        </div>
+
+                        <!-- Liste de tous les matchs simulés -->
+                        <div class="gsim-matches-list" id="gsimMatchesList"></div>
+
+                        <div class="sim-modal-actions" style="margin-top: 16px;">
+                            <button class="sim-btn-rerun" id="globalSimRerunBtn" onclick="rerunCurrentGlobalSim()">🔄 Relancer la Simulation Complète</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL DIFFUSEURS & STREAMING EN DIRECT (TV / 1XBET / TRACKER 2D / YOUTUBE) -->
+        <div class="modal" id="liveStreamModal" style="display: none;">
+            <div class="modal-content stream-hub-modal">
+                <div class="modal-header">
+                    <div>
+                        <h3 class="modal-title" id="streamModalTitle">📺 Suivre le Match en Direct</h3>
+                        <p class="modal-subtitle" id="streamModalSubtitle">Diffuseurs TV, Streaming Bookmaker & Tracker 2D</p>
+                    </div>
+                    <button class="modal-close" id="closeStreamModalBtn" type="button">✕</button>
+                </div>
+                <div class="modal-body stream-hub-modal-body">
+                    <!-- Bannière En-tête du Match -->
+                    <div class="stream-match-banner">
+                        <div class="stream-match-meta-top">
+                            <span class="stream-league-badge" id="streamLeagueBadge">🏆 Championnat</span>
+                            <span class="stream-status-badge" id="streamStatusBadge">⏳ À VENIR</span>
+                        </div>
+                        <div class="stream-match-teams" id="streamMatchTeams">Équipe A vs Équipe B</div>
+                        <div class="stream-match-time" id="streamMatchTime">⏰ Coup d'envoi officiel</div>
+                        <div class="stream-match-pick" id="streamMatchPick">🎯 Pronostic HNS : Victoire</div>
+                    </div>
+
+                    <!-- Grille des Redirections Directes -->
+                    <div class="stream-options-grid">
+                        <!-- 1. Streaming Vidéo Direct en Français (Canal+, beIN Sports, RMC) -->
+                        <div class="stream-option-card opt-stream-fr">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">🇫🇷</span>
+                                <div>
+                                    <div class="stream-opt-title">Streaming Gratuit en Français (Canal+ & beIN Sports)</div>
+                                    <div class="stream-opt-desc">Flux vidéo avec commentateurs français officiels sans inscription ni abonnement.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://streamonsports.net" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-direct-stream-fr" id="streamLinkStreamonsport">
+                                    <span>🇫🇷 Streamonsport (Canal+ / beIN)</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://livetv.sx/frx/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-secondary-stream" id="streamLinkLiveTVFr">
+                                    <span>📺 LiveTV en Français</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                            <div class="stream-tip-banner" style="border-left-color: #3b82f6;">
+                                💡 <strong>Commentaires 100% en français :</strong> Sur Streamonsport, choisis <em>Lecteur 1 (Canal+)</em> ou <em>Lecteur 2 (beIN)</em> sous le match pour entendre les commentateurs français.
+                            </div>
+                        </div>
+
+                        <!-- 2. Streaming Vidéo International HD (Live Sports News / Score-Live) -->
+                        <div class="stream-option-card opt-stream-free">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">⚡</span>
+                                <div>
+                                    <div class="stream-opt-title">Streaming International HD (Live Sports News)</div>
+                                    <div class="stream-opt-desc">Flux vidéo direct. Pour le français : sélectionne <strong>Server 2</strong> ou <strong>Flux FR</strong> sous le lecteur.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://live-sports-news.com/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-direct-stream-free" id="streamLinkLiveSportsNews">
+                                    <span>▶️ Live Sports News</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://score-live.org/" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-secondary-stream" id="streamLinkScoreLive">
+                                    <span>🌐 Score-Live (Miroir)</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                            <div class="stream-tip-banner">
+                                💡 <strong>Astuce anti-pub :</strong> Si une publicité s'ouvre au premier clic, ferme simplement le nouvel onglet et clique sur Play.
+                            </div>
+                        </div>
+
+                        <!-- 2. Match Tracker 2D Interactif (Gratuit) -->
+                        <div class="stream-option-card opt-tracker">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">⚡</span>
+                                <div>
+                                    <div class="stream-opt-title">Match Tracker 2D Interactif (Gratuit)</div>
+                                    <div class="stream-opt-desc">Animation du terrain, tirs, attaques dangereuses & stats à la seconde sans pub.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-flashscore" id="streamLinkFlashscore">
+                                    <span>🟢 Flashscore (Direct 2D)</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-sofascore" id="streamLinkSofascore">
+                                    <span>🔵 SofaScore (Radar & Notes)</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 2. Streaming Bookmaker (1xBet / Betwinner) -->
+                        <div class="stream-option-card opt-bookmaker">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">🎰</span>
+                                <div>
+                                    <div class="stream-opt-title">Streaming Bookmaker (1xBet / Betwinner)</div>
+                                    <div class="stream-opt-desc">Flux vidéo live & cotes dynamiques pour les parieurs avec compte approvisionné.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://1xbet.com/live/football" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-1xbet" id="streamLink1xBet">
+                                    <span>⚡ 1xBet Live Stream</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://betwinner.com/live/football" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-betwinner" id="streamLinkBetwinner">
+                                    <span>🟡 Betwinner Live</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 3. Diffuseurs TV Officiels -->
+                        <div class="stream-option-card opt-tv">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">📺</span>
+                                <div>
+                                    <div class="stream-opt-title">Diffuseurs Officiels TV & Streaming</div>
+                                    <div class="stream-opt-desc" id="streamTvChannelsDesc">Canal+ Sport Afrique (MyCanal), beIN SPORTS, SuperSport.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="https://www.canalplus-afrique.com" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-canal" id="streamLinkCanal">
+                                    <span>📺 MyCanal Afrique</span>
+                                    <span>↗</span>
+                                </a>
+                                <a href="https://connect.beinsports.com" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-bein" id="streamLinkBein">
+                                    <span>🟣 beIN SPORTS Connect</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 4. Commentaires Audio / YouTube Watchalong -->
+                        <div class="stream-option-card opt-youtube">
+                            <div class="stream-card-head">
+                                <span class="stream-opt-icon">🎙️</span>
+                                <div>
+                                    <div class="stream-opt-title">Commentaires Audio & Watchalong (Gratuit)</div>
+                                    <div class="stream-opt-desc">Écoutez les commentateurs et l'ambiance des supporters en direct sur YouTube.</div>
+                                </div>
+                            </div>
+                            <div class="stream-btn-row">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="stream-link-btn btn-youtube" id="streamLinkYoutube">
+                                    <span>🔴 Écouter le Live sur YouTube</span>
+                                    <span>↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -287,7 +824,7 @@
         <nav class="app-bottom-nav">
             <button class="nav-item active" onclick="switchTab('home')">
                 <span class="nav-icon">📅</span>
-                <span class="nav-label">Pronos du Jour</span>
+                <span class="nav-label">Pronos & Matchs</span>
             </button>
             <button class="nav-item" onclick="switchTab('generator')">
                 <span class="nav-icon">⚡</span>
@@ -301,7 +838,7 @@
 
     </div>
 
-    <script src="/static/js/default-data.js"></script>
-    <script src="/static/js/app.js"></script>
+    <script src="static/js/default-data.js?v=39"></script>
+    <script src="static/js/app.js?v=39"></script>
 </body>
 </html>
